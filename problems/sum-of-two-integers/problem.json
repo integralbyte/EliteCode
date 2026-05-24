@@ -1,0 +1,272 @@
+{
+  "id": 149,
+  "slug": "sum-of-two-integers",
+  "title": "Sum of Two Integers",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "companies": [],
+  "statement": "# Sum of Two Integers\n\nReturn the sum of two integers without using `+` or `-` in the core algorithm.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: a = 1, b = 2\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: a = -2, b = 3\nOutput: 1\n```\n\n**Example 3**\n\n```text\nInput: a = -5, b = -7\nOutput: -12\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Use direct arithmetic, matrix indexing, or bit operations to preserve the required invariants while keeping extra state small.",
+  "solution_notes": "```python\nclass Solution:\n    def getSum(self, a, b):\n        mask = 0xffffffff\n        while b & mask:\n            a, b = (a ^ b) & mask, ((a & b) << 1) & mask\n        return a if a <= 0x7fffffff else ~(a ^ mask)\n```",
+  "hints": [
+    "Watch fixed-width integer boundaries where the prompt requires them.",
+    "For matrix mutation, mark or capture affected rows and columns before overwriting."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def getSum(self, a, b):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "getSum"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "a": 1,
+        "b": 2
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "a": -2,
+        "b": 3
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "a": -5,
+        "b": -7
+      },
+      "expected": -12,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "a": -33,
+        "b": -19
+      },
+      "expected": -52,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "a": -16,
+        "b": 12
+      },
+      "expected": -4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "a": 1,
+        "b": 43
+      },
+      "expected": 44,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "a": 18,
+        "b": -26
+      },
+      "expected": -8,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "a": 35,
+        "b": 5
+      },
+      "expected": 40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "a": -48,
+        "b": 36
+      },
+      "expected": -12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "a": -31,
+        "b": -33
+      },
+      "expected": -64,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "a": -14,
+        "b": -2
+      },
+      "expected": -16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "a": 3,
+        "b": 29
+      },
+      "expected": 32,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "a": 20,
+        "b": -40
+      },
+      "expected": -20,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "a": 37,
+        "b": -9
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "a": -46,
+        "b": 22
+      },
+      "expected": -24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "a": -29,
+        "b": -47
+      },
+      "expected": -76,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "a": -12,
+        "b": -16
+      },
+      "expected": -28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "a": 5,
+        "b": 15
+      },
+      "expected": 20,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "a": 22,
+        "b": 46
+      },
+      "expected": 68,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "a": 39,
+        "b": -23
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "a": -44,
+        "b": 8
+      },
+      "expected": -36,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "a": -27,
+        "b": 39
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "a": -10,
+        "b": -30
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "a": 7,
+        "b": 1
+      },
+      "expected": 8,
+      "hidden": true
+    }
+  ]
+}

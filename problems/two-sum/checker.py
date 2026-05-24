@@ -1,3 +1,4 @@
+
 from __future__ import annotations
 
 from typing import Any
@@ -27,4 +28,3 @@ def check(input_data: dict[str, Any], expected: list[int], actual: Any) -> dict[
         }
 
     return {"passed": True, "message": ""}
-

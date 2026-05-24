@@ -1,0 +1,731 @@
+{
+  "id": 23,
+  "slug": "evaluate-reverse-polish-notation",
+  "title": "Evaluate Reverse Polish Notation",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Math"
+  ],
+  "companies": [],
+  "statement": "# Evaluate Reverse Polish Notation\n\nEvaluate an arithmetic expression written in Reverse Polish Notation. Division truncates toward zero.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: tokens = [\"2\", \"1\", \"+\", \"3\", \"*\"]\nOutput: 9\n```\n\n**Example 2**\n\n```text\nInput: tokens = [\"4\", \"13\", \"5\", \"/\", \"+\"]\nOutput: 6\n```\n\n**Example 3**\n\n```text\nInput: tokens = [\"10\", \"6\", \"9\", \"3\", \"+\", \"-11\", \"*\", \"/\", \"*\", \"17\", \"+\", \"5\", \"+\"]\nOutput: 22\n```\n\n## Constraints\n\n- Input sizes follow the original interview-style constraints.\n- Return values must match the described behavior.",
+  "editorial": "Use a stack to keep unresolved items. When a new token, bar, or value resolves earlier items, pop them and update the answer.",
+  "solution_notes": "```python\nclass Solution:\n    def evalRPN(self, tokens):\n        stack = []\n        for token in tokens:\n            if token not in '+-*/':\n                stack.append(int(token))\n                continue\n            b = stack.pop()\n            a = stack.pop()\n            if token == '+':\n                stack.append(a + b)\n            elif token == '-':\n                stack.append(a - b)\n            elif token == '*':\n                stack.append(a * b)\n            else:\n                stack.append(int(a / b))\n        return stack[-1]\n```",
+  "hints": [
+    "A stack is useful when the most recent unresolved item should be handled first.",
+    "Keep extra state on the stack when constant-time queries are needed."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def evalRPN(self, tokens):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "evalRPN"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "tokens": [
+          "2",
+          "1",
+          "+",
+          "3",
+          "*"
+        ]
+      },
+      "expected": 9,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "tokens": [
+          "4",
+          "13",
+          "5",
+          "/",
+          "+"
+        ]
+      },
+      "expected": 6,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "tokens": [
+          "10",
+          "6",
+          "9",
+          "3",
+          "+",
+          "-11",
+          "*",
+          "/",
+          "*",
+          "17",
+          "+",
+          "5",
+          "+"
+        ]
+      },
+      "expected": 22,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "tokens": [
+          "3",
+          "4",
+          "+"
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "tokens": [
+          "5",
+          "1",
+          "2",
+          "+",
+          "4",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "tokens": [
+          "18",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "tokens": [
+          "7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "tokens": [
+          "-7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": -2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "tokens": [
+          "2",
+          "3",
+          "11",
+          "+",
+          "5",
+          "-",
+          "*"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "tokens": [
+          "4",
+          "2",
+          "+",
+          "3",
+          "5",
+          "1",
+          "-",
+          "*",
+          "+"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "tokens": [
+          "9",
+          "2",
+          "*",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "tokens": [
+          "8",
+          "3",
+          "-",
+          "2",
+          "*"
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "tokens": [
+          "6",
+          "2",
+          "/",
+          "3",
+          "+"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "tokens": [
+          "10",
+          "2",
+          "8",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "tokens": [
+          "1",
+          "2",
+          "+",
+          "3",
+          "4",
+          "+",
+          "*"
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "tokens": [
+          "3",
+          "4",
+          "+"
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "tokens": [
+          "5",
+          "1",
+          "2",
+          "+",
+          "4",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "tokens": [
+          "18",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "tokens": [
+          "7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "tokens": [
+          "-7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": -2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "tokens": [
+          "2",
+          "3",
+          "11",
+          "+",
+          "5",
+          "-",
+          "*"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "tokens": [
+          "4",
+          "2",
+          "+",
+          "3",
+          "5",
+          "1",
+          "-",
+          "*",
+          "+"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "tokens": [
+          "9",
+          "2",
+          "*",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "tokens": [
+          "8",
+          "3",
+          "-",
+          "2",
+          "*"
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "tokens": [
+          "6",
+          "2",
+          "/",
+          "3",
+          "+"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "tokens": [
+          "10",
+          "2",
+          "8",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "tokens": [
+          "1",
+          "2",
+          "+",
+          "3",
+          "4",
+          "+",
+          "*"
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "tokens": [
+          "3",
+          "4",
+          "+"
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "tokens": [
+          "5",
+          "1",
+          "2",
+          "+",
+          "4",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "tokens": [
+          "18",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "tokens": [
+          "7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "tokens": [
+          "-7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": -2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "tokens": [
+          "2",
+          "3",
+          "11",
+          "+",
+          "5",
+          "-",
+          "*"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "tokens": [
+          "4",
+          "2",
+          "+",
+          "3",
+          "5",
+          "1",
+          "-",
+          "*",
+          "+"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "tokens": [
+          "9",
+          "2",
+          "*",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "tokens": [
+          "8",
+          "3",
+          "-",
+          "2",
+          "*"
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "tokens": [
+          "6",
+          "2",
+          "/",
+          "3",
+          "+"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "tokens": [
+          "10",
+          "2",
+          "8",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "tokens": [
+          "1",
+          "2",
+          "+",
+          "3",
+          "4",
+          "+",
+          "*"
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "tokens": [
+          "3",
+          "4",
+          "+"
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "tokens": [
+          "5",
+          "1",
+          "2",
+          "+",
+          "4",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "tokens": [
+          "18",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "tokens": [
+          "7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "tokens": [
+          "-7",
+          "3",
+          "/"
+        ]
+      },
+      "expected": -2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "tokens": [
+          "2",
+          "3",
+          "11",
+          "+",
+          "5",
+          "-",
+          "*"
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    }
+  ]
+}

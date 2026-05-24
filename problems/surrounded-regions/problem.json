@@ -1,0 +1,1589 @@
+{
+  "id": 86,
+  "slug": "surrounded-regions",
+  "title": "Surrounded Regions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Matrix"
+  ],
+  "companies": [],
+  "statement": "# Surrounded Regions\n\nCapture every `O` region fully surrounded by `X` by changing those `O` cells to `X`. Border-connected `O` cells remain.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: board = [[X,X,X,X],[X,O,O,X],[X,X,O,X],[X,O,X,X]]\nOutput: [[X,X,X,X],[X,X,X,X],[X,X,X,X],[X,O,X,X]]\n```\n\n**Example 2**\n\n```text\nInput: board = [[O,O],[O,O]]\nOutput: [[O,O],[O,O]]\n```\n\n**Example 3**\n\n```text\nInput: board = [[X]]\nOutput: [[X]]\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
+  "solution_notes": "```python\nclass Solution:\n    def solve(self, board):\n        rows, cols = len(board), len(board[0])\n        def dfs(r, c):\n            if r < 0 or c < 0 or r == rows or c == cols or board[r][c] != 'O':\n                return\n            board[r][c] = 'S'\n            dfs(r + 1, c); dfs(r - 1, c); dfs(r, c + 1); dfs(r, c - 1)\n        for r in range(rows):\n            dfs(r, 0); dfs(r, cols - 1)\n        for c in range(cols):\n            dfs(0, c); dfs(rows - 1, c)\n        for r in range(rows):\n            for c in range(cols):\n                board[r][c] = 'O' if board[r][c] == 'S' else 'X'\n```",
+  "hints": [
+    "Model the state explicitly.",
+    "Prefer linear or near-linear graph traversal when possible."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def solve(self, board):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "solve"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "board": [
+          [
+            "O",
+            "O"
+          ],
+          [
+            "O",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "O"
+        ],
+        [
+          "O",
+          "O"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "board": [
+          [
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "board": [
+          [
+            "X",
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "board": [
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "board": [
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "board": [
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "O",
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "O",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "board": [
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "board": [
+          [
+            "O",
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "board": [
+          [
+            "X",
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "board": [
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "board": [
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "board": [
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "O",
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "O",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "board": [
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "O",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "board": [
+          [
+            "O",
+            "X",
+            "X",
+            "X",
+            "O"
+          ],
+          [
+            "X",
+            "O",
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O",
+            "X",
+            "X"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "O",
+          "X",
+          "X",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O",
+          "X",
+          "X"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "board": [
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "O",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "O"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O"
+        ]
+      ],
+      "hidden": true
+    }
+  ]
+}

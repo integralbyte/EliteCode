@@ -1,0 +1,248 @@
+{
+  "id": 147,
+  "slug": "reverse-bits",
+  "title": "Reverse Bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Divide and Conquer",
+    "Bit Manipulation"
+  ],
+  "companies": [],
+  "statement": "# Reverse Bits\n\nReverse the bit order of an unsigned 32-bit integer.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: n = 43261596\nOutput: 964176192\n```\n\n**Example 2**\n\n```text\nInput: n = 0\nOutput: 0\n```\n\n**Example 3**\n\n```text\nInput: n = 1\nOutput: 2147483648\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Use direct arithmetic, matrix indexing, or bit operations to preserve the required invariants while keeping extra state small.",
+  "solution_notes": "```python\nclass Solution:\n    def reverseBits(self, n):\n        out = 0\n        for _ in range(32):\n            out = (out << 1) | (n & 1)\n            n >>= 1\n        return out\n```",
+  "hints": [
+    "Watch fixed-width integer boundaries where the prompt requires them.",
+    "For matrix mutation, mark or capture affected rows and columns before overwriting."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def reverseBits(self, n):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "reverseBits"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "n": 43261596
+      },
+      "expected": 964176192,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "n": 0
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "n": 1
+      },
+      "expected": 2147483648,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "n": 1103515245
+      },
+      "expected": 3060949890,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "n": 2207030490
+      },
+      "expected": 1530474945,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "n": 3310545735
+      },
+      "expected": 3805760163,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "n": 119093684
+      },
+      "expected": 765237472,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "n": 1222608929
+      },
+      "expected": 2215770898,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "n": 2326124174
+      },
+      "expected": 1902880081,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "n": 3429639419
+      },
+      "expected": 3743692339,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "n": 238187368
+      },
+      "expected": 382618736,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "n": 1341702613
+      },
+      "expected": 2877497330,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "n": 2445217858
+      },
+      "expected": 1107885449,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "n": 3548733103
+      },
+      "expected": 4118454731,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "n": 357281052
+      },
+      "expected": 951440040,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "n": 1460796297
+      },
+      "expected": 2447345898,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "n": 2564311542
+      },
+      "expected": 1871846169,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "n": 3667826787
+      },
+      "expected": 3323558235,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "n": 476374736
+      },
+      "expected": 191309368,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "n": 1579889981
+      },
+      "expected": 3165443194,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "n": 2683405226
+      },
+      "expected": 1438748665,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "n": 3786920471
+      },
+      "expected": 3897290119,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "n": 595468420
+      },
+      "expected": 553942724,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "n": 1698983665
+      },
+      "expected": 2406884006,
+      "hidden": true
+    }
+  ]
+}

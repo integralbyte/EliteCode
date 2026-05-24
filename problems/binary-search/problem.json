@@ -1,0 +1,877 @@
+{
+  "id": 28,
+  "slug": "binary-search",
+  "title": "Binary Search",
+  "difficulty": "Easy",
+  "tags": [
+    "Binary Search",
+    "Array"
+  ],
+  "companies": [],
+  "statement": "# Binary Search\n\nGiven a sorted list of distinct integers, return the index of `target`. Return `-1` when `target` is absent.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [-8, -2, 0, 4, 9, 13], target = 9\nOutput: 4\n```\n\n**Example 2**\n\n```text\nInput: nums = [-8, -2, 0, 4, 9, 13], target = 7\nOutput: -1\n```\n\n**Example 3**\n\n```text\nInput: nums = [5], target = 5\nOutput: 0\n```\n\n## Constraints\n\n- `1 <= len(nums) <= 100000`\n- `nums` is sorted in strictly increasing order.\n\n## Follow-up\n\nUse logarithmic time.",
+  "editorial": "Maintain a search interval. Compare the middle value to the target and discard the half that cannot contain the answer.",
+  "solution_notes": "```python\nclass Solution:\n    def search(self, nums, target):\n        left, right = 0, len(nums) - 1\n        while left <= right:\n            mid = (left + right) // 2\n            if nums[mid] == target:\n                return mid\n            if nums[mid] < target:\n                left = mid + 1\n            else:\n                right = mid - 1\n        return -1\n```",
+  "hints": [
+    "The sorted order lets you discard half the values after one comparison.",
+    "Stop when the search interval becomes empty."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def search(self, nums, target):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "search"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "nums": [
+          -8,
+          -2,
+          0,
+          4,
+          9,
+          13
+        ],
+        "target": 9
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "nums": [
+          -8,
+          -2,
+          0,
+          4,
+          9,
+          13
+        ],
+        "target": 7
+      },
+      "expected": -1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "nums": [
+          5
+        ],
+        "target": 5
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "nums": [
+          -47,
+          -43
+        ],
+        "target": -49
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "nums": [
+          -45,
+          -40,
+          -38
+        ],
+        "target": -48
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "nums": [
+          -43,
+          -42,
+          -39,
+          -34
+        ],
+        "target": -34
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "nums": [
+          -41,
+          -39,
+          -35,
+          -34,
+          -31
+        ],
+        "target": -46
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "nums": [
+          -44,
+          -41,
+          -36,
+          -34,
+          -30,
+          -29
+        ],
+        "target": -50
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "nums": [
+          -42,
+          -38,
+          -37,
+          -34,
+          -29,
+          -27,
+          -23
+        ],
+        "target": -23
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "nums": [
+          -40,
+          -35,
+          -33,
+          -29,
+          -28,
+          -25,
+          -20,
+          -18
+        ],
+        "target": -48
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "nums": [
+          -38,
+          -37,
+          -34,
+          -29,
+          -27,
+          -23,
+          -22,
+          -19,
+          -14
+        ],
+        "target": -47
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "nums": [
+          -36,
+          -34,
+          -30,
+          -29,
+          -26,
+          -21,
+          -19,
+          -15,
+          -14,
+          -11
+        ],
+        "target": -11
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "nums": [
+          -39,
+          -36,
+          -31,
+          -29,
+          -25,
+          -24,
+          -21,
+          -16,
+          -14,
+          -10,
+          -9
+        ],
+        "target": -50
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "nums": [
+          -48,
+          -44,
+          -43,
+          -40,
+          -35,
+          -33,
+          -29,
+          -28,
+          -25,
+          -20,
+          -18,
+          -14
+        ],
+        "target": -60
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "nums": [
+          -46,
+          -41,
+          -39,
+          -35,
+          -34,
+          -31,
+          -26,
+          -24,
+          -20,
+          -19,
+          -16,
+          -11,
+          -9
+        ],
+        "target": -9
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "nums": [
+          -44,
+          -43,
+          -40,
+          -35,
+          -33,
+          -29,
+          -28,
+          -25,
+          -20,
+          -18,
+          -14,
+          -13,
+          -10,
+          -5
+        ],
+        "target": -58
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "nums": [
+          -42,
+          -40,
+          -36,
+          -35,
+          -32,
+          -27,
+          -25,
+          -21,
+          -20,
+          -17,
+          -12,
+          -10,
+          -6,
+          -5,
+          -2
+        ],
+        "target": -57
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "nums": [
+          -45,
+          -42,
+          -37,
+          -35,
+          -31,
+          -30,
+          -27,
+          -22,
+          -20,
+          -16,
+          -15,
+          -12,
+          -7,
+          -5,
+          -1,
+          0
+        ],
+        "target": 0
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "nums": [
+          -43
+        ],
+        "target": -60
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "nums": [
+          -41,
+          -36
+        ],
+        "target": -59
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "nums": [
+          -39,
+          -38,
+          -35
+        ],
+        "target": -39
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "nums": [
+          -37,
+          -35,
+          -31,
+          -30
+        ],
+        "target": -57
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "nums": [
+          -40,
+          -37,
+          -32,
+          -30,
+          -26
+        ],
+        "target": -61
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "nums": [
+          -38,
+          -34,
+          -33,
+          -30,
+          -25,
+          -23
+        ],
+        "target": -30
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "nums": [
+          -47,
+          -42,
+          -40,
+          -36,
+          -35,
+          -32,
+          -27
+        ],
+        "target": -70
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "nums": [
+          -45,
+          -44,
+          -41,
+          -36,
+          -34,
+          -30,
+          -29,
+          -26
+        ],
+        "target": -69
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "nums": [
+          -43,
+          -41,
+          -37,
+          -36,
+          -33,
+          -28,
+          -26,
+          -22,
+          -21
+        ],
+        "target": -26
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "nums": [
+          -46,
+          -43,
+          -38,
+          -36,
+          -32,
+          -31,
+          -28,
+          -23,
+          -21,
+          -17
+        ],
+        "target": -72
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "nums": [
+          -44,
+          -40,
+          -39,
+          -36,
+          -31,
+          -29,
+          -25,
+          -24,
+          -21,
+          -16,
+          -14
+        ],
+        "target": -71
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "nums": [
+          -42,
+          -37,
+          -35,
+          -31,
+          -30,
+          -27,
+          -22,
+          -20,
+          -16,
+          -15,
+          -12,
+          -7
+        ],
+        "target": -31
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "nums": [
+          -40,
+          -39,
+          -36,
+          -31,
+          -29,
+          -25,
+          -24,
+          -21,
+          -16,
+          -14,
+          -10,
+          -9,
+          -6
+        ],
+        "target": -69
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "nums": [
+          -38,
+          -36,
+          -32,
+          -31,
+          -28,
+          -23,
+          -21,
+          -17,
+          -16,
+          -13,
+          -8,
+          -6,
+          -2,
+          -1
+        ],
+        "target": -68
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "nums": [
+          -41,
+          -38,
+          -33,
+          -31,
+          -27,
+          -26,
+          -23,
+          -18,
+          -16,
+          -12,
+          -11,
+          -8,
+          -3,
+          -1,
+          3
+        ],
+        "target": -41
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "nums": [
+          -39,
+          -35,
+          -34,
+          -31,
+          -26,
+          -24,
+          -20,
+          -19,
+          -16,
+          -11,
+          -9,
+          -5,
+          -4,
+          -1,
+          4,
+          6
+        ],
+        "target": -71
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "nums": [
+          -37
+        ],
+        "target": -70
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "nums": [
+          -46,
+          -45
+        ],
+        "target": -45
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "nums": [
+          -44,
+          -42,
+          -38
+        ],
+        "target": -79
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "nums": [
+          -47,
+          -44,
+          -39,
+          -37
+        ],
+        "target": -83
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "nums": [
+          -45,
+          -41,
+          -40,
+          -37,
+          -32
+        ],
+        "target": -41
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "nums": [
+          -43,
+          -38,
+          -36,
+          -32,
+          -31,
+          -28
+        ],
+        "target": -81
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "nums": [
+          -41,
+          -40,
+          -37,
+          -32,
+          -30,
+          -26,
+          -25
+        ],
+        "target": -80
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "nums": [
+          -39,
+          -37,
+          -33,
+          -32,
+          -29,
+          -24,
+          -22,
+          -18
+        ],
+        "target": -18
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "nums": [
+          -42,
+          -39,
+          -34,
+          -32,
+          -28,
+          -27,
+          -24,
+          -19,
+          -17
+        ],
+        "target": -83
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "nums": [
+          -40,
+          -36,
+          -35,
+          -32,
+          -27,
+          -25,
+          -21,
+          -20,
+          -17,
+          -12
+        ],
+        "target": -82
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "nums": [
+          -38,
+          -33,
+          -31,
+          -27,
+          -26,
+          -23,
+          -18,
+          -16,
+          -12,
+          -11,
+          -8
+        ],
+        "target": -11
+      },
+      "expected": 9,
+      "hidden": true
+    }
+  ]
+}

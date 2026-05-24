@@ -1,0 +1,293 @@
+{
+  "id": 121,
+  "slug": "regular-expression-matching",
+  "title": "Regular Expression Matching",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Recursion"
+  ],
+  "companies": [],
+  "statement": "# Regular Expression Matching\n\nReturn whether pattern `p` matches the entire string `s`, where `.` matches any single character and `*` repeats the previous token zero or more times.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = aa, p = a\nOutput: false\n```\n\n**Example 2**\n\n```text\nInput: s = aa, p = a*\nOutput: true\n```\n\n**Example 3**\n\n```text\nInput: s = ab, p = .*\nOutput: true\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nfrom functools import lru_cache\n\nclass Solution:\n    def isMatch(self, s, p):\n        @lru_cache(None)\n        def dp(i, j):\n            if j == len(p): return i == len(s)\n            first = i < len(s) and p[j] in {s[i], '.'}\n            if j + 1 < len(p) and p[j + 1] == '*':\n                return dp(i, j + 2) or (first and dp(i + 1, j))\n            return first and dp(i + 1, j + 1)\n        return dp(0, 0)\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def isMatch(self, s, p):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "isMatch"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "aa",
+        "p": "a"
+      },
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "aab",
+        "p": "c*a*b"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "mississippi",
+        "p": "mis*is*p*."
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "aa",
+        "p": "a"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "aab",
+        "p": "c*a*b"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "mississippi",
+        "p": "mis*is*p*."
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "aa",
+        "p": "a"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "aab",
+        "p": "c*a*b"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "mississippi",
+        "p": "mis*is*p*."
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "aa",
+        "p": "a"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "aab",
+        "p": "c*a*b"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "mississippi",
+        "p": "mis*is*p*."
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "aa",
+        "p": "a"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "aab",
+        "p": "c*a*b"
+      },
+      "expected": true,
+      "hidden": true
+    }
+  ]
+}

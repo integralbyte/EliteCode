@@ -4,6 +4,8 @@
 
 EliteCode is a local-first coding practice app for solving algorithm problems offline. It includes a React editor UI, a FastAPI backend, SQLite progress storage, file-based problem packs, and a local Python judge.
 
+The bundled catalog covers 150 original EliteCode problem packs with 4,866 visible and hidden test cases.
+
 ## Quick Start
 
 ```bash

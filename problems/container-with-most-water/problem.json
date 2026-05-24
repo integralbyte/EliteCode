@@ -1,0 +1,849 @@
+{
+  "id": 13,
+  "slug": "container-with-most-water",
+  "title": "Container With Most Water",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers",
+    "Array"
+  ],
+  "companies": [],
+  "statement": "# Container With Most Water\n\nGiven vertical line heights, choose two lines that together with the x-axis hold the largest possible area.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: height = [1, 8, 6, 2, 5, 4, 8, 3, 7]\nOutput: 49\n```\n\n**Example 2**\n\n```text\nInput: height = [5, 5]\nOutput: 5\n```\n\n**Example 3**\n\n```text\nInput: height = [1, 2, 3, 4, 5]\nOutput: 6\n```\n\n## Constraints\n\n- `2 <= len(height) <= 100000`\n- `0 <= height[i] <= 10000`",
+  "editorial": "The area is limited by the shorter side. Start wide, then move the pointer at the shorter side because keeping it cannot improve future areas.",
+  "solution_notes": "```python\nclass Solution:\n    def maxArea(self, height):\n        left, right = 0, len(height) - 1\n        best = 0\n        while left < right:\n            best = max(best, min(height[left], height[right]) * (right - left))\n            if height[left] < height[right]:\n                left += 1\n            else:\n                right -= 1\n        return best\n```",
+  "hints": [
+    "Width shrinks every move, so the only possible improvement is a taller limiting wall.",
+    "Move away from the shorter side."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def maxArea(self, height):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "maxArea"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "height": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ]
+      },
+      "expected": 49,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "height": [
+          5,
+          5
+        ]
+      },
+      "expected": 5,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "height": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": 6,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "height": [
+          7,
+          14,
+          4,
+          11,
+          1
+        ]
+      },
+      "expected": 22,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "height": [
+          10,
+          17,
+          7,
+          14,
+          4,
+          11
+        ]
+      },
+      "expected": 50,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "height": [
+          13,
+          3,
+          10,
+          17,
+          7,
+          14,
+          4
+        ]
+      },
+      "expected": 65,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "height": [
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7,
+          14
+        ]
+      },
+      "expected": 98,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "height": [
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7
+        ]
+      },
+      "expected": 80,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "height": [
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17
+        ]
+      },
+      "expected": 96,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "height": [
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10
+        ]
+      },
+      "expected": 91,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "height": [
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3
+        ]
+      },
+      "expected": 110,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "height": [
+          14,
+          4,
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13
+        ]
+      },
+      "expected": 156,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "height": [
+          17,
+          7,
+          14,
+          4,
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6
+        ]
+      },
+      "expected": 192,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "height": [
+          3,
+          10,
+          17
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "height": [
+          6,
+          13,
+          3,
+          10
+        ]
+      },
+      "expected": 20,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "height": [
+          9,
+          16,
+          6,
+          13,
+          3
+        ]
+      },
+      "expected": 27,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "height": [
+          12,
+          2,
+          9,
+          16,
+          6,
+          13
+        ]
+      },
+      "expected": 60,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "height": [
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6
+        ]
+      },
+      "expected": 75,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "height": [
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16
+        ]
+      },
+      "expected": 75,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "height": [
+          4,
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9
+        ]
+      },
+      "expected": 63,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "height": [
+          7,
+          14,
+          4,
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2
+        ]
+      },
+      "expected": 84,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "height": [
+          10,
+          17,
+          7,
+          14,
+          4,
+          11,
+          1,
+          8,
+          15,
+          5,
+          12
+        ]
+      },
+      "expected": 108,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "height": [
+          13,
+          3,
+          10,
+          17,
+          7,
+          14,
+          4,
+          11,
+          1,
+          8,
+          15,
+          5
+        ]
+      },
+      "expected": 130,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "height": [
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7,
+          14,
+          4,
+          11,
+          1,
+          8,
+          15
+        ]
+      },
+      "expected": 180,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "height": [
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7,
+          14,
+          4,
+          11,
+          1,
+          8
+        ]
+      },
+      "expected": 99,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "height": [
+          5,
+          12,
+          2
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "height": [
+          8,
+          15,
+          5,
+          12
+        ]
+      },
+      "expected": 24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "height": [
+          11,
+          1,
+          8,
+          15,
+          5
+        ]
+      },
+      "expected": 33,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "height": [
+          14,
+          4,
+          11,
+          1,
+          8,
+          15
+        ]
+      },
+      "expected": 70,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "height": [
+          17,
+          7,
+          14,
+          4,
+          11,
+          1,
+          8
+        ]
+      },
+      "expected": 48,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "height": [
+          3,
+          10,
+          17,
+          7,
+          14,
+          4,
+          11,
+          1
+        ]
+      },
+      "expected": 50,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "height": [
+          6,
+          13,
+          3,
+          10,
+          17,
+          7,
+          14,
+          4,
+          11
+        ]
+      },
+      "expected": 77,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "height": [
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7,
+          14,
+          4
+        ]
+      },
+      "expected": 98,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "height": [
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7,
+          14
+        ]
+      },
+      "expected": 120,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "height": [
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17,
+          7
+        ]
+      },
+      "expected": 150,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "height": [
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10,
+          17
+        ]
+      },
+      "expected": 150,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "height": [
+          4,
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10
+        ]
+      },
+      "expected": 120,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "height": [
+          7,
+          14,
+          4
+        ]
+      },
+      "expected": 8,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "height": [
+          10,
+          17,
+          7,
+          14
+        ]
+      },
+      "expected": 30,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "height": [
+          13,
+          3,
+          10,
+          17,
+          7
+        ]
+      },
+      "expected": 39,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "height": [
+          16,
+          6,
+          13,
+          3,
+          10,
+          17
+        ]
+      },
+      "expected": 80,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "height": [
+          2,
+          9,
+          16,
+          6,
+          13,
+          3,
+          10
+        ]
+      },
+      "expected": 45,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "height": [
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13,
+          3
+        ]
+      },
+      "expected": 60,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "height": [
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6,
+          13
+        ]
+      },
+      "expected": 91,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "height": [
+          11,
+          1,
+          8,
+          15,
+          5,
+          12,
+          2,
+          9,
+          16,
+          6
+        ]
+      },
+      "expected": 88,
+      "hidden": true
+    }
+  ]
+}

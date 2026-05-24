@@ -1,0 +1,458 @@
+{
+  "id": 8,
+  "slug": "encode-and-decode-strings",
+  "title": "Encode and Decode Strings",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Design"
+  ],
+  "companies": [],
+  "statement": "# Encode and Decode Strings\n\nDesign a reversible encoding for a list of strings. Implement `encode(strs)` and `decode(data)`. The judge calls `encodeDecode(strs)`, which should return `decode(encode(strs))`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: strs = [\"lint\", \"code\", \"love\", \"you\"]\nOutput: [\"lint\", \"code\", \"love\", \"you\"]\n```\n\n**Example 2**\n\n```text\nInput: strs = [\"\", \"a\", \"\"]\nOutput: [\"\", \"a\", \"\"]\n```\n\n**Example 3**\n\n```text\nInput: strs = [\"12#x\", \"plain\", \"spaces ok\"]\nOutput: [\"12#x\", \"plain\", \"spaces ok\"]\n```\n\n## Constraints\n\n- `0 <= len(strs) <= 1000`\n- `0 <= len(strs[i]) <= 1000`\n- Strings may contain punctuation and spaces.",
+  "editorial": "A reliable encoding must include string boundaries. Prefix each string with its length and a delimiter, then read that many characters during decoding.",
+  "solution_notes": "```python\nclass Solution:\n    def encode(self, strs):\n        return ''.join(f'{len(s)}#{s}' for s in strs)\n\n    def decode(self, data):\n        result = []\n        i = 0\n        while i < len(data):\n            j = data.index('#', i)\n            size = int(data[i:j])\n            start = j + 1\n            result.append(data[start:start + size])\n            i = start + size\n        return result\n\n    def encodeDecode(self, strs):\n        return self.decode(self.encode(strs))\n```",
+  "hints": [
+    "Joining with a delimiter alone fails when strings contain that delimiter.",
+    "Store each string length before its content."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def encode(self, strs):\n        pass\n\n    def decode(self, data):\n        pass\n\n    def encodeDecode(self, strs):\n        return self.decode(self.encode(strs))\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "encodeDecode"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "strs": [
+          "lint",
+          "code",
+          "love",
+          "you"
+        ]
+      },
+      "expected": [
+        "lint",
+        "code",
+        "love",
+        "you"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "strs": [
+          "",
+          "a",
+          ""
+        ]
+      },
+      "expected": [
+        "",
+        "a",
+        ""
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "strs": [
+          "12#x",
+          "plain",
+          "spaces ok"
+        ]
+      },
+      "expected": [
+        "12#x",
+        "plain",
+        "spaces ok"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "strs": []
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "expected": [
+        ""
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "expected": [
+        "a"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "strs": [
+          "hello",
+          "world"
+        ]
+      },
+      "expected": [
+        "hello",
+        "world"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "strs": [
+          "#",
+          "##",
+          "###"
+        ]
+      },
+      "expected": [
+        "#",
+        "##",
+        "###"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "strs": [
+          "0",
+          "00",
+          "000"
+        ]
+      },
+      "expected": [
+        "0",
+        "00",
+        "000"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "strs": [
+          "with space",
+          "tabs not used"
+        ]
+      },
+      "expected": [
+        "with space",
+        "tabs not used"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "strs": [
+          "comma,separated",
+          "colon:value"
+        ]
+      },
+      "expected": [
+        "comma,separated",
+        "colon:value"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "strs": [
+          "aaaaaaaaaaaaaaaaaaaa",
+          "bbbbbbbbbbbbbbb"
+        ]
+      },
+      "expected": [
+        "aaaaaaaaaaaaaaaaaaaa",
+        "bbbbbbbbbbbbbbb"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "strs": [
+          "prefix#suffix",
+          "10#ten"
+        ]
+      },
+      "expected": [
+        "prefix#suffix",
+        "10#ten"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "strs": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "expected": [
+        "",
+        "",
+        ""
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "strs": [
+          "abc",
+          "",
+          "def"
+        ]
+      },
+      "expected": [
+        "abc",
+        "",
+        "def"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "strs": [
+          "longer string with spaces",
+          "short"
+        ]
+      },
+      "expected": [
+        "longer string with spaces",
+        "short"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "strs": [
+          "[]",
+          "{}",
+          "()"
+        ]
+      },
+      "expected": [
+        "[]",
+        "{}",
+        "()"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "strs": [
+          "slash/forward",
+          "back\\\\slash"
+        ]
+      },
+      "expected": [
+        "slash/forward",
+        "back\\\\slash"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "strs": [
+          "line",
+          "break",
+          "not actual newline"
+        ]
+      },
+      "expected": [
+        "line",
+        "break",
+        "not actual newline"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "strs": [
+          "same",
+          "same",
+          "same"
+        ]
+      },
+      "expected": [
+        "same",
+        "same",
+        "same"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "strs": [
+          "case",
+          "CASE"
+        ]
+      },
+      "expected": [
+        "case",
+        "CASE"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "strs": [
+          "123",
+          "456",
+          "789"
+        ]
+      },
+      "expected": [
+        "123",
+        "456",
+        "789"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "strs": [
+          "one",
+          "two",
+          "three",
+          "four"
+        ]
+      },
+      "expected": [
+        "one",
+        "two",
+        "three",
+        "four"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "strs": [
+          " leading",
+          "trailing "
+        ]
+      },
+      "expected": [
+        " leading",
+        "trailing "
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "strs": [
+          "mix1",
+          "mix2",
+          "mix3"
+        ]
+      },
+      "expected": [
+        "mix1",
+        "mix2",
+        "mix3"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "strs": [
+          "a#b#c",
+          "###"
+        ]
+      },
+      "expected": [
+        "a#b#c",
+        "###"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "strs": [
+          "length:5",
+          "value:hello"
+        ]
+      },
+      "expected": [
+        "length:5",
+        "value:hello"
+      ],
+      "hidden": true
+    }
+  ]
+}

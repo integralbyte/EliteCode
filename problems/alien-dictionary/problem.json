@@ -1,0 +1,409 @@
+{
+  "id": 97,
+  "slug": "alien-dictionary",
+  "title": "Alien Dictionary",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph",
+    "Topological Sort"
+  ],
+  "companies": [],
+  "statement": "# Alien Dictionary\n\nInfer one valid character ordering from words sorted according to an unknown alphabet. Return an empty string when the ordering is impossible.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: words = [wrt,wrf,er,ett,rftt]\nOutput: wertf\n```\n\n**Example 2**\n\n```text\nInput: words = [z,x]\nOutput: zx\n```\n\n**Example 3**\n\n```text\nInput: words = [abc,ab]\nOutput: \"\"\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
+  "solution_notes": "```python\nfrom collections import defaultdict, deque\n\nclass Solution:\n    def alienOrder(self, words):\n        chars = set(''.join(words))\n        graph = {ch: set() for ch in chars}\n        indeg = {ch: 0 for ch in chars}\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b): return ''\n            for x, y in zip(a, b):\n                if x != y:\n                    if y not in graph[x]: graph[x].add(y); indeg[y] += 1\n                    break\n        queue = deque(sorted(ch for ch in chars if indeg[ch] == 0))\n        out = []\n        while queue:\n            ch = queue.popleft(); out.append(ch)\n            for nxt in sorted(graph[ch]):\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0: queue.append(nxt)\n        return ''.join(out) if len(out) == len(chars) else ''\n```",
+  "hints": [
+    "Model the state explicitly.",
+    "Prefer linear or near-linear graph traversal when possible."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def alienOrder(self, words):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "alienOrder"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "words": [
+          "wrt",
+          "wrf",
+          "er",
+          "ett",
+          "rftt"
+        ]
+      },
+      "expected": "wertf",
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "words": [
+          "z",
+          "x"
+        ]
+      },
+      "expected": "zx",
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "words": [
+          "x",
+          "x"
+        ]
+      },
+      "expected": "x",
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "words": [
+          "x",
+          "x"
+        ]
+      },
+      "expected": "x",
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "words": [
+          "x",
+          "x"
+        ]
+      },
+      "expected": "x",
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "words": [
+          "x",
+          "x"
+        ]
+      },
+      "expected": "x",
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "words": [
+          "x",
+          "x"
+        ]
+      },
+      "expected": "x",
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "words": [
+          "x",
+          "x"
+        ]
+      },
+      "expected": "x",
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "words": [
+          "baa",
+          "abcd",
+          "abca",
+          "cab",
+          "cad"
+        ]
+      },
+      "expected": "bdac",
+      "hidden": true
+    }
+  ]
+}

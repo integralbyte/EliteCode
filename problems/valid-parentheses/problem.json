@@ -1,0 +1,437 @@
+{
+  "id": 21,
+  "slug": "valid-parentheses",
+  "title": "Valid Parentheses",
+  "difficulty": "Easy",
+  "tags": [
+    "Stack",
+    "String"
+  ],
+  "companies": [],
+  "statement": "# Valid Parentheses\n\nReturn whether every opening bracket in `s` is closed by the same type of bracket in the correct order.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = \"()[]{}\"\nOutput: true\n```\n\n**Example 2**\n\n```text\nInput: s = \"([{}])\"\nOutput: true\n```\n\n**Example 3**\n\n```text\nInput: s = \"(]\"\nOutput: false\n```\n\n## Constraints\n\n- Input sizes follow the original interview-style constraints.\n- Return values must match the described behavior.",
+  "editorial": "Use a stack to keep unresolved items. When a new token, bar, or value resolves earlier items, pop them and update the answer.",
+  "solution_notes": "```python\nclass Solution:\n    def isValid(self, s):\n        pairs = {')': '(', ']': '[', '}': '{'}\n        stack = []\n        for ch in s:\n            if ch in pairs:\n                if not stack or stack.pop() != pairs[ch]:\n                    return False\n            else:\n                stack.append(ch)\n        return not stack\n```",
+  "hints": [
+    "A stack is useful when the most recent unresolved item should be handled first.",
+    "Keep extra state on the stack when constant-time queries are needed."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def isValid(self, s):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "isValid"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "()[]{}"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "([{}])"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "(]"
+      },
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": ""
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "()"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "([])"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "([)]"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "{[]}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "((("
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": ")))"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "({[]})"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "({[}])"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "()()[]{}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "(([]){})"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "([{}]){}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "{[()]}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "{[(])}"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "[]{}()"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "([)"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "([]{})"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "{"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "}"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "((((()))))"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "()(()"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "(()())"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "([{}{}])"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "s": "([{}])("
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "s": "(((())))[]"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "s": "([[[[]]]])"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "s": "([{}])[]{}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "s": "[(])"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "s": "((())"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "s": "())(()"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "s": "{[()()]}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "s": "{[(])}"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "s": "[]"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "s": "{}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "s": "({})"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "s": "({)}"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "s": "()[{}]"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "s": "([{}])([{}])"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "s": "((((("
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "s": "}}}}"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "s": "{[({})]}"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "s": "{[({})]}()"
+      },
+      "expected": true,
+      "hidden": true
+    }
+  ]
+}

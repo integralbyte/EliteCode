@@ -1,0 +1,1153 @@
+{
+  "id": 98,
+  "slug": "cheapest-flights-within-k-stops",
+  "title": "Cheapest Flights Within K Stops",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph",
+    "Heap",
+    "Shortest Path"
+  ],
+  "companies": [],
+  "statement": "# Cheapest Flights Within K Stops\n\nReturn the cheapest price from `src` to `dst` using at most `k` stops, or `-1` if no such route exists.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: n = 4, flights = [[0,1,100],[1,2,100],[2,3,100],[0,3,500]], src = 0, dst = 3, k = 1\nOutput: 500\n```\n\n**Example 2**\n\n```text\nInput: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1\nOutput: 200\n```\n\n**Example 3**\n\n```text\nInput: n = 3, flights = [[0,1,100],[1,2,100]], src = 0, dst = 2, k = 0\nOutput: -1\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
+  "solution_notes": "```python\nclass Solution:\n    def findCheapestPrice(self, n, flights, src, dst, k):\n        prices = [float('inf')] * n\n        prices[src] = 0\n        for _ in range(k + 1):\n            nxt = prices[:]\n            for u, v, w in flights:\n                if prices[u] + w < nxt[v]: nxt[v] = prices[u] + w\n            prices = nxt\n        return -1 if prices[dst] == float('inf') else prices[dst]\n```",
+  "hints": [
+    "Model the state explicitly.",
+    "Prefer linear or near-linear graph traversal when possible."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def findCheapestPrice(self, n, flights, src, dst, k):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "findCheapestPrice"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            2,
+            3,
+            100
+          ],
+          [
+            0,
+            3,
+            500
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 500,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            0,
+            2,
+            500
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 1
+      },
+      "expected": 200,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 0
+      },
+      "expected": -1,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            21
+          ],
+          [
+            1,
+            2,
+            22
+          ],
+          [
+            2,
+            3,
+            23
+          ],
+          [
+            0,
+            3,
+            201
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 201,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "n": 5,
+        "flights": [
+          [
+            0,
+            1,
+            22
+          ],
+          [
+            1,
+            2,
+            23
+          ],
+          [
+            2,
+            3,
+            24
+          ],
+          [
+            3,
+            4,
+            25
+          ],
+          [
+            0,
+            4,
+            202
+          ]
+        ],
+        "src": 0,
+        "dst": 4,
+        "k": 2
+      },
+      "expected": 202,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "n": 6,
+        "flights": [
+          [
+            0,
+            1,
+            23
+          ],
+          [
+            1,
+            2,
+            24
+          ],
+          [
+            2,
+            3,
+            25
+          ],
+          [
+            3,
+            4,
+            26
+          ],
+          [
+            4,
+            5,
+            27
+          ],
+          [
+            0,
+            5,
+            203
+          ]
+        ],
+        "src": 0,
+        "dst": 5,
+        "k": 3
+      },
+      "expected": 203,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "n": 7,
+        "flights": [
+          [
+            0,
+            1,
+            24
+          ],
+          [
+            1,
+            2,
+            25
+          ],
+          [
+            2,
+            3,
+            26
+          ],
+          [
+            3,
+            4,
+            27
+          ],
+          [
+            4,
+            5,
+            28
+          ],
+          [
+            5,
+            6,
+            29
+          ],
+          [
+            0,
+            6,
+            204
+          ]
+        ],
+        "src": 0,
+        "dst": 6,
+        "k": 4
+      },
+      "expected": 204,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "n": 8,
+        "flights": [
+          [
+            0,
+            1,
+            25
+          ],
+          [
+            1,
+            2,
+            26
+          ],
+          [
+            2,
+            3,
+            27
+          ],
+          [
+            3,
+            4,
+            28
+          ],
+          [
+            4,
+            5,
+            29
+          ],
+          [
+            5,
+            6,
+            30
+          ],
+          [
+            6,
+            7,
+            31
+          ],
+          [
+            0,
+            7,
+            205
+          ]
+        ],
+        "src": 0,
+        "dst": 7,
+        "k": 5
+      },
+      "expected": 205,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            26
+          ],
+          [
+            1,
+            2,
+            27
+          ],
+          [
+            0,
+            2,
+            206
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 0
+      },
+      "expected": 206,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            27
+          ],
+          [
+            1,
+            2,
+            28
+          ],
+          [
+            2,
+            3,
+            29
+          ],
+          [
+            0,
+            3,
+            207
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 3
+      },
+      "expected": 84,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "n": 5,
+        "flights": [
+          [
+            0,
+            1,
+            28
+          ],
+          [
+            1,
+            2,
+            29
+          ],
+          [
+            2,
+            3,
+            30
+          ],
+          [
+            3,
+            4,
+            31
+          ],
+          [
+            0,
+            4,
+            208
+          ]
+        ],
+        "src": 0,
+        "dst": 4,
+        "k": 3
+      },
+      "expected": 118,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "n": 6,
+        "flights": [
+          [
+            0,
+            1,
+            29
+          ],
+          [
+            1,
+            2,
+            30
+          ],
+          [
+            2,
+            3,
+            31
+          ],
+          [
+            3,
+            4,
+            32
+          ],
+          [
+            4,
+            5,
+            33
+          ],
+          [
+            0,
+            5,
+            209
+          ]
+        ],
+        "src": 0,
+        "dst": 5,
+        "k": 3
+      },
+      "expected": 209,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "n": 7,
+        "flights": [
+          [
+            0,
+            1,
+            30
+          ],
+          [
+            1,
+            2,
+            31
+          ],
+          [
+            2,
+            3,
+            32
+          ],
+          [
+            3,
+            4,
+            33
+          ],
+          [
+            4,
+            5,
+            34
+          ],
+          [
+            5,
+            6,
+            35
+          ],
+          [
+            0,
+            6,
+            210
+          ]
+        ],
+        "src": 0,
+        "dst": 6,
+        "k": 3
+      },
+      "expected": 210,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "n": 8,
+        "flights": [
+          [
+            0,
+            1,
+            31
+          ],
+          [
+            1,
+            2,
+            32
+          ],
+          [
+            2,
+            3,
+            33
+          ],
+          [
+            3,
+            4,
+            34
+          ],
+          [
+            4,
+            5,
+            35
+          ],
+          [
+            5,
+            6,
+            36
+          ],
+          [
+            6,
+            7,
+            37
+          ],
+          [
+            0,
+            7,
+            211
+          ]
+        ],
+        "src": 0,
+        "dst": 7,
+        "k": 3
+      },
+      "expected": 211,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            32
+          ],
+          [
+            1,
+            2,
+            33
+          ],
+          [
+            0,
+            2,
+            212
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 0
+      },
+      "expected": 212,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            33
+          ],
+          [
+            1,
+            2,
+            34
+          ],
+          [
+            2,
+            3,
+            35
+          ],
+          [
+            0,
+            3,
+            213
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 213,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "n": 5,
+        "flights": [
+          [
+            0,
+            1,
+            34
+          ],
+          [
+            1,
+            2,
+            35
+          ],
+          [
+            2,
+            3,
+            36
+          ],
+          [
+            3,
+            4,
+            37
+          ],
+          [
+            0,
+            4,
+            214
+          ]
+        ],
+        "src": 0,
+        "dst": 4,
+        "k": 4
+      },
+      "expected": 142,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "n": 6,
+        "flights": [
+          [
+            0,
+            1,
+            35
+          ],
+          [
+            1,
+            2,
+            36
+          ],
+          [
+            2,
+            3,
+            37
+          ],
+          [
+            3,
+            4,
+            38
+          ],
+          [
+            4,
+            5,
+            39
+          ],
+          [
+            0,
+            5,
+            215
+          ]
+        ],
+        "src": 0,
+        "dst": 5,
+        "k": 3
+      },
+      "expected": 215,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "n": 7,
+        "flights": [
+          [
+            0,
+            1,
+            36
+          ],
+          [
+            1,
+            2,
+            37
+          ],
+          [
+            2,
+            3,
+            38
+          ],
+          [
+            3,
+            4,
+            39
+          ],
+          [
+            4,
+            5,
+            40
+          ],
+          [
+            5,
+            6,
+            41
+          ],
+          [
+            0,
+            6,
+            216
+          ]
+        ],
+        "src": 0,
+        "dst": 6,
+        "k": 2
+      },
+      "expected": 216,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "n": 8,
+        "flights": [
+          [
+            0,
+            1,
+            37
+          ],
+          [
+            1,
+            2,
+            38
+          ],
+          [
+            2,
+            3,
+            39
+          ],
+          [
+            3,
+            4,
+            40
+          ],
+          [
+            4,
+            5,
+            41
+          ],
+          [
+            5,
+            6,
+            42
+          ],
+          [
+            6,
+            7,
+            43
+          ],
+          [
+            0,
+            7,
+            217
+          ]
+        ],
+        "src": 0,
+        "dst": 7,
+        "k": 1
+      },
+      "expected": 217,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            38
+          ],
+          [
+            1,
+            2,
+            39
+          ],
+          [
+            0,
+            2,
+            218
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 0
+      },
+      "expected": 218,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            39
+          ],
+          [
+            1,
+            2,
+            40
+          ],
+          [
+            2,
+            3,
+            41
+          ],
+          [
+            0,
+            3,
+            219
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 3
+      },
+      "expected": 120,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "n": 5,
+        "flights": [
+          [
+            0,
+            1,
+            40
+          ],
+          [
+            1,
+            2,
+            41
+          ],
+          [
+            2,
+            3,
+            42
+          ],
+          [
+            3,
+            4,
+            43
+          ],
+          [
+            0,
+            4,
+            220
+          ]
+        ],
+        "src": 0,
+        "dst": 4,
+        "k": 0
+      },
+      "expected": 220,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "n": 6,
+        "flights": [
+          [
+            0,
+            1,
+            41
+          ],
+          [
+            1,
+            2,
+            42
+          ],
+          [
+            2,
+            3,
+            43
+          ],
+          [
+            3,
+            4,
+            44
+          ],
+          [
+            4,
+            5,
+            45
+          ],
+          [
+            0,
+            5,
+            221
+          ]
+        ],
+        "src": 0,
+        "dst": 5,
+        "k": 3
+      },
+      "expected": 221,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "n": 7,
+        "flights": [
+          [
+            0,
+            1,
+            42
+          ],
+          [
+            1,
+            2,
+            43
+          ],
+          [
+            2,
+            3,
+            44
+          ],
+          [
+            3,
+            4,
+            45
+          ],
+          [
+            4,
+            5,
+            46
+          ],
+          [
+            5,
+            6,
+            47
+          ],
+          [
+            0,
+            6,
+            222
+          ]
+        ],
+        "src": 0,
+        "dst": 6,
+        "k": 1
+      },
+      "expected": 222,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "n": 8,
+        "flights": [
+          [
+            0,
+            1,
+            43
+          ],
+          [
+            1,
+            2,
+            44
+          ],
+          [
+            2,
+            3,
+            45
+          ],
+          [
+            3,
+            4,
+            46
+          ],
+          [
+            4,
+            5,
+            47
+          ],
+          [
+            5,
+            6,
+            48
+          ],
+          [
+            6,
+            7,
+            49
+          ],
+          [
+            0,
+            7,
+            223
+          ]
+        ],
+        "src": 0,
+        "dst": 7,
+        "k": 7
+      },
+      "expected": 223,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            44
+          ],
+          [
+            1,
+            2,
+            45
+          ],
+          [
+            0,
+            2,
+            224
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 0
+      },
+      "expected": 224,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            45
+          ],
+          [
+            1,
+            2,
+            46
+          ],
+          [
+            2,
+            3,
+            47
+          ],
+          [
+            0,
+            3,
+            225
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 225,
+      "hidden": true
+    }
+  ]
+}

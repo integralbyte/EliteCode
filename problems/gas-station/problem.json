@@ -1,0 +1,606 @@
+{
+  "id": 125,
+  "slug": "gas-station",
+  "title": "Gas Station",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "companies": [],
+  "statement": "# Gas Station\n\nReturn the starting station index that can complete the circuit, or `-1`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: gas = [1,2,3,4,5], cost = [3,4,5,1,2]\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: gas = [2,3,4], cost = [3,4,3]\nOutput: -1\n```\n\n**Example 3**\n\n```text\nInput: gas = [5], cost = [4]\nOutput: 0\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Track the local choice that leaves the most room for future choices, or sort intervals so conflicts can be resolved with one pass.",
+  "solution_notes": "```python\nclass Solution:\n    def canCompleteCircuit(self, gas, cost):\n        total = tank = start = 0\n        for i, (g, c) in enumerate(zip(gas, cost)):\n            diff = g - c; total += diff; tank += diff\n            if tank < 0: start = i + 1; tank = 0\n        return start if total >= 0 else -1\n```",
+  "hints": [
+    "Sort first when relative order drives the decision.",
+    "Keep the smallest state that proves future feasibility."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def canCompleteCircuit(self, gas, cost):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "canCompleteCircuit"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "gas": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "cost": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "gas": [
+          2,
+          3,
+          4
+        ],
+        "cost": [
+          3,
+          4,
+          3
+        ]
+      },
+      "expected": -1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "gas": [
+          5
+        ],
+        "cost": [
+          4
+        ]
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "gas": [
+          3,
+          8,
+          4,
+          9
+        ],
+        "cost": [
+          4,
+          9,
+          5,
+          1
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "gas": [
+          5,
+          1,
+          6,
+          2,
+          7
+        ],
+        "cost": [
+          6,
+          2,
+          7,
+          3,
+          8
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "gas": [
+          7,
+          3,
+          8,
+          4,
+          9,
+          5
+        ],
+        "cost": [
+          8,
+          4,
+          9,
+          5,
+          1,
+          6
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "gas": [
+          9,
+          5,
+          1,
+          6,
+          2,
+          7,
+          3
+        ],
+        "cost": [
+          1,
+          6,
+          2,
+          7,
+          3,
+          8,
+          4
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "gas": [
+          2,
+          7,
+          3,
+          8,
+          4,
+          9,
+          5,
+          1
+        ],
+        "cost": [
+          3,
+          8,
+          4,
+          9,
+          5,
+          1,
+          6,
+          2
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "gas": [
+          4,
+          9,
+          5,
+          1,
+          6,
+          2,
+          7,
+          3,
+          8
+        ],
+        "cost": [
+          5,
+          1,
+          6,
+          2,
+          7,
+          3,
+          8,
+          4,
+          9
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "gas": [
+          6,
+          2,
+          7,
+          3,
+          8,
+          4,
+          9,
+          5,
+          1,
+          6
+        ],
+        "cost": [
+          7,
+          3,
+          8,
+          4,
+          9,
+          5,
+          1,
+          6,
+          2,
+          7
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "gas": [
+          8,
+          4,
+          9
+        ],
+        "cost": [
+          9,
+          5,
+          1
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "gas": [
+          1,
+          6,
+          2,
+          7
+        ],
+        "cost": [
+          2,
+          7,
+          3,
+          8
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "gas": [
+          3,
+          8,
+          4,
+          9,
+          5
+        ],
+        "cost": [
+          4,
+          9,
+          5,
+          1,
+          6
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "gas": [
+          5,
+          1,
+          6,
+          2,
+          7,
+          3
+        ],
+        "cost": [
+          6,
+          2,
+          7,
+          3,
+          8,
+          4
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "gas": [
+          7,
+          3,
+          8,
+          4,
+          9,
+          5,
+          1
+        ],
+        "cost": [
+          8,
+          4,
+          9,
+          5,
+          1,
+          6,
+          2
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "gas": [
+          9,
+          5,
+          1,
+          6,
+          2,
+          7,
+          3,
+          8
+        ],
+        "cost": [
+          1,
+          6,
+          2,
+          7,
+          3,
+          8,
+          4,
+          9
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "gas": [
+          2,
+          7,
+          3,
+          8,
+          4,
+          9,
+          5,
+          1,
+          6
+        ],
+        "cost": [
+          3,
+          8,
+          4,
+          9,
+          5,
+          1,
+          6,
+          2,
+          7
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "gas": [
+          4,
+          9,
+          5,
+          1,
+          6,
+          2,
+          7,
+          3,
+          8,
+          4
+        ],
+        "cost": [
+          5,
+          1,
+          6,
+          2,
+          7,
+          3,
+          8,
+          4,
+          9,
+          5
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "gas": [
+          6,
+          2,
+          7
+        ],
+        "cost": [
+          7,
+          3,
+          8
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "gas": [
+          8,
+          4,
+          9,
+          5
+        ],
+        "cost": [
+          9,
+          5,
+          1,
+          6
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "gas": [
+          1,
+          6,
+          2,
+          7,
+          3
+        ],
+        "cost": [
+          2,
+          7,
+          3,
+          8,
+          4
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "gas": [
+          3,
+          8,
+          4,
+          9,
+          5,
+          1
+        ],
+        "cost": [
+          4,
+          9,
+          5,
+          1,
+          6,
+          2
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "gas": [
+          5,
+          1,
+          6,
+          2,
+          7,
+          3,
+          8
+        ],
+        "cost": [
+          6,
+          2,
+          7,
+          3,
+          8,
+          4,
+          9
+        ]
+      },
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "gas": [
+          7,
+          3,
+          8,
+          4,
+          9,
+          5,
+          1,
+          6
+        ],
+        "cost": [
+          8,
+          4,
+          9,
+          5,
+          1,
+          6,
+          2,
+          7
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    }
+  ]
+}

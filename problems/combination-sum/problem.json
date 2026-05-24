@@ -1,0 +1,1163 @@
+{
+  "id": 72,
+  "slug": "combination-sum",
+  "title": "Combination Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "companies": [],
+  "statement": "# Combination Sum\n\nReturn all unique combinations where candidate numbers sum to `target`. A candidate may be reused any number of times.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: candidates = [2,3,6,7], target = 7\nOutput: [[2,2,3],[7]]\n```\n\n**Example 2**\n\n```text\nInput: candidates = [3,4,5], target = 8\nOutput: [[3,5],[4,4]]\n```\n\n**Example 3**\n\n```text\nInput: candidates = [5], target = 3\nOutput: []\n```\n\n## Constraints\n\n- Candidate values are positive and unique.\n- Combination order is ignored.",
+  "editorial": "Sort candidates and backtrack from a start index. Reusing the same index allows unlimited copies while preserving canonical combination order.",
+  "solution_notes": "```python\nclass Solution:\n    def combinationSum(self, candidates, target):\n        candidates.sort()\n        out = []\n        def dfs(start, remain, path):\n            if remain == 0:\n                out.append(path[:])\n                return\n            for i in range(start, len(candidates)):\n                value = candidates[i]\n                if value > remain:\n                    break\n                path.append(value)\n                dfs(i, remain - value, path)\n                path.pop()\n        dfs(0, target, [])\n        return out\n```",
+  "hints": [
+    "Sorting lets you stop when a candidate is too large.",
+    "Keep the same index when the candidate can be reused."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def combinationSum(self, candidates, target):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "combinationSum"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "candidates": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "target": 7
+      },
+      "expected": [
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          7
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "candidates": [
+          3,
+          4,
+          5
+        ],
+        "target": 8
+      },
+      "expected": [
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "candidates": [
+          5
+        ],
+        "target": 3
+      },
+      "expected": [],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "candidates": [
+          3,
+          5,
+          6
+        ],
+        "target": 5
+      },
+      "expected": [
+        [
+          5
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "candidates": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "target": 6
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "candidates": [
+          5,
+          8,
+          11,
+          14,
+          17
+        ],
+        "target": 7
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "candidates": [
+          2,
+          3,
+          5,
+          6,
+          8,
+          9
+        ],
+        "target": 8
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          3,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "candidates": [
+          3,
+          6
+        ],
+        "target": 9
+      },
+      "expected": [
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "candidates": [
+          4,
+          6,
+          7
+        ],
+        "target": 10
+      },
+      "expected": [
+        [
+          4,
+          6
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "candidates": [
+          5,
+          6,
+          8,
+          9
+        ],
+        "target": 11
+      },
+      "expected": [
+        [
+          5,
+          6
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "candidates": [
+          2,
+          4,
+          5,
+          7,
+          8
+        ],
+        "target": 12
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          4
+        ],
+        [
+          2,
+          2,
+          4,
+          4
+        ],
+        [
+          2,
+          2,
+          8
+        ],
+        [
+          2,
+          5,
+          5
+        ],
+        [
+          4,
+          4,
+          4
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "candidates": [
+          3,
+          4,
+          6,
+          7,
+          9,
+          10
+        ],
+        "target": 13
+      },
+      "expected": [
+        [
+          3,
+          3,
+          3,
+          4
+        ],
+        [
+          3,
+          3,
+          7
+        ],
+        [
+          3,
+          4,
+          6
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "candidates": [
+          4,
+          7
+        ],
+        "target": 14
+      },
+      "expected": [
+        [
+          7,
+          7
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "candidates": [
+          5,
+          7,
+          8
+        ],
+        "target": 15
+      },
+      "expected": [
+        [
+          5,
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "candidates": [
+          2,
+          5,
+          8,
+          11
+        ],
+        "target": 16
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          8
+        ],
+        [
+          2,
+          2,
+          2,
+          5,
+          5
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "candidates": [
+          3,
+          5,
+          6,
+          8,
+          9
+        ],
+        "target": 17
+      },
+      "expected": [
+        [
+          3,
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          3,
+          3,
+          8
+        ],
+        [
+          3,
+          3,
+          5,
+          6
+        ],
+        [
+          3,
+          5,
+          9
+        ],
+        [
+          3,
+          6,
+          8
+        ],
+        [
+          5,
+          6,
+          6
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "candidates": [
+          4,
+          5,
+          7,
+          8,
+          10,
+          11
+        ],
+        "target": 18
+      },
+      "expected": [
+        [
+          4,
+          4,
+          5,
+          5
+        ],
+        [
+          4,
+          4,
+          10
+        ],
+        [
+          4,
+          7,
+          7
+        ],
+        [
+          5,
+          5,
+          8
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "candidates": [
+          5,
+          8
+        ],
+        "target": 19
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "candidates": [
+          2,
+          3,
+          5
+        ],
+        "target": 20
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          5
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          5,
+          5
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          2,
+          2,
+          3,
+          3,
+          5,
+          5
+        ],
+        [
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          3,
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "candidates": [
+          3,
+          6,
+          9,
+          12
+        ],
+        "target": 21
+      },
+      "expected": [
+        [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3,
+          3,
+          3,
+          6
+        ],
+        [
+          3,
+          3,
+          3,
+          3,
+          9
+        ],
+        [
+          3,
+          3,
+          3,
+          6,
+          6
+        ],
+        [
+          3,
+          3,
+          3,
+          12
+        ],
+        [
+          3,
+          3,
+          6,
+          9
+        ],
+        [
+          3,
+          6,
+          6,
+          6
+        ],
+        [
+          3,
+          6,
+          12
+        ],
+        [
+          3,
+          9,
+          9
+        ],
+        [
+          6,
+          6,
+          9
+        ],
+        [
+          9,
+          12
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "candidates": [
+          4,
+          6,
+          7,
+          9,
+          10
+        ],
+        "target": 4
+      },
+      "expected": [
+        [
+          4
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "candidates": [
+          5,
+          6,
+          8,
+          9,
+          11,
+          12
+        ],
+        "target": 5
+      },
+      "expected": [
+        [
+          5
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "candidates": [
+          2,
+          4
+        ],
+        "target": 6
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "candidates": [
+          3,
+          4,
+          6
+        ],
+        "target": 7
+      },
+      "expected": [
+        [
+          3,
+          4
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "candidates": [
+          4,
+          7,
+          10,
+          13
+        ],
+        "target": 8
+      },
+      "expected": [
+        [
+          4,
+          4
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "candidates": [
+          5,
+          7,
+          8,
+          10,
+          11
+        ],
+        "target": 9
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "candidates": [
+          2,
+          5,
+          8,
+          11,
+          14,
+          17
+        ],
+        "target": 10
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "candidates": [
+          3,
+          5
+        ],
+        "target": 11
+      },
+      "expected": [
+        [
+          3,
+          3,
+          5
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "candidates": [
+          4,
+          5,
+          7
+        ],
+        "target": 12
+      },
+      "expected": [
+        [
+          4,
+          4,
+          4
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "candidates": [
+          5,
+          8,
+          11,
+          14
+        ],
+        "target": 13
+      },
+      "expected": [
+        [
+          5,
+          8
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "candidates": [
+          2,
+          3,
+          5,
+          6,
+          8
+        ],
+        "target": 14
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          6
+        ],
+        [
+          2,
+          2,
+          2,
+          3,
+          5
+        ],
+        [
+          2,
+          2,
+          2,
+          8
+        ],
+        [
+          2,
+          2,
+          5,
+          5
+        ],
+        [
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          3,
+          3,
+          6
+        ],
+        [
+          2,
+          6,
+          6
+        ],
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          3,
+          8
+        ],
+        [
+          3,
+          5,
+          6
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "candidates": [
+          3,
+          6,
+          9,
+          12,
+          15,
+          18
+        ],
+        "target": 15
+      },
+      "expected": [
+        [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3,
+          6
+        ],
+        [
+          3,
+          3,
+          9
+        ],
+        [
+          3,
+          6,
+          6
+        ],
+        [
+          3,
+          12
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          15
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "candidates": [
+          4,
+          6
+        ],
+        "target": 16
+      },
+      "expected": [
+        [
+          4,
+          4,
+          4,
+          4
+        ],
+        [
+          4,
+          6,
+          6
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "candidates": [
+          5,
+          6,
+          8
+        ],
+        "target": 17
+      },
+      "expected": [
+        [
+          5,
+          6,
+          6
+        ]
+      ],
+      "hidden": true
+    }
+  ]
+}

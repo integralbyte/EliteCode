@@ -1,0 +1,266 @@
+{
+  "id": 105,
+  "slug": "decode-ways",
+  "title": "Decode Ways",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Decode Ways\n\nDigits map to letters `1` through `26`. Return how many valid decodings exist.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = 226\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: s = 06\nOutput: 0\n```\n\n**Example 3**\n\n```text\nInput: s = 11106\nOutput: 2\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def numDecodings(self, s):\n        if not s or s[0] == '0': return 0\n        prev2 = prev1 = 1\n        for i in range(1, len(s)):\n            cur = 0\n            if s[i] != '0': cur += prev1\n            if 10 <= int(s[i-1:i+1]) <= 26: cur += prev2\n            prev2, prev1 = prev1, cur\n        return prev1\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def numDecodings(self, s):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "numDecodings"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "226"
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "06"
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "11106"
+      },
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "226"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "101"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "2101"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "261105"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "30"
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "111111"
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "12"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "226"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "101"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "2101"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "261105"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "30"
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "111111"
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "12"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "226"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "101"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "2101"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "261105"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "30"
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "111111"
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "12"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "226"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "101"
+      },
+      "expected": 1,
+      "hidden": true
+    }
+  ]
+}

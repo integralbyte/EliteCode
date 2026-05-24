@@ -1,0 +1,525 @@
+{
+  "id": 6,
+  "slug": "product-of-array-except-self",
+  "title": "Product of Array Except Self",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Prefix Product"
+  ],
+  "companies": [],
+  "statement": "# Product of Array Except Self\n\nReturn an array where each position contains the product of every value in `nums` except the value at that same position. Do not use division.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [2, 3, 4, 5]\nOutput: [60, 40, 30, 24]\n```\n\n**Example 2**\n\n```text\nInput: nums = [-1, 1, 0, 3]\nOutput: [0, 0, -3, 0]\n```\n\n**Example 3**\n\n```text\nInput: nums = [0, 4, 0]\nOutput: [0, 0, 0]\n```\n\n## Constraints\n\n- `2 <= len(nums) <= 100000`\n- `-30 <= nums[i] <= 30`\n- The final products fit in a 32-bit signed integer.\n\n## Follow-up\n\nCan you do it with constant extra space aside from the returned array?",
+  "editorial": "The product before each index and the product after each index are independent. Write prefix products into the result, then multiply by a suffix product while scanning backward.",
+  "solution_notes": "```python\nclass Solution:\n    def productExceptSelf(self, nums):\n        result = [1] * len(nums)\n        prefix = 1\n        for i, value in enumerate(nums):\n            result[i] = prefix\n            prefix *= value\n        suffix = 1\n        for i in range(len(nums) - 1, -1, -1):\n            result[i] *= suffix\n            suffix *= nums[i]\n        return result\n```",
+  "hints": [
+    "Think about the product strictly to the left of each index.",
+    "A backward pass can add the product strictly to the right."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def productExceptSelf(self, nums):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "productExceptSelf"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": [
+        60,
+        40,
+        30,
+        24
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "nums": [
+          -1,
+          1,
+          0,
+          3
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        -3,
+        0
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "nums": [
+          0,
+          4,
+          0
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        0
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": [
+        24,
+        12,
+        8,
+        6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "nums": [
+          -1,
+          2,
+          -3,
+          4
+        ]
+      },
+      "expected": [
+        -24,
+        12,
+        -8,
+        6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "nums": [
+          5,
+          0,
+          2
+        ]
+      },
+      "expected": [
+        0,
+        10,
+        0
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "nums": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": [
+        6,
+        0,
+        0,
+        0
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "nums": [
+          9,
+          8
+        ]
+      },
+      "expected": [
+        8,
+        9
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "nums": [
+          -2,
+          -3,
+          -4
+        ]
+      },
+      "expected": [
+        12,
+        8,
+        6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "nums": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "expected": [
+        16,
+        16,
+        16,
+        16,
+        16
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "nums": [
+          3,
+          -1,
+          2,
+          -5
+        ]
+      },
+      "expected": [
+        10,
+        -30,
+        15,
+        -6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "nums": [
+          10,
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": [
+        1,
+        10,
+        10,
+        10
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "nums": [
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      },
+      "expected": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "nums": [
+          4,
+          0,
+          5,
+          6
+        ]
+      },
+      "expected": [
+        0,
+        120,
+        0,
+        0
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "nums": [
+          0,
+          0,
+          5,
+          6
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "nums": [
+          7,
+          3,
+          5
+        ]
+      },
+      "expected": [
+        15,
+        35,
+        21
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "nums": [
+          2,
+          5,
+          9,
+          11
+        ]
+      },
+      "expected": [
+        495,
+        198,
+        110,
+        90
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "nums": [
+          6,
+          -2,
+          3
+        ]
+      },
+      "expected": [
+        -6,
+        18,
+        -12
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "nums": [
+          8,
+          1,
+          -1,
+          2
+        ]
+      },
+      "expected": [
+        -2,
+        -16,
+        16,
+        -8
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "nums": [
+          12,
+          3
+        ]
+      },
+      "expected": [
+        3,
+        12
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "nums": [
+          1,
+          2
+        ]
+      },
+      "expected": [
+        2,
+        1
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "nums": [
+          2,
+          3,
+          0,
+          4
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        24,
+        0
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "nums": [
+          -5,
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": [
+        6,
+        -30,
+        -15,
+        -10
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "expected": [
+        210,
+        168,
+        140,
+        120
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "nums": [
+          1,
+          -2,
+          3,
+          -4,
+          5
+        ]
+      },
+      "expected": [
+        120,
+        -60,
+        40,
+        -30,
+        24
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "nums": [
+          11,
+          13,
+          17
+        ]
+      },
+      "expected": [
+        221,
+        187,
+        143
+      ],
+      "hidden": true
+    }
+  ]
+}

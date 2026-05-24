@@ -1,0 +1,1851 @@
+{
+  "id": 61,
+  "slug": "implement-trie-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "companies": [],
+  "statement": "# Implement Trie (Prefix Tree)\n\nImplement a trie supporting `insert`, exact `search`, and `startsWith`. The judge calls `trieOps(operations, values)` and compares outputs from query operations.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: insert orbit, search orbit, search orb, startsWith orb, insert orb, search orb\nOutput: [true,false,true,true]\n```\n\n**Example 2**\n\n```text\nInput: insert stone, insert stove, startsWith sto, search store\nOutput: [true,false]\n```\n\n**Example 3**\n\n```text\nInput: search empty, startsWith e\nOutput: [false,false]\n```\n\n## Constraints\n\n- Words contain lowercase letters and optional digits in generated tests.\n- Operations are supplied as parallel arrays.",
+  "editorial": "Each trie node maps a character to a child node and stores whether a word ends there.",
+  "solution_notes": "```python\nclass Trie:\n    def __init__(self):\n        self.children = {}\n        self.end = False\n\n    def insert(self, word):\n        node = self\n        for ch in word:\n            node = node.children.setdefault(ch, Trie())\n        node.end = True\n\n    def search(self, word):\n        node = self\n        for ch in word:\n            if ch not in node.children:\n                return False\n            node = node.children[ch]\n        return node.end\n\n    def startsWith(self, prefix):\n        node = self\n        for ch in prefix:\n            if ch not in node.children:\n                return False\n            node = node.children[ch]\n        return True\n\nclass Solution:\n    def trieOps(self, operations, values):\n        trie = None\n        out = []\n        for op, args in zip(operations, values):\n            if op == 'Trie':\n                trie = Trie()\n            elif op == 'insert':\n                trie.insert(args[0])\n            elif op == 'search':\n                out.append(trie.search(args[0]))\n            elif op == 'startsWith':\n                out.append(trie.startsWith(args[0]))\n        return out\n```",
+  "hints": [
+    "A word ending marker is different from a prefix existing.",
+    "Create child nodes only when inserting."
+  ],
+  "starter_code": {
+    "python": "class Trie:\n    def __init__(self):\n        pass\n\n    def insert(self, word):\n        pass\n\n    def search(self, word):\n        pass\n\n    def startsWith(self, prefix):\n        pass\n\nclass Solution:\n    def trieOps(self, operations, values):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "trieOps"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "search",
+          "search",
+          "startsWith",
+          "insert",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "orbit"
+          ],
+          [
+            "orbit"
+          ],
+          [
+            "orb"
+          ],
+          [
+            "orb"
+          ],
+          [
+            "orb"
+          ],
+          [
+            "orb"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "stone"
+          ],
+          [
+            "stove"
+          ],
+          [
+            "sto"
+          ],
+          [
+            "store"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "operations": [
+          "Trie",
+          "search",
+          "startsWith"
+        ],
+        "values": [
+          [],
+          [
+            "empty"
+          ],
+          [
+            "e"
+          ]
+        ]
+      },
+      "expected": [
+        false,
+        false
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code1"
+          ],
+          [
+            "cat1"
+          ],
+          [
+            "code1"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex1"
+          ],
+          [
+            "coder1"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder1"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code2"
+          ],
+          [
+            "cat2"
+          ],
+          [
+            "code2"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex2"
+          ],
+          [
+            "coder2"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder2"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code3"
+          ],
+          [
+            "cat3"
+          ],
+          [
+            "code3"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex3"
+          ],
+          [
+            "coder3"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder3"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code4"
+          ],
+          [
+            "cat4"
+          ],
+          [
+            "code4"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex4"
+          ],
+          [
+            "coder4"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder4"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code5"
+          ],
+          [
+            "cat5"
+          ],
+          [
+            "code5"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex5"
+          ],
+          [
+            "coder5"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder5"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code6"
+          ],
+          [
+            "cat6"
+          ],
+          [
+            "code6"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex6"
+          ],
+          [
+            "coder6"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder6"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code7"
+          ],
+          [
+            "cat7"
+          ],
+          [
+            "code7"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex7"
+          ],
+          [
+            "coder7"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder7"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code8"
+          ],
+          [
+            "cat8"
+          ],
+          [
+            "code8"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex8"
+          ],
+          [
+            "coder8"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder8"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code9"
+          ],
+          [
+            "cat9"
+          ],
+          [
+            "code9"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex9"
+          ],
+          [
+            "coder9"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder9"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code10"
+          ],
+          [
+            "cat10"
+          ],
+          [
+            "code10"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex10"
+          ],
+          [
+            "coder10"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder10"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code11"
+          ],
+          [
+            "cat11"
+          ],
+          [
+            "code11"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex11"
+          ],
+          [
+            "coder11"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder11"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code12"
+          ],
+          [
+            "cat12"
+          ],
+          [
+            "code12"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex12"
+          ],
+          [
+            "coder12"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder12"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code13"
+          ],
+          [
+            "cat13"
+          ],
+          [
+            "code13"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex13"
+          ],
+          [
+            "coder13"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder13"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code14"
+          ],
+          [
+            "cat14"
+          ],
+          [
+            "code14"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex14"
+          ],
+          [
+            "coder14"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder14"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code15"
+          ],
+          [
+            "cat15"
+          ],
+          [
+            "code15"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex15"
+          ],
+          [
+            "coder15"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder15"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code16"
+          ],
+          [
+            "cat16"
+          ],
+          [
+            "code16"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex16"
+          ],
+          [
+            "coder16"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder16"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code17"
+          ],
+          [
+            "cat17"
+          ],
+          [
+            "code17"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex17"
+          ],
+          [
+            "coder17"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder17"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code18"
+          ],
+          [
+            "cat18"
+          ],
+          [
+            "code18"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex18"
+          ],
+          [
+            "coder18"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder18"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code19"
+          ],
+          [
+            "cat19"
+          ],
+          [
+            "code19"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex19"
+          ],
+          [
+            "coder19"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder19"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code20"
+          ],
+          [
+            "cat20"
+          ],
+          [
+            "code20"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex20"
+          ],
+          [
+            "coder20"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder20"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code21"
+          ],
+          [
+            "cat21"
+          ],
+          [
+            "code21"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex21"
+          ],
+          [
+            "coder21"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder21"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code22"
+          ],
+          [
+            "cat22"
+          ],
+          [
+            "code22"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex22"
+          ],
+          [
+            "coder22"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder22"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code23"
+          ],
+          [
+            "cat23"
+          ],
+          [
+            "code23"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex23"
+          ],
+          [
+            "coder23"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder23"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code24"
+          ],
+          [
+            "cat24"
+          ],
+          [
+            "code24"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex24"
+          ],
+          [
+            "coder24"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder24"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code25"
+          ],
+          [
+            "cat25"
+          ],
+          [
+            "code25"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex25"
+          ],
+          [
+            "coder25"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder25"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code26"
+          ],
+          [
+            "cat26"
+          ],
+          [
+            "code26"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex26"
+          ],
+          [
+            "coder26"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder26"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code27"
+          ],
+          [
+            "cat27"
+          ],
+          [
+            "code27"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex27"
+          ],
+          [
+            "coder27"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder27"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code28"
+          ],
+          [
+            "cat28"
+          ],
+          [
+            "code28"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex28"
+          ],
+          [
+            "coder28"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder28"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code29"
+          ],
+          [
+            "cat29"
+          ],
+          [
+            "code29"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex29"
+          ],
+          [
+            "coder29"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder29"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code30"
+          ],
+          [
+            "cat30"
+          ],
+          [
+            "code30"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex30"
+          ],
+          [
+            "coder30"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder30"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code31"
+          ],
+          [
+            "cat31"
+          ],
+          [
+            "code31"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex31"
+          ],
+          [
+            "coder31"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder31"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code32"
+          ],
+          [
+            "cat32"
+          ],
+          [
+            "code32"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex32"
+          ],
+          [
+            "coder32"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder32"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "startsWith",
+          "search",
+          "insert",
+          "startsWith",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code33"
+          ],
+          [
+            "cat33"
+          ],
+          [
+            "code33"
+          ],
+          [
+            "co"
+          ],
+          [
+            "codex33"
+          ],
+          [
+            "coder33"
+          ],
+          [
+            "coder"
+          ],
+          [
+            "coder33"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "id": 145,
+  "slug": "number-of-1-bits",
+  "title": "Number of 1 Bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Divide and Conquer",
+    "Bit Manipulation"
+  ],
+  "companies": [],
+  "statement": "# Number of 1 Bits\n\nReturn how many `1` bits appear in the unsigned 32-bit representation of `n`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: n = 11\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: n = 128\nOutput: 1\n```\n\n**Example 3**\n\n```text\nInput: n = 4294967293\nOutput: 31\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Use direct arithmetic, matrix indexing, or bit operations to preserve the required invariants while keeping extra state small.",
+  "solution_notes": "```python\nclass Solution:\n    def hammingWeight(self, n):\n        count = 0\n        while n:\n            n &= n - 1; count += 1\n        return count\n```",
+  "hints": [
+    "Watch fixed-width integer boundaries where the prompt requires them.",
+    "For matrix mutation, mark or capture affected rows and columns before overwriting."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def hammingWeight(self, n):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "hammingWeight"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "n": 11
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "n": 128
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "n": 4294967293
+      },
+      "expected": 31,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "n": 2654435761
+      },
+      "expected": 19,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "n": 1013904226
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "n": 3668339987
+      },
+      "expected": 17,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "n": 2027808452
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "n": 387276917
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "n": 3041712678
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "n": 1401181143
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "n": 4055616904
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "n": 2415085369
+      },
+      "expected": 19,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "n": 774553834
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "n": 3428989595
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "n": 1788458060
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "n": 147926525
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "n": 2802362286
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "n": 1161830751
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "n": 3816266512
+      },
+      "expected": 17,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "n": 2175734977
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "n": 535203442
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "n": 3189639203
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "n": 1549107668
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "n": 4203543429
+      },
+      "expected": 19,
+      "hidden": true
+    }
+  ]
+}

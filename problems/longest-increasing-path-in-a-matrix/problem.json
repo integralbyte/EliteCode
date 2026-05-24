@@ -1,0 +1,673 @@
+{
+  "id": 117,
+  "slug": "longest-increasing-path-in-a-matrix",
+  "title": "Longest Increasing Path in a Matrix",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph",
+    "Topological Sort",
+    "Memoization",
+    "Matrix"
+  ],
+  "companies": [],
+  "statement": "# Longest Increasing Path in a Matrix\n\nReturn the length of the longest path of strictly increasing values, moving up, down, left, or right.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: matrix = [[9,9,4],[6,6,8],[2,1,1]]\nOutput: 4\n```\n\n**Example 2**\n\n```text\nInput: matrix = [[3,4,5],[3,2,6],[2,2,1]]\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: matrix = [[1]]\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def longestIncreasingPath(self, matrix):\n        rows, cols = len(matrix), len(matrix[0])\n        memo = {}\n        def dfs(r, c):\n            if (r, c) in memo: return memo[(r, c)]\n            best = 1\n            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < rows and 0 <= nc < cols and matrix[nr][nc] > matrix[r][c]:\n                    best = max(best, 1 + dfs(nr, nc))\n            memo[(r, c)] = best\n            return best\n        return max(dfs(r, c) for r in range(rows) for c in range(cols))\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def longestIncreasingPath(self, matrix):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "longestIncreasingPath"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "matrix": [
+          [
+            9,
+            9,
+            4
+          ],
+          [
+            6,
+            6,
+            8
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "matrix": [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            2,
+            6
+          ],
+          [
+            2,
+            2,
+            1
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "matrix": [
+          [
+            1
+          ]
+        ]
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "matrix": [
+          [
+            11,
+            18,
+            5,
+            12
+          ],
+          [
+            16,
+            3,
+            10,
+            17
+          ],
+          [
+            1,
+            8,
+            15,
+            2
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "matrix": [
+          [
+            2,
+            9
+          ],
+          [
+            7,
+            14
+          ],
+          [
+            12,
+            19
+          ],
+          [
+            17,
+            4
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "matrix": [
+          [
+            13,
+            0,
+            7
+          ],
+          [
+            18,
+            5,
+            12
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "matrix": [
+          [
+            4,
+            11,
+            18,
+            5
+          ],
+          [
+            9,
+            16,
+            3,
+            10
+          ],
+          [
+            14,
+            1,
+            8,
+            15
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "matrix": [
+          [
+            15,
+            2
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            5,
+            12
+          ],
+          [
+            10,
+            17
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "matrix": [
+          [
+            6,
+            13,
+            0
+          ],
+          [
+            11,
+            18,
+            5
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "matrix": [
+          [
+            17,
+            4,
+            11,
+            18
+          ],
+          [
+            2,
+            9,
+            16,
+            3
+          ],
+          [
+            7,
+            14,
+            1,
+            8
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "matrix": [
+          [
+            8,
+            15
+          ],
+          [
+            13,
+            0
+          ],
+          [
+            18,
+            5
+          ],
+          [
+            3,
+            10
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "matrix": [
+          [
+            19,
+            6,
+            13
+          ],
+          [
+            4,
+            11,
+            18
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "matrix": [
+          [
+            10,
+            17,
+            4,
+            11
+          ],
+          [
+            15,
+            2,
+            9,
+            16
+          ],
+          [
+            0,
+            7,
+            14,
+            1
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "matrix": [
+          [
+            1,
+            8
+          ],
+          [
+            6,
+            13
+          ],
+          [
+            11,
+            18
+          ],
+          [
+            16,
+            3
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "matrix": [
+          [
+            12,
+            19,
+            6
+          ],
+          [
+            17,
+            4,
+            11
+          ]
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "matrix": [
+          [
+            3,
+            10,
+            17,
+            4
+          ],
+          [
+            8,
+            15,
+            2,
+            9
+          ],
+          [
+            13,
+            0,
+            7,
+            14
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "matrix": [
+          [
+            14,
+            1
+          ],
+          [
+            19,
+            6
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            9,
+            16
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "matrix": [
+          [
+            5,
+            12,
+            19
+          ],
+          [
+            10,
+            17,
+            4
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "matrix": [
+          [
+            16,
+            3,
+            10,
+            17
+          ],
+          [
+            1,
+            8,
+            15,
+            2
+          ],
+          [
+            6,
+            13,
+            0,
+            7
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "matrix": [
+          [
+            7,
+            14
+          ],
+          [
+            12,
+            19
+          ],
+          [
+            17,
+            4
+          ],
+          [
+            2,
+            9
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "matrix": [
+          [
+            18,
+            5,
+            12
+          ],
+          [
+            3,
+            10,
+            17
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "matrix": [
+          [
+            9,
+            16,
+            3,
+            10
+          ],
+          [
+            14,
+            1,
+            8,
+            15
+          ],
+          [
+            19,
+            6,
+            13,
+            0
+          ]
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "matrix": [
+          [
+            0,
+            7
+          ],
+          [
+            5,
+            12
+          ],
+          [
+            10,
+            17
+          ],
+          [
+            15,
+            2
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "matrix": [
+          [
+            11,
+            18,
+            5
+          ],
+          [
+            16,
+            3,
+            10
+          ]
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "matrix": [
+          [
+            2,
+            9,
+            16,
+            3
+          ],
+          [
+            7,
+            14,
+            1,
+            8
+          ],
+          [
+            12,
+            19,
+            6,
+            13
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "matrix": [
+          [
+            13,
+            0
+          ],
+          [
+            18,
+            5
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            8,
+            15
+          ]
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    }
+  ]
+}

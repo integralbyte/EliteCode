@@ -1,0 +1,435 @@
+{
+  "id": 115,
+  "slug": "target-sum",
+  "title": "Target Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking"
+  ],
+  "companies": [],
+  "statement": "# Target Sum\n\nAssign `+` or `-` before each number. Return the number of assignments whose sum is `target`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [1,1,1,1,1], target = 3\nOutput: 5\n```\n\n**Example 2**\n\n```text\nInput: nums = [1], target = 1\nOutput: 1\n```\n\n**Example 3**\n\n```text\nInput: nums = [2,3,5], target = 0\nOutput: 2\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nfrom collections import Counter\n\nclass Solution:\n    def findTargetSumWays(self, nums, target):\n        counts = Counter({0: 1})\n        for value in nums:\n            nxt = Counter()\n            for total, count in counts.items():\n                nxt[total + value] += count\n                nxt[total - value] += count\n            counts = nxt\n        return counts[target]\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def findTargetSumWays(self, nums, target):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "findTargetSumWays"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "target": 3
+      },
+      "expected": 5,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "nums": [
+          1
+        ],
+        "target": 1
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "nums": [
+          2,
+          3,
+          5
+        ],
+        "target": 0
+      },
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "nums": [
+          2,
+          3
+        ],
+        "target": -3
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "nums": [
+          3,
+          4,
+          5
+        ],
+        "target": -2
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          1
+        ],
+        "target": -1
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "nums": [
+          5,
+          6,
+          1,
+          2,
+          3
+        ],
+        "target": 0
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "nums": [
+          6,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "target": 1
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          1
+        ],
+        "target": 2
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          1,
+          2,
+          3
+        ],
+        "target": 3
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "nums": [
+          3
+        ],
+        "target": 4
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "nums": [
+          4,
+          5
+        ],
+        "target": -4
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "nums": [
+          5,
+          6,
+          1
+        ],
+        "target": -3
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "nums": [
+          6,
+          1,
+          2,
+          3
+        ],
+        "target": -2
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "target": -1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          1
+        ],
+        "target": 0
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "nums": [
+          3,
+          4,
+          5,
+          6,
+          1,
+          2,
+          3
+        ],
+        "target": 1
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "target": 2
+      },
+      "expected": 17,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "nums": [
+          5
+        ],
+        "target": 3
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "nums": [
+          6,
+          1
+        ],
+        "target": 4
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ],
+        "target": -4
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "target": -3
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "nums": [
+          3,
+          4,
+          5,
+          6,
+          1
+        ],
+        "target": -2
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          1,
+          2,
+          3
+        ],
+        "target": -1
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "nums": [
+          5,
+          6,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "target": 0
+      },
+      "expected": 8,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "nums": [
+          6,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          1
+        ],
+        "target": 1
+      },
+      "expected": 0,
+      "hidden": true
+    }
+  ]
+}

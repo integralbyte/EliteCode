@@ -1,0 +1,924 @@
+{
+  "id": 93,
+  "slug": "reconstruct-itinerary",
+  "title": "Reconstruct Itinerary",
+  "difficulty": "Hard",
+  "tags": [
+    "Depth-First Search",
+    "Graph",
+    "Eulerian Circuit"
+  ],
+  "companies": [],
+  "statement": "# Reconstruct Itinerary\n\nUse all airline tickets exactly once starting from `JFK`, returning the lexicographically smallest valid route.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: tickets = [[JFK,SFO],[JFK,ATL],[ATL,JFK],[SFO,ATL]]\nOutput: [JFK,ATL,JFK,SFO,ATL]\n```\n\n**Example 2**\n\n```text\nInput: tickets = [[JFK,A],[A,B],[B,JFK]]\nOutput: [JFK,A,B,JFK]\n```\n\n**Example 3**\n\n```text\nInput: tickets = [[JFK,KUL],[JFK,NRT],[NRT,JFK]]\nOutput: [JFK,NRT,JFK,KUL]\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
+  "solution_notes": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def findItinerary(self, tickets):\n        graph = defaultdict(list)\n        for src, dst in sorted(tickets, reverse=True):\n            graph[src].append(dst)\n        route = []\n        def visit(airport):\n            while graph[airport]:\n                visit(graph[airport].pop())\n            route.append(airport)\n        visit('JFK')\n        return route[::-1]\n```",
+  "hints": [
+    "Model the state explicitly.",
+    "Prefer linear or near-linear graph traversal when possible."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def findItinerary(self, tickets):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "findItinerary"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "SFO"
+          ],
+          [
+            "JFK",
+            "ATL"
+          ],
+          [
+            "ATL",
+            "JFK"
+          ],
+          [
+            "SFO",
+            "ATL"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "ATL",
+        "JFK",
+        "SFO",
+        "ATL"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "B"
+          ],
+          [
+            "B",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "B",
+        "JFK"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "KUL"
+          ],
+          [
+            "JFK",
+            "NRT"
+          ],
+          [
+            "NRT",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "NRT",
+        "JFK",
+        "KUL"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "JFK"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "JFK",
+        "B"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "tickets": [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "C",
+            "JFK"
+          ],
+          [
+            "JFK",
+            "B"
+          ],
+          [
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "expected": [
+        "JFK",
+        "A",
+        "C",
+        "JFK",
+        "B",
+        "A"
+      ],
+      "hidden": true
+    }
+  ]
+}

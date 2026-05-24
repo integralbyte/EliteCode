@@ -1,0 +1,484 @@
+{
+  "id": 19,
+  "slug": "minimum-window-substring",
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "tags": [
+    "Sliding Window",
+    "Hash Table",
+    "String"
+  ],
+  "companies": [],
+  "statement": "# Minimum Window Substring\n\nReturn the shortest substring of `s` containing every character of `t`, including duplicate requirements. Return an empty string if no such window exists.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = \"ADOBECODEBANC\", t = \"ABC\"\nOutput: \"BANC\"\n```\n\n**Example 2**\n\n```text\nInput: s = \"a\", t = \"a\"\nOutput: \"a\"\n```\n\n**Example 3**\n\n```text\nInput: s = \"a\", t = \"aa\"\nOutput: \"\"\n```\n\n## Constraints\n\n- Input sizes follow the original interview-style constraints.\n- Return values must match the described behavior.",
+  "editorial": "Maintain only the state needed for the current window or scan. Move the left boundary when the current state violates the target condition.",
+  "solution_notes": "```python\nfrom collections import Counter, defaultdict\n\nclass Solution:\n    def minWindow(self, s, t):\n        if not t:\n            return ''\n        need = Counter(t)\n        have = defaultdict(int)\n        formed = 0\n        left = 0\n        best = (float('inf'), 0, 0)\n        for right, ch in enumerate(s):\n            have[ch] += 1\n            if ch in need and have[ch] == need[ch]:\n                formed += 1\n            while formed == len(need):\n                if right - left + 1 < best[0]:\n                    best = (right - left + 1, left, right + 1)\n                old = s[left]\n                have[old] -= 1\n                if old in need and have[old] < need[old]:\n                    formed -= 1\n                left += 1\n        return '' if best[0] == float('inf') else s[best[1]:best[2]]\n```",
+  "hints": [
+    "Ask what information changes when the right edge moves.",
+    "Shrink the left edge only when the window no longer satisfies the condition."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def minWindow(self, s, t):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "minWindow"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "ADOBECODEBANC",
+        "t": "ABC"
+      },
+      "expected": "BANC",
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "a",
+        "t": "a"
+      },
+      "expected": "a",
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "a",
+        "t": "aa"
+      },
+      "expected": "",
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "thisisateststring",
+        "t": "tist"
+      },
+      "expected": "tstri",
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci",
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "abcdef",
+        "t": "z"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "aaabdabcefaecbef",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "bba",
+        "t": "ab"
+      },
+      "expected": "ba",
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "cabwefgewcwaefgcf",
+        "t": "cae"
+      },
+      "expected": "cwae",
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "abc",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "abc",
+        "t": "abcd"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "thisisateststring",
+        "t": "tist"
+      },
+      "expected": "tstri",
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci",
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "abcdef",
+        "t": "z"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "aaabdabcefaecbef",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "bba",
+        "t": "ab"
+      },
+      "expected": "ba",
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "cabwefgewcwaefgcf",
+        "t": "cae"
+      },
+      "expected": "cwae",
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "abc",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "abc",
+        "t": "abcd"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "thisisateststring",
+        "t": "tist"
+      },
+      "expected": "tstri",
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci",
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "abcdef",
+        "t": "z"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "aaabdabcefaecbef",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "bba",
+        "t": "ab"
+      },
+      "expected": "ba",
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "cabwefgewcwaefgcf",
+        "t": "cae"
+      },
+      "expected": "cwae",
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "abc",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "s": "abc",
+        "t": "abcd"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "s": "thisisateststring",
+        "t": "tist"
+      },
+      "expected": "tstri",
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci",
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "s": "abcdef",
+        "t": "z"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "s": "aaabdabcefaecbef",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "s": "bba",
+        "t": "ab"
+      },
+      "expected": "ba",
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "s": "cabwefgewcwaefgcf",
+        "t": "cae"
+      },
+      "expected": "cwae",
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "s": "abc",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "s": "abc",
+        "t": "abcd"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "s": "thisisateststring",
+        "t": "tist"
+      },
+      "expected": "tstri",
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci",
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "s": "abcdef",
+        "t": "z"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "s": "aaabdabcefaecbef",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "s": "bba",
+        "t": "ab"
+      },
+      "expected": "ba",
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "s": "cabwefgewcwaefgcf",
+        "t": "cae"
+      },
+      "expected": "cwae",
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "s": "abc",
+        "t": "abc"
+      },
+      "expected": "abc",
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "s": "abc",
+        "t": "abcd"
+      },
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "s": "thisisateststring",
+        "t": "tist"
+      },
+      "expected": "tstri",
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci",
+      "hidden": true
+    }
+  ]
+}

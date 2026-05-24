@@ -1,0 +1,985 @@
+{
+  "id": 68,
+  "slug": "task-scheduler",
+  "title": "Task Scheduler",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting",
+    "Heap",
+    "Counting"
+  ],
+  "companies": [],
+  "statement": "# Task Scheduler\n\nGiven task labels and a cooldown `n`, return the fewest time slots needed to execute every task so identical labels are separated by at least `n` slots.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: tasks = [A,A,A,B,B,B], n = 2\nOutput: 8\n```\n\n**Example 2**\n\n```text\nInput: tasks = [A,B,C,A], n = 0\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: tasks = [A,A,A,B,C,D], n = 3\nOutput: 9\n```\n\n## Constraints\n\n- Task labels are uppercase letters.\n- `0 <= n`",
+  "editorial": "The most frequent tasks define frames of length `n + 1`. The answer is the larger of total tasks and the frame formula.",
+  "solution_notes": "```python\nfrom collections import Counter\n\nclass Solution:\n    def leastInterval(self, tasks, n):\n        counts = Counter(tasks).values()\n        most = max(counts)\n        tied = sum(1 for count in counts if count == most)\n        return max(len(tasks), (most - 1) * (n + 1) + tied)\n```",
+  "hints": [
+    "Idle slots are forced only by the most frequent labels.",
+    "Several labels may tie for highest frequency."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def leastInterval(self, tasks, n):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "leastInterval"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "tasks": [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        "n": 2
+      },
+      "expected": 8,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "C",
+          "A"
+        ],
+        "n": 0
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "tasks": [
+          "A",
+          "A",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n": 3
+      },
+      "expected": 9,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A"
+        ],
+        "n": 1
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "n": 3
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "tasks": [
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A"
+        ],
+        "n": 4
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E"
+        ],
+        "n": 0
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A"
+        ],
+        "n": 1
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 17,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "n": 3
+      },
+      "expected": 22,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "tasks": [
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A"
+        ],
+        "n": 4
+      },
+      "expected": 31,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E"
+        ],
+        "n": 0
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A"
+        ],
+        "n": 1
+      },
+      "expected": 19,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "n": 3
+      },
+      "expected": 30,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "tasks": [
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A"
+        ],
+        "n": 4
+      },
+      "expected": 41,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E"
+        ],
+        "n": 0
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A"
+        ],
+        "n": 1
+      },
+      "expected": 24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 29,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C"
+        ],
+        "n": 3
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "tasks": [
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D"
+        ],
+        "n": 4
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B"
+        ],
+        "n": 0
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B"
+        ],
+        "n": 1
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C"
+        ],
+        "n": 3
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "tasks": [
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D"
+        ],
+        "n": 4
+      },
+      "expected": 26,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B"
+        ],
+        "n": 0
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B"
+        ],
+        "n": 1
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 19,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C"
+        ],
+        "n": 3
+      },
+      "expected": 26,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "tasks": [
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D",
+          "A",
+          "E",
+          "A",
+          "D",
+          "D"
+        ],
+        "n": 4
+      },
+      "expected": 36,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "tasks": [
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B",
+          "A",
+          "B",
+          "E",
+          "E",
+          "B"
+        ],
+        "n": 0
+      },
+      "expected": 20,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "tasks": [
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B",
+          "C",
+          "A",
+          "A",
+          "C",
+          "B"
+        ],
+        "n": 1
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "tasks": [
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D",
+          "B",
+          "B",
+          "D",
+          "C",
+          "D"
+        ],
+        "n": 2
+      },
+      "expected": 25,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "tasks": [
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C",
+          "C",
+          "E",
+          "D",
+          "E",
+          "C"
+        ],
+        "n": 3
+      },
+      "expected": 34,
+      "hidden": true
+    }
+  ]
+}

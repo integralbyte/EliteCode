@@ -1,0 +1,302 @@
+{
+  "id": 2,
+  "slug": "valid-anagram",
+  "title": "Valid Anagram",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "String"
+  ],
+  "companies": [],
+  "statement": "# Valid Anagram\n\nTwo strings are anagrams when they contain the same characters with the same frequencies. Given `s` and `t`, return whether `t` can be rearranged into `s`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = \"listen\", t = \"silent\"\nOutput: true\n```\n\n**Example 2**\n\n```text\nInput: s = \"binary\", t = \"brainy\"\nOutput: true\n```\n\n**Example 3**\n\n```text\nInput: s = \"apple\", t = \"papelx\"\nOutput: false\n```\n\n## Constraints\n\n- `0 <= len(s), len(t) <= 50000`\n- `s` and `t` contain lowercase English letters.",
+  "editorial": "Count the characters in both strings and compare the counts. Sorting also works, but counting keeps the runtime linear.",
+  "solution_notes": "```python\nfrom collections import Counter\n\nclass Solution:\n    def isAnagram(self, s, t):\n        return Counter(s) == Counter(t)\n```",
+  "hints": [
+    "If the lengths differ, the answer is immediately false.",
+    "The order of characters does not matter; only counts matter."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def isAnagram(self, s, t):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "isAnagram"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "listen",
+        "t": "silent"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "binary",
+        "t": "brainy"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "apple",
+        "t": "papelx"
+      },
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "",
+        "t": ""
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "a",
+        "t": "a"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "a",
+        "t": "b"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "rat",
+        "t": "tar"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "rat",
+        "t": "car"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "night",
+        "t": "thing"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "state",
+        "t": "taste"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "state",
+        "t": "tastes"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "aaaaab",
+        "t": "baaaaa"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "aaaaab",
+        "t": "aaaaaa"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "abcabc",
+        "t": "cbacba"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "abcabc",
+        "t": "cbacbb"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "conversation",
+        "t": "voicesranton"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "conversation",
+        "t": "conservation"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "zzxy",
+        "t": "xyzz"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "zzxy",
+        "t": "xyza"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "anagram",
+        "t": "nagaram"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "algorithm",
+        "t": "logarithm"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "dusty",
+        "t": "study"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "below",
+        "t": "elbow"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "inch",
+        "t": "chin"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "binary",
+        "t": "brainz"
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+        "t": "baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "s": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+        "t": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "expected": false,
+      "hidden": true
+    }
+  ]
+}

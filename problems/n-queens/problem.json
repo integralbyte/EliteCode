@@ -1,0 +1,884 @@
+{
+  "id": 79,
+  "slug": "n-queens",
+  "title": "N-Queens",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "companies": [],
+  "statement": "# N-Queens\n\nPlace `n` queens on an `n x n` chessboard so no two queens attack each other. Return every board, using `Q` for queens and `.` for empty cells.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: n = 4\nOutput: [[.Q..,...Q,Q...,..Q.],[..Q.,Q...,...Q,.Q..]]\n```\n\n**Example 2**\n\n```text\nInput: n = 1\nOutput: [[Q]]\n```\n\n**Example 3**\n\n```text\nInput: n = 3\nOutput: []\n```\n\n## Constraints\n\n- `1 <= n <= 5` in generated tests.\n- Board order is ignored.",
+  "editorial": "Place one queen per row while tracking used columns and diagonals. Backtrack when a placement conflicts.",
+  "solution_notes": "```python\nclass Solution:\n    def solveNQueens(self, n):\n        out = []\n        cols, diag1, diag2 = set(), set(), set()\n        board = [['.'] * n for _ in range(n)]\n        def dfs(row):\n            if row == n:\n                out.append([''.join(line) for line in board])\n                return\n            for col in range(n):\n                if col in cols or row - col in diag1 or row + col in diag2:\n                    continue\n                cols.add(col); diag1.add(row - col); diag2.add(row + col); board[row][col] = 'Q'\n                dfs(row + 1)\n                board[row][col] = '.'; cols.remove(col); diag1.remove(row - col); diag2.remove(row + col)\n        dfs(0)\n        return out\n```",
+  "hints": [
+    "One queen per row is enough to explore all boards.",
+    "Both diagonals can be represented by `row - col` and `row + col`."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def solveNQueens(self, n):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "solveNQueens"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        [
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q."
+        ],
+        [
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q.."
+        ],
+        [
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q"
+        ],
+        [
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q."
+        ],
+        [
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q"
+        ],
+        [
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q...."
+        ],
+        [
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q..."
+        ],
+        [
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q...."
+        ],
+        [
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q.."
+        ],
+        [
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q..."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        [
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q."
+        ],
+        [
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q.."
+        ],
+        [
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q"
+        ],
+        [
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q."
+        ],
+        [
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q"
+        ],
+        [
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q...."
+        ],
+        [
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q..."
+        ],
+        [
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q...."
+        ],
+        [
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q.."
+        ],
+        [
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q..."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        [
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q."
+        ],
+        [
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q.."
+        ],
+        [
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q"
+        ],
+        [
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q."
+        ],
+        [
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q"
+        ],
+        [
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q...."
+        ],
+        [
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q..."
+        ],
+        [
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q...."
+        ],
+        [
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q.."
+        ],
+        [
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q..."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        [
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q."
+        ],
+        [
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q.."
+        ],
+        [
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q"
+        ],
+        [
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q."
+        ],
+        [
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q"
+        ],
+        [
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q...."
+        ],
+        [
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q..."
+        ],
+        [
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q...."
+        ],
+        [
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q.."
+        ],
+        [
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q..."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        [
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q."
+        ],
+        [
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q.."
+        ],
+        [
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q"
+        ],
+        [
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q."
+        ],
+        [
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q"
+        ],
+        [
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q...."
+        ],
+        [
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q..."
+        ],
+        [
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q...."
+        ],
+        [
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q.."
+        ],
+        [
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q..."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "n": 3
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        [
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q."
+        ],
+        [
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q.."
+        ],
+        [
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q"
+        ],
+        [
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q."
+        ],
+        [
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q...",
+          "....Q"
+        ],
+        [
+          "..Q..",
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q...."
+        ],
+        [
+          "...Q.",
+          "Q....",
+          "..Q..",
+          "....Q",
+          ".Q..."
+        ],
+        [
+          "...Q.",
+          ".Q...",
+          "....Q",
+          "..Q..",
+          "Q...."
+        ],
+        [
+          "....Q",
+          ".Q...",
+          "...Q.",
+          "Q....",
+          "..Q.."
+        ],
+        [
+          "....Q",
+          "..Q..",
+          "Q....",
+          "...Q.",
+          ".Q..."
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "n": 2
+      },
+      "expected": [],
+      "hidden": true
+    }
+  ]
+}

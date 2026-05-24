@@ -1,0 +1,527 @@
+{
+  "id": 92,
+  "slug": "word-ladder",
+  "title": "Word Ladder",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Breadth-First Search"
+  ],
+  "companies": [],
+  "statement": "# Word Ladder\n\nReturn the number of words in the shortest transformation from `beginWord` to `endWord`, changing one letter at a time and using only words from the list.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: beginWord = cold, endWord = warm, wordList = [cord,card,ward,warm,worm,cold]\nOutput: 5\n```\n\n**Example 2**\n\n```text\nInput: beginWord = hit, endWord = cog, wordList = [hot,dot,dog,lot,log]\nOutput: 0\n```\n\n**Example 3**\n\n```text\nInput: beginWord = a, endWord = c, wordList = [a,b,c]\nOutput: 2\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
+  "solution_notes": "```python\nfrom collections import deque\n\nclass Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        words = set(wordList)\n        if endWord not in words: return 0\n        queue = deque([(beginWord, 1)])\n        seen = {beginWord}\n        while queue:\n            word, depth = queue.popleft()\n            if word == endWord: return depth\n            for i in range(len(word)):\n                for code in range(ord('a'), ord('z') + 1):\n                    nxt = word[:i] + chr(code) + word[i + 1:]\n                    if nxt in words and nxt not in seen:\n                        seen.add(nxt); queue.append((nxt, depth + 1))\n        return 0\n```",
+  "hints": [
+    "Model the state explicitly.",
+    "Prefer linear or near-linear graph traversal when possible."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "ladderLength"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "cold"
+        ]
+      },
+      "expected": 5,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "beginWord": "hit",
+        "endWord": "cog",
+        "wordList": [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log"
+        ]
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "beginWord": "a",
+        "endWord": "c",
+        "wordList": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": [
+          "cord",
+          "card",
+          "ward",
+          "warm",
+          "worm",
+          "word"
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    }
+  ]
+}

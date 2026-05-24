@@ -1,0 +1,482 @@
+{
+  "id": 17,
+  "slug": "longest-repeating-character-replacement",
+  "title": "Longest Repeating Character Replacement",
+  "difficulty": "Medium",
+  "tags": [
+    "Sliding Window",
+    "String"
+  ],
+  "companies": [],
+  "statement": "# Longest Repeating Character Replacement\n\nGiven an uppercase string `s`, you may change at most `k` characters. Return the longest substring that can be made of one repeated character.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = \"AABABBA\", k = 1\nOutput: 4\n```\n\n**Example 2**\n\n```text\nInput: s = \"ABAB\", k = 2\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: s = \"ABCDE\", k = 1\nOutput: 2\n```\n\n## Constraints\n\n- Input sizes follow the original interview-style constraints.\n- Return values must match the described behavior.",
+  "editorial": "Maintain only the state needed for the current window or scan. Move the left boundary when the current state violates the target condition.",
+  "solution_notes": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def characterReplacement(self, s, k):\n        counts = defaultdict(int)\n        left = 0\n        most = 0\n        best = 0\n        for right, ch in enumerate(s):\n            counts[ch] += 1\n            most = max(most, counts[ch])\n            while right - left + 1 - most > k:\n                counts[s[left]] -= 1\n                left += 1\n            best = max(best, right - left + 1)\n        return best\n```",
+  "hints": [
+    "Ask what information changes when the right edge moves.",
+    "Shrink the left edge only when the window no longer satisfies the condition."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def characterReplacement(self, s, k):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "characterReplacement"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "AABABBA",
+        "k": 1
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "ABAB",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "ABCDE",
+        "k": 1
+      },
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "ABEB",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "ACABE",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "BDACAB",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "BEBDACA",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "CABEBDAC",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "DACABEBDA",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "EBDACABEBD",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "ABEBDACABEB",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "ACABEBDACABE",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "BDACABEBDACAB",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "BEBDACABEBDACA",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "CABEBDACABEBDAC",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "DACABEBDACABEBDA",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "EBDACABEBDACABEBD",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "ABEBDACABEBDACABEB",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "ACABEBDACABEBDACABE",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "BDACABEBDACABEBDACAB",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "BEBDACABEBDACABEBDACA",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "CABE",
+        "k": 2
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "DACAB",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "EBDACA",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "ABEBDAC",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "ACABEBDA",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "s": "BDACABEBD",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "s": "BEBDACABEB",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "s": "CABEBDACABE",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "s": "DACABEBDACAB",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "s": "EBDACABEBDACA",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "s": "ABEBDACABEBDAC",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "s": "ACABEBDACABEBDA",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "s": "BDACABEBDACABEBD",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "s": "BEBDACABEBDACABEB",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "s": "CABEBDACABEBDACABE",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "s": "DACABEBDACABEBDACAB",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "s": "EBDACABEBDACABEBDACA",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "s": "ABEBDACABEBDACABEBDAC",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "s": "ACAB",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "s": "BDACA",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "s": "BEBDAC",
+        "k": 2
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "s": "CABEBDA",
+        "k": 3
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "s": "DACABEBD",
+        "k": 0
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "s": "EBDACABEB",
+        "k": 1
+      },
+      "expected": 3,
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "id": 100,
+  "slug": "min-cost-climbing-stairs",
+  "title": "Min Cost Climbing Stairs",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Min Cost Climbing Stairs\n\nEach stair has a cost paid when stepped on. You may start at stair 0 or 1 and move one or two stairs. Return the minimum cost to reach the top.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: cost = [10,15,20]\nOutput: 15\n```\n\n**Example 2**\n\n```text\nInput: cost = [1,100,1,1,1,100,1]\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: cost = [3,4]\nOutput: 3\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def minCostClimbingStairs(self, cost):\n        one = two = 0\n        for value in reversed(cost):\n            one, two = value + min(one, two), one\n        return min(one, two)\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def minCostClimbingStairs(self, cost):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "minCostClimbingStairs"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "cost": [
+          10,
+          15,
+          20
+        ]
+      },
+      "expected": 15,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "cost": [
+          1,
+          100,
+          1,
+          1,
+          1,
+          100,
+          1
+        ]
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "cost": [
+          3,
+          4
+        ]
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "cost": [
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "cost": [
+          27,
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "cost": [
+          10,
+          17,
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "cost": [
+          23,
+          30,
+          7,
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 51,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "cost": [
+          6,
+          13,
+          20,
+          27,
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 41,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "cost": [
+          19,
+          26,
+          3,
+          10,
+          17,
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "cost": [
+          2,
+          9,
+          16,
+          23,
+          30,
+          7,
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 60,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "cost": [
+          15,
+          22,
+          29,
+          6,
+          13,
+          20,
+          27,
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 63,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "cost": [
+          28,
+          5,
+          12,
+          19,
+          26,
+          3,
+          10,
+          17,
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 45,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "cost": [
+          11,
+          18
+        ]
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "cost": [
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "cost": [
+          7,
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "cost": [
+          20,
+          27,
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 35,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "cost": [
+          3,
+          10,
+          17,
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "cost": [
+          16,
+          23,
+          30,
+          7,
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 51,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "cost": [
+          29,
+          6,
+          13,
+          20,
+          27,
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 41,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "cost": [
+          12,
+          19,
+          26,
+          3,
+          10,
+          17,
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "cost": [
+          25,
+          2,
+          9,
+          16,
+          23,
+          30,
+          7,
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 62,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "cost": [
+          8,
+          15,
+          22,
+          29,
+          6,
+          13,
+          20,
+          27,
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 71,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "cost": [
+          21,
+          28
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "cost": [
+          4,
+          11,
+          18
+        ]
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "cost": [
+          17,
+          24,
+          1,
+          8
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "cost": [
+          30,
+          7,
+          14,
+          21,
+          28
+        ]
+      },
+      "expected": 28,
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,424 @@
+{
+  "id": 113,
+  "slug": "best-time-to-buy-and-sell-stock-with-cooldown",
+  "title": "Best Time to Buy and Sell Stock with Cooldown",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Best Time to Buy and Sell Stock with Cooldown\n\nYou may buy and sell repeatedly, but after selling you must wait one day before buying again. Return maximum profit.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: prices = [1,2,3,0,2]\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: prices = [1]\nOutput: 0\n```\n\n**Example 3**\n\n```text\nInput: prices = [6,1,6,4,3,0,2]\nOutput: 7\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def maxProfit(self, prices):\n        hold, sold, rest = float('-inf'), 0, 0\n        for price in prices:\n            old_sold = sold\n            sold = hold + price\n            hold = max(hold, rest - price)\n            rest = max(rest, old_sold)\n        return max(sold, rest)\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def maxProfit(self, prices):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "maxProfit"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "prices": [
+          1,
+          2,
+          3,
+          0,
+          2
+        ]
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "prices": [
+          1
+        ]
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "prices": [
+          6,
+          1,
+          6,
+          4,
+          3,
+          0,
+          2
+        ]
+      },
+      "expected": 7,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "prices": [
+          14,
+          1
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "prices": [
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "prices": [
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "prices": [
+          13,
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "prices": [
+          6,
+          13,
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "prices": [
+          19,
+          6,
+          13,
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "prices": [
+          12,
+          19,
+          6,
+          13,
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "prices": [
+          5,
+          12,
+          19,
+          6,
+          13,
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "prices": [
+          18,
+          5,
+          12,
+          19,
+          6,
+          13,
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "prices": [
+          11
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "prices": [
+          4,
+          11
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "prices": [
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "prices": [
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "prices": [
+          3,
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "prices": [
+          16,
+          3,
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "prices": [
+          9,
+          16,
+          3,
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "prices": [
+          2,
+          9,
+          16,
+          3,
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "prices": [
+          15,
+          2,
+          9,
+          16,
+          3,
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "prices": [
+          8,
+          15,
+          2,
+          9,
+          16,
+          3,
+          10,
+          17,
+          4,
+          11
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "prices": [
+          1
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "prices": [
+          14,
+          1
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "prices": [
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "prices": [
+          20,
+          7,
+          14,
+          1
+        ]
+      },
+      "expected": 7,
+      "hidden": true
+    }
+  ]
+}

@@ -17,7 +17,6 @@ def test_catalog_exposes_only_visible_cases() -> None:
     public_payload = problem.public_payload()
 
     assert problem.title == "Two Sum"
-    assert len(problem.cases) == 6
+    assert len(problem.cases) >= 20
     assert len(public_payload["cases"]) == 3
     assert all(not case["hidden"] for case in public_payload["cases"])
-

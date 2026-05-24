@@ -1,0 +1,293 @@
+{
+  "id": 111,
+  "slug": "unique-paths",
+  "title": "Unique Paths",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "companies": [],
+  "statement": "# Unique Paths\n\nA robot moves only right or down through an `m x n` grid. Return the number of paths from top-left to bottom-right.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: m = 3, n = 7\nOutput: 28\n```\n\n**Example 2**\n\n```text\nInput: m = 3, n = 2\nOutput: 3\n```\n\n**Example 3**\n\n```text\nInput: m = 1, n = 5\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def uniquePaths(self, m, n):\n        dp = [1] * n\n        for _ in range(1, m):\n            for c in range(1, n): dp[c] += dp[c - 1]\n        return dp[-1]\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def uniquePaths(self, m, n):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "uniquePaths"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "m": 3,
+        "n": 7
+      },
+      "expected": 28,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "m": 3,
+        "n": 2
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "m": 1,
+        "n": 5
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "m": 2,
+        "n": 3
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "m": 3,
+        "n": 5
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "m": 4,
+        "n": 7
+      },
+      "expected": 84,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "m": 5,
+        "n": 9
+      },
+      "expected": 495,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "m": 6,
+        "n": 1
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "m": 7,
+        "n": 3
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "m": 8,
+        "n": 5
+      },
+      "expected": 330,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "m": 9,
+        "n": 7
+      },
+      "expected": 3003,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "m": 10,
+        "n": 9
+      },
+      "expected": 24310,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "m": 1,
+        "n": 1
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "m": 2,
+        "n": 3
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "m": 3,
+        "n": 5
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "m": 4,
+        "n": 7
+      },
+      "expected": 84,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "m": 5,
+        "n": 9
+      },
+      "expected": 495,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "m": 6,
+        "n": 1
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "m": 7,
+        "n": 3
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "m": 8,
+        "n": 5
+      },
+      "expected": 330,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "m": 9,
+        "n": 7
+      },
+      "expected": 3003,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "m": 10,
+        "n": 9
+      },
+      "expected": 24310,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "m": 1,
+        "n": 1
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "m": 2,
+        "n": 3
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "m": 3,
+        "n": 5
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "m": 4,
+        "n": 7
+      },
+      "expected": 84,
+      "hidden": true
+    }
+  ]
+}

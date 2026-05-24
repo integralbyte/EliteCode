@@ -1,0 +1,1335 @@
+{
+  "id": 39,
+  "slug": "remove-nth-node-from-end-of-list",
+  "title": "Remove Nth Node From End of List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "companies": [],
+  "statement": "# Remove Nth Node From End of List\n\nRemove the `n`th node counted from the end of a singly linked list and return the new head.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: head = [9,8,7,6], n = 2\nOutput: [9,8,6]\n```\n\n**Example 2**\n\n```text\nInput: head = [4], n = 1\nOutput: []\n```\n\n**Example 3**\n\n```text\nInput: head = [1,2,3], n = 3\nOutput: [2,3]\n```\n\n## Constraints\n\n- The judge provides a `ListNode` class with `val` and `next` fields.\n- Node values fit in normal signed integer range.\n- The total number of nodes across one test case is kept small enough for local execution.\n- `1 <= n <= length of the list`",
+  "editorial": "Place a dummy node before the head. Move a fast pointer `n + 1` steps from the dummy, then advance both pointers until fast reaches the end.",
+  "solution_notes": "```python\nclass Solution:\n    def removeNthFromEnd(self, head, n):\n        dummy = ListNode(0, head)\n        fast = slow = dummy\n        for _ in range(n + 1):\n            fast = fast.next\n        while fast:\n            fast = fast.next\n            slow = slow.next\n        slow.next = slow.next.next\n        return dummy.next\n```",
+  "hints": [
+    "A dummy node handles deleting the original head.",
+    "Keep a fixed gap between two pointers."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def removeNthFromEnd(self, head, n):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "removeNthFromEnd"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            9,
+            8,
+            7,
+            6
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        9,
+        8,
+        6
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            4
+          ]
+        },
+        "n": 1
+      },
+      "expected": [],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        "n": 3
+      },
+      "expected": [
+        2,
+        3
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -3,
+            6
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            14,
+            -18,
+            -9
+          ]
+        },
+        "n": 3
+      },
+      "expected": [
+        -18,
+        -9
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -10,
+            -1,
+            8,
+            17
+          ]
+        },
+        "n": 4
+      },
+      "expected": [
+        -1,
+        8,
+        17
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            7,
+            16,
+            -16,
+            -7,
+            2
+          ]
+        },
+        "n": 5
+      },
+      "expected": [
+        16,
+        -16,
+        -7,
+        2
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -17,
+            -8,
+            1,
+            10,
+            19,
+            -13
+          ]
+        },
+        "n": 6
+      },
+      "expected": [
+        -8,
+        1,
+        10,
+        19,
+        -13
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            0,
+            9,
+            18,
+            -14,
+            -5,
+            4,
+            13
+          ]
+        },
+        "n": 7
+      },
+      "expected": [
+        9,
+        18,
+        -14,
+        -5,
+        4,
+        13
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            17,
+            -15,
+            -6,
+            3,
+            12,
+            -20,
+            -11,
+            -2
+          ]
+        },
+        "n": 8
+      },
+      "expected": [
+        -15,
+        -6,
+        3,
+        12,
+        -20,
+        -11,
+        -2
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -7,
+            2,
+            11,
+            20,
+            -12,
+            -3,
+            6,
+            15,
+            -17
+          ]
+        },
+        "n": 9
+      },
+      "expected": [
+        2,
+        11,
+        20,
+        -12,
+        -3,
+        6,
+        15,
+        -17
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            10,
+            19,
+            -13,
+            -4,
+            5,
+            14,
+            -18,
+            -9,
+            0,
+            9
+          ]
+        },
+        "n": 10
+      },
+      "expected": [
+        19,
+        -13,
+        -4,
+        5,
+        14,
+        -18,
+        -9,
+        0,
+        9
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -14,
+            -5,
+            4,
+            13,
+            -19,
+            -10,
+            -1,
+            8,
+            17,
+            -15,
+            -6
+          ]
+        },
+        "n": 11
+      },
+      "expected": [
+        -5,
+        4,
+        13,
+        -19,
+        -10,
+        -1,
+        8,
+        17,
+        -15,
+        -6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            3,
+            12,
+            -20,
+            -11,
+            -2,
+            7,
+            16,
+            -16,
+            -7,
+            2,
+            11,
+            20
+          ]
+        },
+        "n": 12
+      },
+      "expected": [
+        12,
+        -20,
+        -11,
+        -2,
+        7,
+        16,
+        -16,
+        -7,
+        2,
+        11,
+        20
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            20,
+            -12,
+            -3,
+            6,
+            15,
+            -17,
+            -8,
+            1,
+            10,
+            19,
+            -13,
+            -4,
+            5
+          ]
+        },
+        "n": 13
+      },
+      "expected": [
+        -12,
+        -3,
+        6,
+        15,
+        -17,
+        -8,
+        1,
+        10,
+        19,
+        -13,
+        -4,
+        5
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -4,
+            5,
+            14,
+            -18,
+            -9,
+            0,
+            9,
+            18,
+            -14,
+            -5,
+            4,
+            13,
+            -19,
+            -10
+          ]
+        },
+        "n": 14
+      },
+      "expected": [
+        5,
+        14,
+        -18,
+        -9,
+        0,
+        9,
+        18,
+        -14,
+        -5,
+        4,
+        13,
+        -19,
+        -10
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            13,
+            -19,
+            -10,
+            -1,
+            8,
+            17,
+            -15,
+            -6,
+            3,
+            12,
+            -20,
+            -11,
+            -2,
+            7,
+            16
+          ]
+        },
+        "n": 15
+      },
+      "expected": [
+        -19,
+        -10,
+        -1,
+        8,
+        17,
+        -15,
+        -6,
+        3,
+        12,
+        -20,
+        -11,
+        -2,
+        7,
+        16
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -11,
+            -2,
+            7,
+            16,
+            -16,
+            -7,
+            2,
+            11,
+            20,
+            -12,
+            -3,
+            6,
+            15,
+            -17,
+            -8,
+            1
+          ]
+        },
+        "n": 16
+      },
+      "expected": [
+        -2,
+        7,
+        16,
+        -16,
+        -7,
+        2,
+        11,
+        20,
+        -12,
+        -3,
+        6,
+        15,
+        -17,
+        -8,
+        1
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            6,
+            15,
+            -17,
+            -8,
+            1,
+            10,
+            19,
+            -13,
+            -4,
+            5,
+            14,
+            -18,
+            -9,
+            0,
+            9,
+            18,
+            -14
+          ]
+        },
+        "n": 17
+      },
+      "expected": [
+        15,
+        -17,
+        -8,
+        1,
+        10,
+        19,
+        -13,
+        -4,
+        5,
+        14,
+        -18,
+        -9,
+        0,
+        9,
+        18,
+        -14
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -18,
+            -9,
+            0,
+            9,
+            18,
+            -14,
+            -5,
+            4,
+            13,
+            -19,
+            -10,
+            -1,
+            8,
+            17,
+            -15,
+            -6,
+            3,
+            12
+          ]
+        },
+        "n": 18
+      },
+      "expected": [
+        -9,
+        0,
+        9,
+        18,
+        -14,
+        -5,
+        4,
+        13,
+        -19,
+        -10,
+        -1,
+        8,
+        17,
+        -15,
+        -6,
+        3,
+        12
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -1
+          ]
+        },
+        "n": 1
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            16,
+            -16
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        -16
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -8,
+            1,
+            10
+          ]
+        },
+        "n": 3
+      },
+      "expected": [
+        1,
+        10
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            9,
+            18,
+            -14,
+            -5
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        9,
+        18,
+        -5
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -15,
+            -6,
+            3,
+            12,
+            -20
+          ]
+        },
+        "n": 3
+      },
+      "expected": [
+        -15,
+        -6,
+        12,
+        -20
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            2,
+            11,
+            20,
+            -12,
+            -3,
+            6
+          ]
+        },
+        "n": 6
+      },
+      "expected": [
+        11,
+        20,
+        -12,
+        -3,
+        6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            19,
+            -13,
+            -4,
+            5,
+            14,
+            -18,
+            -9
+          ]
+        },
+        "n": 4
+      },
+      "expected": [
+        19,
+        -13,
+        -4,
+        14,
+        -18,
+        -9
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -5,
+            4,
+            13,
+            -19,
+            -10,
+            -1,
+            8,
+            17
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        -5,
+        4,
+        13,
+        -19,
+        -10,
+        -1,
+        17
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            12,
+            -20,
+            -11,
+            -2,
+            7,
+            16,
+            -16,
+            -7,
+            2
+          ]
+        },
+        "n": 9
+      },
+      "expected": [
+        -20,
+        -11,
+        -2,
+        7,
+        16,
+        -16,
+        -7,
+        2
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -12,
+            -3,
+            6,
+            15,
+            -17,
+            -8,
+            1,
+            10,
+            19,
+            -13
+          ]
+        },
+        "n": 8
+      },
+      "expected": [
+        -12,
+        -3,
+        15,
+        -17,
+        -8,
+        1,
+        10,
+        19,
+        -13
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            5,
+            14,
+            -18,
+            -9,
+            0,
+            9,
+            18,
+            -14,
+            -5,
+            4,
+            13
+          ]
+        },
+        "n": 7
+      },
+      "expected": [
+        5,
+        14,
+        -18,
+        -9,
+        9,
+        18,
+        -14,
+        -5,
+        4,
+        13
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -19,
+            -10,
+            -1,
+            8,
+            17,
+            -15,
+            -6,
+            3,
+            12,
+            -20,
+            -11,
+            -2
+          ]
+        },
+        "n": 6
+      },
+      "expected": [
+        -19,
+        -10,
+        -1,
+        8,
+        17,
+        -15,
+        3,
+        12,
+        -20,
+        -11,
+        -2
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -2,
+            7,
+            16,
+            -16,
+            -7,
+            2,
+            11,
+            20,
+            -12,
+            -3,
+            6,
+            15,
+            -17
+          ]
+        },
+        "n": 5
+      },
+      "expected": [
+        -2,
+        7,
+        16,
+        -16,
+        -7,
+        2,
+        11,
+        20,
+        -3,
+        6,
+        15,
+        -17
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            15,
+            -17,
+            -8,
+            1,
+            10,
+            19,
+            -13,
+            -4,
+            5,
+            14,
+            -18,
+            -9,
+            0,
+            9
+          ]
+        },
+        "n": 4
+      },
+      "expected": [
+        15,
+        -17,
+        -8,
+        1,
+        10,
+        19,
+        -13,
+        -4,
+        5,
+        14,
+        -9,
+        0,
+        9
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -9,
+            0,
+            9,
+            18,
+            -14,
+            -5,
+            4,
+            13,
+            -19,
+            -10,
+            -1,
+            8,
+            17,
+            -15,
+            -6
+          ]
+        },
+        "n": 3
+      },
+      "expected": [
+        -9,
+        0,
+        9,
+        18,
+        -14,
+        -5,
+        4,
+        13,
+        -19,
+        -10,
+        -1,
+        8,
+        -15,
+        -6
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            8,
+            17,
+            -15,
+            -6,
+            3,
+            12,
+            -20,
+            -11,
+            -2,
+            7,
+            16,
+            -16,
+            -7,
+            2,
+            11,
+            20
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        8,
+        17,
+        -15,
+        -6,
+        3,
+        12,
+        -20,
+        -11,
+        -2,
+        7,
+        16,
+        -16,
+        -7,
+        2,
+        20
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -16,
+            -7,
+            2,
+            11,
+            20,
+            -12,
+            -3,
+            6,
+            15,
+            -17,
+            -8,
+            1,
+            10,
+            19,
+            -13,
+            -4,
+            5
+          ]
+        },
+        "n": 1
+      },
+      "expected": [
+        -16,
+        -7,
+        2,
+        11,
+        20,
+        -12,
+        -3,
+        6,
+        15,
+        -17,
+        -8,
+        1,
+        10,
+        19,
+        -13,
+        -4
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            1,
+            10,
+            19,
+            -13,
+            -4,
+            5,
+            14,
+            -18,
+            -9,
+            0,
+            9,
+            18,
+            -14,
+            -5,
+            4,
+            13,
+            -19,
+            -10
+          ]
+        },
+        "n": 18
+      },
+      "expected": [
+        10,
+        19,
+        -13,
+        -4,
+        5,
+        14,
+        -18,
+        -9,
+        0,
+        9,
+        18,
+        -14,
+        -5,
+        4,
+        13,
+        -19,
+        -10
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            18
+          ]
+        },
+        "n": 1
+      },
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -6,
+            3
+          ]
+        },
+        "n": 2
+      },
+      "expected": [
+        3
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            11,
+            20,
+            -12
+          ]
+        },
+        "n": 3
+      },
+      "expected": [
+        20,
+        -12
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "head": {
+          "__elite_type": "list_node",
+          "values": [
+            -13,
+            -4,
+            5,
+            14
+          ]
+        },
+        "n": 4
+      },
+      "expected": [
+        -4,
+        5,
+        14
+      ],
+      "hidden": true
+    }
+  ]
+}

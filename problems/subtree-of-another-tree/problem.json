@@ -1,0 +1,1187 @@
+{
+  "id": 51,
+  "slug": "subtree-of-another-tree",
+  "title": "Subtree of Another Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "String Matching",
+    "Binary Tree",
+    "Hash Function"
+  ],
+  "companies": [],
+  "statement": "# Subtree of Another Tree\n\nReturn whether `subRoot` appears inside `root` with the same values and structure.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: root = [5,3,8,2,4,7,9], subRoot = [3,2,4]\nOutput: true\n```\n\n**Example 2**\n\n```text\nInput: root = [5,3,8,2,4], subRoot = [3,2,6]\nOutput: false\n```\n\n**Example 3**\n\n```text\nInput: root = [1], subRoot = []\nOutput: true\n```\n\n## Constraints\n\n- The judge provides a `TreeNode` class with `val`, `left`, and `right` fields.\n- Trees are shown in level-order form with `null` for missing children.\n- Node counts are sized for local offline execution.",
+  "editorial": "At each node in the main tree, check whether the full subtree matches. If not, keep searching down the left and right sides.",
+  "solution_notes": "```python\nclass Solution:\n    def isSubtree(self, root, subRoot):\n        def same(a, b):\n            if not a or not b:\n                return a is b\n            return a.val == b.val and same(a.left, b.left) and same(a.right, b.right)\n        if not subRoot:\n            return True\n        if not root:\n            return False\n        return same(root, subRoot) or self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)\n```",
+  "hints": [
+    "A candidate match starts at a node with the same root value.",
+    "Empty `subRoot` is contained by definition in this pack."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def isSubtree(self, root, subRoot):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "isSubtree"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            5,
+            3,
+            8,
+            2,
+            4,
+            7,
+            9
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            3,
+            2,
+            4
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            5,
+            3,
+            8,
+            2,
+            4
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            3,
+            2,
+            6
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            1
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": []
+        }
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -11,
+            0
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            90
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            8,
+            19,
+            30
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            19
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            27,
+            -23,
+            -12
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            128
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -15,
+            -4,
+            7,
+            18,
+            29
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -4,
+            18,
+            29
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            4,
+            15,
+            26,
+            -24,
+            -13,
+            -2
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            4,
+            15,
+            127
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            23,
+            -27,
+            -16,
+            -5,
+            6,
+            17
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -27,
+            -5,
+            6
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -19,
+            -8,
+            3,
+            14,
+            25,
+            null,
+            -14,
+            -3
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -19,
+            -8,
+            3,
+            115
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            0,
+            11,
+            22,
+            -28,
+            null,
+            -6,
+            5,
+            16,
+            27
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            11,
+            -28,
+            null,
+            16,
+            27
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            19,
+            30,
+            -20,
+            null,
+            2,
+            13,
+            24,
+            -26,
+            -15
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            19,
+            131,
+            -20
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -23,
+            -12,
+            -1,
+            10,
+            21,
+            -29,
+            -18,
+            -7,
+            null,
+            15,
+            26
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -12,
+            10,
+            21,
+            -7,
+            null,
+            15,
+            26
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -4,
+            7,
+            18,
+            29,
+            -21,
+            -10,
+            1,
+            null,
+            23,
+            -27,
+            -16,
+            -5
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -4,
+            7,
+            18,
+            29,
+            -21,
+            91
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            15,
+            26,
+            -24,
+            -13,
+            -2,
+            9,
+            null,
+            -30,
+            -19,
+            -8,
+            3,
+            14
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            26,
+            -13,
+            -2,
+            -30,
+            -19,
+            -8,
+            3
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -27,
+            -16,
+            -5,
+            6,
+            17,
+            null,
+            -22,
+            -11,
+            0,
+            11,
+            22,
+            null,
+            -17,
+            -6
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -27,
+            -16,
+            -5,
+            6,
+            17,
+            null,
+            79
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -8,
+            3,
+            14,
+            25,
+            null,
+            -14,
+            -3,
+            8,
+            19,
+            30,
+            null,
+            -9,
+            2,
+            13,
+            24
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            3,
+            25,
+            null,
+            8,
+            19,
+            13,
+            24
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            11,
+            22,
+            -28,
+            null,
+            -6,
+            5,
+            16,
+            27,
+            -23,
+            null,
+            -1,
+            10,
+            21,
+            -29,
+            -18
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            11,
+            123,
+            -28,
+            null,
+            -6,
+            5,
+            16
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            30,
+            -20,
+            -9,
+            2,
+            13,
+            24,
+            -26,
+            -15,
+            null,
+            7,
+            18,
+            29,
+            -21,
+            -10,
+            null,
+            12,
+            23
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -20,
+            2,
+            13,
+            -15,
+            null,
+            7,
+            18,
+            12,
+            23
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": []
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            17
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            7,
+            18
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            18
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            26,
+            -24,
+            -13
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            127
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -16,
+            -5,
+            6,
+            17
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -5,
+            17
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            3,
+            14,
+            25,
+            null,
+            -14
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            3,
+            115
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            22,
+            -28,
+            -17,
+            -6,
+            5,
+            16
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -28,
+            -6,
+            5
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -20,
+            -9,
+            2,
+            13,
+            24,
+            -26,
+            -15
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -20,
+            -9,
+            103
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -1,
+            10,
+            21,
+            -29,
+            -18,
+            -7,
+            null,
+            15
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            10,
+            -29,
+            -18,
+            15
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            18,
+            29,
+            -21,
+            -10,
+            1,
+            null,
+            23,
+            -27,
+            -16
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            18,
+            130,
+            -21,
+            -10
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -24,
+            -13,
+            -2,
+            9,
+            null,
+            -30,
+            -19,
+            -8,
+            3,
+            14
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -13,
+            9,
+            null,
+            -8,
+            3
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -5,
+            6,
+            17,
+            null,
+            -22,
+            -11,
+            0,
+            11,
+            22,
+            null,
+            -17
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -5,
+            6,
+            118,
+            null,
+            -22
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            14,
+            25,
+            -25,
+            -14,
+            -3,
+            8,
+            19,
+            30,
+            null,
+            -9,
+            2,
+            13
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            25,
+            -14,
+            -3,
+            30,
+            null,
+            -9,
+            2
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -28,
+            -17,
+            -6,
+            5,
+            16,
+            27,
+            -23,
+            null,
+            -1,
+            10,
+            21,
+            -29,
+            -18
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -28,
+            -17,
+            -6,
+            5,
+            16,
+            128
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -9,
+            2,
+            13,
+            24,
+            -26,
+            -15,
+            null,
+            7,
+            18,
+            29,
+            -21,
+            -10,
+            null,
+            12
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            2,
+            24,
+            -26,
+            7,
+            18,
+            29,
+            -21,
+            12
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            10,
+            21,
+            -29,
+            -18,
+            -7,
+            null,
+            15,
+            26,
+            -24,
+            -13,
+            -2,
+            null,
+            20,
+            -30,
+            -19
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            10,
+            21,
+            -29,
+            83,
+            -7,
+            null,
+            15
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            29,
+            -21,
+            -10,
+            1,
+            null,
+            23,
+            -27,
+            -16,
+            -5,
+            6,
+            null,
+            28,
+            -22,
+            -11,
+            0,
+            11
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -21,
+            1,
+            null,
+            -16,
+            -5,
+            -11,
+            0,
+            11
+          ]
+        }
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            -13,
+            -2,
+            9,
+            null,
+            -30,
+            -19,
+            -8,
+            3,
+            14,
+            null,
+            -25,
+            -14,
+            -3,
+            8,
+            19,
+            null,
+            -20
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            -13,
+            99,
+            9,
+            null,
+            -30,
+            -19,
+            -8,
+            3
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": []
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            34
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "root": {
+          "__elite_type": "tree_node",
+          "values": [
+            25,
+            -25
+          ]
+        },
+        "subRoot": {
+          "__elite_type": "tree_node",
+          "values": [
+            126
+          ]
+        }
+      },
+      "expected": false,
+      "hidden": true
+    }
+  ]
+}

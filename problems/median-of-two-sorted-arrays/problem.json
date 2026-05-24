@@ -1,0 +1,869 @@
+{
+  "id": 34,
+  "slug": "median-of-two-sorted-arrays",
+  "title": "Median of Two Sorted Arrays",
+  "difficulty": "Hard",
+  "tags": [
+    "Binary Search",
+    "Array"
+  ],
+  "companies": [],
+  "statement": "# Median of Two Sorted Arrays\n\nGiven two sorted arrays, return the median value across all elements.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums1 = [1, 4], nums2 = [2, 3, 9]\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: nums1 = [1, 2], nums2 = [3, 4]\nOutput: 2.5\n```\n\n**Example 3**\n\n```text\nInput: nums1 = [], nums2 = [7]\nOutput: 7\n```\n\n## Constraints\n\n- `0 <= len(nums1), len(nums2) <= 1000`\n- At least one array is non-empty.\n\n## Follow-up\n\nThe optimal approach partitions the two arrays with binary search.",
+  "editorial": "Binary search the partition point in the smaller array so that the left partition contains half the values and every left value is no greater than every right value.",
+  "solution_notes": "```python\nclass Solution:\n    def findMedianSortedArrays(self, nums1, nums2):\n        if len(nums1) > len(nums2):\n            nums1, nums2 = nums2, nums1\n        total = len(nums1) + len(nums2)\n        half = (total + 1) // 2\n        left, right = 0, len(nums1)\n        while left <= right:\n            i = (left + right) // 2\n            j = half - i\n            a_left = nums1[i - 1] if i else float('-inf')\n            a_right = nums1[i] if i < len(nums1) else float('inf')\n            b_left = nums2[j - 1] if j else float('-inf')\n            b_right = nums2[j] if j < len(nums2) else float('inf')\n            if a_left <= b_right and b_left <= a_right:\n                if total % 2:\n                    return max(a_left, b_left)\n                return (max(a_left, b_left) + min(a_right, b_right)) / 2\n            if a_left > b_right:\n                right = i - 1\n            else:\n                left = i + 1\n```",
+  "hints": [
+    "Partition both arrays so the left side contains half the values.",
+    "Binary search the partition in the smaller array."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def findMedianSortedArrays(self, nums1, nums2):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "findMedianSortedArrays"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "nums1": [
+          1,
+          4
+        ],
+        "nums2": [
+          2,
+          3,
+          9
+        ]
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "nums1": [
+          1,
+          2
+        ],
+        "nums2": [
+          3,
+          4
+        ]
+      },
+      "expected": 2.5,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          7
+        ]
+      },
+      "expected": 7,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "nums1": [
+          -47
+        ],
+        "nums2": [
+          -42,
+          -40,
+          -36
+        ]
+      },
+      "expected": -41,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "nums1": [
+          -45,
+          -40
+        ],
+        "nums2": [
+          -45,
+          -42,
+          -37,
+          -35,
+          -31
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "nums1": [
+          -43,
+          -42,
+          -39
+        ],
+        "nums2": [
+          -43,
+          -39,
+          -38,
+          -35,
+          -30,
+          -28,
+          -24
+        ]
+      },
+      "expected": -38.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "nums1": [
+          -41,
+          -39,
+          -35,
+          -34
+        ],
+        "nums2": [
+          -41
+        ]
+      },
+      "expected": -39,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "nums1": [
+          -44,
+          -41,
+          -36,
+          -34,
+          -30
+        ],
+        "nums2": [
+          -39,
+          -38,
+          -35
+        ]
+      },
+      "expected": -37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "nums1": [
+          -42,
+          -38,
+          -37,
+          -34,
+          -29,
+          -27
+        ],
+        "nums2": [
+          -37,
+          -35,
+          -31,
+          -30,
+          -27
+        ]
+      },
+      "expected": -34,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          -40,
+          -37,
+          -32,
+          -30,
+          -26,
+          -25,
+          -22
+        ]
+      },
+      "expected": -30,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "nums1": [
+          -38
+        ],
+        "nums2": [
+          -38
+        ]
+      },
+      "expected": -38,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "nums1": [
+          -36,
+          -34
+        ],
+        "nums2": [
+          -47,
+          -42,
+          -40
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "nums1": [
+          -39,
+          -36,
+          -31
+        ],
+        "nums2": [
+          -45,
+          -44,
+          -41,
+          -36,
+          -34
+        ]
+      },
+      "expected": -37.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "nums1": [
+          -48,
+          -44,
+          -43,
+          -40
+        ],
+        "nums2": [
+          -43,
+          -41,
+          -37,
+          -36,
+          -33,
+          -28,
+          -26
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "nums1": [
+          -46,
+          -41,
+          -39,
+          -35,
+          -34
+        ],
+        "nums2": [
+          -46
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "nums1": [
+          -44,
+          -43,
+          -40,
+          -35,
+          -33,
+          -29
+        ],
+        "nums2": [
+          -44,
+          -40,
+          -39
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          -42,
+          -37,
+          -35,
+          -31,
+          -30
+        ]
+      },
+      "expected": -35,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "nums1": [
+          -45
+        ],
+        "nums2": [
+          -40,
+          -39,
+          -36,
+          -31,
+          -29,
+          -25,
+          -24
+        ]
+      },
+      "expected": -33.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "nums1": [
+          -43,
+          -39
+        ],
+        "nums2": [
+          -38
+        ]
+      },
+      "expected": -39,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "nums1": [
+          -41,
+          -36,
+          -34
+        ],
+        "nums2": [
+          -41,
+          -38,
+          -33
+        ]
+      },
+      "expected": -37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "nums1": [
+          -39,
+          -38,
+          -35,
+          -30
+        ],
+        "nums2": [
+          -39,
+          -35,
+          -34,
+          -31,
+          -26
+        ]
+      },
+      "expected": -35,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "nums1": [
+          -37,
+          -35,
+          -31,
+          -30,
+          -27
+        ],
+        "nums2": [
+          -37,
+          -32,
+          -30,
+          -26,
+          -25,
+          -22,
+          -17
+        ]
+      },
+      "expected": -30,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "nums1": [
+          -40,
+          -37,
+          -32,
+          -30,
+          -26,
+          -25
+        ],
+        "nums2": [
+          -46
+        ]
+      },
+      "expected": -32,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          -44,
+          -42,
+          -38
+        ]
+      },
+      "expected": -42,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "nums1": [
+          -47
+        ],
+        "nums2": [
+          -47,
+          -44,
+          -39,
+          -37,
+          -33
+        ]
+      },
+      "expected": -41.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "nums1": [
+          -45,
+          -44
+        ],
+        "nums2": [
+          -45,
+          -41,
+          -40,
+          -37,
+          -32,
+          -30,
+          -26
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "nums1": [
+          -43,
+          -41,
+          -37
+        ],
+        "nums2": [
+          -43
+        ]
+      },
+      "expected": -42,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "nums1": [
+          -46,
+          -43,
+          -38,
+          -36
+        ],
+        "nums2": [
+          -41,
+          -40,
+          -37
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "nums1": [
+          -44,
+          -40,
+          -39,
+          -36,
+          -31
+        ],
+        "nums2": [
+          -39,
+          -37,
+          -33,
+          -32,
+          -29
+        ]
+      },
+      "expected": -36.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "nums1": [
+          -42,
+          -37,
+          -35,
+          -31,
+          -30,
+          -27
+        ],
+        "nums2": [
+          -42,
+          -39,
+          -34,
+          -32,
+          -28,
+          -27,
+          -24
+        ]
+      },
+      "expected": -32,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          -40
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "nums1": [
+          -38
+        ],
+        "nums2": [
+          -38,
+          -33,
+          -31
+        ]
+      },
+      "expected": -35.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "nums1": [
+          -41,
+          -38
+        ],
+        "nums2": [
+          -36,
+          -35,
+          -32,
+          -27,
+          -25
+        ]
+      },
+      "expected": -35,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "nums1": [
+          -39,
+          -35,
+          -34
+        ],
+        "nums2": [
+          -45,
+          -43,
+          -39,
+          -38,
+          -35,
+          -30,
+          -28
+        ]
+      },
+      "expected": -36.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "nums1": [
+          -37,
+          -32,
+          -30,
+          -26
+        ],
+        "nums2": [
+          -48
+        ]
+      },
+      "expected": -32,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "nums1": [
+          -46,
+          -45,
+          -42,
+          -37,
+          -35
+        ],
+        "nums2": [
+          -46,
+          -42,
+          -41
+        ]
+      },
+      "expected": -42,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "nums1": [
+          -44,
+          -42,
+          -38,
+          -37,
+          -34,
+          -29
+        ],
+        "nums2": [
+          -44,
+          -39,
+          -37,
+          -33,
+          -32
+        ]
+      },
+      "expected": -37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          -42,
+          -41,
+          -38,
+          -33,
+          -31,
+          -27,
+          -26
+        ]
+      },
+      "expected": -33,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "nums1": [
+          -45
+        ],
+        "nums2": [
+          -40
+        ]
+      },
+      "expected": -42.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "nums1": [
+          -43,
+          -38
+        ],
+        "nums2": [
+          -43,
+          -40,
+          -35
+        ]
+      },
+      "expected": -40,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "nums1": [
+          -41,
+          -40,
+          -37
+        ],
+        "nums2": [
+          -41,
+          -37,
+          -36,
+          -33,
+          -28
+        ]
+      },
+      "expected": -37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "nums1": [
+          -39,
+          -37,
+          -33,
+          -32
+        ],
+        "nums2": [
+          -39,
+          -34,
+          -32,
+          -28,
+          -27,
+          -24,
+          -19
+        ]
+      },
+      "expected": -32,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "nums1": [
+          -42,
+          -39,
+          -34,
+          -32,
+          -28
+        ],
+        "nums2": [
+          -37
+        ]
+      },
+      "expected": -35.5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "nums1": [
+          -40,
+          -36,
+          -35,
+          -32,
+          -27,
+          -25
+        ],
+        "nums2": [
+          -35,
+          -33,
+          -29
+        ]
+      },
+      "expected": -33,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "nums1": [],
+        "nums2": [
+          -49,
+          -46,
+          -41,
+          -39,
+          -35
+        ]
+      },
+      "expected": -41,
+      "hidden": true
+    }
+  ]
+}

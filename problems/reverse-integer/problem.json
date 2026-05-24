@@ -1,0 +1,247 @@
+{
+  "id": 150,
+  "slug": "reverse-integer",
+  "title": "Reverse Integer",
+  "difficulty": "Medium",
+  "tags": [
+    "Math"
+  ],
+  "companies": [],
+  "statement": "# Reverse Integer\n\nReverse the decimal digits of a signed 32-bit integer. Return `0` if the reversed value overflows the signed 32-bit range.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: x = 123\nOutput: 321\n```\n\n**Example 2**\n\n```text\nInput: x = -120\nOutput: -21\n```\n\n**Example 3**\n\n```text\nInput: x = 1534236469\nOutput: 0\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Use direct arithmetic, matrix indexing, or bit operations to preserve the required invariants while keeping extra state small.",
+  "solution_notes": "```python\nclass Solution:\n    def reverse(self, x):\n        sign = -1 if x < 0 else 1\n        value = int(str(abs(x))[::-1]) * sign\n        return value if -2 ** 31 <= value <= 2 ** 31 - 1 else 0\n```",
+  "hints": [
+    "Watch fixed-width integer boundaries where the prompt requires them.",
+    "For matrix mutation, mark or capture affected rows and columns before overwriting."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def reverse(self, x):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "reverse"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "x": 123
+      },
+      "expected": 321,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "x": -120
+      },
+      "expected": -21,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "x": 1534236469
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "x": -1490123457
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "x": -1480246914
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "x": -1470370371
+      },
+      "expected": -1730730741,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "x": -1460493828
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "x": -1450617285
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "x": -1440740742
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "x": -1430864199
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "x": -1420987656
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "x": -1411111113
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "x": -1401234570
+      },
+      "expected": -754321041,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "x": -1391358027
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "x": -1381481484
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "x": -1371604941
+      },
+      "expected": -1494061731,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "x": -1361728398
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "x": -1351851855
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "x": -1341975312
+      },
+      "expected": -2135791431,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "x": -1332098769
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "x": -1322222226
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "x": -1312345683
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "x": -1302469140
+      },
+      "expected": -419642031,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "x": -1292592597
+      },
+      "expected": 0,
+      "hidden": true
+    }
+  ]
+}

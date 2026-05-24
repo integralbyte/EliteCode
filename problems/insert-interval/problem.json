@@ -1,0 +1,770 @@
+{
+  "id": 130,
+  "slug": "insert-interval",
+  "title": "Insert Interval",
+  "difficulty": "Medium",
+  "tags": [
+    "Array"
+  ],
+  "companies": [],
+  "statement": "# Insert Interval\n\nInsert a new interval into sorted non-overlapping intervals and merge overlaps.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: intervals = [[1,3],[6,9]], newInterval = [2,5]\nOutput: [[1,5],[6,9]]\n```\n\n**Example 2**\n\n```text\nInput: intervals = [[1,2],[3,5],[6,7],[8,10]], newInterval = [4,8]\nOutput: [[1,2],[3,10]]\n```\n\n**Example 3**\n\n```text\nInput: intervals = [], newInterval = [4,8]\nOutput: [[4,8]]\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Track the local choice that leaves the most room for future choices, or sort intervals so conflicts can be resolved with one pass.",
+  "solution_notes": "```python\nclass Solution:\n    def insert(self, intervals, newInterval):\n        out = []\n        start, end = newInterval\n        placed = False\n        for a, b in intervals:\n            if b < start: out.append([a, b])\n            elif end < a:\n                if not placed: out.append([start, end]); placed = True\n                out.append([a, b])\n            else:\n                start, end = min(start, a), max(end, b)\n        if not placed: out.append([start, end])\n        return out\n```",
+  "hints": [
+    "Sort first when relative order drives the decision.",
+    "Keep the smallest state that proves future feasibility."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def insert(self, intervals, newInterval):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "insert"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "intervals": [
+          [
+            1,
+            3
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        "newInterval": [
+          2,
+          5
+        ]
+      },
+      "expected": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          9
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "intervals": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            10
+          ]
+        ],
+        "newInterval": [
+          4,
+          8
+        ]
+      },
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          10
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "intervals": [],
+        "newInterval": [
+          4,
+          8
+        ]
+      },
+      "expected": [
+        [
+          4,
+          8
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "intervals": [
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            19
+          ]
+        ],
+        "newInterval": [
+          1,
+          4
+        ]
+      },
+      "expected": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          8,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "intervals": [
+          [
+            1,
+            7
+          ],
+          [
+            10,
+            21
+          ]
+        ],
+        "newInterval": [
+          2,
+          6
+        ]
+      },
+      "expected": [
+        [
+          1,
+          7
+        ],
+        [
+          10,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "intervals": [
+          [
+            0,
+            11
+          ],
+          [
+            12,
+            19
+          ]
+        ],
+        "newInterval": [
+          3,
+          8
+        ]
+      },
+      "expected": [
+        [
+          0,
+          11
+        ],
+        [
+          12,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "intervals": [
+          [
+            2,
+            13
+          ],
+          [
+            14,
+            21
+          ]
+        ],
+        "newInterval": [
+          4,
+          10
+        ]
+      },
+      "expected": [
+        [
+          2,
+          13
+        ],
+        [
+          14,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "intervals": [
+          [
+            1,
+            15
+          ],
+          [
+            16,
+            19
+          ]
+        ],
+        "newInterval": [
+          5,
+          12
+        ]
+      },
+      "expected": [
+        [
+          1,
+          15
+        ],
+        [
+          16,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "intervals": [
+          [
+            0,
+            17
+          ]
+        ],
+        "newInterval": [
+          6,
+          8
+        ]
+      },
+      "expected": [
+        [
+          0,
+          17
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "intervals": [
+          [
+            2,
+            9
+          ],
+          [
+            17,
+            19
+          ]
+        ],
+        "newInterval": [
+          7,
+          10
+        ]
+      },
+      "expected": [
+        [
+          2,
+          10
+        ],
+        [
+          17,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "intervals": [
+          [
+            4,
+            19
+          ]
+        ],
+        "newInterval": [
+          8,
+          12
+        ]
+      },
+      "expected": [
+        [
+          4,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "intervals": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            9,
+            21
+          ]
+        ],
+        "newInterval": [
+          9,
+          14
+        ]
+      },
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          9,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "intervals": [
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            23
+          ]
+        ],
+        "newInterval": [
+          10,
+          16
+        ]
+      },
+      "expected": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          8,
+          23
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "intervals": [
+          [
+            1,
+            9
+          ],
+          [
+            10,
+            21
+          ]
+        ],
+        "newInterval": [
+          11,
+          18
+        ]
+      },
+      "expected": [
+        [
+          1,
+          9
+        ],
+        [
+          10,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "intervals": [
+          [
+            0,
+            11
+          ],
+          [
+            12,
+            19
+          ]
+        ],
+        "newInterval": [
+          0,
+          2
+        ]
+      },
+      "expected": [
+        [
+          0,
+          11
+        ],
+        [
+          12,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "intervals": [
+          [
+            2,
+            13
+          ],
+          [
+            14,
+            21
+          ]
+        ],
+        "newInterval": [
+          1,
+          4
+        ]
+      },
+      "expected": [
+        [
+          1,
+          13
+        ],
+        [
+          14,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "intervals": [
+          [
+            1,
+            9
+          ],
+          [
+            16,
+            19
+          ]
+        ],
+        "newInterval": [
+          2,
+          6
+        ]
+      },
+      "expected": [
+        [
+          1,
+          9
+        ],
+        [
+          16,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "intervals": [
+          [
+            3,
+            15
+          ]
+        ],
+        "newInterval": [
+          3,
+          8
+        ]
+      },
+      "expected": [
+        [
+          3,
+          15
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "intervals": [
+          [
+            2,
+            5
+          ],
+          [
+            8,
+            19
+          ]
+        ],
+        "newInterval": [
+          4,
+          10
+        ]
+      },
+      "expected": [
+        [
+          2,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "intervals": [
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            19
+          ]
+        ],
+        "newInterval": [
+          5,
+          12
+        ]
+      },
+      "expected": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          19
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "intervals": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            6,
+            21
+          ]
+        ],
+        "newInterval": [
+          6,
+          8
+        ]
+      },
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "intervals": [
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            23
+          ]
+        ],
+        "newInterval": [
+          7,
+          10
+        ]
+      },
+      "expected": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          23
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "intervals": [
+          [
+            1,
+            9
+          ],
+          [
+            10,
+            21
+          ]
+        ],
+        "newInterval": [
+          8,
+          12
+        ]
+      },
+      "expected": [
+        [
+          1,
+          21
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "intervals": [
+          [
+            0,
+            9
+          ],
+          [
+            15,
+            19
+          ]
+        ],
+        "newInterval": [
+          9,
+          14
+        ]
+      },
+      "expected": [
+        [
+          0,
+          14
+        ],
+        [
+          15,
+          19
+        ]
+      ],
+      "hidden": true
+    }
+  ]
+}

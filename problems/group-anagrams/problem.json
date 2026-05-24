@@ -1,0 +1,635 @@
+{
+  "id": 4,
+  "slug": "group-anagrams",
+  "title": "Group Anagrams",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "companies": [],
+  "statement": "# Group Anagrams\n\nGiven a list of strings, group together the words that are anagrams of one another. The groups and the words inside each group may be returned in any order.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: strs = [\"eat\", \"tea\", \"tan\", \"ate\", \"nat\", \"bat\"]\nOutput: [[\"eat\", \"tea\", \"ate\"], [\"tan\", \"nat\"], [\"bat\"]]\n```\n\n**Example 2**\n\n```text\nInput: strs = [\"\"]\nOutput: [[\"\"]]\n```\n\n**Example 3**\n\n```text\nInput: strs = [\"abc\", \"bca\", \"cab\", \"xyz\"]\nOutput: [[\"abc\", \"bca\", \"cab\"], [\"xyz\"]]\n```\n\n## Constraints\n\n- `1 <= len(strs) <= 10000`\n- `0 <= len(strs[i]) <= 100`\n- `strs[i]` contains lowercase English letters.",
+  "editorial": "All anagrams share the same sorted character sequence. Use that sorted sequence, or a 26-count tuple, as a dictionary key and append each word to its group.",
+  "solution_notes": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def groupAnagrams(self, strs):\n        groups = defaultdict(list)\n        for word in strs:\n            groups[''.join(sorted(word))].append(word)\n        return list(groups.values())\n```",
+  "hints": [
+    "Words in the same group have the same character counts.",
+    "A dictionary can map a signature to the words that share it."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def groupAnagrams(self, strs):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "groupAnagrams"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "strs": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      },
+      "expected": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "expected": [
+        [
+          ""
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "strs": [
+          "abc",
+          "bca",
+          "cab",
+          "xyz"
+        ]
+      },
+      "expected": [
+        [
+          "abc",
+          "bca",
+          "cab"
+        ],
+        [
+          "xyz"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "expected": [
+        [
+          "a"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "strs": [
+          "ab",
+          "ba",
+          "abc",
+          "cab",
+          "bca"
+        ]
+      },
+      "expected": [
+        [
+          "ab",
+          "ba"
+        ],
+        [
+          "abc",
+          "cab",
+          "bca"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "strs": [
+          "listen",
+          "silent",
+          "enlist",
+          "google"
+        ]
+      },
+      "expected": [
+        [
+          "listen",
+          "silent",
+          "enlist"
+        ],
+        [
+          "google"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "strs": [
+          "rat",
+          "tar",
+          "art",
+          "car"
+        ]
+      },
+      "expected": [
+        [
+          "rat",
+          "tar",
+          "art"
+        ],
+        [
+          "car"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "strs": [
+          "",
+          "",
+          "a"
+        ]
+      },
+      "expected": [
+        [
+          "",
+          ""
+        ],
+        [
+          "a"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "strs": [
+          "aaa",
+          "aa",
+          "a"
+        ]
+      },
+      "expected": [
+        [
+          "aaa"
+        ],
+        [
+          "aa"
+        ],
+        [
+          "a"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "strs": [
+          "dusty",
+          "study",
+          "night",
+          "thing"
+        ]
+      },
+      "expected": [
+        [
+          "dusty",
+          "study"
+        ],
+        [
+          "night",
+          "thing"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "strs": [
+          "loop",
+          "pool",
+          "polo",
+          "lopo"
+        ]
+      },
+      "expected": [
+        [
+          "loop",
+          "pool",
+          "polo",
+          "lopo"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "strs": [
+          "abc",
+          "def",
+          "ghi"
+        ]
+      },
+      "expected": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "strs": [
+          "abc",
+          "cba",
+          "bac",
+          "foo",
+          "ofo"
+        ]
+      },
+      "expected": [
+        [
+          "abc",
+          "cba",
+          "bac"
+        ],
+        [
+          "foo",
+          "ofo"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "strs": [
+          "z",
+          "z",
+          "zz"
+        ]
+      },
+      "expected": [
+        [
+          "z",
+          "z"
+        ],
+        [
+          "zz"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "strs": [
+          "stone",
+          "tones",
+          "onset",
+          "notes"
+        ]
+      },
+      "expected": [
+        [
+          "stone",
+          "tones",
+          "onset",
+          "notes"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "strs": [
+          "evil",
+          "vile",
+          "veil",
+          "live"
+        ]
+      },
+      "expected": [
+        [
+          "evil",
+          "vile",
+          "veil",
+          "live"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "strs": [
+          "inch",
+          "chin",
+          "brag",
+          "grab"
+        ]
+      },
+      "expected": [
+        [
+          "inch",
+          "chin"
+        ],
+        [
+          "brag",
+          "grab"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "strs": [
+          "elbow",
+          "below",
+          "state",
+          "taste"
+        ]
+      },
+      "expected": [
+        [
+          "elbow",
+          "below"
+        ],
+        [
+          "state",
+          "taste"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "strs": [
+          "abcabc",
+          "cbacba",
+          "aabbcc"
+        ]
+      },
+      "expected": [
+        [
+          "abcabc",
+          "cbacba",
+          "aabbcc"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "strs": [
+          "one",
+          "two",
+          "three"
+        ]
+      },
+      "expected": [
+        [
+          "one"
+        ],
+        [
+          "two"
+        ],
+        [
+          "three"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "strs": [
+          "aabb",
+          "bbaa",
+          "abab",
+          "baba"
+        ]
+      },
+      "expected": [
+        [
+          "aabb",
+          "bbaa",
+          "abab",
+          "baba"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "strs": [
+          "redivider",
+          "dividerer",
+          "redder"
+        ]
+      },
+      "expected": [
+        [
+          "redivider",
+          "dividerer"
+        ],
+        [
+          "redder"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "strs": [
+          "abc",
+          "abcd",
+          "bcad",
+          "dacb"
+        ]
+      },
+      "expected": [
+        [
+          "abc"
+        ],
+        [
+          "abcd",
+          "bcad",
+          "dacb"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "strs": [
+          "p",
+          "q",
+          "r",
+          "p"
+        ]
+      },
+      "expected": [
+        [
+          "p",
+          "p"
+        ],
+        [
+          "q"
+        ],
+        [
+          "r"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "strs": [
+          "moon",
+          "mono",
+          "noom",
+          "nomad"
+        ]
+      },
+      "expected": [
+        [
+          "moon",
+          "mono",
+          "noom"
+        ],
+        [
+          "nomad"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "strs": [
+          "arc",
+          "car",
+          "rat",
+          "tar",
+          "art"
+        ]
+      },
+      "expected": [
+        [
+          "arc",
+          "car"
+        ],
+        [
+          "rat",
+          "tar",
+          "art"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "strs": [
+          "save",
+          "vase",
+          "aves",
+          "stone"
+        ]
+      },
+      "expected": [
+        [
+          "save",
+          "vase",
+          "aves"
+        ],
+        [
+          "stone"
+        ]
+      ],
+      "hidden": true
+    }
+  ]
+}

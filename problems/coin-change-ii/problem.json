@@ -1,0 +1,415 @@
+{
+  "id": 114,
+  "slug": "coin-change-ii",
+  "title": "Coin Change II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Coin Change II\n\nReturn how many combinations of coins make exactly `amount`. Coin order does not create a new combination.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: amount = 5, coins = [1,2,5]\nOutput: 4\n```\n\n**Example 2**\n\n```text\nInput: amount = 3, coins = [2]\nOutput: 0\n```\n\n**Example 3**\n\n```text\nInput: amount = 10, coins = [10]\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def change(self, amount, coins):\n        dp = [0] * (amount + 1)\n        dp[0] = 1\n        for coin in coins:\n            for value in range(coin, amount + 1): dp[value] += dp[value - coin]\n        return dp[amount]\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def change(self, amount, coins):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "change"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "amount": 5,
+        "coins": [
+          1,
+          2,
+          5
+        ]
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "amount": 3,
+        "coins": [
+          2
+        ]
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "amount": 10,
+        "coins": [
+          10
+        ]
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "amount": 1,
+        "coins": [
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "amount": 2,
+        "coins": [
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "amount": 3,
+        "coins": [
+          10,
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "amount": 4,
+        "coins": [
+          3,
+          10,
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "amount": 5,
+        "coins": [
+          6,
+          3
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "amount": 6,
+        "coins": [
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "amount": 7,
+        "coins": [
+          2,
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "amount": 8,
+        "coins": [
+          5,
+          2,
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "amount": 9,
+        "coins": [
+          8,
+          5,
+          2,
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "amount": 10,
+        "coins": [
+          1,
+          8
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "amount": 11,
+        "coins": [
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "amount": 12,
+        "coins": [
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 8,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "amount": 13,
+        "coins": [
+          10,
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "amount": 14,
+        "coins": [
+          3,
+          10,
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 26,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "amount": 15,
+        "coins": [
+          6,
+          3
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "amount": 16,
+        "coins": [
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "amount": 17,
+        "coins": [
+          2,
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "amount": 18,
+        "coins": [
+          5,
+          2,
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 22,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "amount": 19,
+        "coins": [
+          8,
+          5,
+          2,
+          9,
+          6,
+          3
+        ]
+      },
+      "expected": 29,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "amount": 20,
+        "coins": [
+          1,
+          8
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "amount": 21,
+        "coins": [
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "amount": 22,
+        "coins": [
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "amount": 23,
+        "coins": [
+          10,
+          7,
+          4,
+          1,
+          8
+        ]
+      },
+      "expected": 35,
+      "hidden": true
+    }
+  ]
+}

@@ -16,7 +16,10 @@ def test_problem_api_returns_catalog() -> None:
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["problems"][0]["slug"] == "two-sum"
+    slugs = [problem["slug"] for problem in payload["problems"]]
+    assert payload["problems"][0]["slug"] == "contains-duplicate"
+    assert "two-sum" in slugs
+    assert len(slugs) >= 9
 
 
 def test_progress_roundtrip() -> None:

@@ -1,0 +1,462 @@
+{
+  "id": 122,
+  "slug": "maximum-subarray",
+  "title": "Maximum Subarray",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Maximum Subarray\n\nReturn the maximum sum of a non-empty contiguous subarray.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [-2,1,-3,4,-1,2,1,-5,4]\nOutput: 6\n```\n\n**Example 2**\n\n```text\nInput: nums = [5]\nOutput: 5\n```\n\n**Example 3**\n\n```text\nInput: nums = [-3,-2,-5]\nOutput: -2\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Track the local choice that leaves the most room for future choices, or sort intervals so conflicts can be resolved with one pass.",
+  "solution_notes": "```python\nclass Solution:\n    def maxSubArray(self, nums):\n        best = cur = nums[0]\n        for value in nums[1:]:\n            cur = max(value, cur + value)\n            best = max(best, cur)\n        return best\n```",
+  "hints": [
+    "Sort first when relative order drives the decision.",
+    "Keep the smallest state that proves future feasibility."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def maxSubArray(self, nums):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "maxSubArray"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "nums": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ]
+      },
+      "expected": 6,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "nums": [
+          5
+        ]
+      },
+      "expected": 5,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "nums": [
+          -3,
+          -2,
+          -5
+        ]
+      },
+      "expected": -2,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "nums": [
+          9,
+          -4,
+          3,
+          10,
+          -3,
+          4
+        ]
+      },
+      "expected": 19,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "nums": [
+          6,
+          -7,
+          0,
+          7,
+          -6,
+          1,
+          8
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "nums": [
+          3,
+          10,
+          -3,
+          4,
+          11,
+          -2,
+          5,
+          -8
+        ]
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "nums": [
+          0,
+          7,
+          -6,
+          1,
+          8,
+          -5,
+          2,
+          9,
+          -4
+        ]
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "nums": [
+          -3,
+          4,
+          11,
+          -2,
+          5,
+          -8,
+          -1,
+          6,
+          -7,
+          0
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "nums": [
+          -6,
+          1,
+          8,
+          -5,
+          2,
+          9,
+          -4,
+          3,
+          10,
+          -3,
+          4
+        ]
+      },
+      "expected": 25,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "nums": [
+          11,
+          -2,
+          5,
+          -8,
+          -1,
+          6,
+          -7,
+          0,
+          7,
+          -6,
+          1,
+          8
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "nums": [
+          8,
+          -5,
+          2,
+          9,
+          -4
+        ]
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "nums": [
+          5,
+          -8,
+          -1,
+          6,
+          -7,
+          0
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "nums": [
+          2,
+          9,
+          -4,
+          3,
+          10,
+          -3,
+          4
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "nums": [
+          -1,
+          6,
+          -7,
+          0,
+          7,
+          -6,
+          1,
+          8
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "nums": [
+          -4,
+          3,
+          10,
+          -3,
+          4,
+          11,
+          -2,
+          5,
+          -8
+        ]
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "nums": [
+          -7,
+          0,
+          7,
+          -6,
+          1,
+          8,
+          -5,
+          2,
+          9,
+          -4
+        ]
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "nums": [
+          10,
+          -3,
+          4,
+          11,
+          -2,
+          5,
+          -8,
+          -1,
+          6,
+          -7,
+          0
+        ]
+      },
+      "expected": 25,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "nums": [
+          7,
+          -6,
+          1,
+          8,
+          -5,
+          2,
+          9,
+          -4,
+          3,
+          10,
+          -3,
+          4
+        ]
+      },
+      "expected": 26,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "nums": [
+          4,
+          11,
+          -2,
+          5,
+          -8
+        ]
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "nums": [
+          1,
+          8,
+          -5,
+          2,
+          9,
+          -4
+        ]
+      },
+      "expected": 15,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "nums": [
+          -2,
+          5,
+          -8,
+          -1,
+          6,
+          -7,
+          0
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "nums": [
+          -5,
+          2,
+          9,
+          -4,
+          3,
+          10,
+          -3,
+          4
+        ]
+      },
+      "expected": 21,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "nums": [
+          -8,
+          -1,
+          6,
+          -7,
+          0,
+          7,
+          -6,
+          1,
+          8
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "nums": [
+          9,
+          -4,
+          3,
+          10,
+          -3,
+          4,
+          11,
+          -2,
+          5,
+          -8
+        ]
+      },
+      "expected": 33,
+      "hidden": true
+    }
+  ]
+}

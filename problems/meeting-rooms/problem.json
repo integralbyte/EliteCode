@@ -1,0 +1,795 @@
+{
+  "id": 133,
+  "slug": "meeting-rooms",
+  "title": "Meeting Rooms",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "companies": [],
+  "statement": "# Meeting Rooms\n\nReturn whether one person can attend all meetings without overlapping intervals.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: intervals = [[0,30],[35,40],[45,50]]\nOutput: true\n```\n\n**Example 2**\n\n```text\nInput: intervals = [[7,10],[2,8]]\nOutput: false\n```\n\n**Example 3**\n\n```text\nInput: intervals = []\nOutput: true\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Track the local choice that leaves the most room for future choices, or sort intervals so conflicts can be resolved with one pass.",
+  "solution_notes": "```python\nclass Solution:\n    def canAttendMeetings(self, intervals):\n        intervals.sort()\n        return all(intervals[i][0] >= intervals[i - 1][1] for i in range(1, len(intervals)))\n```",
+  "hints": [
+    "Sort first when relative order drives the decision.",
+    "Keep the smallest state that proves future feasibility."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def canAttendMeetings(self, intervals):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "canAttendMeetings"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "intervals": [
+          [
+            0,
+            30
+          ],
+          [
+            35,
+            40
+          ],
+          [
+            45,
+            50
+          ]
+        ]
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "intervals": [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            8
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "intervals": []
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "intervals": [
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            14,
+            19
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "intervals": [
+          [
+            10,
+            13
+          ],
+          [
+            13,
+            17
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "intervals": [
+          [
+            15,
+            19
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            12,
+            15
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "intervals": [
+          [
+            2,
+            7
+          ],
+          [
+            5,
+            11
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            14,
+            17
+          ],
+          [
+            17,
+            21
+          ],
+          [
+            2,
+            7
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "intervals": [
+          [
+            7,
+            13
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            13,
+            15
+          ],
+          [
+            16,
+            19
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            10,
+            11
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "intervals": [
+          [
+            12,
+            13
+          ],
+          [
+            15,
+            17
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            6,
+            11
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            15,
+            17
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "intervals": [
+          [
+            17,
+            19
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            5,
+            9
+          ]
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "intervals": [
+          [
+            4,
+            7
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            10,
+            15
+          ],
+          [
+            13,
+            19
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "intervals": [
+          [
+            9,
+            13
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            15,
+            21
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            5
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "intervals": [
+          [
+            14,
+            19
+          ],
+          [
+            17,
+            23
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            11,
+            15
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "intervals": [
+          [
+            1,
+            7
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            10,
+            13
+          ],
+          [
+            13,
+            17
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            1,
+            7
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "intervals": [
+          [
+            6,
+            7
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            12,
+            15
+          ],
+          [
+            15,
+            19
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            9,
+            11
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "intervals": [
+          [
+            11,
+            13
+          ],
+          [
+            14,
+            17
+          ],
+          [
+            17,
+            21
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            5,
+            11
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            14,
+            17
+          ],
+          [
+            17,
+            21
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "intervals": [
+          [
+            16,
+            19
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            9
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "intervals": [
+          [
+            3,
+            7
+          ],
+          [
+            6,
+            11
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            12,
+            13
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "intervals": [
+          [
+            8,
+            13
+          ],
+          [
+            11,
+            17
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            17,
+            19
+          ],
+          [
+            2,
+            5
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "intervals": [
+          [
+            13,
+            19
+          ],
+          [
+            16,
+            17
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            10,
+            15
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "intervals": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            15,
+            21
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "intervals": [
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            14,
+            19
+          ],
+          [
+            17,
+            23
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            8,
+            11
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "intervals": [
+          [
+            10,
+            13
+          ],
+          [
+            13,
+            17
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            10,
+            13
+          ],
+          [
+            13,
+            17
+          ],
+          [
+            16,
+            21
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "intervals": [
+          [
+            15,
+            19
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            3,
+            9
+          ]
+        ]
+      },
+      "expected": false,
+      "hidden": true
+    }
+  ]
+}

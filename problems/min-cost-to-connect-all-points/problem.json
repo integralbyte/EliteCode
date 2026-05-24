@@ -1,0 +1,842 @@
+{
+  "id": 94,
+  "slug": "min-cost-to-connect-all-points",
+  "title": "Min Cost to Connect All Points",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Union Find",
+    "Graph",
+    "Minimum Spanning Tree"
+  ],
+  "companies": [],
+  "statement": "# Min Cost to Connect All Points\n\nConnect all points with minimum total Manhattan distance.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: points = [[0,0],[2,2],[3,10],[5,2],[7,0]]\nOutput: 20\n```\n\n**Example 2**\n\n```text\nInput: points = [[3,12],[-2,5],[-4,1]]\nOutput: 18\n```\n\n**Example 3**\n\n```text\nInput: points = [[0,0]]\nOutput: 0\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
+  "solution_notes": "```python\nclass Solution:\n    def minCostConnectPoints(self, points):\n        n = len(points)\n        used = [False] * n\n        best = [float('inf')] * n\n        best[0] = 0\n        total = 0\n        for _ in range(n):\n            pick = min((i for i in range(n) if not used[i]), key=lambda i: best[i])\n            used[pick] = True; total += best[pick]\n            x, y = points[pick]\n            for i, (a, b) in enumerate(points):\n                if not used[i]:\n                    best[i] = min(best[i], abs(x - a) + abs(y - b))\n        return total\n```",
+  "hints": [
+    "Model the state explicitly.",
+    "Prefer linear or near-linear graph traversal when possible."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def minCostConnectPoints(self, points):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "minCostConnectPoints"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            7,
+            0
+          ]
+        ]
+      },
+      "expected": 20,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "points": [
+          [
+            3,
+            12
+          ],
+          [
+            -2,
+            5
+          ],
+          [
+            -4,
+            1
+          ]
+        ]
+      },
+      "expected": 18,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "points": [
+          [
+            2,
+            -1
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            12,
+            13
+          ]
+        ]
+      },
+      "expected": 24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "points": [
+          [
+            -12,
+            12
+          ],
+          [
+            -7,
+            -10
+          ],
+          [
+            -2,
+            -3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": 47,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "points": [
+          [
+            5,
+            -4
+          ],
+          [
+            10,
+            3
+          ],
+          [
+            15,
+            10
+          ],
+          [
+            -11,
+            -12
+          ],
+          [
+            -6,
+            -5
+          ]
+        ]
+      },
+      "expected": 48,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "points": [
+          [
+            -9,
+            9
+          ],
+          [
+            -4,
+            -13
+          ],
+          [
+            1,
+            -6
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            11,
+            8
+          ],
+          [
+            -15,
+            -14
+          ]
+        ]
+      },
+      "expected": 69,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "points": [
+          [
+            8,
+            -7
+          ],
+          [
+            13,
+            0
+          ],
+          [
+            -13,
+            7
+          ],
+          [
+            -8,
+            14
+          ],
+          [
+            -3,
+            -8
+          ],
+          [
+            2,
+            -1
+          ],
+          [
+            7,
+            6
+          ]
+        ]
+      },
+      "expected": 81,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "points": [
+          [
+            -6,
+            6
+          ],
+          [
+            -1,
+            13
+          ],
+          [
+            4,
+            -9
+          ],
+          [
+            9,
+            -2
+          ],
+          [
+            14,
+            5
+          ],
+          [
+            -12,
+            12
+          ],
+          [
+            -7,
+            -10
+          ],
+          [
+            -2,
+            -3
+          ]
+        ]
+      },
+      "expected": 85,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "points": [
+          [
+            11,
+            -10
+          ],
+          [
+            -15,
+            -3
+          ]
+        ]
+      },
+      "expected": 33,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "points": [
+          [
+            -3,
+            3
+          ],
+          [
+            2,
+            10
+          ],
+          [
+            7,
+            -12
+          ]
+        ]
+      },
+      "expected": 37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "points": [
+          [
+            14,
+            -13
+          ],
+          [
+            -12,
+            -6
+          ],
+          [
+            -7,
+            1
+          ],
+          [
+            -2,
+            8
+          ]
+        ]
+      },
+      "expected": 57,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            15,
+            -8
+          ],
+          [
+            -11,
+            -1
+          ]
+        ]
+      },
+      "expected": 59,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "points": [
+          [
+            -14,
+            13
+          ],
+          [
+            -9,
+            -9
+          ],
+          [
+            -4,
+            -2
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            12
+          ],
+          [
+            11,
+            -10
+          ]
+        ]
+      },
+      "expected": 78,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "points": [
+          [
+            3,
+            -3
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            13,
+            11
+          ],
+          [
+            -13,
+            -11
+          ],
+          [
+            -8,
+            -4
+          ],
+          [
+            -3,
+            3
+          ],
+          [
+            2,
+            10
+          ]
+        ]
+      },
+      "expected": 72,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "points": [
+          [
+            -11,
+            10
+          ],
+          [
+            -6,
+            -12
+          ],
+          [
+            -1,
+            -5
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            14,
+            -13
+          ],
+          [
+            -12,
+            -6
+          ],
+          [
+            -7,
+            1
+          ]
+        ]
+      },
+      "expected": 94,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "points": [
+          [
+            6,
+            -6
+          ],
+          [
+            11,
+            1
+          ]
+        ]
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "points": [
+          [
+            -8,
+            7
+          ],
+          [
+            -3,
+            14
+          ],
+          [
+            2,
+            -8
+          ]
+        ]
+      },
+      "expected": 37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "points": [
+          [
+            9,
+            -9
+          ],
+          [
+            14,
+            -2
+          ],
+          [
+            -12,
+            5
+          ],
+          [
+            -7,
+            12
+          ]
+        ]
+      },
+      "expected": 57,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "points": [
+          [
+            -5,
+            4
+          ],
+          [
+            0,
+            11
+          ],
+          [
+            5,
+            -11
+          ],
+          [
+            10,
+            -4
+          ],
+          [
+            15,
+            3
+          ]
+        ]
+      },
+      "expected": 57,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "points": [
+          [
+            12,
+            -12
+          ],
+          [
+            -14,
+            -5
+          ],
+          [
+            -9,
+            2
+          ],
+          [
+            -4,
+            9
+          ],
+          [
+            1,
+            -13
+          ],
+          [
+            6,
+            -6
+          ]
+        ]
+      },
+      "expected": 69,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "points": [
+          [
+            -2,
+            1
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            8,
+            -14
+          ],
+          [
+            13,
+            -7
+          ],
+          [
+            -13,
+            0
+          ],
+          [
+            -8,
+            7
+          ],
+          [
+            -3,
+            14
+          ]
+        ]
+      },
+      "expected": 83,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "points": [
+          [
+            15,
+            14
+          ],
+          [
+            -11,
+            -8
+          ],
+          [
+            -6,
+            -1
+          ],
+          [
+            -1,
+            6
+          ],
+          [
+            4,
+            13
+          ],
+          [
+            9,
+            -9
+          ],
+          [
+            14,
+            -2
+          ],
+          [
+            -12,
+            5
+          ]
+        ]
+      },
+      "expected": 89,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "points": [
+          [
+            1,
+            -2
+          ],
+          [
+            6,
+            5
+          ]
+        ]
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "points": [
+          [
+            -13,
+            11
+          ],
+          [
+            -8,
+            -11
+          ],
+          [
+            -3,
+            -4
+          ]
+        ]
+      },
+      "expected": 37,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "points": [
+          [
+            4,
+            -5
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            14,
+            9
+          ],
+          [
+            -12,
+            -13
+          ]
+        ]
+      },
+      "expected": 48,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "points": [
+          [
+            -10,
+            8
+          ],
+          [
+            -5,
+            -14
+          ],
+          [
+            0,
+            -7
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            10,
+            7
+          ]
+        ]
+      },
+      "expected": 57,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "points": [
+          [
+            7,
+            -8
+          ],
+          [
+            12,
+            -1
+          ],
+          [
+            -14,
+            6
+          ],
+          [
+            -9,
+            13
+          ],
+          [
+            -4,
+            -9
+          ],
+          [
+            1,
+            -2
+          ]
+        ]
+      },
+      "expected": 71,
+      "hidden": true
+    }
+  ]
+}

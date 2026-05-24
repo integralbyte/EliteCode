@@ -1,0 +1,1072 @@
+{
+  "id": 127,
+  "slug": "merge-triplets-to-form-target-triplet",
+  "title": "Merge Triplets to Form Target Triplet",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "companies": [],
+  "statement": "# Merge Triplets to Form Target Triplet\n\nReturn whether selected triplets can be coordinate-wise merged to exactly equal `target`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: triplets = [[2,5,3],[1,8,4],[1,7,5]], target = [2,7,5]\nOutput: true\n```\n\n**Example 2**\n\n```text\nInput: triplets = [[3,4,5],[4,5,6]], target = [3,2,5]\nOutput: false\n```\n\n**Example 3**\n\n```text\nInput: triplets = [[1,1,1]], target = [1,1,1]\nOutput: true\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Track the local choice that leaves the most room for future choices, or sort intervals so conflicts can be resolved with one pass.",
+  "solution_notes": "```python\nclass Solution:\n    def mergeTriplets(self, triplets, target):\n        good = [False, False, False]\n        for triplet in triplets:\n            if all(triplet[i] <= target[i] for i in range(3)):\n                for i in range(3): good[i] |= triplet[i] == target[i]\n        return all(good)\n```",
+  "hints": [
+    "Sort first when relative order drives the decision.",
+    "Keep the smallest state that proves future feasibility."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def mergeTriplets(self, triplets, target):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "mergeTriplets"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "triplets": [
+          [
+            2,
+            5,
+            3
+          ],
+          [
+            1,
+            8,
+            4
+          ],
+          [
+            1,
+            7,
+            5
+          ]
+        ],
+        "target": [
+          2,
+          7,
+          5
+        ]
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "triplets": [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ],
+        "target": [
+          3,
+          2,
+          5
+        ]
+      },
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "triplets": [
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "target": [
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "triplets": [
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            1,
+            3,
+            3
+          ],
+          [
+            2,
+            2,
+            2
+          ],
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            1,
+            3,
+            3
+          ]
+        ],
+        "target": [
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "triplets": [
+          [
+            1,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            3
+          ],
+          [
+            2,
+            2,
+            5
+          ],
+          [
+            1,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            3
+          ],
+          [
+            2,
+            2,
+            5
+          ]
+        ],
+        "target": [
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "triplets": [
+          [
+            4,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            6
+          ],
+          [
+            2,
+            5,
+            5
+          ],
+          [
+            4,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            6
+          ],
+          [
+            2,
+            5,
+            5
+          ],
+          [
+            4,
+            4,
+            4
+          ]
+        ],
+        "target": [
+          4,
+          5,
+          6
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "triplets": [
+          [
+            4,
+            4,
+            7
+          ],
+          [
+            3,
+            6,
+            6
+          ],
+          [
+            5,
+            5,
+            5
+          ],
+          [
+            4,
+            4,
+            7
+          ],
+          [
+            3,
+            6,
+            6
+          ],
+          [
+            5,
+            5,
+            5
+          ],
+          [
+            4,
+            4,
+            7
+          ],
+          [
+            3,
+            6,
+            6
+          ],
+          [
+            6,
+            7,
+            8
+          ]
+        ],
+        "target": [
+          5,
+          6,
+          7
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "triplets": [
+          [
+            1,
+            7,
+            7
+          ],
+          [
+            1,
+            6,
+            6
+          ],
+          [
+            1,
+            5,
+            8
+          ],
+          [
+            1,
+            7,
+            7
+          ]
+        ],
+        "target": [
+          1,
+          7,
+          8
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "triplets": [
+          [
+            2,
+            1,
+            7
+          ],
+          [
+            1,
+            1,
+            9
+          ],
+          [
+            1,
+            2,
+            8
+          ],
+          [
+            2,
+            1,
+            7
+          ],
+          [
+            1,
+            1,
+            9
+          ]
+        ],
+        "target": [
+          2,
+          2,
+          9
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "triplets": [
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "target": [
+          3,
+          3,
+          3
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "triplets": [
+          [
+            2,
+            4,
+            3
+          ],
+          [
+            4,
+            3,
+            2
+          ],
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            4,
+            3
+          ],
+          [
+            4,
+            3,
+            2
+          ],
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            4,
+            3
+          ],
+          [
+            5,
+            5,
+            5
+          ]
+        ],
+        "target": [
+          4,
+          4,
+          4
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "triplets": [
+          [
+            5,
+            4,
+            3
+          ],
+          [
+            4,
+            3,
+            5
+          ],
+          [
+            3,
+            5,
+            4
+          ],
+          [
+            5,
+            4,
+            3
+          ],
+          [
+            4,
+            3,
+            5
+          ],
+          [
+            3,
+            5,
+            4
+          ],
+          [
+            5,
+            4,
+            3
+          ],
+          [
+            4,
+            3,
+            5
+          ]
+        ],
+        "target": [
+          5,
+          5,
+          5
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "triplets": [
+          [
+            1,
+            4,
+            6
+          ],
+          [
+            1,
+            6,
+            5
+          ],
+          [
+            1,
+            5,
+            4
+          ],
+          [
+            1,
+            4,
+            6
+          ]
+        ],
+        "target": [
+          1,
+          6,
+          6
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "triplets": [
+          [
+            1,
+            7,
+            6
+          ],
+          [
+            2,
+            6,
+            5
+          ],
+          [
+            1,
+            5,
+            7
+          ],
+          [
+            1,
+            7,
+            6
+          ],
+          [
+            2,
+            6,
+            5
+          ]
+        ],
+        "target": [
+          2,
+          7,
+          7
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "triplets": [
+          [
+            3,
+            1,
+            6
+          ],
+          [
+            2,
+            1,
+            8
+          ],
+          [
+            1,
+            2,
+            7
+          ],
+          [
+            3,
+            1,
+            6
+          ],
+          [
+            2,
+            1,
+            8
+          ],
+          [
+            1,
+            2,
+            7
+          ],
+          [
+            4,
+            3,
+            9
+          ]
+        ],
+        "target": [
+          3,
+          2,
+          8
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "triplets": [
+          [
+            3,
+            1,
+            9
+          ],
+          [
+            2,
+            3,
+            8
+          ],
+          [
+            4,
+            2,
+            7
+          ],
+          [
+            3,
+            1,
+            9
+          ],
+          [
+            2,
+            3,
+            8
+          ],
+          [
+            4,
+            2,
+            7
+          ],
+          [
+            3,
+            1,
+            9
+          ]
+        ],
+        "target": [
+          4,
+          3,
+          9
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "triplets": [
+          [
+            3,
+            4,
+            2
+          ],
+          [
+            5,
+            3,
+            1
+          ],
+          [
+            4,
+            2,
+            3
+          ],
+          [
+            3,
+            4,
+            2
+          ],
+          [
+            5,
+            3,
+            1
+          ],
+          [
+            4,
+            2,
+            3
+          ],
+          [
+            3,
+            4,
+            2
+          ],
+          [
+            5,
+            3,
+            1
+          ]
+        ],
+        "target": [
+          5,
+          4,
+          3
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "triplets": [
+          [
+            1,
+            4,
+            2
+          ],
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            1,
+            5,
+            3
+          ],
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        "target": [
+          1,
+          5,
+          4
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "triplets": [
+          [
+            1,
+            4,
+            5
+          ],
+          [
+            1,
+            6,
+            4
+          ],
+          [
+            2,
+            5,
+            3
+          ],
+          [
+            1,
+            4,
+            5
+          ],
+          [
+            1,
+            6,
+            4
+          ],
+          [
+            3,
+            7,
+            6
+          ]
+        ],
+        "target": [
+          2,
+          6,
+          5
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "triplets": [
+          [
+            1,
+            7,
+            5
+          ],
+          [
+            3,
+            6,
+            4
+          ],
+          [
+            2,
+            5,
+            6
+          ],
+          [
+            1,
+            7,
+            5
+          ],
+          [
+            3,
+            6,
+            4
+          ],
+          [
+            2,
+            5,
+            6
+          ]
+        ],
+        "target": [
+          3,
+          7,
+          6
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "triplets": [
+          [
+            4,
+            1,
+            5
+          ],
+          [
+            3,
+            1,
+            7
+          ],
+          [
+            2,
+            2,
+            6
+          ],
+          [
+            4,
+            1,
+            5
+          ],
+          [
+            3,
+            1,
+            7
+          ],
+          [
+            2,
+            2,
+            6
+          ],
+          [
+            4,
+            1,
+            5
+          ]
+        ],
+        "target": [
+          4,
+          2,
+          7
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "triplets": [
+          [
+            4,
+            1,
+            8
+          ],
+          [
+            3,
+            3,
+            7
+          ],
+          [
+            5,
+            2,
+            6
+          ],
+          [
+            4,
+            1,
+            8
+          ],
+          [
+            3,
+            3,
+            7
+          ],
+          [
+            5,
+            2,
+            6
+          ],
+          [
+            4,
+            1,
+            8
+          ],
+          [
+            3,
+            3,
+            7
+          ]
+        ],
+        "target": [
+          5,
+          3,
+          8
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "triplets": [
+          [
+            1,
+            4,
+            8
+          ],
+          [
+            1,
+            3,
+            7
+          ],
+          [
+            1,
+            2,
+            9
+          ],
+          [
+            1,
+            4,
+            8
+          ],
+          [
+            2,
+            5,
+            10
+          ]
+        ],
+        "target": [
+          1,
+          4,
+          9
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "triplets": [
+          [
+            2,
+            4,
+            1
+          ],
+          [
+            1,
+            3,
+            3
+          ],
+          [
+            1,
+            5,
+            2
+          ],
+          [
+            2,
+            4,
+            1
+          ],
+          [
+            1,
+            3,
+            3
+          ]
+        ],
+        "target": [
+          2,
+          5,
+          3
+        ]
+      },
+      "expected": true,
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "id": 103,
+  "slug": "longest-palindromic-substring",
+  "title": "Longest Palindromic Substring",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers",
+    "String",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Longest Palindromic Substring\n\nReturn a longest contiguous substring that is a palindrome.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = bananas\nOutput: anana\n```\n\n**Example 2**\n\n```text\nInput: s = cbbd\nOutput: bb\n```\n\n**Example 3**\n\n```text\nInput: s = a\nOutput: a\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nclass Solution:\n    def longestPalindrome(self, s):\n        best = ''\n        def expand(l, r):\n            nonlocal best\n            while l >= 0 and r < len(s) and s[l] == s[r]:\n                l -= 1; r += 1\n            if r - l - 1 > len(best): best = s[l + 1:r]\n        for i in range(len(s)):\n            expand(i, i); expand(i, i + 1)\n        return best\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def longestPalindrome(self, s):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "longestPalindrome"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "bananas"
+      },
+      "expected": "anana",
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "cbbd"
+      },
+      "expected": "bb",
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "a"
+      },
+      "expected": "a",
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "cbbd"
+      },
+      "expected": "bb",
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "forgeeksskeegfor"
+      },
+      "expected": "geeksskeeg",
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "abcdd"
+      },
+      "expected": "dd",
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "levelup"
+      },
+      "expected": "level",
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "noonabc"
+      },
+      "expected": "noon",
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "bananas"
+      },
+      "expected": "anana",
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "cbbd"
+      },
+      "expected": "bb",
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "forgeeksskeegfor"
+      },
+      "expected": "geeksskeeg",
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "abcdd"
+      },
+      "expected": "dd",
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "levelup"
+      },
+      "expected": "level",
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "noonabc"
+      },
+      "expected": "noon",
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "bananas"
+      },
+      "expected": "anana",
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "cbbd"
+      },
+      "expected": "bb",
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "forgeeksskeegfor"
+      },
+      "expected": "geeksskeeg",
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "abcdd"
+      },
+      "expected": "dd",
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "levelup"
+      },
+      "expected": "level",
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "noonabc"
+      },
+      "expected": "noon",
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "bananas"
+      },
+      "expected": "anana",
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "cbbd"
+      },
+      "expected": "bb",
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "forgeeksskeegfor"
+      },
+      "expected": "geeksskeeg",
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "abcdd"
+      },
+      "expected": "dd",
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "levelup"
+      },
+      "expected": "level",
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "noonabc"
+      },
+      "expected": "noon",
+      "hidden": true
+    }
+  ]
+}

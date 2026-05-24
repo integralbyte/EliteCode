@@ -1,0 +1,613 @@
+{
+  "id": 65,
+  "slug": "last-stone-weight",
+  "title": "Last Stone Weight",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Heap"
+  ],
+  "companies": [],
+  "statement": "# Last Stone Weight\n\nRepeatedly smash the two heaviest stones. Equal stones both disappear; otherwise the leftover weight is the difference. Return the final weight or zero.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: stones = [2,7,4,1,8,1]\nOutput: 1\n```\n\n**Example 2**\n\n```text\nInput: stones = [10]\nOutput: 10\n```\n\n**Example 3**\n\n```text\nInput: stones = [5,5,5,5]\nOutput: 0\n```\n\n## Constraints\n\n- `1 <= stones.length`\n- Stone weights are positive integers.",
+  "editorial": "A max-heap repeatedly exposes the two largest stones. Python's `heapq` can be used with negated weights.",
+  "solution_notes": "```python\nimport heapq\n\nclass Solution:\n    def lastStoneWeight(self, stones):\n        heap = [-stone for stone in stones]\n        heapq.heapify(heap)\n        while len(heap) > 1:\n            y = -heapq.heappop(heap)\n            x = -heapq.heappop(heap)\n            if y != x:\n                heapq.heappush(heap, -(y - x))\n        return -heap[0] if heap else 0\n```",
+  "hints": [
+    "You need quick access to the largest two values.",
+    "Negating values turns Python's min-heap into a max-heap."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def lastStoneWeight(self, stones):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "lastStoneWeight"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "stones": [
+          2,
+          7,
+          4,
+          1,
+          8,
+          1
+        ]
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "stones": [
+          10
+        ]
+      },
+      "expected": 10,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "stones": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "stones": [
+          18,
+          29
+        ]
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "stones": [
+          35,
+          46,
+          57
+        ]
+      },
+      "expected": 24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "stones": [
+          52,
+          3,
+          14,
+          25
+        ]
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "stones": [
+          9,
+          20,
+          31,
+          42,
+          53
+        ]
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "stones": [
+          26,
+          37,
+          48,
+          59,
+          10,
+          21
+        ]
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "stones": [
+          43,
+          54,
+          5,
+          16,
+          27,
+          38,
+          49
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "stones": [
+          60,
+          11,
+          22,
+          33,
+          44,
+          55,
+          6,
+          17
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "stones": [
+          17,
+          28,
+          39,
+          50,
+          1,
+          12,
+          23,
+          34,
+          45
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "stones": [
+          34,
+          45,
+          56,
+          7,
+          18,
+          29,
+          40,
+          51,
+          2,
+          13
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "stones": [
+          51,
+          2,
+          13,
+          24,
+          35,
+          46,
+          57,
+          8,
+          19,
+          30,
+          41
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "stones": [
+          8,
+          19,
+          30,
+          41,
+          52,
+          3,
+          14,
+          25,
+          36,
+          47,
+          58,
+          9
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "stones": [
+          25
+        ]
+      },
+      "expected": 25,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "stones": [
+          42,
+          53
+        ]
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "stones": [
+          59,
+          10,
+          21
+        ]
+      },
+      "expected": 28,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "stones": [
+          16,
+          27,
+          38,
+          49
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "stones": [
+          33,
+          44,
+          55,
+          6,
+          17
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "stones": [
+          50,
+          1,
+          12,
+          23,
+          34,
+          45
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "stones": [
+          7,
+          18,
+          29,
+          40,
+          51,
+          2,
+          13
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "stones": [
+          24,
+          35,
+          46,
+          57,
+          8,
+          19,
+          30,
+          41
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "stones": [
+          41,
+          52,
+          3,
+          14,
+          25,
+          36,
+          47,
+          58,
+          9
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "stones": [
+          58,
+          9,
+          20,
+          31,
+          42,
+          53,
+          4,
+          15,
+          26,
+          37
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "stones": [
+          15,
+          26,
+          37,
+          48,
+          59,
+          10,
+          21,
+          32,
+          43,
+          54,
+          5
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "stones": [
+          32,
+          43,
+          54,
+          5,
+          16,
+          27,
+          38,
+          49,
+          60,
+          11,
+          22,
+          33
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "stones": [
+          49
+        ]
+      },
+      "expected": 49,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "stones": [
+          6,
+          17
+        ]
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "stones": [
+          23,
+          34,
+          45
+        ]
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "stones": [
+          40,
+          51,
+          2,
+          13
+        ]
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "stones": [
+          57,
+          8,
+          19,
+          30,
+          41
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "stones": [
+          14,
+          25,
+          36,
+          47,
+          58,
+          9
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "stones": [
+          31,
+          42,
+          53,
+          4,
+          15,
+          26,
+          37
+        ]
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "stones": [
+          48,
+          59,
+          10,
+          21,
+          32,
+          43,
+          54,
+          5
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "stones": [
+          5,
+          16,
+          27,
+          38,
+          49,
+          60,
+          11,
+          22,
+          33
+        ]
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "stones": [
+          22,
+          33,
+          44,
+          55,
+          6,
+          17,
+          28,
+          39,
+          50,
+          1
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    }
+  ]
+}

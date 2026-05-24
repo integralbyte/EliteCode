@@ -1,0 +1,273 @@
+{
+  "id": 142,
+  "slug": "multiply-strings",
+  "title": "Multiply Strings",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "companies": [],
+  "statement": "# Multiply Strings\n\nMultiply two non-negative integers represented as decimal strings and return the product string.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: num1 = 123, num2 = 456\nOutput: 56088\n```\n\n**Example 2**\n\n```text\nInput: num1 = 0, num2 = 999\nOutput: 0\n```\n\n**Example 3**\n\n```text\nInput: num1 = 12, num2 = 12\nOutput: 144\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Use direct arithmetic, matrix indexing, or bit operations to preserve the required invariants while keeping extra state small.",
+  "solution_notes": "```python\nclass Solution:\n    def multiply(self, num1, num2):\n        if num1 == '0' or num2 == '0': return '0'\n        out = [0] * (len(num1) + len(num2))\n        for i in range(len(num1) - 1, -1, -1):\n            for j in range(len(num2) - 1, -1, -1):\n                product = int(num1[i]) * int(num2[j]) + out[i + j + 1]\n                out[i + j + 1] = product % 10\n                out[i + j] += product // 10\n        return ''.join(map(str, out)).lstrip('0')\n```",
+  "hints": [
+    "Watch fixed-width integer boundaries where the prompt requires them.",
+    "For matrix mutation, mark or capture affected rows and columns before overwriting."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def multiply(self, num1, num2):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "multiply"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "num1": "123",
+        "num2": "456"
+      },
+      "expected": "56088",
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "num1": "0",
+        "num2": "999"
+      },
+      "expected": "0",
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "num1": "12",
+        "num2": "12"
+      },
+      "expected": "144",
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "num1": "12346",
+        "num2": "54322"
+      },
+      "expected": "670659412",
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "num1": "24691",
+        "num2": "8644"
+      },
+      "expected": "213429004",
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "num1": "37036",
+        "num2": "62965"
+      },
+      "expected": "2331971740",
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "num1": "49381",
+        "num2": "17287"
+      },
+      "expected": "853649347",
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "num1": "61726",
+        "num2": "71608"
+      },
+      "expected": "4420075408",
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "num1": "74071",
+        "num2": "25930"
+      },
+      "expected": "1920661030",
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "num1": "86416",
+        "num2": "80251"
+      },
+      "expected": "6934970416",
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "num1": "98761",
+        "num2": "34573"
+      },
+      "expected": "3414464053",
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "num1": "11107",
+        "num2": "88894"
+      },
+      "expected": "987345658",
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "num1": "23452",
+        "num2": "43216"
+      },
+      "expected": "1013501632",
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "num1": "35797",
+        "num2": "97537"
+      },
+      "expected": "3491531989",
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "num1": "48142",
+        "num2": "51859"
+      },
+      "expected": "2496595978",
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "num1": "60487",
+        "num2": "6181"
+      },
+      "expected": "373870147",
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "num1": "72832",
+        "num2": "60502"
+      },
+      "expected": "4406481664",
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "num1": "85177",
+        "num2": "14824"
+      },
+      "expected": "1262663848",
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "num1": "97522",
+        "num2": "69145"
+      },
+      "expected": "6743158690",
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "num1": "9868",
+        "num2": "23467"
+      },
+      "expected": "231572356",
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "num1": "22213",
+        "num2": "77788"
+      },
+      "expected": "1727904844",
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "num1": "34558",
+        "num2": "32110"
+      },
+      "expected": "1109657380",
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "num1": "46903",
+        "num2": "86431"
+      },
+      "expected": "4053873193",
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "num1": "59248",
+        "num2": "40753"
+      },
+      "expected": "2414533744",
+      "hidden": true
+    }
+  ]
+}

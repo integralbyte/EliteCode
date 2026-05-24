@@ -1,0 +1,1672 @@
+{
+  "id": 62,
+  "slug": "add-and-search-word-data-structure-design",
+  "title": "Design Add and Search Words Data Structure",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Depth-First Search",
+    "Design",
+    "Trie"
+  ],
+  "companies": [],
+  "statement": "# Design Add and Search Words Data Structure\n\nDesign a word dictionary that supports adding words and searching patterns where `.` matches any single character. The judge calls `wordDictionary(operations, values)` and compares outputs from `search`.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: add bad, add bag, search b.d, search ba., search b..e\nOutput: [true,true,false]\n```\n\n**Example 2**\n\n```text\nInput: add code, search c.de, search ....\nOutput: [true,true]\n```\n\n**Example 3**\n\n```text\nInput: search .\nOutput: [false]\n```\n\n## Constraints\n\n- Words and patterns contain lowercase letters, digits, or `.`.\n- `search` patterns match the whole word length.",
+  "editorial": "Store words in a trie. During search, a literal follows one child while `.` branches to every child.",
+  "solution_notes": "```python\nclass WordDictionary:\n    def __init__(self):\n        self.children = {}\n        self.end = False\n\n    def addWord(self, word):\n        node = self\n        for ch in word:\n            node = node.children.setdefault(ch, WordDictionary())\n        node.end = True\n\n    def search(self, word):\n        def dfs(index, node):\n            if index == len(word):\n                return node.end\n            ch = word[index]\n            if ch == '.':\n                return any(dfs(index + 1, child) for child in node.children.values())\n            return ch in node.children and dfs(index + 1, node.children[ch])\n        return dfs(0, self)\n\nclass Solution:\n    def wordDictionary(self, operations, values):\n        wd = None\n        out = []\n        for op, args in zip(operations, values):\n            if op == 'WordDictionary':\n                wd = WordDictionary()\n            elif op == 'addWord':\n                wd.addWord(args[0])\n            elif op == 'search':\n                out.append(wd.search(args[0]))\n        return out\n```",
+  "hints": [
+    "A wildcard search can fan out to several children.",
+    "The pattern must consume all characters and end on a stored word."
+  ],
+  "starter_code": {
+    "python": "class WordDictionary:\n    def __init__(self):\n        pass\n\n    def addWord(self, word):\n        pass\n\n    def search(self, word):\n        pass\n\nclass Solution:\n    def wordDictionary(self, operations, values):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "wordDictionary"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "bad"
+          ],
+          [
+            "bag"
+          ],
+          [
+            "b.d"
+          ],
+          [
+            "ba."
+          ],
+          [
+            "b..e"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "code"
+          ],
+          [
+            "c.de"
+          ],
+          [
+            "...."
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "."
+          ]
+        ]
+      },
+      "expected": [
+        false
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map1"
+          ],
+          [
+            "mad1"
+          ],
+          [
+            "ma.1"
+          ],
+          [
+            "m..e1"
+          ],
+          [
+            "made1"
+          ],
+          [
+            "m..e1"
+          ],
+          [
+            "...1"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map2"
+          ],
+          [
+            "mad2"
+          ],
+          [
+            "ma.2"
+          ],
+          [
+            "m..e2"
+          ],
+          [
+            "made2"
+          ],
+          [
+            "m..e2"
+          ],
+          [
+            "...2"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map3"
+          ],
+          [
+            "mad3"
+          ],
+          [
+            "ma.3"
+          ],
+          [
+            "m..e3"
+          ],
+          [
+            "made3"
+          ],
+          [
+            "m..e3"
+          ],
+          [
+            "...3"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map4"
+          ],
+          [
+            "mad4"
+          ],
+          [
+            "ma.4"
+          ],
+          [
+            "m..e4"
+          ],
+          [
+            "made4"
+          ],
+          [
+            "m..e4"
+          ],
+          [
+            "...4"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map5"
+          ],
+          [
+            "mad5"
+          ],
+          [
+            "ma.5"
+          ],
+          [
+            "m..e5"
+          ],
+          [
+            "made5"
+          ],
+          [
+            "m..e5"
+          ],
+          [
+            "...5"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map6"
+          ],
+          [
+            "mad6"
+          ],
+          [
+            "ma.6"
+          ],
+          [
+            "m..e6"
+          ],
+          [
+            "made6"
+          ],
+          [
+            "m..e6"
+          ],
+          [
+            "...6"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map7"
+          ],
+          [
+            "mad7"
+          ],
+          [
+            "ma.7"
+          ],
+          [
+            "m..e7"
+          ],
+          [
+            "made7"
+          ],
+          [
+            "m..e7"
+          ],
+          [
+            "...7"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map8"
+          ],
+          [
+            "mad8"
+          ],
+          [
+            "ma.8"
+          ],
+          [
+            "m..e8"
+          ],
+          [
+            "made8"
+          ],
+          [
+            "m..e8"
+          ],
+          [
+            "...8"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map9"
+          ],
+          [
+            "mad9"
+          ],
+          [
+            "ma.9"
+          ],
+          [
+            "m..e9"
+          ],
+          [
+            "made9"
+          ],
+          [
+            "m..e9"
+          ],
+          [
+            "...9"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map10"
+          ],
+          [
+            "mad10"
+          ],
+          [
+            "ma.10"
+          ],
+          [
+            "m..e10"
+          ],
+          [
+            "made10"
+          ],
+          [
+            "m..e10"
+          ],
+          [
+            "...10"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map11"
+          ],
+          [
+            "mad11"
+          ],
+          [
+            "ma.11"
+          ],
+          [
+            "m..e11"
+          ],
+          [
+            "made11"
+          ],
+          [
+            "m..e11"
+          ],
+          [
+            "...11"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map12"
+          ],
+          [
+            "mad12"
+          ],
+          [
+            "ma.12"
+          ],
+          [
+            "m..e12"
+          ],
+          [
+            "made12"
+          ],
+          [
+            "m..e12"
+          ],
+          [
+            "...12"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map13"
+          ],
+          [
+            "mad13"
+          ],
+          [
+            "ma.13"
+          ],
+          [
+            "m..e13"
+          ],
+          [
+            "made13"
+          ],
+          [
+            "m..e13"
+          ],
+          [
+            "...13"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map14"
+          ],
+          [
+            "mad14"
+          ],
+          [
+            "ma.14"
+          ],
+          [
+            "m..e14"
+          ],
+          [
+            "made14"
+          ],
+          [
+            "m..e14"
+          ],
+          [
+            "...14"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map15"
+          ],
+          [
+            "mad15"
+          ],
+          [
+            "ma.15"
+          ],
+          [
+            "m..e15"
+          ],
+          [
+            "made15"
+          ],
+          [
+            "m..e15"
+          ],
+          [
+            "...15"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map16"
+          ],
+          [
+            "mad16"
+          ],
+          [
+            "ma.16"
+          ],
+          [
+            "m..e16"
+          ],
+          [
+            "made16"
+          ],
+          [
+            "m..e16"
+          ],
+          [
+            "...16"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map17"
+          ],
+          [
+            "mad17"
+          ],
+          [
+            "ma.17"
+          ],
+          [
+            "m..e17"
+          ],
+          [
+            "made17"
+          ],
+          [
+            "m..e17"
+          ],
+          [
+            "...17"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map18"
+          ],
+          [
+            "mad18"
+          ],
+          [
+            "ma.18"
+          ],
+          [
+            "m..e18"
+          ],
+          [
+            "made18"
+          ],
+          [
+            "m..e18"
+          ],
+          [
+            "...18"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map19"
+          ],
+          [
+            "mad19"
+          ],
+          [
+            "ma.19"
+          ],
+          [
+            "m..e19"
+          ],
+          [
+            "made19"
+          ],
+          [
+            "m..e19"
+          ],
+          [
+            "...19"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map20"
+          ],
+          [
+            "mad20"
+          ],
+          [
+            "ma.20"
+          ],
+          [
+            "m..e20"
+          ],
+          [
+            "made20"
+          ],
+          [
+            "m..e20"
+          ],
+          [
+            "...20"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map21"
+          ],
+          [
+            "mad21"
+          ],
+          [
+            "ma.21"
+          ],
+          [
+            "m..e21"
+          ],
+          [
+            "made21"
+          ],
+          [
+            "m..e21"
+          ],
+          [
+            "...21"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map22"
+          ],
+          [
+            "mad22"
+          ],
+          [
+            "ma.22"
+          ],
+          [
+            "m..e22"
+          ],
+          [
+            "made22"
+          ],
+          [
+            "m..e22"
+          ],
+          [
+            "...22"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map23"
+          ],
+          [
+            "mad23"
+          ],
+          [
+            "ma.23"
+          ],
+          [
+            "m..e23"
+          ],
+          [
+            "made23"
+          ],
+          [
+            "m..e23"
+          ],
+          [
+            "...23"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map24"
+          ],
+          [
+            "mad24"
+          ],
+          [
+            "ma.24"
+          ],
+          [
+            "m..e24"
+          ],
+          [
+            "made24"
+          ],
+          [
+            "m..e24"
+          ],
+          [
+            "...24"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map25"
+          ],
+          [
+            "mad25"
+          ],
+          [
+            "ma.25"
+          ],
+          [
+            "m..e25"
+          ],
+          [
+            "made25"
+          ],
+          [
+            "m..e25"
+          ],
+          [
+            "...25"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map26"
+          ],
+          [
+            "mad26"
+          ],
+          [
+            "ma.26"
+          ],
+          [
+            "m..e26"
+          ],
+          [
+            "made26"
+          ],
+          [
+            "m..e26"
+          ],
+          [
+            "...26"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map27"
+          ],
+          [
+            "mad27"
+          ],
+          [
+            "ma.27"
+          ],
+          [
+            "m..e27"
+          ],
+          [
+            "made27"
+          ],
+          [
+            "m..e27"
+          ],
+          [
+            "...27"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map28"
+          ],
+          [
+            "mad28"
+          ],
+          [
+            "ma.28"
+          ],
+          [
+            "m..e28"
+          ],
+          [
+            "made28"
+          ],
+          [
+            "m..e28"
+          ],
+          [
+            "...28"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map29"
+          ],
+          [
+            "mad29"
+          ],
+          [
+            "ma.29"
+          ],
+          [
+            "m..e29"
+          ],
+          [
+            "made29"
+          ],
+          [
+            "m..e29"
+          ],
+          [
+            "...29"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map30"
+          ],
+          [
+            "mad30"
+          ],
+          [
+            "ma.30"
+          ],
+          [
+            "m..e30"
+          ],
+          [
+            "made30"
+          ],
+          [
+            "m..e30"
+          ],
+          [
+            "...30"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map31"
+          ],
+          [
+            "mad31"
+          ],
+          [
+            "ma.31"
+          ],
+          [
+            "m..e31"
+          ],
+          [
+            "made31"
+          ],
+          [
+            "m..e31"
+          ],
+          [
+            "...31"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map32"
+          ],
+          [
+            "mad32"
+          ],
+          [
+            "ma.32"
+          ],
+          [
+            "m..e32"
+          ],
+          [
+            "made32"
+          ],
+          [
+            "m..e32"
+          ],
+          [
+            "...32"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          [],
+          [
+            "map33"
+          ],
+          [
+            "mad33"
+          ],
+          [
+            "ma.33"
+          ],
+          [
+            "m..e33"
+          ],
+          [
+            "made33"
+          ],
+          [
+            "m..e33"
+          ],
+          [
+            "...33"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "hidden": true
+    }
+  ]
+}

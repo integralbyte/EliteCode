@@ -1,0 +1,438 @@
+{
+  "id": 16,
+  "slug": "longest-substring-without-repeating-characters",
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "Medium",
+  "tags": [
+    "Sliding Window",
+    "Hash Table",
+    "String"
+  ],
+  "companies": [],
+  "statement": "# Longest Substring Without Repeating Characters\n\nReturn the length of the longest contiguous substring that contains no repeated characters.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = \"abcabcbb\"\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: s = \"bbbbb\"\nOutput: 1\n```\n\n**Example 3**\n\n```text\nInput: s = \"pwwkew\"\nOutput: 3\n```\n\n## Constraints\n\n- Input sizes follow the original interview-style constraints.\n- Return values must match the described behavior.",
+  "editorial": "Maintain only the state needed for the current window or scan. Move the left boundary when the current state violates the target condition.",
+  "solution_notes": "```python\nclass Solution:\n    def lengthOfLongestSubstring(self, s):\n        last = {}\n        left = 0\n        best = 0\n        for right, ch in enumerate(s):\n            if ch in last and last[ch] >= left:\n                left = last[ch] + 1\n            last[ch] = right\n            best = max(best, right - left + 1)\n        return best\n```",
+  "hints": [
+    "Ask what information changes when the right edge moves.",
+    "Shrink the left edge only when the window no longer satisfies the condition."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def lengthOfLongestSubstring(self, s):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "lengthOfLongestSubstring"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "abcabcbb"
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "bbbbb"
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "pwwkew"
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "abcabcbb"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "bbbbb"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "pwwkew"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": ""
+      },
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "au"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "dvdf"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "abba"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "tmmzuxt"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "abcdef"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "aab"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "anviaj"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "ohvhjdml"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "abcadeafg"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "zzzzzz"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "longest"
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "qrsvbspk"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "aabaab!bb"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "12345123"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "abcdefga"
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "nfpdmpi"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "wobgrovw"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "aaaaaaaaaaaaaaaaaaaa"
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "abababababababababababab"
+      },
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "s": "abcdabcdabcdabcdabcdabcdabcdabcd"
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "s": "thequickbrownfox"
+      },
+      "expected": 14,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "s": "abbaacdef"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "s": "xyzxyza"
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "s": "dvdfxyz"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "s": "abc def"
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "s": "space bar"
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "s": "caseCASE"
+      },
+      "expected": 8,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "s": "AaBbCc"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "s": "mississippi"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "s": "subdermatoglyphic"
+      },
+      "expected": 17,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "s": "redivider"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "s": "algorithm"
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "s": "datastructures"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "s": "slidingwindow"
+      },
+      "expected": 6,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "s": "hashmap"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "s": "queue"
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "s": "stack"
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "s": "monotonic"
+      },
+      "expected": 5,
+      "hidden": true
+    }
+  ]
+}

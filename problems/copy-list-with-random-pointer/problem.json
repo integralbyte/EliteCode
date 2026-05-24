@@ -1,0 +1,1890 @@
+{
+  "id": 40,
+  "slug": "copy-list-with-random-pointer",
+  "title": "Copy List with Random Pointer",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Linked List"
+  ],
+  "companies": [],
+  "statement": "# Copy List with Random Pointer\n\nEach node has `next` and `random` pointers. Return the head of a newly allocated list with the same values and pointer relationships.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nodes = [[10,2],[20,null],[30,0]]\nOutput: [[10,2],[20,null],[30,0]]\n```\n\n**Example 2**\n\n```text\nInput: nodes = [[1,1],[2,1]]\nOutput: [[1,1],[2,1]]\n```\n\n**Example 3**\n\n```text\nInput: nodes = []\nOutput: []\n```\n\n## Constraints\n\n- The judge provides a `Node` class with `val`, `next`, and `random` fields.\n- A random pointer may be `null` or point to any node in the same list.",
+  "editorial": "Map each original node to its clone, then wire `next` and `random` pointers using that map.",
+  "solution_notes": "```python\nclass Solution:\n    def copyRandomList(self, head):\n        if not head:\n            return None\n        clones = {None: None}\n        node = head\n        while node:\n            clones[node] = Node(node.val)\n            node = node.next\n        node = head\n        while node:\n            clones[node].next = clones[node.next]\n            clones[node].random = clones[node.random]\n            node = node.next\n        return clones[head]\n```",
+  "hints": [
+    "A dictionary can remember which copy belongs to each original node.",
+    "Create all nodes before assigning random pointers."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def copyRandomList(self, head):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "copyRandomList"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              10,
+              2
+            ],
+            [
+              20,
+              null
+            ],
+            [
+              30,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          10,
+          2
+        ],
+        [
+          20,
+          null
+        ],
+        [
+          30,
+          0
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": []
+        }
+      },
+      "expected": [],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              13,
+              1
+            ],
+            [
+              26,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          13,
+          1
+        ],
+        [
+          26,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              26,
+              2
+            ],
+            [
+              39,
+              0
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          26,
+          2
+        ],
+        [
+          39,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              39,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              15,
+              2
+            ],
+            [
+              28,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          39,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          28,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              2,
+              4
+            ],
+            [
+              15,
+              0
+            ],
+            [
+              28,
+              2
+            ],
+            [
+              41,
+              4
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          2,
+          4
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          28,
+          2
+        ],
+        [
+          41,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              15,
+              5
+            ],
+            [
+              28,
+              0
+            ],
+            [
+              41,
+              2
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              17,
+              null
+            ],
+            [
+              30,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          15,
+          5
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          41,
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          17,
+          null
+        ],
+        [
+          30,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              28,
+              6
+            ],
+            [
+              41,
+              0
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              17,
+              4
+            ],
+            [
+              30,
+              6
+            ],
+            [
+              43,
+              0
+            ],
+            [
+              6,
+              2
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          28,
+          6
+        ],
+        [
+          41,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          4
+        ],
+        [
+          30,
+          6
+        ],
+        [
+          43,
+          0
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              41,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          41,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              4,
+              null
+            ],
+            [
+              17,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          4,
+          null
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              17,
+              1
+            ],
+            [
+              30,
+              null
+            ],
+            [
+              43,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          17,
+          1
+        ],
+        [
+          30,
+          null
+        ],
+        [
+          43,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              30,
+              0
+            ],
+            [
+              43,
+              2
+            ],
+            [
+              6,
+              null
+            ],
+            [
+              19,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          30,
+          0
+        ],
+        [
+          43,
+          2
+        ],
+        [
+          6,
+          null
+        ],
+        [
+          19,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              43,
+              null
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              19,
+              3
+            ],
+            [
+              32,
+              null
+            ],
+            [
+              45,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          43,
+          null
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          32,
+          null
+        ],
+        [
+          45,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              6,
+              5
+            ],
+            [
+              19,
+              0
+            ],
+            [
+              32,
+              2
+            ],
+            [
+              45,
+              4
+            ],
+            [
+              8,
+              null
+            ],
+            [
+              21,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          6,
+          5
+        ],
+        [
+          19,
+          0
+        ],
+        [
+          32,
+          2
+        ],
+        [
+          45,
+          4
+        ],
+        [
+          8,
+          null
+        ],
+        [
+          21,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              19,
+              5
+            ],
+            [
+              32,
+              null
+            ],
+            [
+              45,
+              1
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              21,
+              5
+            ],
+            [
+              34,
+              null
+            ],
+            [
+              47,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          19,
+          5
+        ],
+        [
+          32,
+          null
+        ],
+        [
+          45,
+          1
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          34,
+          null
+        ],
+        [
+          47,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              32,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          32,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              45,
+              0
+            ],
+            [
+              8,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          45,
+          0
+        ],
+        [
+          8,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              8,
+              0
+            ],
+            [
+              21,
+              2
+            ],
+            [
+              34,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          8,
+          0
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          34,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              21,
+              2
+            ],
+            [
+              34,
+              null
+            ],
+            [
+              47,
+              1
+            ],
+            [
+              10,
+              3
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          21,
+          2
+        ],
+        [
+          34,
+          null
+        ],
+        [
+          47,
+          1
+        ],
+        [
+          10,
+          3
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              34,
+              0
+            ],
+            [
+              47,
+              2
+            ],
+            [
+              10,
+              4
+            ],
+            [
+              23,
+              0
+            ],
+            [
+              36,
+              2
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          34,
+          0
+        ],
+        [
+          47,
+          2
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          23,
+          0
+        ],
+        [
+          36,
+          2
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              47,
+              5
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              23,
+              2
+            ],
+            [
+              36,
+              4
+            ],
+            [
+              49,
+              null
+            ],
+            [
+              12,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          47,
+          5
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          23,
+          2
+        ],
+        [
+          36,
+          4
+        ],
+        [
+          49,
+          null
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              10,
+              4
+            ],
+            [
+              23,
+              6
+            ],
+            [
+              36,
+              0
+            ],
+            [
+              49,
+              2
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              25,
+              6
+            ],
+            [
+              38,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          10,
+          4
+        ],
+        [
+          23,
+          6
+        ],
+        [
+          36,
+          0
+        ],
+        [
+          49,
+          2
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          25,
+          6
+        ],
+        [
+          38,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              23,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          23,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              36,
+              1
+            ],
+            [
+              49,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          36,
+          1
+        ],
+        [
+          49,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              49,
+              null
+            ],
+            [
+              12,
+              1
+            ],
+            [
+              25,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          49,
+          null
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          25,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              12,
+              null
+            ],
+            [
+              25,
+              1
+            ],
+            [
+              38,
+              3
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          12,
+          null
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          38,
+          3
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              25,
+              1
+            ],
+            [
+              38,
+              3
+            ],
+            [
+              1,
+              null
+            ],
+            [
+              14,
+              1
+            ],
+            [
+              27,
+              3
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          25,
+          1
+        ],
+        [
+          38,
+          3
+        ],
+        [
+          1,
+          null
+        ],
+        [
+          14,
+          1
+        ],
+        [
+          27,
+          3
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              38,
+              5
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              14,
+              2
+            ],
+            [
+              27,
+              4
+            ],
+            [
+              40,
+              null
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          38,
+          5
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          27,
+          4
+        ],
+        [
+          40,
+          null
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              1,
+              3
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              27,
+              null
+            ],
+            [
+              40,
+              1
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              16,
+              5
+            ],
+            [
+              29,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          1,
+          3
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          27,
+          null
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          16,
+          5
+        ],
+        [
+          29,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              14,
+              0
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          14,
+          0
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              27,
+              null
+            ],
+            [
+              40,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          27,
+          null
+        ],
+        [
+          40,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              40,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              16,
+              2
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          40,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              3,
+              1
+            ],
+            [
+              16,
+              3
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              42,
+              2
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          3,
+          1
+        ],
+        [
+          16,
+          3
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          42,
+          2
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              16,
+              2
+            ],
+            [
+              29,
+              4
+            ],
+            [
+              42,
+              0
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              18,
+              4
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          16,
+          2
+        ],
+        [
+          29,
+          4
+        ],
+        [
+          42,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          18,
+          4
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              29,
+              5
+            ],
+            [
+              42,
+              0
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              18,
+              4
+            ],
+            [
+              31,
+              null
+            ],
+            [
+              44,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          29,
+          5
+        ],
+        [
+          42,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          18,
+          4
+        ],
+        [
+          31,
+          null
+        ],
+        [
+          44,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              42,
+              2
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              44,
+              2
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              20,
+              6
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          42,
+          2
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          44,
+          2
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          20,
+          6
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              5,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          5,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              18,
+              0
+            ],
+            [
+              31,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          18,
+          0
+        ],
+        [
+          31,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              31,
+              1
+            ],
+            [
+              44,
+              null
+            ],
+            [
+              7,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          31,
+          1
+        ],
+        [
+          44,
+          null
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              44,
+              3
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              20,
+              2
+            ],
+            [
+              33,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          44,
+          3
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          33,
+          null
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "head": {
+          "__elite_type": "random_list",
+          "nodes": [
+            [
+              7,
+              3
+            ],
+            [
+              20,
+              null
+            ],
+            [
+              33,
+              1
+            ],
+            [
+              46,
+              3
+            ],
+            [
+              9,
+              null
+            ]
+          ]
+        }
+      },
+      "expected": [
+        [
+          7,
+          3
+        ],
+        [
+          20,
+          null
+        ],
+        [
+          33,
+          1
+        ],
+        [
+          46,
+          3
+        ],
+        [
+          9,
+          null
+        ]
+      ],
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,1272 @@
+{
+  "id": 63,
+  "slug": "word-search-ii",
+  "title": "Word Search II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Trie",
+    "Matrix"
+  ],
+  "companies": [],
+  "statement": "# Word Search II\n\nGiven a character board and a list of words, return every word that can be formed by walking horizontally or vertically through adjacent cells without reusing a cell in the same word.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: board = [[o,a,t],[e,t,a],[i,h,k]], words = [oat,eat,tea,hat,rain]\nOutput: [eat,oat,tea]\n```\n\n**Example 2**\n\n```text\nInput: board = [[a,b],[c,d]], words = [ab,abcd,ac,bd]\nOutput: [ab,ac,bd]\n```\n\n**Example 3**\n\n```text\nInput: board = [[x]], words = [x,xx]\nOutput: [x]\n```\n\n## Constraints\n\n- `1 <= rows, cols`\n- Words contain lowercase letters.\n- Output order is ignored by the checker.",
+  "editorial": "Build a trie of candidate words, then DFS from each board cell while pruning paths that are not trie prefixes.",
+  "solution_notes": "```python\nclass Solution:\n    def findWords(self, board, words):\n        trie = {}\n        for word in words:\n            node = trie\n            for ch in word:\n                node = node.setdefault(ch, {})\n            node['$'] = word\n        rows, cols = len(board), len(board[0])\n        found = set()\n        def dfs(r, c, node):\n            if r < 0 or c < 0 or r == rows or c == cols:\n                return\n            ch = board[r][c]\n            if ch == '#' or ch not in node:\n                return\n            nxt = node[ch]\n            if '$' in nxt:\n                found.add(nxt['$'])\n            board[r][c] = '#'\n            dfs(r + 1, c, nxt)\n            dfs(r - 1, c, nxt)\n            dfs(r, c + 1, nxt)\n            dfs(r, c - 1, nxt)\n            board[r][c] = ch\n        for r in range(rows):\n            for c in range(cols):\n                dfs(r, c, trie)\n        return sorted(found)\n```",
+  "hints": [
+    "Searching each word independently repeats a lot of prefix work.",
+    "Prune DFS as soon as the current path is not in the trie."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def findWords(self, board, words):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "findWords"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "board": [
+          [
+            "o",
+            "a",
+            "t"
+          ],
+          [
+            "e",
+            "t",
+            "a"
+          ],
+          [
+            "i",
+            "h",
+            "k"
+          ]
+        ],
+        "words": [
+          "oat",
+          "eat",
+          "tea",
+          "hat",
+          "rain"
+        ]
+      },
+      "expected": [
+        "oat"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "board": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        "words": [
+          "ab",
+          "abcd",
+          "ac",
+          "bd"
+        ]
+      },
+      "expected": [
+        "ab",
+        "ac",
+        "bd"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "board": [
+          [
+            "x"
+          ]
+        ],
+        "words": [
+          "x",
+          "xx"
+        ]
+      },
+      "expected": [
+        "x"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "board": [
+          [
+            "b",
+            "g",
+            "e",
+            "c"
+          ],
+          [
+            "e",
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "a",
+            "f",
+            "d",
+            "b"
+          ]
+        ],
+        "words": [
+          "bgec",
+          "bea",
+          "be",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "be",
+        "bea",
+        "bgec"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "board": [
+          [
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "e",
+            "c",
+            "a"
+          ]
+        ],
+        "words": [
+          "caf",
+          "cfbe",
+          "cf",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "caf",
+        "cf",
+        "cfbe"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "board": [
+          [
+            "d",
+            "b"
+          ],
+          [
+            "g",
+            "e"
+          ]
+        ],
+        "words": [
+          "db",
+          "dg",
+          "dg",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "db",
+        "dg"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "board": [
+          [
+            "e",
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "a",
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "d",
+            "b",
+            "g",
+            "e"
+          ]
+        ],
+        "words": [
+          "ecaf",
+          "ead",
+          "ea",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ea",
+        "ead",
+        "ecaf"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "board": [
+          [
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "a",
+            "f",
+            "d"
+          ]
+        ],
+        "words": [
+          "fdb",
+          "fbea",
+          "fb",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "fb",
+        "fbea",
+        "fdb"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "board": [
+          [
+            "g",
+            "e"
+          ],
+          [
+            "c",
+            "a"
+          ]
+        ],
+        "words": [
+          "ge",
+          "gc",
+          "gc",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "gc",
+        "ge"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "board": [
+          [
+            "a",
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "d",
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "g",
+            "e",
+            "c",
+            "a"
+          ]
+        ],
+        "words": [
+          "afdb",
+          "adg",
+          "ad",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ad",
+        "adg",
+        "afdb"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "board": [
+          [
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "d",
+            "b",
+            "g"
+          ]
+        ],
+        "words": [
+          "bge",
+          "bead",
+          "be",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "be",
+        "bead",
+        "bge"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "board": [
+          [
+            "c",
+            "a"
+          ],
+          [
+            "f",
+            "d"
+          ]
+        ],
+        "words": [
+          "ca",
+          "cf",
+          "cf",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ca",
+        "cf"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "board": [
+          [
+            "d",
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "g",
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "c",
+            "a",
+            "f",
+            "d"
+          ]
+        ],
+        "words": [
+          "dbge",
+          "dgc",
+          "dg",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "dbge",
+        "dg",
+        "dgc"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "board": [
+          [
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "d",
+            "b",
+            "g"
+          ],
+          [
+            "g",
+            "e",
+            "c"
+          ]
+        ],
+        "words": [
+          "eca",
+          "eadg",
+          "ea",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ea",
+        "eadg",
+        "eca"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "board": [
+          [
+            "f",
+            "d"
+          ],
+          [
+            "b",
+            "g"
+          ]
+        ],
+        "words": [
+          "fd",
+          "fb",
+          "fb",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "fb",
+        "fd"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "board": [
+          [
+            "g",
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "c",
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "f",
+            "d",
+            "b",
+            "g"
+          ]
+        ],
+        "words": [
+          "geca",
+          "gcf",
+          "gc",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "gc",
+        "gcf",
+        "geca"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "board": [
+          [
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "d",
+            "b",
+            "g"
+          ],
+          [
+            "g",
+            "e",
+            "c"
+          ],
+          [
+            "c",
+            "a",
+            "f"
+          ]
+        ],
+        "words": [
+          "afd",
+          "adgc",
+          "ad",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ad",
+        "adgc",
+        "afd"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "board": [
+          [
+            "b",
+            "g"
+          ],
+          [
+            "e",
+            "c"
+          ]
+        ],
+        "words": [
+          "bg",
+          "be",
+          "be",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "be",
+        "bg"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "board": [
+          [
+            "c",
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "f",
+            "d",
+            "b",
+            "g"
+          ],
+          [
+            "b",
+            "g",
+            "e",
+            "c"
+          ]
+        ],
+        "words": [
+          "cafd",
+          "cfb",
+          "cf",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "cafd",
+        "cf",
+        "cfb"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "board": [
+          [
+            "d",
+            "b",
+            "g"
+          ],
+          [
+            "g",
+            "e",
+            "c"
+          ],
+          [
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "f",
+            "d",
+            "b"
+          ]
+        ],
+        "words": [
+          "dbg",
+          "dgcf",
+          "dg",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "dbg",
+        "dg",
+        "dgcf"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "board": [
+          [
+            "e",
+            "c"
+          ],
+          [
+            "a",
+            "f"
+          ]
+        ],
+        "words": [
+          "ec",
+          "ea",
+          "ea",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ea",
+        "ec"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "board": [
+          [
+            "f",
+            "d",
+            "b",
+            "g"
+          ],
+          [
+            "b",
+            "g",
+            "e",
+            "c"
+          ],
+          [
+            "e",
+            "c",
+            "a",
+            "f"
+          ]
+        ],
+        "words": [
+          "fdbg",
+          "fbe",
+          "fb",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "fb",
+        "fbe",
+        "fdbg"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "board": [
+          [
+            "g",
+            "e",
+            "c"
+          ],
+          [
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "b",
+            "g",
+            "e"
+          ]
+        ],
+        "words": [
+          "gec",
+          "gcfb",
+          "gc",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "gc",
+        "gcfb",
+        "gec"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "board": [
+          [
+            "a",
+            "f"
+          ],
+          [
+            "d",
+            "b"
+          ]
+        ],
+        "words": [
+          "af",
+          "ad",
+          "ad",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ad",
+        "af"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "board": [
+          [
+            "b",
+            "g",
+            "e",
+            "c"
+          ],
+          [
+            "e",
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "a",
+            "f",
+            "d",
+            "b"
+          ]
+        ],
+        "words": [
+          "bgec",
+          "bea",
+          "be",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "be",
+        "bea",
+        "bgec"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "board": [
+          [
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "e",
+            "c",
+            "a"
+          ]
+        ],
+        "words": [
+          "caf",
+          "cfbe",
+          "cf",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "caf",
+        "cf",
+        "cfbe"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "board": [
+          [
+            "d",
+            "b"
+          ],
+          [
+            "g",
+            "e"
+          ]
+        ],
+        "words": [
+          "db",
+          "dg",
+          "dg",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "db",
+        "dg"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "board": [
+          [
+            "e",
+            "c",
+            "a",
+            "f"
+          ],
+          [
+            "a",
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "d",
+            "b",
+            "g",
+            "e"
+          ]
+        ],
+        "words": [
+          "ecaf",
+          "ead",
+          "ea",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ea",
+        "ead",
+        "ecaf"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "board": [
+          [
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "a",
+            "f",
+            "d"
+          ]
+        ],
+        "words": [
+          "fdb",
+          "fbea",
+          "fb",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "fb",
+        "fbea",
+        "fdb"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "board": [
+          [
+            "g",
+            "e"
+          ],
+          [
+            "c",
+            "a"
+          ]
+        ],
+        "words": [
+          "ge",
+          "gc",
+          "gc",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "gc",
+        "ge"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "board": [
+          [
+            "a",
+            "f",
+            "d",
+            "b"
+          ],
+          [
+            "d",
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "g",
+            "e",
+            "c",
+            "a"
+          ]
+        ],
+        "words": [
+          "afdb",
+          "adg",
+          "ad",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ad",
+        "adg",
+        "afdb"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "board": [
+          [
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "d",
+            "b",
+            "g"
+          ]
+        ],
+        "words": [
+          "bge",
+          "bead",
+          "be",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "be",
+        "bead",
+        "bge"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "board": [
+          [
+            "c",
+            "a"
+          ],
+          [
+            "f",
+            "d"
+          ]
+        ],
+        "words": [
+          "ca",
+          "cf",
+          "cf",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ca",
+        "cf"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "board": [
+          [
+            "d",
+            "b",
+            "g",
+            "e"
+          ],
+          [
+            "g",
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "c",
+            "a",
+            "f",
+            "d"
+          ]
+        ],
+        "words": [
+          "dbge",
+          "dgc",
+          "dg",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "dbge",
+        "dg",
+        "dgc"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "board": [
+          [
+            "e",
+            "c",
+            "a"
+          ],
+          [
+            "a",
+            "f",
+            "d"
+          ],
+          [
+            "d",
+            "b",
+            "g"
+          ],
+          [
+            "g",
+            "e",
+            "c"
+          ]
+        ],
+        "words": [
+          "eca",
+          "eadg",
+          "ea",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "ea",
+        "eadg",
+        "eca"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "board": [
+          [
+            "f",
+            "d"
+          ],
+          [
+            "b",
+            "g"
+          ]
+        ],
+        "words": [
+          "fd",
+          "fb",
+          "fb",
+          "zzzz"
+        ]
+      },
+      "expected": [
+        "fb",
+        "fd"
+      ],
+      "hidden": true
+    }
+  ]
+}

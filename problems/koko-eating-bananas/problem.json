@@ -1,0 +1,721 @@
+{
+  "id": 30,
+  "slug": "koko-eating-bananas",
+  "title": "Koko Eating Bananas",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search"
+  ],
+  "companies": [],
+  "statement": "# Koko Eating Bananas\n\nGiven banana piles and `h` hours, choose the smallest integer eating speed that finishes every pile within `h` hours.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: piles = [4, 11, 20, 23], h = 6\nOutput: 12\n```\n\n**Example 2**\n\n```text\nInput: piles = [30, 11, 23, 4, 20], h = 10\nOutput: 11\n```\n\n**Example 3**\n\n```text\nInput: piles = [9], h = 3\nOutput: 3\n```\n\n## Constraints\n\n- `1 <= len(piles) <= 10000`\n- `len(piles) <= h <= 10^9`\n- `1 <= piles[i] <= 10^9`",
+  "editorial": "A speed either works or does not. If speed `x` works, any larger speed also works. Binary search the smallest working speed.",
+  "solution_notes": "```python\nimport math\n\nclass Solution:\n    def minEatingSpeed(self, piles, h):\n        left, right = 1, max(piles)\n        while left < right:\n            mid = (left + right) // 2\n            hours = sum(math.ceil(pile / mid) for pile in piles)\n            if hours <= h:\n                right = mid\n            else:\n                left = mid + 1\n        return left\n```",
+  "hints": [
+    "The answer is between 1 and the largest pile.",
+    "The feasibility function is monotonic."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def minEatingSpeed(self, piles, h):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "minEatingSpeed"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "piles": [
+          4,
+          11,
+          20,
+          23
+        ],
+        "h": 6
+      },
+      "expected": 12,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "piles": [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        "h": 10
+      },
+      "expected": 11,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "piles": [
+          9
+        ],
+        "h": 3
+      },
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "piles": [
+          12,
+          19
+        ],
+        "h": 3
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "piles": [
+          23,
+          30,
+          37
+        ],
+        "h": 5
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "piles": [
+          34,
+          41,
+          48,
+          55
+        ],
+        "h": 7
+      },
+      "expected": 34,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "piles": [
+          45,
+          52,
+          59,
+          66,
+          73
+        ],
+        "h": 9
+      },
+      "expected": 45,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "piles": [
+          56,
+          63,
+          70,
+          77,
+          4,
+          11
+        ],
+        "h": 11
+      },
+      "expected": 35,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "piles": [
+          67,
+          74,
+          1,
+          8,
+          15,
+          22,
+          29
+        ],
+        "h": 13
+      },
+      "expected": 23,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "piles": [
+          78,
+          5,
+          12,
+          19,
+          26,
+          33,
+          40,
+          47
+        ],
+        "h": 15
+      },
+      "expected": 24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "piles": [
+          9
+        ],
+        "h": 9
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "piles": [
+          20,
+          27
+        ],
+        "h": 11
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "piles": [
+          31,
+          38,
+          45
+        ],
+        "h": 13
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "piles": [
+          42,
+          49,
+          56,
+          63
+        ],
+        "h": 15
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "piles": [
+          53,
+          60,
+          67,
+          74,
+          1
+        ],
+        "h": 17
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "piles": [
+          64,
+          71,
+          78,
+          5,
+          12,
+          19
+        ],
+        "h": 19
+      },
+      "expected": 16,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "piles": [
+          75,
+          2,
+          9,
+          16,
+          23,
+          30,
+          37
+        ],
+        "h": 21
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "piles": [
+          6,
+          13,
+          20,
+          27,
+          34,
+          41,
+          48,
+          55
+        ],
+        "h": 23
+      },
+      "expected": 13,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "piles": [
+          17
+        ],
+        "h": 17
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "piles": [
+          28,
+          35
+        ],
+        "h": 19
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "piles": [
+          39,
+          46,
+          53
+        ],
+        "h": 21
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "piles": [
+          50,
+          57,
+          64,
+          71
+        ],
+        "h": 23
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "piles": [
+          61,
+          68,
+          75,
+          2,
+          9
+        ],
+        "h": 25
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "piles": [
+          72,
+          79,
+          6,
+          13,
+          20,
+          27
+        ],
+        "h": 27
+      },
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "piles": [
+          3,
+          10,
+          17,
+          24,
+          31,
+          38,
+          45
+        ],
+        "h": 29
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "piles": [
+          14,
+          21,
+          28,
+          35,
+          42,
+          49,
+          56,
+          63
+        ],
+        "h": 31
+      },
+      "expected": 12,
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "piles": [
+          25
+        ],
+        "h": 25
+      },
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "piles": [
+          36,
+          43
+        ],
+        "h": 2
+      },
+      "expected": 43,
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "piles": [
+          47,
+          54,
+          61
+        ],
+        "h": 4
+      },
+      "expected": 54,
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "piles": [
+          58,
+          65,
+          72,
+          79
+        ],
+        "h": 6
+      },
+      "expected": 65,
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "piles": [
+          69,
+          76,
+          3,
+          10,
+          17
+        ],
+        "h": 8
+      },
+      "expected": 35,
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "piles": [
+          80,
+          7,
+          14,
+          21,
+          28,
+          35
+        ],
+        "h": 10
+      },
+      "expected": 27,
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "piles": [
+          11,
+          18,
+          25,
+          32,
+          39,
+          46,
+          53
+        ],
+        "h": 12
+      },
+      "expected": 25,
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "piles": [
+          22,
+          29,
+          36,
+          43,
+          50,
+          57,
+          64,
+          71
+        ],
+        "h": 14
+      },
+      "expected": 36,
+      "hidden": true
+    },
+    {
+      "id": "hidden-32",
+      "name": "Hidden Case 32",
+      "input": {
+        "piles": [
+          33
+        ],
+        "h": 8
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-33",
+      "name": "Hidden Case 33",
+      "input": {
+        "piles": [
+          44,
+          51
+        ],
+        "h": 10
+      },
+      "expected": 11,
+      "hidden": true
+    },
+    {
+      "id": "hidden-34",
+      "name": "Hidden Case 34",
+      "input": {
+        "piles": [
+          55,
+          62,
+          69
+        ],
+        "h": 12
+      },
+      "expected": 18,
+      "hidden": true
+    },
+    {
+      "id": "hidden-35",
+      "name": "Hidden Case 35",
+      "input": {
+        "piles": [
+          66,
+          73,
+          80,
+          7
+        ],
+        "h": 14
+      },
+      "expected": 19,
+      "hidden": true
+    },
+    {
+      "id": "hidden-36",
+      "name": "Hidden Case 36",
+      "input": {
+        "piles": [
+          77,
+          4,
+          11,
+          18,
+          25
+        ],
+        "h": 16
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-37",
+      "name": "Hidden Case 37",
+      "input": {
+        "piles": [
+          8,
+          15,
+          22,
+          29,
+          36,
+          43
+        ],
+        "h": 18
+      },
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "id": "hidden-38",
+      "name": "Hidden Case 38",
+      "input": {
+        "piles": [
+          19,
+          26,
+          33,
+          40,
+          47,
+          54,
+          61
+        ],
+        "h": 20
+      },
+      "expected": 17,
+      "hidden": true
+    },
+    {
+      "id": "hidden-39",
+      "name": "Hidden Case 39",
+      "input": {
+        "piles": [
+          30,
+          37,
+          44,
+          51,
+          58,
+          65,
+          72,
+          79
+        ],
+        "h": 22
+      },
+      "expected": 24,
+      "hidden": true
+    },
+    {
+      "id": "hidden-40",
+      "name": "Hidden Case 40",
+      "input": {
+        "piles": [
+          41
+        ],
+        "h": 16
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-41",
+      "name": "Hidden Case 41",
+      "input": {
+        "piles": [
+          52,
+          59
+        ],
+        "h": 18
+      },
+      "expected": 7,
+      "hidden": true
+    },
+    {
+      "id": "hidden-42",
+      "name": "Hidden Case 42",
+      "input": {
+        "piles": [
+          63,
+          70,
+          77
+        ],
+        "h": 20
+      },
+      "expected": 11,
+      "hidden": true
+    }
+  ]
+}

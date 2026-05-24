@@ -1,0 +1,534 @@
+{
+  "id": 109,
+  "slug": "longest-increasing-subsequence",
+  "title": "Longest Increasing Subsequence",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming"
+  ],
+  "companies": [],
+  "statement": "# Longest Increasing Subsequence\n\nReturn the length of the longest strictly increasing subsequence.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [10,9,2,5,3,7,101,18]\nOutput: 4\n```\n\n**Example 2**\n\n```text\nInput: nums = [0,1,0,3,2,3]\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: nums = [7,7,7]\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
+  "solution_notes": "```python\nimport bisect\n\nclass Solution:\n    def lengthOfLIS(self, nums):\n        tails = []\n        for value in nums:\n            i = bisect.bisect_left(tails, value)\n            if i == len(tails): tails.append(value)\n            else: tails[i] = value\n        return len(tails)\n```",
+  "hints": [
+    "Identify what information must be remembered between decisions.",
+    "Cache repeated subproblems or fill a table iteratively."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def lengthOfLIS(self, nums):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "lengthOfLIS"
+  },
+  "checker": {
+    "type": "exact"
+  },
+  "time_limit_ms": 2500,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "nums": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ]
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "nums": [
+          0,
+          1,
+          0,
+          3,
+          2,
+          3
+        ]
+      },
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "nums": [
+          7,
+          7,
+          7
+        ]
+      },
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "nums": [
+          9,
+          -7,
+          2,
+          11,
+          -5
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "nums": [
+          1,
+          10,
+          -6,
+          3,
+          12,
+          -4
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "nums": [
+          -7,
+          2,
+          11,
+          -5,
+          4,
+          13,
+          -3
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "nums": [
+          10,
+          -6,
+          3,
+          12,
+          -4,
+          5,
+          14,
+          -2
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "nums": [
+          2,
+          11,
+          -5,
+          4,
+          13,
+          -3,
+          6,
+          15,
+          -1
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "nums": [
+          -6,
+          3,
+          12,
+          -4,
+          5,
+          14,
+          -2,
+          7,
+          16,
+          0
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "nums": [
+          11,
+          -5,
+          4,
+          13,
+          -3,
+          6,
+          15,
+          -1,
+          8,
+          -8,
+          1
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "nums": [
+          3,
+          12,
+          -4,
+          5,
+          14,
+          -2,
+          7,
+          16,
+          0,
+          9,
+          -7,
+          2
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "nums": [
+          -5,
+          4,
+          13,
+          -3,
+          6,
+          15,
+          -1,
+          8,
+          -8,
+          1,
+          10,
+          -6,
+          3
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "nums": [
+          12,
+          -4,
+          5,
+          14,
+          -2,
+          7,
+          16,
+          0,
+          9,
+          -7,
+          2,
+          11,
+          -5,
+          4
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "nums": [
+          4,
+          13,
+          -3,
+          6,
+          15,
+          -1,
+          8,
+          -8,
+          1,
+          10,
+          -6,
+          3,
+          12,
+          -4,
+          5
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "nums": [
+          -4,
+          5,
+          14,
+          -2
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "nums": [
+          13,
+          -3,
+          6,
+          15,
+          -1
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "nums": [
+          5,
+          14,
+          -2,
+          7,
+          16,
+          0
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "nums": [
+          -3,
+          6,
+          15,
+          -1,
+          8,
+          -8,
+          1
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "nums": [
+          14,
+          -2,
+          7,
+          16,
+          0,
+          9,
+          -7,
+          2
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "nums": [
+          6,
+          15,
+          -1,
+          8,
+          -8,
+          1,
+          10,
+          -6,
+          3
+        ]
+      },
+      "expected": 3,
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "nums": [
+          -2,
+          7,
+          16,
+          0,
+          9,
+          -7,
+          2,
+          11,
+          -5,
+          4
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "nums": [
+          15,
+          -1,
+          8,
+          -8,
+          1,
+          10,
+          -6,
+          3,
+          12,
+          -4,
+          5
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "nums": [
+          7,
+          16,
+          0,
+          9,
+          -7,
+          2,
+          11,
+          -5,
+          4,
+          13,
+          -3,
+          6
+        ]
+      },
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "nums": [
+          -1,
+          8,
+          -8,
+          1,
+          10,
+          -6,
+          3,
+          12,
+          -4,
+          5,
+          14,
+          -2,
+          7
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "nums": [
+          16,
+          0,
+          9,
+          -7,
+          2,
+          11,
+          -5,
+          4,
+          13,
+          -3,
+          6,
+          15,
+          -1,
+          8
+        ]
+      },
+      "expected": 5,
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "nums": [
+          8,
+          -8,
+          1,
+          10,
+          -6,
+          3,
+          12,
+          -4,
+          5,
+          14,
+          -2,
+          7,
+          16,
+          0,
+          9
+        ]
+      },
+      "expected": 6,
+      "hidden": true
+    }
+  ]
+}

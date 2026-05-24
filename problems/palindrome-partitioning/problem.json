@@ -1,0 +1,981 @@
+{
+  "id": 77,
+  "slug": "palindrome-partitioning",
+  "title": "Palindrome Partitioning",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Backtracking"
+  ],
+  "companies": [],
+  "statement": "# Palindrome Partitioning\n\nSplit the string into substrings so every substring is a palindrome. Return every valid partition.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = aab\nOutput: [[a,a,b],[aa,b]]\n```\n\n**Example 2**\n\n```text\nInput: s = abba\nOutput: [[a,b,b,a],[a,bb,a],[abba]]\n```\n\n**Example 3**\n\n```text\nInput: s = abc\nOutput: [[a,b,c]]\n```\n\n## Constraints\n\n- `s` contains lowercase letters.\n- Returned partition order is ignored.",
+  "editorial": "Backtrack over every palindromic prefix, then partition the remaining suffix.",
+  "solution_notes": "```python\nclass Solution:\n    def partition(self, s):\n        out = []\n        def is_pal(left, right):\n            while left < right:\n                if s[left] != s[right]:\n                    return False\n                left += 1\n                right -= 1\n            return True\n        def dfs(index, path):\n            if index == len(s):\n                out.append(path[:])\n                return\n            for end in range(index, len(s)):\n                if is_pal(index, end):\n                    path.append(s[index:end + 1])\n                    dfs(end + 1, path)\n                    path.pop()\n        dfs(0, [])\n        return out\n```",
+  "hints": [
+    "Choose palindromic prefixes only.",
+    "A single character is always a palindrome."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def partition(self, s):\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "partition"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {
+        "s": "aab"
+      },
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {
+        "s": "abba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "b",
+          "a"
+        ],
+        [
+          "a",
+          "bb",
+          "a"
+        ],
+        [
+          "abba"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "s": "abc"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {
+        "s": "abba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "b",
+          "a"
+        ],
+        [
+          "a",
+          "bb",
+          "a"
+        ],
+        [
+          "abba"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {
+        "s": "banana"
+      },
+      "expected": [
+        [
+          "b",
+          "a",
+          "n",
+          "a",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "a",
+          "n",
+          "ana"
+        ],
+        [
+          "b",
+          "a",
+          "nan",
+          "a"
+        ],
+        [
+          "b",
+          "ana",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "anana"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {
+        "s": "level"
+      },
+      "expected": [
+        [
+          "l",
+          "e",
+          "v",
+          "e",
+          "l"
+        ],
+        [
+          "l",
+          "eve",
+          "l"
+        ],
+        [
+          "level"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-4",
+      "name": "Hidden Case 4",
+      "input": {
+        "s": "racecar"
+      },
+      "expected": [
+        [
+          "r",
+          "a",
+          "c",
+          "e",
+          "c",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "a",
+          "cec",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "aceca",
+          "r"
+        ],
+        [
+          "racecar"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-5",
+      "name": "Hidden Case 5",
+      "input": {
+        "s": "civicx"
+      },
+      "expected": [
+        [
+          "c",
+          "i",
+          "v",
+          "i",
+          "c",
+          "x"
+        ],
+        [
+          "c",
+          "ivi",
+          "c",
+          "x"
+        ],
+        [
+          "civic",
+          "x"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-6",
+      "name": "Hidden Case 6",
+      "input": {
+        "s": "noonab"
+      },
+      "expected": [
+        [
+          "n",
+          "o",
+          "o",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "n",
+          "oo",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "noon",
+          "a",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-7",
+      "name": "Hidden Case 7",
+      "input": {
+        "s": "aab"
+      },
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-8",
+      "name": "Hidden Case 8",
+      "input": {
+        "s": "abba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "b",
+          "a"
+        ],
+        [
+          "a",
+          "bb",
+          "a"
+        ],
+        [
+          "abba"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-9",
+      "name": "Hidden Case 9",
+      "input": {
+        "s": "banana"
+      },
+      "expected": [
+        [
+          "b",
+          "a",
+          "n",
+          "a",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "a",
+          "n",
+          "ana"
+        ],
+        [
+          "b",
+          "a",
+          "nan",
+          "a"
+        ],
+        [
+          "b",
+          "ana",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "anana"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-10",
+      "name": "Hidden Case 10",
+      "input": {
+        "s": "level"
+      },
+      "expected": [
+        [
+          "l",
+          "e",
+          "v",
+          "e",
+          "l"
+        ],
+        [
+          "l",
+          "eve",
+          "l"
+        ],
+        [
+          "level"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-11",
+      "name": "Hidden Case 11",
+      "input": {
+        "s": "racecar"
+      },
+      "expected": [
+        [
+          "r",
+          "a",
+          "c",
+          "e",
+          "c",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "a",
+          "cec",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "aceca",
+          "r"
+        ],
+        [
+          "racecar"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-12",
+      "name": "Hidden Case 12",
+      "input": {
+        "s": "civicx"
+      },
+      "expected": [
+        [
+          "c",
+          "i",
+          "v",
+          "i",
+          "c",
+          "x"
+        ],
+        [
+          "c",
+          "ivi",
+          "c",
+          "x"
+        ],
+        [
+          "civic",
+          "x"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-13",
+      "name": "Hidden Case 13",
+      "input": {
+        "s": "noonab"
+      },
+      "expected": [
+        [
+          "n",
+          "o",
+          "o",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "n",
+          "oo",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "noon",
+          "a",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-14",
+      "name": "Hidden Case 14",
+      "input": {
+        "s": "aab"
+      },
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-15",
+      "name": "Hidden Case 15",
+      "input": {
+        "s": "abba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "b",
+          "a"
+        ],
+        [
+          "a",
+          "bb",
+          "a"
+        ],
+        [
+          "abba"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-16",
+      "name": "Hidden Case 16",
+      "input": {
+        "s": "banana"
+      },
+      "expected": [
+        [
+          "b",
+          "a",
+          "n",
+          "a",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "a",
+          "n",
+          "ana"
+        ],
+        [
+          "b",
+          "a",
+          "nan",
+          "a"
+        ],
+        [
+          "b",
+          "ana",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "anana"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-17",
+      "name": "Hidden Case 17",
+      "input": {
+        "s": "level"
+      },
+      "expected": [
+        [
+          "l",
+          "e",
+          "v",
+          "e",
+          "l"
+        ],
+        [
+          "l",
+          "eve",
+          "l"
+        ],
+        [
+          "level"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-18",
+      "name": "Hidden Case 18",
+      "input": {
+        "s": "racecar"
+      },
+      "expected": [
+        [
+          "r",
+          "a",
+          "c",
+          "e",
+          "c",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "a",
+          "cec",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "aceca",
+          "r"
+        ],
+        [
+          "racecar"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-19",
+      "name": "Hidden Case 19",
+      "input": {
+        "s": "civicx"
+      },
+      "expected": [
+        [
+          "c",
+          "i",
+          "v",
+          "i",
+          "c",
+          "x"
+        ],
+        [
+          "c",
+          "ivi",
+          "c",
+          "x"
+        ],
+        [
+          "civic",
+          "x"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-20",
+      "name": "Hidden Case 20",
+      "input": {
+        "s": "noonab"
+      },
+      "expected": [
+        [
+          "n",
+          "o",
+          "o",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "n",
+          "oo",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "noon",
+          "a",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-21",
+      "name": "Hidden Case 21",
+      "input": {
+        "s": "aab"
+      },
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-22",
+      "name": "Hidden Case 22",
+      "input": {
+        "s": "abba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "b",
+          "a"
+        ],
+        [
+          "a",
+          "bb",
+          "a"
+        ],
+        [
+          "abba"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-23",
+      "name": "Hidden Case 23",
+      "input": {
+        "s": "banana"
+      },
+      "expected": [
+        [
+          "b",
+          "a",
+          "n",
+          "a",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "a",
+          "n",
+          "ana"
+        ],
+        [
+          "b",
+          "a",
+          "nan",
+          "a"
+        ],
+        [
+          "b",
+          "ana",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "anana"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-24",
+      "name": "Hidden Case 24",
+      "input": {
+        "s": "level"
+      },
+      "expected": [
+        [
+          "l",
+          "e",
+          "v",
+          "e",
+          "l"
+        ],
+        [
+          "l",
+          "eve",
+          "l"
+        ],
+        [
+          "level"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-25",
+      "name": "Hidden Case 25",
+      "input": {
+        "s": "racecar"
+      },
+      "expected": [
+        [
+          "r",
+          "a",
+          "c",
+          "e",
+          "c",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "a",
+          "cec",
+          "a",
+          "r"
+        ],
+        [
+          "r",
+          "aceca",
+          "r"
+        ],
+        [
+          "racecar"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-26",
+      "name": "Hidden Case 26",
+      "input": {
+        "s": "civicx"
+      },
+      "expected": [
+        [
+          "c",
+          "i",
+          "v",
+          "i",
+          "c",
+          "x"
+        ],
+        [
+          "c",
+          "ivi",
+          "c",
+          "x"
+        ],
+        [
+          "civic",
+          "x"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-27",
+      "name": "Hidden Case 27",
+      "input": {
+        "s": "noonab"
+      },
+      "expected": [
+        [
+          "n",
+          "o",
+          "o",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "n",
+          "oo",
+          "n",
+          "a",
+          "b"
+        ],
+        [
+          "noon",
+          "a",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-28",
+      "name": "Hidden Case 28",
+      "input": {
+        "s": "aab"
+      },
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-29",
+      "name": "Hidden Case 29",
+      "input": {
+        "s": "abba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "b",
+          "a"
+        ],
+        [
+          "a",
+          "bb",
+          "a"
+        ],
+        [
+          "abba"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-30",
+      "name": "Hidden Case 30",
+      "input": {
+        "s": "banana"
+      },
+      "expected": [
+        [
+          "b",
+          "a",
+          "n",
+          "a",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "a",
+          "n",
+          "ana"
+        ],
+        [
+          "b",
+          "a",
+          "nan",
+          "a"
+        ],
+        [
+          "b",
+          "ana",
+          "n",
+          "a"
+        ],
+        [
+          "b",
+          "anana"
+        ]
+      ],
+      "hidden": true
+    },
+    {
+      "id": "hidden-31",
+      "name": "Hidden Case 31",
+      "input": {
+        "s": "level"
+      },
+      "expected": [
+        [
+          "l",
+          "e",
+          "v",
+          "e",
+          "l"
+        ],
+        [
+          "l",
+          "eve",
+          "l"
+        ],
+        [
+          "level"
+        ]
+      ],
+      "hidden": true
+    }
+  ]
+}

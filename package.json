@@ -1,0 +1,43 @@
+{
+  "name": "elitecode",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline coding practice app with local Python judging.",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,green \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": ".venv/bin/python -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000",
+    "dev:web": "vite --host 127.0.0.1 --port 5173",
+    "build": "vite build",
+    "preview": ".venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000",
+    "install:backend": "python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt",
+    "validate:problems": ".venv/bin/python -m backend.problem_loader --validate problems",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": ".venv/bin/python -m pytest tests",
+    "test:frontend": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "lucide-react": "^0.511.0",
+    "monaco-editor": "^0.52.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.1",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.3.3",
+    "vitest": "^4.1.7"
+  }
+}

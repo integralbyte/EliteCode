@@ -1,0 +1,73 @@
+{
+  "id": 1,
+  "slug": "two-sum",
+  "title": "Two Sum",
+  "difficulty": "Easy",
+  "tags": ["Array", "Hash Table"],
+  "companies": ["Interview Classic"],
+  "statement": "# Two Sum\n\nGiven a list of integers `nums` and an integer `target`, return the indices of two different elements whose values add up to `target`.\n\nEach test case has exactly one valid pair. Return the two indices in any order.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [4, 6, 10, 15], target = 16\nOutput: [1, 2]\n```\n\n**Example 2**\n\n```text\nInput: nums = [5, 1, 9, 3], target = 8\nOutput: [0, 3]\n```\n\n**Example 3**\n\n```text\nInput: nums = [-2, 11, 7, 4], target = 9\nOutput: [0, 1]\n```\n\n## Constraints\n\n- `2 <= len(nums) <= 10^4`\n- `-10^9 <= nums[i] <= 10^9`\n- `-10^9 <= target <= 10^9`\n- Exactly one valid answer exists.\n\n## Follow-up\n\nCan you solve it in less than quadratic time?",
+  "editorial": "A direct approach checks every pair, which is simple but takes `O(n^2)` time. A faster approach keeps a dictionary from value to index while scanning the array. For each value `x`, look for `target - x` in the dictionary. If it exists, the current index and the stored index are the answer. Otherwise, store `x` and continue. This runs in `O(n)` time with `O(n)` extra space.",
+  "solution_notes": "```python\nclass Solution:\n    def twoSum(self, nums, target):\n        seen = {}\n        for i, value in enumerate(nums):\n            need = target - value\n            if need in seen:\n                return [seen[need], i]\n            seen[value] = i\n```\n\nThe checker accepts the two valid indices in either order.",
+  "hints": [
+    "A brute force solution tries every pair. Use it to understand the shape of the search.",
+    "If you fix one number, the other number must be `target - current`.",
+    "A dictionary can tell you whether the complement was seen earlier in constant average time."
+  ],
+  "starter_code": {
+    "python": "class Solution:\n    def twoSum(self, nums, target):\n        # Return the indices of the two numbers that add up to target.\n        pass\n"
+  },
+  "entrypoint": {
+    "class_name": "Solution",
+    "method_name": "twoSum"
+  },
+  "checker": {
+    "type": "python",
+    "file": "checker.py"
+  },
+  "time_limit_ms": 2000,
+  "memory_limit_mb": 256,
+  "cases": [
+    {
+      "id": "case-1",
+      "name": "Case 1",
+      "input": {"nums": [4, 6, 10, 15], "target": 16},
+      "expected": [1, 2],
+      "hidden": false
+    },
+    {
+      "id": "case-2",
+      "name": "Case 2",
+      "input": {"nums": [5, 1, 9, 3], "target": 8},
+      "expected": [0, 3],
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {"nums": [-2, 11, 7, 4], "target": 9},
+      "expected": [0, 1],
+      "hidden": false
+    },
+    {
+      "id": "hidden-1",
+      "name": "Hidden Case 1",
+      "input": {"nums": [-1, -2, -3, -4, -5], "target": -8},
+      "expected": [2, 4],
+      "hidden": true
+    },
+    {
+      "id": "hidden-2",
+      "name": "Hidden Case 2",
+      "input": {"nums": [1000000000, -1000000000, 3, 8], "target": 0},
+      "expected": [0, 1],
+      "hidden": true
+    },
+    {
+      "id": "hidden-3",
+      "name": "Hidden Case 3",
+      "input": {"nums": [5, 75, 25], "target": 100},
+      "expected": [1, 2],
+      "hidden": true
+    }
+  ]
+}

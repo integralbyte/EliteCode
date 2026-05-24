@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.DS_Store
+data/
+*.pyc
+coverage/
+playwright-report/
+test-results/
+LeetCode Template.mhtml

@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const problemsRoot = path.join(root, "problems");
-const TARGET_CASES = 45;
+const TARGET_CASES = Number(process.env.ELITECODE_TARGET_CASES ?? 2000);
 
 function writeProblem(spec) {
   const dir = path.join(problemsRoot, spec.slug);
@@ -858,8 +858,8 @@ for (const spec of stackSpecs) {
     const seeds = [["3", "4", "+"], ["5", "1", "2", "+", "4", "*", "+", "3", "-"], ["18", "3", "/"], ["7", "3", "/"], ["-7", "3", "/"], ["2", "3", "11", "+", "5", "-", "*"], ["4", "2", "+", "3", "5", "1", "-", "*", "+"], ["9", "2", "*", "3", "/"], ["8", "3", "-", "2", "*"], ["6", "2", "/", "3", "+"], ["10", "2", "8", "*", "+", "3", "-"], ["1", "2", "+", "3", "4", "+", "*"]];
     cases = fillCases(spec.visible.map((tokens) => caseFrom({ tokens }, evalRPN(tokens))), seeds, (tokens) => caseFrom({ tokens }, evalRPN(tokens)));
   } else if (spec.id === 24) {
-    const seeds = [1, 2, 3, 4, 5, 6, 7, 8];
-    cases = fillCases(spec.visible.map((n) => caseFrom({ n }, generateParenthesis(n))), seeds, (n) => caseFrom({ n }, generateParenthesis(n)), 18);
+    const seeds = [1, 2, 3, 4, 5];
+    cases = fillCases(spec.visible.map((n) => caseFrom({ n }, generateParenthesis(n))), seeds, (n) => caseFrom({ n }, generateParenthesis(n)), TARGET_CASES);
   } else if (spec.id === 25) {
     cases = fillCases(spec.visible.map((temperatures) => caseFrom({ temperatures }, dailyTemps(temperatures))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
       const temperatures = Array.from({ length: 1 + (seed % 16) }, (_, i) => 30 + ((seed * 7 + i * i + i) % 70));

@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const problemsRoot = path.join(root, "problems");
-const TARGET_CASES = 45;
+const TARGET_CASES = Number(process.env.ELITECODE_TARGET_CASES ?? 2000);
 
 function writeProblem(spec) {
   const dir = path.join(problemsRoot, spec.slug);

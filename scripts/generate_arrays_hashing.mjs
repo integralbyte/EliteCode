@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const problemsRoot = path.join(root, "problems");
+const TARGET_CASES = Number(process.env.ELITECODE_TARGET_CASES ?? 2000);
 
 function problemPath(slug) {
   return path.join(problemsRoot, slug);
@@ -143,6 +144,123 @@ function twoSumCase(nums, target) {
 
 function caseFrom(input, expected) {
   return { input, expected };
+}
+
+function shuffle(values, seed) {
+  const out = [...values];
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = (seed * 1103515245 + i * 12345) % (i + 1);
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+function wordFromSeed(seed, length = 3 + (seed % 7)) {
+  const letters = "abcdefghijklmnopqrstuvwxyz";
+  return Array.from({ length }, (_, i) => letters[(seed * 7 + i * 11) % letters.length]).join("");
+}
+
+function generatedArrayCase(slug, seed) {
+  if (slug === "contains-duplicate") {
+    const length = 1 + (seed % 96);
+    const nums = Array.from({ length }, (_, i) => (seed % 11 === 0 ? 0 : i * (seed % 7 + 1) - seed));
+    if (seed % 2 === 0 && nums.length > 1) nums[seed % nums.length] = nums[0];
+    if (seed % 5 === 0) nums.push(-1_000_000_000, 1_000_000_000);
+    return caseFrom({ nums }, containsDuplicate(nums));
+  }
+
+  if (slug === "valid-anagram") {
+    const base = wordFromSeed(seed, seed % 2 === 0 ? 0 : 1 + (seed % 40));
+    const t = seed % 3 === 0 ? shuffle([...base], seed).join("") : shuffle([...base], seed).join("") + "x";
+    return caseFrom({ s: base, t }, anagram(base, t));
+  }
+
+  if (slug === "two-sum") {
+    const length = 2 + (seed % 80);
+    const nums = Array.from({ length }, (_, i) => (seed * 17 + i * 19) % 2001 - 1000);
+    const left = seed % length;
+    let right = (seed * 7 + 1) % length;
+    if (right === left) right = (right + 1) % length;
+    const target = nums[left] + nums[right];
+    return twoSumCase(nums, target);
+  }
+
+  if (slug === "group-anagrams") {
+    const groups = 1 + (seed % 7);
+    const strs = [];
+    for (let g = 0; g < groups; g += 1) {
+      const word = wordFromSeed(seed + g * 13, 1 + ((seed + g) % 8));
+      const variants = 1 + ((seed + g) % 4);
+      for (let i = 0; i < variants; i += 1) strs.push(shuffle([...word], seed + i + g).join(""));
+    }
+    if (seed % 6 === 0) strs.push("", "");
+    return caseFrom({ strs }, groupAnagrams(strs));
+  }
+
+  if (slug === "top-k-frequent-elements") {
+    const distinct = 2 + (seed % 12);
+    const nums = [];
+    for (let value = 0; value < distinct; value += 1) {
+      const count = distinct - value + (seed % 3);
+      for (let i = 0; i < count; i += 1) nums.push(value - Math.floor(distinct / 2));
+    }
+    const k = 1 + (seed % distinct);
+    return caseFrom({ nums: shuffle(nums, seed), k }, topK(nums, k));
+  }
+
+  if (slug === "product-of-array-except-self") {
+    const length = 2 + (seed % 40);
+    const nums = Array.from({ length }, (_, i) => ((seed + i * 3) % 9) - 4 || 1);
+    if (seed % 4 === 0) nums[seed % length] = 0;
+    if (seed % 8 === 0 && length > 2) nums[(seed + 1) % length] = 0;
+    return caseFrom({ nums }, productExceptSelf(nums));
+  }
+
+  if (slug === "valid-sudoku") {
+    return sudokuCase((board) => {
+      const mode = seed % 9;
+      if (mode === 0) return board;
+      if (mode === 1) board[0][2] = "5";
+      else if (mode === 2) board[2][0] = "6";
+      else if (mode === 3) board[1][1] = "9";
+      else if (mode === 4) board[4][4] = "5";
+      else if (mode === 5) board[seed % 9][(seed * 2) % 9] = ".";
+      else if (mode === 6) board[8][seed % 9] = String(1 + (seed % 9));
+      else if (mode === 7) board[Math.floor((seed % 9) / 3) * 3][Math.floor(((seed * 2) % 9) / 3) * 3] = "8";
+      else board[0][0] = ".";
+      return board;
+    });
+  }
+
+  if (slug === "encode-and-decode-strings") {
+    const count = seed % 12;
+    const strs = Array.from({ length: count }, (_, i) => {
+      if (i % 5 === 0) return "";
+      if (i % 5 === 1) return `${i}#${wordFromSeed(seed + i)}`;
+      if (i % 5 === 2) return ` ${wordFromSeed(seed + i)} `;
+      if (i % 5 === 3) return "\\\\".repeat(1 + (seed % 4));
+      return wordFromSeed(seed + i, 1 + ((seed + i) % 50));
+    });
+    return caseFrom({ strs }, strs);
+  }
+
+  if (slug === "longest-consecutive-sequence") {
+    const length = seed % 120;
+    const nums = Array.from({ length }, (_, i) => (seed % 2 === 0 ? i - Math.floor(length / 2) : i * 2 - seed));
+    if (seed % 3 === 0) nums.push(...Array.from({ length: 1 + (seed % 20) }, (_, i) => 500 + i));
+    if (seed % 5 === 0) nums.push(...nums.slice(0, Math.min(10, nums.length)));
+    return caseFrom({ nums: shuffle(nums, seed) }, longestConsecutive(nums));
+  }
+
+  throw new Error(`No generated case factory for ${slug}`);
+}
+
+function expandCases(spec) {
+  let seed = 1;
+  while (spec.cases.length < TARGET_CASES) {
+    spec.cases.push(generatedArrayCase(spec.slug, seed));
+    seed += 1;
+  }
 }
 
 const sudokuBase = [
@@ -723,6 +841,7 @@ const problems = [
 ];
 
 for (const spec of problems) {
+  expandCases(spec);
   writeProblem(spec);
 }
 

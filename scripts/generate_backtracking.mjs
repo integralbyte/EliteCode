@@ -65,6 +65,20 @@ function fillCases(visible, maker, target = TARGET_CASES) {
   return { visible: visible.length, cases };
 }
 
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
+function word(seed, length = 1 + (mix(seed, 1) % 10), alphabet = "abcde") {
+  return Array.from({ length }, (_, i) => alphabet[mix(seed, i + 2) % alphabet.length]).join("");
+}
+
 function subsets(nums) {
   const out = [[]];
   for (const num of nums) {
@@ -206,6 +220,7 @@ function letterCombinations(digits) {
 }
 
 function nQueens(n) {
+  if (nQueens.cache.has(n)) return nQueens.cache.get(n);
   const out = [];
   const cols = new Set();
   const diag1 = new Set();
@@ -224,39 +239,41 @@ function nQueens(n) {
     }
   }
   dfs(0);
+  nQueens.cache.set(n, out);
   return out;
 }
+nQueens.cache = new Map();
 
 function uniqueNums(seed, length = 1 + (seed % 5)) {
   const set = new Set();
-  let value = seed;
+  let attempt = 0;
   while (set.size < length) {
-    set.add(((value * 7 + set.size * 5) % 15) - 7);
-    value += 1;
+    set.add((mix(seed, attempt + 3) % 101) - 50);
+    attempt += 1;
   }
   return [...set];
 }
 
 function comboCandidates(seed, length = 2 + (seed % 5)) {
   const set = new Set();
-  let value = 2 + (seed % 4);
+  let attempt = 0;
   while (set.size < length) {
-    set.add(value);
-    value += 1 + ((seed + value) % 3);
+    set.add(1 + (mix(seed, attempt + 11) % 24));
+    attempt += 1;
   }
   return [...set].sort((a, b) => a - b);
 }
 
 function dupCandidates(seed) {
-  return Array.from({ length: 5 + (seed % 5) }, (_, i) => 1 + ((seed + i * 2) % 8)).sort((a, b) => a - b);
+  return Array.from({ length: 5 + (mix(seed, 15) % 7) }, (_, i) => 1 + (mix(seed, i + 16) % 18)).sort((a, b) => a - b);
 }
 
 function boardSeed(seed) {
-  const letters = "ABCDE";
-  const rows = 2 + (seed % 3);
-  const cols = 2 + ((seed * 2) % 3);
+  const letters = seed % 5 === 0 ? "AB" : "ABCDEFXYZ";
+  const rows = 1 + (mix(seed, 21) % 5);
+  const cols = 1 + (mix(seed, 22) % 5);
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: cols }, (_, c) => letters[(seed + r * 2 + c * 3) % letters.length])
+    Array.from({ length: cols }, (_, c) => letters[mix(seed, r * cols + c + 23) % letters.length])
   );
 }
 
@@ -265,8 +282,13 @@ function pathWord(board) {
 }
 
 function stringSeed(seed) {
-  const base = ["aab", "abba", "banana", "level", "racecar", "civicx", "noonab"];
-  return base[seed % base.length];
+  if (seed % 6 === 0) return "a".repeat(1 + (seed % 8));
+  if (seed % 6 === 1) return `${word(seed, 3 + (seed % 4), "abc")}${word(seed + 7, 2 + (seed % 3), "cba")}`;
+  if (seed % 6 === 2) {
+    const left = word(seed, 2 + (seed % 5), "abcd");
+    return `${left}${[...left].reverse().join("")}`;
+  }
+  return word(seed, 1 + (mix(seed, 30) % 10), "abcde");
 }
 
 const unorderedOuterChecker = `
@@ -416,7 +438,7 @@ const problems = [
     const visibleRaw = [[1, 2, 2], [0, 0], []];
     const visible = visibleRaw.map((nums) => caseFrom({ nums }, subsetsWithDup(nums)));
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const nums = Array.from({ length: seed % 6 }, (_, i) => (seed + i) % 4).sort((a, b) => a - b);
+      const nums = Array.from({ length: mix(seed, 40) % 7 }, (_, i) => (mix(seed, i + 41) % 9) - 4).sort((a, b) => a - b);
       return caseFrom({ nums }, subsetsWithDup(nums));
     });
     return {
@@ -493,8 +515,8 @@ const problems = [
     const visible = visibleRaw.map((digits) => caseFrom({ digits }, letterCombinations(digits)));
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
       const chars = "23456789";
-      const length = seed % 5;
-      const digits = Array.from({ length }, (_, i) => chars[(seed + i) % chars.length]).join("");
+      const length = mix(seed, 50) % 5;
+      const digits = Array.from({ length }, (_, i) => chars[mix(seed, i + 51) % chars.length]).join("");
       return caseFrom({ digits }, letterCombinations(digits));
     });
     return {
@@ -518,7 +540,7 @@ const problems = [
     const visibleRaw = [4, 1, 3];
     const visible = visibleRaw.map((n) => caseFrom({ n }, nQueens(n)));
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const n = 1 + (seed % 5);
+      const n = 1 + (seed % 8);
       return caseFrom({ n }, nQueens(n));
     });
     return {
@@ -531,7 +553,7 @@ const problems = [
       visible: visibleCount,
       cases,
       checker: unorderedOuterChecker,
-      statement: markdown("N-Queens", "Place `n` queens on an `n x n` chessboard so no two queens attack each other. Return every board, using `Q` for queens and `.` for empty cells.", ["Input: n = 4\nOutput: [[.Q..,...Q,Q...,..Q.],[..Q.,Q...,...Q,.Q..]]", "Input: n = 1\nOutput: [[Q]]", "Input: n = 3\nOutput: []"], ["`1 <= n <= 5` in generated tests.", "Board order is ignored."]),
+      statement: markdown("N-Queens", "Place `n` queens on an `n x n` chessboard so no two queens attack each other. Return every board, using `Q` for queens and `.` for empty cells.", ["Input: n = 4\nOutput: [[.Q..,...Q,Q...,..Q.],[..Q.,Q...,...Q,.Q..]]", "Input: n = 1\nOutput: [[Q]]", "Input: n = 3\nOutput: []"], ["`1 <= n <= 8` in generated tests.", "Board order is ignored."]),
       editorial: "Place one queen per row while tracking used columns and diagonals. Backtrack when a placement conflicts.",
       solution: "```python\nclass Solution:\n    def solveNQueens(self, n):\n        out = []\n        cols, diag1, diag2 = set(), set(), set()\n        board = [['.'] * n for _ in range(n)]\n        def dfs(row):\n            if row == n:\n                out.append([''.join(line) for line in board])\n                return\n            for col in range(n):\n                if col in cols or row - col in diag1 or row + col in diag2:\n                    continue\n                cols.add(col); diag1.add(row - col); diag2.add(row + col); board[row][col] = 'Q'\n                dfs(row + 1)\n                board[row][col] = '.'; cols.remove(col); diag1.remove(row - col); diag2.remove(row + col)\n        dfs(0)\n        return out\n```",
       hints: ["One queen per row is enough to explore all boards.", "Both diagonals can be represented by `row - col` and `row + col`."],

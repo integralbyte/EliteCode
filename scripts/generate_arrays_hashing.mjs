@@ -155,6 +155,16 @@ function shuffle(values, seed) {
   return out;
 }
 
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
 function wordFromSeed(seed, length = 3 + (seed % 7)) {
   const letters = "abcdefghijklmnopqrstuvwxyz";
   return Array.from({ length }, (_, i) => letters[(seed * 7 + i * 11) % letters.length]).join("");
@@ -217,19 +227,7 @@ function generatedArrayCase(slug, seed) {
   }
 
   if (slug === "valid-sudoku") {
-    return sudokuCase((board) => {
-      const mode = seed % 9;
-      if (mode === 0) return board;
-      if (mode === 1) board[0][2] = "5";
-      else if (mode === 2) board[2][0] = "6";
-      else if (mode === 3) board[1][1] = "9";
-      else if (mode === 4) board[4][4] = "5";
-      else if (mode === 5) board[seed % 9][(seed * 2) % 9] = ".";
-      else if (mode === 6) board[8][seed % 9] = String(1 + (seed % 9));
-      else if (mode === 7) board[Math.floor((seed % 9) / 3) * 3][Math.floor(((seed * 2) % 9) / 3) * 3] = "8";
-      else board[0][0] = ".";
-      return board;
-    });
+    return sudokuGeneratedCase(seed);
   }
 
   if (slug === "encode-and-decode-strings") {
@@ -281,6 +279,30 @@ function cloneBoard(board) {
 
 function sudokuCase(mutator = (board) => board) {
   const board = mutator(cloneBoard(sudokuBase));
+  return caseFrom({ board }, validSudoku(board));
+}
+
+function sudokuGeneratedCase(seed) {
+  const digitMap = Array.from({ length: 9 }, (_, i) => String(((i + (seed % 9)) % 9) + 1));
+  const board = Array.from({ length: 9 }, (_, r) =>
+    Array.from({ length: 9 }, (_, c) => {
+      const value = (r * 3 + Math.floor(r / 3) + c + Math.floor(seed / 9)) % 9;
+      return digitMap[value];
+    })
+  );
+  for (let r = 0; r < 9; r += 1) {
+    for (let c = 0; c < 9; c += 1) {
+      if (mix(seed, r * 9 + c) % 4 === 0) board[r][c] = ".";
+    }
+  }
+  if (seed % 5 !== 0) {
+    const r = mix(seed, 100) % 9;
+    const c1 = mix(seed, 101) % 9;
+    let c2 = mix(seed, 102) % 9;
+    if (c1 === c2) c2 = (c2 + 1) % 9;
+    if (board[r][c1] === ".") board[r][c1] = String(1 + (mix(seed, 103) % 9));
+    board[r][c2] = board[r][c1];
+  }
   return caseFrom({ board }, validSudoku(board));
 }
 

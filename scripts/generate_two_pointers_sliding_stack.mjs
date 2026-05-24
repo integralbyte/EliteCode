@@ -58,10 +58,146 @@ function fillCases(visible, seeds, maker, target = TARGET_CASES) {
   const cases = [...visible];
   let index = 0;
   while (cases.length < target) {
-    cases.push(maker(seeds[index % seeds.length], index));
+    const base = seeds[index % seeds.length];
+    const seed = typeof base === "number" ? base + Math.floor(index / seeds.length) * seeds.length : base;
+    cases.push(maker(seed, index));
     index += 1;
   }
   return { visible: visible.length, cases };
+}
+
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
+function wordSeed(seed, length = 1 + (mix(seed, 1) % 24), alphabet = "abcdefghijklmnopqrstuvwxyz") {
+  return Array.from({ length }, (_, i) => alphabet[mix(seed, i + 2) % alphabet.length]).join("");
+}
+
+function shuffle(values, seed) {
+  const out = [...values];
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = mix(seed, i) % (i + 1);
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+function validPalindromeSeed(seed) {
+  const core = wordSeed(seed, 1 + (mix(seed, 3) % 28), "abcxyz0123");
+  const separators = [" ", ",", ":", "_", "-", "!!", "  "];
+  const reversed = [...core].reverse().join("");
+  if (seed % 3 === 0) return `${core}${separators[seed % separators.length]}${reversed}`;
+  if (seed % 3 === 1) return `${core}${separators[seed % separators.length]}${wordSeed(seed + 41, 2 + (seed % 7))}`;
+  return `${core.slice(0, Math.max(0, core.length - 1))}${reversed}`;
+}
+
+function slidingStringSeed(seed) {
+  const alphabet = seed % 4 === 0 ? "abc" : seed % 4 === 1 ? "abcdef" : seed % 4 === 2 ? "AaBbCc123" : "algorithm";
+  const length = seed % 5 === 0 ? 0 : 1 + (mix(seed, 4) % 42);
+  return wordSeed(seed, length, alphabet);
+}
+
+function inclusionSeed(seed) {
+  const s1 = wordSeed(seed, 1 + (mix(seed, 6) % 8), "abcdef");
+  if (seed % 3 === 0) {
+    const perm = shuffle([...s1], seed).join("");
+    return { s1, s2: `${wordSeed(seed + 11, seed % 5, "xyz")}${perm}${wordSeed(seed + 23, 1 + (seed % 9), "mnop")}` };
+  }
+  const s2 = `${wordSeed(seed + 17, 2 + (seed % 10), "abcdef")}${wordSeed(seed + 31, 1 + (seed % 12), "ghij")}`;
+  return { s1, s2 };
+}
+
+function minWindowSeed(seed) {
+  const alphabet = "ABCDEFXYZ";
+  const required = wordSeed(seed, 1 + (mix(seed, 8) % 5), alphabet);
+  if (seed % 4 === 0) {
+    return { s: `${wordSeed(seed + 1, 8 + (seed % 20), alphabet)}${required}${wordSeed(seed + 2, 6 + (seed % 17), alphabet)}`, t: required };
+  }
+  if (seed % 4 === 1) {
+    return { s: wordSeed(seed + 3, 5 + (seed % 16), "ABC"), t: `${required}Z` };
+  }
+  const duplicate = required + required[0];
+  return { s: `${required.slice(1)}${wordSeed(seed + 4, 3 + (seed % 13), alphabet)}${duplicate}`, t: duplicate };
+}
+
+function bracketSeed(seed) {
+  const opens = ["(", "[", "{"];
+  const closes = { "(": ")", "[": "]", "{": "}" };
+  const depth = 1 + (mix(seed, 9) % 9);
+  let s = "";
+  const stack = [];
+  for (let i = 0; i < depth; i += 1) {
+    const open = opens[mix(seed, i) % opens.length];
+    stack.push(open);
+    s += open;
+    if (i % 2 === 1 && seed % 5 !== 0) s += closes[stack.pop()];
+  }
+  while (stack.length) {
+    const open = stack.pop();
+    s += seed % 7 === 0 ? closes[opens[(opens.indexOf(open) + 1) % opens.length]] : closes[open];
+  }
+  if (seed % 11 === 0) s += opens[seed % opens.length];
+  if (seed % 13 === 0) s = closes[opens[seed % opens.length]] + s;
+  return s;
+}
+
+function minStackSeed(seed) {
+  const operations = ["MinStack"];
+  const values = [[]];
+  let depth = 0;
+  const total = 10 + (mix(seed, 10) % 28);
+  for (let i = 0; i < total; i += 1) {
+    if (depth === 0 || mix(seed, i) % 5 < 3) {
+      operations.push("push");
+      values.push([((mix(seed, i + 11) % 201) - 100)]);
+      depth += 1;
+    } else if (mix(seed, i + 12) % 4 === 0) {
+      operations.push("pop");
+      values.push([]);
+      depth -= 1;
+    } else if (mix(seed, i + 13) % 2 === 0) {
+      operations.push("top");
+      values.push([]);
+    } else {
+      operations.push("getMin");
+      values.push([]);
+    }
+  }
+  if (depth > 0) {
+    operations.push("getMin");
+    values.push([]);
+    operations.push("top");
+    values.push([]);
+  }
+  return { operations, values };
+}
+
+function rpnSeed(seed) {
+  const ops = ["+", "-", "*"];
+  const tokens = [String((mix(seed, 1) % 19) - 9), String(1 + (mix(seed, 2) % 9))];
+  let depth = 2;
+  const steps = 2 + (mix(seed, 3) % 8);
+  for (let i = 0; i < steps; i += 1) {
+    if (depth < 2 || mix(seed, i + 4) % 3 !== 0) {
+      tokens.push(String((mix(seed, i + 5) % 21) - 10 || 1));
+      depth += 1;
+    } else {
+      tokens.push(ops[mix(seed, i + 6) % ops.length]);
+      depth -= 1;
+    }
+  }
+  while (depth > 1) {
+    tokens.push(ops[mix(seed, depth + 20) % ops.length]);
+    depth -= 1;
+  }
+  return tokens;
 }
 
 function validPalindrome(s) {
@@ -278,6 +414,7 @@ function evalRPN(tokens) {
 }
 
 function generateParenthesis(n) {
+  if (generateParenthesis.cache.has(n)) return generateParenthesis.cache.get(n);
   const out = [];
   function backtrack(current, open, close) {
     if (current.length === n * 2) {
@@ -288,8 +425,10 @@ function generateParenthesis(n) {
     if (close < open) backtrack(current + ")", open, close + 1);
   }
   backtrack("", 0, 0);
+  generateParenthesis.cache.set(n, out);
   return out;
 }
+generateParenthesis.cache = new Map();
 
 function dailyTemps(temperatures) {
   const out = Array(temperatures.length).fill(0);
@@ -334,16 +473,16 @@ function largestRectangle(heights) {
 
 function sortedArray(seed, n = 8) {
   const values = [];
-  let current = -10 + (seed % 5);
+  let current = -500 + (mix(seed, 300) % 120);
   for (let i = 0; i < n; i += 1) {
-    current += 1 + ((seed + i) % 4);
+    current += 1 + (mix(seed, i + 301) % 19);
     values.push(current);
   }
   return values;
 }
 
 function patternedArray(seed, n = 9, mod = 12) {
-  return Array.from({ length: n }, (_, i) => ((seed * 7 + i * 5) % mod) - Math.floor(mod / 3));
+  return Array.from({ length: n }, (_, i) => (mix(seed, i + 320) % (mod * 5)) - Math.floor((mod * 5) / 2));
 }
 
 const tripletChecker = `
@@ -489,7 +628,10 @@ const problems = [
         caseFrom({ s: "OpenAI" }, false)
       ],
       validPalindromeInputs,
-      (s) => caseFrom({ s }, validPalindrome(s))
+      (s, index) => {
+        const value = index < validPalindromeInputs.length ? s : validPalindromeSeed(index);
+        return caseFrom({ s: value }, validPalindrome(value));
+      }
     ),
     statement: markdown("Valid Palindrome", "Return whether `s` reads the same forward and backward after ignoring punctuation, spaces, and letter case.", ["Input: s = \"No lemon, no melon!\"\nOutput: true", "Input: s = \"Was it a car or a cat I saw?\"\nOutput: true", "Input: s = \"OpenAI\"\nOutput: false"], ["`0 <= len(s) <= 200000`", "`s` may contain printable ASCII characters."]),
     editorial: "Move one pointer from each end. Skip non-alphanumeric characters and compare lowercase characters when both pointers land on valid characters.",
@@ -693,7 +835,10 @@ for (const spec of slidingProblems) {
       return caseFrom({ prices }, maxProfit(prices));
     });
   } else if (spec.id === 16) {
-    cases = fillCases(spec.visible.map((s) => caseFrom({ s }, longestSubstring(s))), spec.stringSeeds, (s) => caseFrom({ s }, longestSubstring(s)));
+    cases = fillCases(spec.visible.map((s) => caseFrom({ s }, longestSubstring(s))), spec.stringSeeds, (s, index) => {
+      const value = index < spec.stringSeeds.length ? s : slidingStringSeed(index);
+      return caseFrom({ s: value }, longestSubstring(value));
+    });
   } else if (spec.id === 17) {
     cases = fillCases(spec.visible.map(([s, k]) => caseFrom({ s, k }, charReplacement(s, k))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
       const letters = "AABBCDE";
@@ -703,14 +848,15 @@ for (const spec of slidingProblems) {
     });
   } else if (spec.id === 18) {
     cases = fillCases(spec.visible.map(([s1, s2]) => caseFrom({ s1, s2 }, checkInclusion(s1, s2))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
-      const pool = ["ab", "abc", "aabc", "xyz", "adc", "hello", "roof"];
-      const s1 = pool[seed % pool.length];
-      const s2 = seed % 3 === 0 ? `zz${[...s1].reverse().join("")}yy` : `${pool[(seed + 2) % pool.length]}${seed}q`;
+      const { s1, s2 } = inclusionSeed(seed);
       return caseFrom({ s1, s2 }, checkInclusion(s1, s2));
     });
   } else if (spec.id === 19) {
     const seeds = [["thisisateststring", "tist"], ["figehaeci", "aei"], ["abcdef", "z"], ["aaabdabcefaecbef", "abc"], ["bba", "ab"], ["cabwefgewcwaefgcf", "cae"], ["abc", "abc"], ["abc", "abcd"]];
-    cases = fillCases(spec.visible.map(([s, t]) => caseFrom({ s, t }, minWindow(s, t))), seeds, ([s, t]) => caseFrom({ s, t }, minWindow(s, t)));
+    cases = fillCases(spec.visible.map(([s, t]) => caseFrom({ s, t }, minWindow(s, t))), seeds, ([s, t], index) => {
+      const generated = index < seeds.length ? { s, t } : minWindowSeed(index);
+      return caseFrom(generated, minWindow(generated.s, generated.t));
+    });
   } else {
     cases = fillCases(spec.visible.map(([nums, k]) => caseFrom({ nums, k }, slidingMax(nums, k))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
       const nums = patternedArray(seed, 5 + (seed % 12), 31);
@@ -836,7 +982,10 @@ for (const spec of stackSpecs) {
   let cases;
   if (spec.id === 21) {
     const seeds = ["", "()", "([])", "([)]", "{[]}", "(((", ")))", "({[]})", "({[}])", "()()[]{}", "(([]){})", "([{}]){}", "{[()]}", "{[(])}", "[]{}()", "([)", "([]{})", "{", "}", "((((()))))", "()(()", "(()())", "([{}{}])", "([{}])(", "(((())))[]", "([[[[]]]])", "([{}])[]{}", "[(])", "((())", "())(()", "{[()()]}", "{[(])}", "[]", "{}", "({})", "({)}", "()[{}]", "([{}])([{}])", "(((((", "}}}}", "{[({})]}", "{[({})]}()", "([]){}(([]))", "([{}]))", "(()(()))"];
-    cases = fillCases(spec.visible.map((s) => caseFrom({ s }, validParentheses(s))), seeds, (s) => caseFrom({ s }, validParentheses(s)));
+    cases = fillCases(spec.visible.map((s) => caseFrom({ s }, validParentheses(s))), seeds, (s, index) => {
+      const value = index < seeds.length ? s : bracketSeed(index);
+      return caseFrom({ s: value }, validParentheses(value));
+    });
   } else if (spec.id === 22) {
     const seeds = Array.from({ length: 42 }, (_, seed) => {
       const operations = ["MinStack"];
@@ -853,13 +1002,22 @@ for (const spec of stackSpecs) {
       operations.push("top"); values.push([]);
       return [operations, values];
     });
-    cases = fillCases(spec.visible.map(([operations, values]) => caseFrom({ operations, values }, minStackRun(operations, values))), seeds, ([operations, values]) => caseFrom({ operations, values }, minStackRun(operations, values)));
+    cases = fillCases(spec.visible.map(([operations, values]) => caseFrom({ operations, values }, minStackRun(operations, values))), seeds, ([operations, values], index) => {
+      const generated = index < seeds.length ? { operations, values } : minStackSeed(index);
+      return caseFrom(generated, minStackRun(generated.operations, generated.values));
+    });
   } else if (spec.id === 23) {
     const seeds = [["3", "4", "+"], ["5", "1", "2", "+", "4", "*", "+", "3", "-"], ["18", "3", "/"], ["7", "3", "/"], ["-7", "3", "/"], ["2", "3", "11", "+", "5", "-", "*"], ["4", "2", "+", "3", "5", "1", "-", "*", "+"], ["9", "2", "*", "3", "/"], ["8", "3", "-", "2", "*"], ["6", "2", "/", "3", "+"], ["10", "2", "8", "*", "+", "3", "-"], ["1", "2", "+", "3", "4", "+", "*"]];
-    cases = fillCases(spec.visible.map((tokens) => caseFrom({ tokens }, evalRPN(tokens))), seeds, (tokens) => caseFrom({ tokens }, evalRPN(tokens)));
+    cases = fillCases(spec.visible.map((tokens) => caseFrom({ tokens }, evalRPN(tokens))), seeds, (tokens, index) => {
+      const value = index < seeds.length ? tokens : rpnSeed(index);
+      return caseFrom({ tokens: value }, evalRPN(value));
+    });
   } else if (spec.id === 24) {
-    const seeds = [1, 2, 3, 4, 5];
-    cases = fillCases(spec.visible.map((n) => caseFrom({ n }, generateParenthesis(n))), seeds, (n) => caseFrom({ n }, generateParenthesis(n)), TARGET_CASES);
+    const seeds = [1, 2, 3, 4, 5, 6, 7, 8];
+    cases = fillCases(spec.visible.map((n) => caseFrom({ n }, generateParenthesis(n))), seeds, (_n, index) => {
+      const n = 1 + (index % seeds.length);
+      return caseFrom({ n }, generateParenthesis(n));
+    }, TARGET_CASES);
   } else if (spec.id === 25) {
     cases = fillCases(spec.visible.map((temperatures) => caseFrom({ temperatures }, dailyTemps(temperatures))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
       const temperatures = Array.from({ length: 1 + (seed % 16) }, (_, i) => 30 + ((seed * 7 + i * i + i) % 70));

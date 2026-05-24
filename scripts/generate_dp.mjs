@@ -60,10 +60,71 @@ function fillCases(visible, maker, target = TARGET_CASES) {
   return { visible: visible.length, cases };
 }
 
-const nums = (seed, length = 4 + (seed % 8), min = -10, mod = 25) =>
-  Array.from({ length }, (_, i) => min + ((seed * 17 + i * 9) % mod));
-const posNums = (seed, length = 4 + (seed % 8), mod = 20) =>
-  Array.from({ length }, (_, i) => 1 + ((seed * 13 + i * 7) % mod));
+function mix(seed, index = 0) {
+  let value = (seed * 1103515245 + index * 12345 + 0x9e3779b9) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x45d9f3b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
+const nums = (seed, length = 4 + (seed % 23), min = -50, mod = 101) =>
+  Array.from({ length }, (_, i) => min + (mix(seed, i) % mod));
+const posNums = (seed, length = 4 + (seed % 23), mod = 60) =>
+  Array.from({ length }, (_, i) => 1 + (mix(seed, i) % mod));
+
+function word(seed, length = 3 + (seed % 15), alphabet = "abcdefghi") {
+  return Array.from({ length }, (_, i) => alphabet[mix(seed, i) % alphabet.length]).join("");
+}
+
+function palindromeSeed(seed) {
+  const core = word(seed, 1 + (seed % 8), "abcd");
+  if (seed % 5 === 0) return core + [...core].reverse().join("");
+  if (seed % 5 === 1) return word(seed, 4 + (seed % 12), "abcde");
+  if (seed % 5 === 2) return "x" + core + [...core].reverse().join("") + "y";
+  if (seed % 5 === 3) return "a".repeat(1 + (seed % 20));
+  return core + "z" + [...core].reverse().join("");
+}
+
+function decodeSeed(seed) {
+  if (seed % 11 === 0) return "0" + String(10 + (seed % 89));
+  if (seed % 11 === 1) return "10".repeat(1 + (seed % 8));
+  if (seed % 11 === 2) return "27".repeat(1 + (seed % 7));
+  if (seed % 11 === 3) return "111111".slice(0, 1 + (seed % 6));
+  return Array.from({ length: 1 + (seed % 18) }, (_, i) => String(1 + (mix(seed, i) % 9))).join("");
+}
+
+function wordBreakSeed(seed) {
+  const dict = ["leet", "code", "apple", "pen", "cat", "sand", "dog"];
+  for (let i = 0; i < 5 + (seed % 7); i += 1) dict.push(word(seed + i, 1 + (i % 5), "abcd"));
+  const pieces = Array.from({ length: 2 + (seed % 8) }, (_, i) => dict[(mix(seed, i) % dict.length)]);
+  const s = pieces.join("") + (seed % 4 === 0 ? "z" : "");
+  return { s, wordDict: [...new Set(dict)] };
+}
+
+function interleaveSeed(seed) {
+  const s1 = word(seed, seed % 9, "abc");
+  const s2 = word(seed + 101, (seed * 2) % 9, "xyz");
+  let s3 = "";
+  let i = 0;
+  let j = 0;
+  while (i < s1.length || j < s2.length) {
+    if ((mix(seed, i + j) % 2 === 0 && i < s1.length) || j >= s2.length) s3 += s1[i++];
+    else s3 += s2[j++];
+  }
+  if (seed % 5 === 0) s3 = s3.slice(0, -1) + "q";
+  return { s1, s2, s3 };
+}
+
+function regexSeed(seed) {
+  const s = word(seed, 1 + (seed % 10), "abc");
+  if (seed % 6 === 0) return { s, p: ".*" };
+  if (seed % 6 === 1) return { s, p: s.replace(/[abc]/g, ".") };
+  if (seed % 6 === 2) return { s, p: `${s[0]}*${s.slice(1)}` };
+  if (seed % 6 === 3) return { s, p: `${word(seed + 1, 1 + (seed % 5), "abc")}*` };
+  if (seed % 6 === 4) return { s, p: `${s}d*` };
+  return { s, p: `${s.slice(0, Math.max(0, s.length - 1))}.` };
+}
 
 function climbStairs(n) { let a = 1, b = 1; for (let i = 0; i < n; i += 1) [a, b] = [b, a + b]; return a; }
 function minCost(cost) { let a = 0, b = 0; for (let i = cost.length - 1; i >= 0; i -= 1) [a, b] = [cost[i] + Math.min(a, b), a]; return Math.min(a, b); }
@@ -90,7 +151,7 @@ function edit(a, b) { const dp = Array.from({ length: a.length + 1 }, () => Arra
 function burst(values) { const arr = [1, ...values, 1], n = arr.length; const dp = Array.from({ length: n }, () => Array(n).fill(0)); for (let len = 2; len < n; len += 1) for (let left = 0; left + len < n; left += 1) { const right = left + len; for (let mid = left + 1; mid < right; mid += 1) dp[left][right] = Math.max(dp[left][right], dp[left][mid] + dp[mid][right] + arr[left] * arr[mid] * arr[right]); } return dp[0][n - 1]; }
 function regex(s, p) { const dp = Array.from({ length: s.length + 1 }, () => Array(p.length + 1).fill(false)); dp[0][0] = true; for (let j = 2; j <= p.length; j += 1) if (p[j - 1] === "*") dp[0][j] = dp[0][j - 2]; for (let i = 1; i <= s.length; i += 1) for (let j = 1; j <= p.length; j += 1) { if (p[j - 1] === "." || p[j - 1] === s[i - 1]) dp[i][j] = dp[i - 1][j - 1]; else if (p[j - 1] === "*") dp[i][j] = dp[i][j - 2] || ((p[j - 2] === "." || p[j - 2] === s[i - 1]) && dp[i - 1][j]); } return dp[s.length][p.length]; }
 
-const matrix = (seed) => Array.from({ length: 2 + (seed % 3) }, (_, r) => Array.from({ length: 2 + ((seed + 1) % 3) }, (_, c) => ((seed * 11 + r * 5 + c * 7) % 20)));
+const matrix = (seed) => Array.from({ length: 1 + (seed % 6) }, (_, r) => Array.from({ length: 1 + ((seed * 3) % 6) }, (_, c) => mix(seed + r, c) % 50));
 const stringSamples = ["bananas", "cbbd", "forgeeksskeegfor", "abcdd", "levelup", "noonabc"];
 
 const palindromeChecker = `
@@ -120,7 +181,7 @@ function makeProblem(id, slug, title, difficulty, tags, method, visible, maker, 
 const problems = [
   makeProblem(99, "climbing-stairs", "Climbing Stairs", "Easy", ["Math", "Dynamic Programming", "Memoization"], "climbStairs",
     [caseFrom({ n: 2 }, 2), caseFrom({ n: 5 }, 8), caseFrom({ n: 1 }, 1)],
-    (seed) => { const n = 1 + (seed % 30); return caseFrom({ n }, climbStairs(n)); },
+    (seed) => { const n = 1 + (seed % 45); return caseFrom({ n }, climbStairs(n)); },
     "You can climb 1 or 2 steps at a time. Return how many distinct ways reach exactly step `n`.",
     ["Input: n = 2\nOutput: 2", "Input: n = 5\nOutput: 8", "Input: n = 1\nOutput: 1"],
     "```python\nclass Solution:\n    def climbStairs(self, n):\n        a = b = 1\n        for _ in range(n):\n            a, b = b, a + b\n        return a\n```", "class Solution:\n    def climbStairs(self, n):\n        pass"),
@@ -144,19 +205,19 @@ const problems = [
     "```python\nclass Solution:\n    def rob(self, nums):\n        def line(arr):\n            take = skip = 0\n            for value in arr:\n                take, skip = skip + value, max(take, skip)\n            return max(take, skip)\n        return nums[0] if len(nums) == 1 else max(line(nums[1:]), line(nums[:-1]))\n```", "class Solution:\n    def rob(self, nums):\n        pass"),
   makeProblem(103, "longest-palindromic-substring", "Longest Palindromic Substring", "Medium", ["Two Pointers", "String", "Dynamic Programming"], "longestPalindrome",
     [caseFrom({ s: "bananas" }, "anana"), caseFrom({ s: "cbbd" }, "bb"), caseFrom({ s: "a" }, "a")],
-    (seed) => { const s = stringSamples[seed % stringSamples.length]; return caseFrom({ s }, longestPal(s)); },
+    (seed) => { const s = palindromeSeed(seed); return caseFrom({ s }, longestPal(s)); },
     "Return a longest contiguous substring that is a palindrome.",
     ["Input: s = bananas\nOutput: anana", "Input: s = cbbd\nOutput: bb", "Input: s = a\nOutput: a"],
     "```python\nclass Solution:\n    def longestPalindrome(self, s):\n        best = ''\n        def expand(l, r):\n            nonlocal best\n            while l >= 0 and r < len(s) and s[l] == s[r]:\n                l -= 1; r += 1\n            if r - l - 1 > len(best): best = s[l + 1:r]\n        for i in range(len(s)):\n            expand(i, i); expand(i, i + 1)\n        return best\n```", "class Solution:\n    def longestPalindrome(self, s):\n        pass", palindromeChecker),
   makeProblem(104, "palindromic-substrings", "Palindromic Substrings", "Medium", ["Two Pointers", "String", "Dynamic Programming"], "countSubstrings",
     [caseFrom({ s: "aaa" }, 6), caseFrom({ s: "abc" }, 3), caseFrom({ s: "abba" }, 6)],
-    (seed) => { const s = stringSamples[seed % stringSamples.length]; return caseFrom({ s }, countPals(s)); },
+    (seed) => { const s = palindromeSeed(seed + 17); return caseFrom({ s }, countPals(s)); },
     "Count all palindromic substrings in `s`, including duplicates at different positions.",
     ["Input: s = aaa\nOutput: 6", "Input: s = abc\nOutput: 3", "Input: s = abba\nOutput: 6"],
     "```python\nclass Solution:\n    def countSubstrings(self, s):\n        total = 0\n        def expand(l, r):\n            nonlocal total\n            while l >= 0 and r < len(s) and s[l] == s[r]:\n                total += 1; l -= 1; r += 1\n        for i in range(len(s)):\n            expand(i, i); expand(i, i + 1)\n        return total\n```", "class Solution:\n    def countSubstrings(self, s):\n        pass"),
   makeProblem(105, "decode-ways", "Decode Ways", "Medium", ["String", "Dynamic Programming"], "numDecodings",
     [caseFrom({ s: "226" }, 3), caseFrom({ s: "06" }, 0), caseFrom({ s: "11106" }, 2)],
-    (seed) => { const samples = ["12", "226", "101", "2101", "261105", "30", "111111"]; const s = samples[seed % samples.length]; return caseFrom({ s }, decodeWays(s)); },
+    (seed) => { const s = decodeSeed(seed); return caseFrom({ s }, decodeWays(s)); },
     "Digits map to letters `1` through `26`. Return how many valid decodings exist.",
     ["Input: s = 226\nOutput: 3", "Input: s = 06\nOutput: 0", "Input: s = 11106\nOutput: 2"],
     "```python\nclass Solution:\n    def numDecodings(self, s):\n        if not s or s[0] == '0': return 0\n        prev2 = prev1 = 1\n        for i in range(1, len(s)):\n            cur = 0\n            if s[i] != '0': cur += prev1\n            if 10 <= int(s[i-1:i+1]) <= 26: cur += prev2\n            prev2, prev1 = prev1, cur\n        return prev1\n```", "class Solution:\n    def numDecodings(self, s):\n        pass"),
@@ -174,7 +235,7 @@ const problems = [
     "```python\nclass Solution:\n    def maxProduct(self, nums):\n        best = hi = lo = nums[0]\n        for value in nums[1:]:\n            hi, lo = max(value, hi * value, lo * value), min(value, hi * value, lo * value)\n            best = max(best, hi)\n        return best\n```", "class Solution:\n    def maxProduct(self, nums):\n        pass"),
   makeProblem(108, "word-break", "Word Break", "Medium", ["Array", "Hash Table", "String", "Dynamic Programming", "Trie"], "wordBreak",
     [caseFrom({ s: "leetcode", wordDict: ["leet", "code"] }, true), caseFrom({ s: "applepenapple", wordDict: ["apple", "pen"] }, true), caseFrom({ s: "catsandog", wordDict: ["cats", "dog", "sand", "and", "cat"] }, false)],
-    (seed) => { const dict = ["leet", "code", "pen", "apple", "sand", "cat", "dog"]; const s = seed % 3 === 0 ? "catsandog" : (seed % 2 ? "leetcode" : "applepenapple"); return caseFrom({ s, wordDict: dict }, wordBreak(s, dict)); },
+    (seed) => { const { s, wordDict } = wordBreakSeed(seed); return caseFrom({ s, wordDict }, wordBreak(s, wordDict)); },
     "Return whether `s` can be segmented into dictionary words.",
     ["Input: s = leetcode, wordDict = [leet,code]\nOutput: true", "Input: s = applepenapple, wordDict = [apple,pen]\nOutput: true", "Input: s = catsandog, wordDict = [cats,dog,sand,and,cat]\nOutput: false"],
     "```python\nclass Solution:\n    def wordBreak(self, s, wordDict):\n        words = set(wordDict)\n        dp = [False] * (len(s) + 1)\n        dp[0] = True\n        for i in range(1, len(s) + 1):\n            dp[i] = any(dp[j] and s[j:i] in words for j in range(i))\n        return dp[-1]\n```", "class Solution:\n    def wordBreak(self, s, wordDict):\n        pass"),
@@ -192,13 +253,13 @@ const problems = [
     "```python\nclass Solution:\n    def canPartition(self, nums):\n        total = sum(nums)\n        if total % 2: return False\n        target = total // 2\n        possible = {0}\n        for value in nums:\n            possible |= {x + value for x in list(possible) if x + value <= target}\n        return target in possible\n```", "class Solution:\n    def canPartition(self, nums):\n        pass"),
   makeProblem(111, "unique-paths", "Unique Paths", "Medium", ["Math", "Dynamic Programming", "Combinatorics"], "uniquePaths",
     [caseFrom({ m: 3, n: 7 }, 28), caseFrom({ m: 3, n: 2 }, 3), caseFrom({ m: 1, n: 5 }, 1)],
-    (seed) => { const m = 1 + (seed % 10), n = 1 + ((seed * 2) % 10); return caseFrom({ m, n }, uniquePaths(m, n)); },
+    (seed) => { const m = 1 + (seed % 26), n = 1 + (Math.floor(seed / 26) % 26); return caseFrom({ m, n }, uniquePaths(m, n)); },
     "A robot moves only right or down through an `m x n` grid. Return the number of paths from top-left to bottom-right.",
     ["Input: m = 3, n = 7\nOutput: 28", "Input: m = 3, n = 2\nOutput: 3", "Input: m = 1, n = 5\nOutput: 1"],
     "```python\nclass Solution:\n    def uniquePaths(self, m, n):\n        dp = [1] * n\n        for _ in range(1, m):\n            for c in range(1, n): dp[c] += dp[c - 1]\n        return dp[-1]\n```", "class Solution:\n    def uniquePaths(self, m, n):\n        pass"),
   makeProblem(112, "longest-common-subsequence", "Longest Common Subsequence", "Medium", ["String", "Dynamic Programming"], "longestCommonSubsequence",
     [caseFrom({ text1: "abcde", text2: "ace" }, 3), caseFrom({ text1: "abc", text2: "abc" }, 3), caseFrom({ text1: "abc", text2: "def" }, 0)],
-    (seed) => { const a = ["abcde","algorithm","dynamic","subsequence"][seed % 4], b = ["ace","rhythm","program","sequence"][seed % 4]; return caseFrom({ text1: a, text2: b }, lcs(a, b)); },
+    (seed) => { const a = word(seed, 1 + (seed % 18), "abcdef"), b = seed % 4 === 0 ? word(seed + 9, 1 + (seed % 12), "uvwxyz") : word(seed + 4, 1 + ((seed * 2) % 18), "abcdef"); return caseFrom({ text1: a, text2: b }, lcs(a, b)); },
     "Return the length of the longest sequence that appears in both strings in the same relative order.",
     ["Input: text1 = abcde, text2 = ace\nOutput: 3", "Input: text1 = abc, text2 = abc\nOutput: 3", "Input: text1 = abc, text2 = def\nOutput: 0"],
     "```python\nclass Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        dp = [0] * (len(text2) + 1)\n        for i in range(len(text1) - 1, -1, -1):\n            prev = 0\n            for j in range(len(text2) - 1, -1, -1):\n                old = dp[j]\n                dp[j] = 1 + prev if text1[i] == text2[j] else max(dp[j], dp[j + 1])\n                prev = old\n        return dp[0]\n```", "class Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        pass"),
@@ -222,7 +283,7 @@ const problems = [
     "```python\nfrom collections import Counter\n\nclass Solution:\n    def findTargetSumWays(self, nums, target):\n        counts = Counter({0: 1})\n        for value in nums:\n            nxt = Counter()\n            for total, count in counts.items():\n                nxt[total + value] += count\n                nxt[total - value] += count\n            counts = nxt\n        return counts[target]\n```", "class Solution:\n    def findTargetSumWays(self, nums, target):\n        pass"),
   makeProblem(116, "interleaving-string", "Interleaving String", "Medium", ["String", "Dynamic Programming"], "isInterleave",
     [caseFrom({ s1: "aabcc", s2: "dbbca", s3: "aadbbcbcac" }, true), caseFrom({ s1: "aabcc", s2: "dbbca", s3: "aadbbbaccc" }, false), caseFrom({ s1: "", s2: "", s3: "" }, true)],
-    (seed) => { const a = seed % 2 ? "abc" : "aa", b = seed % 2 ? "def" : "ab"; const c = seed % 3 === 0 ? a + b.slice(1) : [...a].map((ch, i) => ch + (b[i] ?? "")).join("") + b.slice(a.length); return caseFrom({ s1: a, s2: b, s3: c }, interleave(a, b, c)); },
+    (seed) => { const { s1, s2, s3 } = interleaveSeed(seed); return caseFrom({ s1, s2, s3 }, interleave(s1, s2, s3)); },
     "Return whether `s3` is formed by interleaving `s1` and `s2` while preserving each string's internal order.",
     ["Input: s1 = aabcc, s2 = dbbca, s3 = aadbbcbcac\nOutput: true", "Input: s1 = aabcc, s2 = dbbca, s3 = aadbbbaccc\nOutput: false", "Input: s1 = \"\", s2 = \"\", s3 = \"\"\nOutput: true"],
     "```python\nclass Solution:\n    def isInterleave(self, s1, s2, s3):\n        if len(s1) + len(s2) != len(s3): return False\n        dp = [False] * (len(s2) + 1)\n        dp[0] = True\n        for i in range(len(s1) + 1):\n            for j in range(len(s2) + 1):\n                if i == j == 0: continue\n                take1 = i > 0 and dp[j] and s1[i - 1] == s3[i + j - 1]\n                take2 = j > 0 and dp[j - 1] and s2[j - 1] == s3[i + j - 1]\n                dp[j] = take1 or take2\n        return dp[-1]\n```", "class Solution:\n    def isInterleave(self, s1, s2, s3):\n        pass"),
@@ -234,13 +295,13 @@ const problems = [
     "```python\nclass Solution:\n    def longestIncreasingPath(self, matrix):\n        rows, cols = len(matrix), len(matrix[0])\n        memo = {}\n        def dfs(r, c):\n            if (r, c) in memo: return memo[(r, c)]\n            best = 1\n            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < rows and 0 <= nc < cols and matrix[nr][nc] > matrix[r][c]:\n                    best = max(best, 1 + dfs(nr, nc))\n            memo[(r, c)] = best\n            return best\n        return max(dfs(r, c) for r in range(rows) for c in range(cols))\n```", "class Solution:\n    def longestIncreasingPath(self, matrix):\n        pass"),
   makeProblem(118, "distinct-subsequences", "Distinct Subsequences", "Hard", ["String", "Dynamic Programming"], "numDistinct",
     [caseFrom({ s: "rabbbit", t: "rabbit" }, 3), caseFrom({ s: "babgbag", t: "bag" }, 5), caseFrom({ s: "abc", t: "abcd" }, 0)],
-    (seed) => { const pairs = [["rabbbit","rabbit"],["babgbag","bag"],["aaaaa","aa"],["abcabc","abc"]]; const [s, t] = pairs[seed % pairs.length]; return caseFrom({ s, t }, distinct(s, t)); },
+    (seed) => { const s = word(seed, 2 + (seed % 18), "abcde"); const start = seed % s.length; const t = seed % 5 === 0 ? s + "z" : s.slice(start, Math.min(s.length, start + 1 + (seed % 6))); return caseFrom({ s, t }, distinct(s, t)); },
     "Return how many distinct subsequences of `s` equal `t`.",
     ["Input: s = rabbbit, t = rabbit\nOutput: 3", "Input: s = babgbag, t = bag\nOutput: 5", "Input: s = abc, t = abcd\nOutput: 0"],
     "```python\nclass Solution:\n    def numDistinct(self, s, t):\n        dp = [0] * (len(t) + 1)\n        dp[0] = 1\n        for ch in s:\n            for i in range(len(t) - 1, -1, -1):\n                if ch == t[i]: dp[i + 1] += dp[i]\n        return dp[-1]\n```", "class Solution:\n    def numDistinct(self, s, t):\n        pass"),
   makeProblem(119, "edit-distance", "Edit Distance", "Medium", ["String", "Dynamic Programming"], "minDistance",
     [caseFrom({ word1: "horse", word2: "ros" }, 3), caseFrom({ word1: "intention", word2: "execution" }, 5), caseFrom({ word1: "", word2: "abc" }, 3)],
-    (seed) => { const pairs = [["horse","ros"],["kitten","sitting"],["flaw","lawn"],["abc","abc"],["","code"]]; const [word1, word2] = pairs[seed % pairs.length]; return caseFrom({ word1, word2 }, edit(word1, word2)); },
+    (seed) => { const word1 = seed % 9 === 0 ? "" : word(seed, seed % 14, "abcdef"); const word2 = seed % 7 === 0 ? "" : word(seed + 77, (seed * 2) % 14, "abcxyz"); return caseFrom({ word1, word2 }, edit(word1, word2)); },
     "Return the minimum number of insertions, deletions, or replacements needed to convert `word1` into `word2`.",
     ["Input: word1 = horse, word2 = ros\nOutput: 3", "Input: word1 = intention, word2 = execution\nOutput: 5", "Input: word1 = \"\", word2 = abc\nOutput: 3"],
     "```python\nclass Solution:\n    def minDistance(self, word1, word2):\n        prev = list(range(len(word2) + 1))\n        for i, a in enumerate(word1, 1):\n            cur = [i] + [0] * len(word2)\n            for j, b in enumerate(word2, 1):\n                cur[j] = prev[j - 1] if a == b else 1 + min(prev[j], cur[j - 1], prev[j - 1])\n            prev = cur\n        return prev[-1]\n```", "class Solution:\n    def minDistance(self, word1, word2):\n        pass"),
@@ -252,7 +313,7 @@ const problems = [
     "```python\nclass Solution:\n    def maxCoins(self, nums):\n        arr = [1] + nums + [1]\n        n = len(arr)\n        dp = [[0] * n for _ in range(n)]\n        for length in range(2, n):\n            for left in range(n - length):\n                right = left + length\n                dp[left][right] = max(dp[left][mid] + dp[mid][right] + arr[left] * arr[mid] * arr[right] for mid in range(left + 1, right))\n        return dp[0][n - 1]\n```", "class Solution:\n    def maxCoins(self, nums):\n        pass"),
   makeProblem(121, "regular-expression-matching", "Regular Expression Matching", "Hard", ["String", "Dynamic Programming", "Recursion"], "isMatch",
     [caseFrom({ s: "aa", p: "a" }, false), caseFrom({ s: "aa", p: "a*" }, true), caseFrom({ s: "ab", p: ".*" }, true)],
-    (seed) => { const samples = [["aa","a"],["aa","a*"],["ab",".*"],["aab","c*a*b"],["mississippi","mis*is*p*."]]; const [s, p] = samples[seed % samples.length]; return caseFrom({ s, p }, regex(s, p)); },
+    (seed) => { const { s, p } = regexSeed(seed); return caseFrom({ s, p }, regex(s, p)); },
     "Return whether pattern `p` matches the entire string `s`, where `.` matches any single character and `*` repeats the previous token zero or more times.",
     ["Input: s = aa, p = a\nOutput: false", "Input: s = aa, p = a*\nOutput: true", "Input: s = ab, p = .*\nOutput: true"],
     "```python\nfrom functools import lru_cache\n\nclass Solution:\n    def isMatch(self, s, p):\n        @lru_cache(None)\n        def dp(i, j):\n            if j == len(p): return i == len(s)\n            first = i < len(s) and p[j] in {s[i], '.'}\n            if j + 1 < len(p) and p[j + 1] == '*':\n                return dp(i, j + 2) or (first and dp(i + 1, j))\n            return first and dp(i + 1, j + 1)\n        return dp(0, 0)\n```", "class Solution:\n    def isMatch(self, s, p):\n        pass")

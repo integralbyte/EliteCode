@@ -67,6 +67,16 @@ function fillCases(visible, maker, target = TARGET_CASES) {
   return { visible: visible.length, cases };
 }
 
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
 function trieRun(operations, values) {
   const rootNode = {};
   const out = [];
@@ -146,18 +156,16 @@ function findWords(board, words) {
 }
 
 function wordSearchSeed(seed) {
-  const letters = "abcdefg";
-  const rows = 2 + (seed % 3);
-  const cols = 2 + ((seed * 2) % 3);
+  const letters = seed % 5 === 0 ? "abc" : "abcdefgxyz";
+  const rows = 1 + (mix(seed, 1) % 5);
+  const cols = 1 + (mix(seed, 2) % 5);
   const board = Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: cols }, (_, c) => letters[(seed + r * 3 + c * 5) % letters.length])
+    Array.from({ length: cols }, (_, c) => letters[mix(seed, r * cols + c + 3) % letters.length])
   );
-  const words = [
-    board[0].join(""),
-    board.map((row) => row[0]).join(""),
-    `${board[0][0]}${board[1]?.[0] ?? board[0][1]}`,
-    "zzzz"
-  ];
+  const words = [board[0].join(""), board.map((row) => row[0]).join("")];
+  for (let i = 0; i < Math.min(rows, cols); i += 1) words.push(board[i][i]);
+  if (rows > 1 && cols > 1) words.push(`${board[0][0]}${board[0][1]}${board[1][1]}`);
+  words.push(Array.from({ length: 2 + (seed % 5) }, (_, i) => "mnopq"[mix(seed, i + 40) % 5]).join(""));
   return { board, words };
 }
 
@@ -173,9 +181,9 @@ function kthLargestRun(k, nums, adds) {
 }
 
 function kthLargestSeed(seed) {
-  const k = 1 + (seed % 5);
-  const nums = Array.from({ length: k + 3 }, (_, i) => ((seed * 11 + i * 7) % 50) - 20);
-  const adds = Array.from({ length: 8 + (seed % 5) }, (_, i) => ((seed * 13 + i * 9) % 60) - 25);
+  const k = 1 + (mix(seed, 50) % 7);
+  const nums = Array.from({ length: k + 3 + (mix(seed, 51) % 8) }, (_, i) => (mix(seed, i + 52) % 101) - 50);
+  const adds = Array.from({ length: 8 + (mix(seed, 70) % 12) }, (_, i) => (mix(seed, i + 71) % 121) - 60);
   return { k, nums, adds };
 }
 
@@ -191,7 +199,7 @@ function lastStone(stones) {
 }
 
 function stoneSeed(seed) {
-  return Array.from({ length: 1 + (seed % 12) }, (_, i) => 1 + ((seed * 17 + i * 11) % 60));
+  return Array.from({ length: 1 + (mix(seed, 90) % 18) }, (_, i) => 1 + (mix(seed, i + 91) % 100));
 }
 
 function kClosest(points, k) {

@@ -57,17 +57,29 @@ function fillCases(visible, seeds, maker, target = TARGET_CASES) {
   const cases = [...visible];
   let index = 0;
   while (cases.length < target) {
-    cases.push(maker(seeds[index % seeds.length], index));
+    const base = seeds[index % seeds.length];
+    const seed = typeof base === "number" ? base + Math.floor(index / seeds.length) * seeds.length : base;
+    cases.push(maker(seed, index));
     index += 1;
   }
   return { visible: visible.length, cases };
 }
 
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
 function sortedUnique(seed, n = 8) {
   const values = [];
-  let current = -50 + (seed % 11);
+  let current = -5000 + (mix(seed, 1) % 1000);
   for (let i = 0; i < n; i += 1) {
-    current += 1 + ((seed + i * 2) % 5);
+    current += 1 + (mix(seed, i + 2) % 17);
     values.push(current);
   }
   return values;
@@ -101,14 +113,14 @@ function searchMatrix(matrix, target) {
 }
 
 function matrixFromSeed(seed) {
-  const rows = 1 + (seed % 5);
-  const cols = 1 + ((seed * 3) % 5);
+  const rows = 1 + (mix(seed, 3) % 9);
+  const cols = 1 + (mix(seed, 4) % 9);
   const matrix = [];
-  let value = -20 + seed;
+  let value = -1000 + (mix(seed, 5) % 500);
   for (let r = 0; r < rows; r += 1) {
     const row = [];
     for (let c = 0; c < cols; c += 1) {
-      value += 1 + ((seed + r + c) % 4);
+      value += 1 + (mix(seed, r * cols + c + 6) % 13);
       row.push(value);
     }
     matrix.push(row);
@@ -200,9 +212,9 @@ function medianSortedArrays(nums1, nums2) {
 }
 
 function pileSeed(seed) {
-  const count = 1 + (seed % 8);
-  const piles = Array.from({ length: count }, (_, i) => 1 + ((seed * 11 + i * 7) % 80));
-  const h = count + (seed % 25);
+  const count = 1 + (mix(seed, 7) % 18);
+  const piles = Array.from({ length: count }, (_, i) => 1 + (mix(seed, i + 8) % 1000));
+  const h = count + (mix(seed, 27) % 100);
   return { piles, h };
 }
 

@@ -69,9 +69,24 @@ function fillCases(visible, maker, target = TARGET_CASES) {
 const deepCopy = (value) => JSON.parse(JSON.stringify(value));
 const graphNode = (adjacency) => ({ __elite_type: "graph_node", adjacency });
 
-function islandGrid(seed, rows = 2 + (seed % 4), cols = 3 + ((seed * 2) % 4)) {
+function mix(seed, index = 0) {
+  let value = (seed * 1103515245 + index * 12345 + 0x9e3779b9) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x45d9f3b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
+function islandGrid(seed, rows = null, cols = null) {
+  rows = rows ?? (1 + (seed % 8));
+  cols = cols ?? (1 + (Math.floor(seed / 8) % 8));
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: cols }, (_, c) => ((seed + r * 3 + c * 5) % 4 === 0 ? "0" : "1"))
+    Array.from({ length: cols }, (_, c) => {
+      if (seed % 13 === 0) return "0";
+      if (seed % 13 === 1) return "1";
+      if (seed % 13 === 2) return (r + c) % 2 === 0 ? "1" : "0";
+      return mix(seed + r, c) % 5 <= 2 ? "1" : "0";
+    })
   );
 }
 
@@ -95,9 +110,16 @@ function numIslands(grid) {
   return count;
 }
 
-function intGrid(seed, rows = 2 + (seed % 4), cols = 2 + ((seed * 3) % 4)) {
+function intGrid(seed, rows = null, cols = null) {
+  rows = rows ?? (1 + (seed % 8));
+  cols = cols ?? (1 + (Math.floor(seed / 8) % 8));
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: cols }, (_, c) => ((seed + r * 5 + c * 7) % 5 === 0 ? 0 : 1))
+    Array.from({ length: cols }, (_, c) => {
+      if (seed % 11 === 0) return 0;
+      if (seed % 11 === 1) return 1;
+      if (seed % 11 === 2) return (r + c) % 2;
+      return mix(seed + r, c) % 5 === 0 ? 0 : 1;
+    })
   );
 }
 
@@ -115,14 +137,14 @@ function maxArea(grid) {
 }
 
 function connectedAdj(seed) {
-  const n = 1 + (seed % 6);
+  const n = 1 + (seed % 20);
   const sets = Array.from({ length: n }, () => new Set());
   for (let i = 1; i < n; i += 1) {
     sets[i - 1].add(i + 1);
     sets[i].add(i);
   }
   for (let i = 0; i < n; i += 1) {
-    const j = (seed + i * 2) % n;
+    const j = mix(seed, i) % n;
     if (i !== j) {
       sets[i].add(j + 1);
       sets[j].add(i + 1);
@@ -148,11 +170,13 @@ function wallsGates(rooms) {
 }
 
 function roomsSeed(seed) {
-  const rooms = Array.from({ length: 3 + (seed % 3) }, (_, r) =>
-    Array.from({ length: 3 + ((seed + 1) % 3) }, (_, c) => ((seed + r + c) % 7 === 0 ? -1 : INF))
+  const rows = 1 + (seed % 8);
+  const cols = 1 + (Math.floor(seed / 8) % 8);
+  const rooms = Array.from({ length: rows }, (_, r) =>
+    Array.from({ length: cols }, (_, c) => (mix(seed + r, c) % 7 === 0 ? -1 : INF))
   );
   rooms[0][0] = 0;
-  rooms[rooms.length - 1][rooms[0].length - 1] = seed % 2 === 0 ? 0 : rooms.at(-1).at(-1);
+  if (seed % 3 === 0) rooms[rooms.length - 1][rooms[0].length - 1] = 0;
   return rooms;
 }
 
@@ -180,8 +204,11 @@ function orangesRotting(grid) {
 }
 
 function orangesSeed(seed) {
-  const grid = intGrid(seed, 3, 4).map((row, r) => row.map((v, c) => (v === 0 ? 0 : ((seed + r + c) % 5 === 0 ? 2 : 1))));
+  const rows = 1 + (seed % 7);
+  const cols = 1 + (Math.floor(seed / 7) % 7);
+  const grid = intGrid(seed, rows, cols).map((row, r) => row.map((v, c) => (v === 0 ? 0 : (mix(seed + r, c) % 6 === 0 ? 2 : 1))));
   grid[0][0] = 2;
+  if (seed % 10 === 0) grid[rows - 1][cols - 1] = 1;
   return grid;
 }
 
@@ -211,8 +238,8 @@ function pacificAtlantic(heights) {
 }
 
 function heightsSeed(seed) {
-  return Array.from({ length: 2 + (seed % 4) }, (_, r) =>
-    Array.from({ length: 2 + ((seed * 2) % 4) }, (_, c) => 1 + ((seed * 11 + r * 5 + c * 7) % 9))
+  return Array.from({ length: 1 + (seed % 8) }, (_, r) =>
+    Array.from({ length: 1 + (Math.floor(seed / 8) % 8) }, (_, c) => 1 + (mix(seed + r, c) % 50))
   );
 }
 
@@ -230,8 +257,12 @@ function surrounded(board) {
 }
 
 function boardSeed(seed) {
-  return Array.from({ length: 3 + (seed % 3) }, (_, r) =>
-    Array.from({ length: 3 + ((seed + 2) % 3) }, (_, c) => ((seed + r * 3 + c * 5) % 4 === 0 ? "O" : "X"))
+  return Array.from({ length: 1 + (seed % 8) }, (_, r) =>
+    Array.from({ length: 1 + (Math.floor(seed / 8) % 8) }, (_, c) => {
+      if (seed % 9 === 0) return "O";
+      if (seed % 9 === 1) return "X";
+      return mix(seed + r, c) % 4 === 0 ? "O" : "X";
+    })
   );
 }
 
@@ -251,11 +282,115 @@ function topoOrder(numCourses, prerequisites) {
 }
 
 function courseSeed(seed) {
-  const n = 2 + (seed % 7);
+  const n = 2 + (seed % 25);
   const prerequisites = [];
-  for (let i = 1; i < n; i += 1) if ((seed + i) % 2 === 0) prerequisites.push([i, (i - 1) % n]);
+  for (let i = 1; i < n; i += 1) {
+    if (mix(seed, i) % 3 !== 0) prerequisites.push([i, mix(seed + 3, i) % i]);
+  }
   if (seed % 5 === 0) prerequisites.push([0, n - 1], [n - 1, 0]);
   return { n, prerequisites };
+}
+
+function treeEdgeSeed(seed) {
+  const n = 2 + (seed % 40);
+  const edges = [];
+  for (let i = 1; i < n; i += 1) edges.push([i, mix(seed, i) % i]);
+  if (seed % 3 === 0) edges.push([0, n - 1]);
+  if (seed % 5 === 0 && edges.length) edges.pop();
+  return { n, edges };
+}
+
+function componentSeed(seed) {
+  const n = 2 + (seed % 50);
+  const edges = [];
+  for (let i = 1; i < n; i += 1) {
+    if (mix(seed, i) % 4 !== 0) edges.push([i, mix(seed + 7, i) % i]);
+  }
+  return { n, edges };
+}
+
+function redundantSeed(seed) {
+  const n = 3 + (seed % 45);
+  const edges = [];
+  for (let i = 2; i <= n; i += 1) edges.push([i, 1 + (mix(seed, i) % (i - 1))]);
+  const a = 1 + (seed % n);
+  let b = 1 + (mix(seed, 99) % n);
+  if (a === b) b = (b % n) + 1;
+  edges.push([Math.min(a, b), Math.max(a, b)]);
+  return edges;
+}
+
+function wordLadderSeed(seed) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const length = 3 + (mix(seed, 180) % 4);
+  const beginWord = Array.from({ length }, (_, i) => alphabet[mix(seed, i + 181) % 26]).join("");
+  const chars = [...beginWord];
+  const wordList = [];
+  for (let i = 0; i < length; i += 1) {
+    chars[i] = alphabet[(alphabet.indexOf(chars[i]) + 1 + (mix(seed, i + 190) % 25)) % 26];
+    wordList.push(chars.join(""));
+    if (mix(seed, i + 200) % 2 === 0) {
+      const decoy = [...chars];
+      decoy[(i + 1) % length] = alphabet[mix(seed, i + 210) % 26];
+      wordList.push(decoy.join(""));
+    }
+  }
+  const endWord = wordList[wordList.length - 1];
+  if (seed % 6 === 0) wordList.pop();
+  return { beginWord, endWord, wordList: [...new Set(wordList)] };
+}
+
+function itinerarySeed(seed) {
+  const stops = ["JFK"];
+  const count = 3 + (seed % 9);
+  for (let i = 0; i < count; i += 1) {
+    stops.push(`${String.fromCharCode(65 + ((seed + i) % 26))}${String.fromCharCode(65 + (mix(seed, i) % 26))}`);
+  }
+  const tickets = [];
+  for (let i = 0; i < stops.length - 1; i += 1) tickets.push([stops[i], stops[i + 1]]);
+  if (seed % 3 === 0 && stops.length > 3) {
+    tickets.push([stops[2], stops[1]]);
+    tickets.push([stops[1], stops[2]]);
+  }
+  return tickets;
+}
+
+function alienWordsSeed(seed) {
+  if (seed % 11 === 0) {
+    const prefix = Array.from({ length: 2 + (seed % 5) }, (_, i) => "abcxyz"[mix(seed, i + 260) % 6]).join("");
+    return [`${prefix}${"m".repeat(1 + (seed % 3))}`, prefix];
+  }
+  const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
+  const count = 3 + (mix(seed, 220) % 13);
+  const letters = alphabet
+    .sort((a, b) => mix(seed, a.charCodeAt(0)) - mix(seed, b.charCodeAt(0)))
+    .slice(0, count);
+  const words = letters.map((ch, index) => {
+    const suffixLength = mix(seed, index + 230) % 4;
+    const suffix = Array.from({ length: suffixLength }, (_, i) => "mnopqr"[mix(seed, index * 7 + i + 240) % 6]).join("");
+    return `${ch}${suffix}`;
+  });
+  if (seed % 5 === 0) words.push(`${words.at(-1)}z`);
+  return words;
+}
+
+function networkDelaySeed(seed) {
+  const n = 2 + (mix(seed, 270) % 35);
+  const times = [];
+  if (seed % 4 !== 0) {
+    for (let i = 1; i < n; i += 1) times.push([i, i + 1, 1 + (mix(seed, i + 271) % 20)]);
+  }
+  for (let i = 1; i <= n; i += 1) {
+    for (let offset = 1; offset <= 4 && offset < n; offset += 1) {
+      const j = ((i + offset - 1) % n) + 1;
+      if (i !== j && mix(seed + i, offset + 280) % 3 === 0) {
+        times.push([i, j, 1 + (mix(seed, i * 11 + j + 290) % 50)]);
+      }
+    }
+  }
+  if (!times.length) times.push([1, 2, 1 + (seed % 9)]);
+  const k = 1 + (mix(seed, 300) % n);
+  return { times, n, k };
 }
 
 function dsu(n) {
@@ -552,31 +687,31 @@ problems.push(makeProblem(89, "graph-valid-tree", "Graph Valid Tree", "Medium", 
   caseFrom({ n: 5, edges: [[0, 1], [0, 2], [0, 3], [1, 4]] }, true),
   caseFrom({ n: 5, edges: [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]] }, false),
   caseFrom({ n: 3, edges: [[0, 1]] }, false)
-], (seed) => { const n = 2 + (seed % 8); const edges = Array.from({ length: n - 1 }, (_, i) => [i, i + 1]); if (seed % 3 === 0) edges.push([0, n - 1]); return caseFrom({ n, edges }, validTree(n, edges)); }, "Return whether an undirected graph with `n` nodes is connected and acyclic.", ["Input: n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]\nOutput: true", "Input: n = 5, edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]\nOutput: false", "Input: n = 3, edges = [[0,1]]\nOutput: false"], "```python\nclass Solution:\n    def validTree(self, n, edges):\n        if len(edges) != n - 1:\n            return False\n        parent = list(range(n))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return False\n            parent[ra] = rb\n        return True\n```", "class Solution:\n    def validTree(self, n, edges):\n        pass"));
+], (seed) => { const { n, edges } = treeEdgeSeed(seed); return caseFrom({ n, edges }, validTree(n, edges)); }, "Return whether an undirected graph with `n` nodes is connected and acyclic.", ["Input: n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]\nOutput: true", "Input: n = 5, edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]\nOutput: false", "Input: n = 3, edges = [[0,1]]\nOutput: false"], "```python\nclass Solution:\n    def validTree(self, n, edges):\n        if len(edges) != n - 1:\n            return False\n        parent = list(range(n))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return False\n            parent[ra] = rb\n        return True\n```", "class Solution:\n    def validTree(self, n, edges):\n        pass"));
 
 problems.push(makeProblem(90, "number-of-connected-components-in-an-undirected-graph", "Number of Connected Components in an Undirected Graph", "Medium", ["Depth-First Search", "Breadth-First Search", "Union Find", "Graph"], "countComponents", [
   caseFrom({ n: 5, edges: [[0, 1], [1, 2], [3, 4]] }, 2),
   caseFrom({ n: 4, edges: [] }, 4),
   caseFrom({ n: 3, edges: [[0, 1], [1, 2]] }, 1)
-], (seed) => { const n = 2 + (seed % 8); const edges = []; for (let i = 1; i < n; i += 1) if ((seed + i) % 3 !== 0) edges.push([i - 1, i]); return caseFrom({ n, edges }, countComponents(n, edges)); }, "Return how many connected components exist in an undirected graph.", ["Input: n = 5, edges = [[0,1],[1,2],[3,4]]\nOutput: 2", "Input: n = 4, edges = []\nOutput: 4", "Input: n = 3, edges = [[0,1],[1,2]]\nOutput: 1"], "```python\nclass Solution:\n    def countComponents(self, n, edges):\n        parent = list(range(n))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        count = n\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                parent[ra] = rb; count -= 1\n        return count\n```", "class Solution:\n    def countComponents(self, n, edges):\n        pass"));
+], (seed) => { const { n, edges } = componentSeed(seed); return caseFrom({ n, edges }, countComponents(n, edges)); }, "Return how many connected components exist in an undirected graph.", ["Input: n = 5, edges = [[0,1],[1,2],[3,4]]\nOutput: 2", "Input: n = 4, edges = []\nOutput: 4", "Input: n = 3, edges = [[0,1],[1,2]]\nOutput: 1"], "```python\nclass Solution:\n    def countComponents(self, n, edges):\n        parent = list(range(n))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        count = n\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                parent[ra] = rb; count -= 1\n        return count\n```", "class Solution:\n    def countComponents(self, n, edges):\n        pass"));
 
 problems.push(makeProblem(91, "redundant-connection", "Redundant Connection", "Medium", ["Depth-First Search", "Breadth-First Search", "Union Find", "Graph"], "findRedundantConnection", [
   caseFrom({ edges: [[1, 2], [1, 3], [2, 3]] }, [2, 3]),
   caseFrom({ edges: [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]] }, [1, 4]),
   caseFrom({ edges: [[1, 2], [2, 3], [1, 3]] }, [1, 3])
-], (seed) => { const n = 3 + (seed % 7); const edges = Array.from({ length: n - 1 }, (_, i) => [i + 1, i + 2]); edges.push([1, n]); return caseFrom({ edges }, redundant(edges)); }, "A tree had one extra undirected edge added. Return the last edge that creates a cycle.", ["Input: edges = [[1,2],[1,3],[2,3]]\nOutput: [2,3]", "Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]\nOutput: [1,4]", "Input: edges = [[1,2],[2,3],[1,3]]\nOutput: [1,3]"], "```python\nclass Solution:\n    def findRedundantConnection(self, edges):\n        parent = list(range(len(edges) + 1))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return [a, b]\n            parent[ra] = rb\n```", "class Solution:\n    def findRedundantConnection(self, edges):\n        pass"));
+], (seed) => { const edges = redundantSeed(seed); return caseFrom({ edges }, redundant(edges)); }, "A tree had one extra undirected edge added. Return the last edge that creates a cycle.", ["Input: edges = [[1,2],[1,3],[2,3]]\nOutput: [2,3]", "Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]\nOutput: [1,4]", "Input: edges = [[1,2],[2,3],[1,3]]\nOutput: [1,3]"], "```python\nclass Solution:\n    def findRedundantConnection(self, edges):\n        parent = list(range(len(edges) + 1))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return [a, b]\n            parent[ra] = rb\n```", "class Solution:\n    def findRedundantConnection(self, edges):\n        pass"));
 
 problems.push(makeProblem(92, "word-ladder", "Word Ladder", "Hard", ["Hash Table", "String", "Breadth-First Search"], "ladderLength", [
   caseFrom({ beginWord: "cold", endWord: "warm", wordList: ["cord", "card", "ward", "warm", "worm", "cold"] }, 5),
   caseFrom({ beginWord: "hit", endWord: "cog", wordList: ["hot", "dot", "dog", "lot", "log"] }, 0),
   caseFrom({ beginWord: "a", endWord: "c", wordList: ["a", "b", "c"] }, 2)
-], (seed) => { const words = ["cold", "cord", "card", "ward", "warm", "worm", "word"]; const list = seed % 4 === 0 ? words.slice(1, -1) : words.slice(1); return caseFrom({ beginWord: "cold", endWord: "warm", wordList: list }, ladderLength("cold", "warm", list)); }, "Return the number of words in the shortest transformation from `beginWord` to `endWord`, changing one letter at a time and using only words from the list.", ["Input: beginWord = cold, endWord = warm, wordList = [cord,card,ward,warm,worm,cold]\nOutput: 5", "Input: beginWord = hit, endWord = cog, wordList = [hot,dot,dog,lot,log]\nOutput: 0", "Input: beginWord = a, endWord = c, wordList = [a,b,c]\nOutput: 2"], "```python\nfrom collections import deque\n\nclass Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        words = set(wordList)\n        if endWord not in words: return 0\n        queue = deque([(beginWord, 1)])\n        seen = {beginWord}\n        while queue:\n            word, depth = queue.popleft()\n            if word == endWord: return depth\n            for i in range(len(word)):\n                for code in range(ord('a'), ord('z') + 1):\n                    nxt = word[:i] + chr(code) + word[i + 1:]\n                    if nxt in words and nxt not in seen:\n                        seen.add(nxt); queue.append((nxt, depth + 1))\n        return 0\n```", "class Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        pass"));
+], (seed) => { const { beginWord, endWord, wordList } = wordLadderSeed(seed); return caseFrom({ beginWord, endWord, wordList }, ladderLength(beginWord, endWord, wordList)); }, "Return the number of words in the shortest transformation from `beginWord` to `endWord`, changing one letter at a time and using only words from the list.", ["Input: beginWord = cold, endWord = warm, wordList = [cord,card,ward,warm,worm,cold]\nOutput: 5", "Input: beginWord = hit, endWord = cog, wordList = [hot,dot,dog,lot,log]\nOutput: 0", "Input: beginWord = a, endWord = c, wordList = [a,b,c]\nOutput: 2"], "```python\nfrom collections import deque\n\nclass Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        words = set(wordList)\n        if endWord not in words: return 0\n        queue = deque([(beginWord, 1)])\n        seen = {beginWord}\n        while queue:\n            word, depth = queue.popleft()\n            if word == endWord: return depth\n            for i in range(len(word)):\n                for code in range(ord('a'), ord('z') + 1):\n                    nxt = word[:i] + chr(code) + word[i + 1:]\n                    if nxt in words and nxt not in seen:\n                        seen.add(nxt); queue.append((nxt, depth + 1))\n        return 0\n```", "class Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        pass"));
 
 problems.push(makeProblem(93, "reconstruct-itinerary", "Reconstruct Itinerary", "Hard", ["Depth-First Search", "Graph", "Eulerian Circuit"], "findItinerary", [
   caseFrom({ tickets: [["JFK", "SFO"], ["JFK", "ATL"], ["ATL", "JFK"], ["SFO", "ATL"]] }, ["JFK", "ATL", "JFK", "SFO", "ATL"]),
   caseFrom({ tickets: [["JFK", "A"], ["A", "B"], ["B", "JFK"]] }, ["JFK", "A", "B", "JFK"]),
   caseFrom({ tickets: [["JFK", "KUL"], ["JFK", "NRT"], ["NRT", "JFK"]] }, ["JFK", "NRT", "JFK", "KUL"])
-], (seed) => { const tickets = seed % 2 ? [["JFK","A"],["A","C"],["C","JFK"],["JFK","B"],["B","A"]] : [["JFK","B"],["JFK","A"],["A","JFK"]]; return caseFrom({ tickets }, findItinerary(tickets)); }, "Use all airline tickets exactly once starting from `JFK`, returning the lexicographically smallest valid route.", ["Input: tickets = [[JFK,SFO],[JFK,ATL],[ATL,JFK],[SFO,ATL]]\nOutput: [JFK,ATL,JFK,SFO,ATL]", "Input: tickets = [[JFK,A],[A,B],[B,JFK]]\nOutput: [JFK,A,B,JFK]", "Input: tickets = [[JFK,KUL],[JFK,NRT],[NRT,JFK]]\nOutput: [JFK,NRT,JFK,KUL]"], "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def findItinerary(self, tickets):\n        graph = defaultdict(list)\n        for src, dst in sorted(tickets, reverse=True):\n            graph[src].append(dst)\n        route = []\n        def visit(airport):\n            while graph[airport]:\n                visit(graph[airport].pop())\n            route.append(airport)\n        visit('JFK')\n        return route[::-1]\n```", "class Solution:\n    def findItinerary(self, tickets):\n        pass"));
+], (seed) => { const tickets = itinerarySeed(seed); return caseFrom({ tickets }, findItinerary(tickets)); }, "Use all airline tickets exactly once starting from `JFK`, returning the lexicographically smallest valid route.", ["Input: tickets = [[JFK,SFO],[JFK,ATL],[ATL,JFK],[SFO,ATL]]\nOutput: [JFK,ATL,JFK,SFO,ATL]", "Input: tickets = [[JFK,A],[A,B],[B,JFK]]\nOutput: [JFK,A,B,JFK]", "Input: tickets = [[JFK,KUL],[JFK,NRT],[NRT,JFK]]\nOutput: [JFK,NRT,JFK,KUL]"], "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def findItinerary(self, tickets):\n        graph = defaultdict(list)\n        for src, dst in sorted(tickets, reverse=True):\n            graph[src].append(dst)\n        route = []\n        def visit(airport):\n            while graph[airport]:\n                visit(graph[airport].pop())\n            route.append(airport)\n        visit('JFK')\n        return route[::-1]\n```", "class Solution:\n    def findItinerary(self, tickets):\n        pass"));
 
 problems.push(makeProblem(94, "min-cost-to-connect-all-points", "Min Cost to Connect All Points", "Medium", ["Array", "Union Find", "Graph", "Minimum Spanning Tree"], "minCostConnectPoints", [
   caseFrom({ points: [[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]] }, 20),
@@ -588,7 +723,7 @@ problems.push(makeProblem(95, "network-delay-time", "Network Delay Time", "Mediu
   caseFrom({ times: [[2, 1, 1], [2, 3, 1], [3, 4, 1]], n: 4, k: 2 }, 2),
   caseFrom({ times: [[1, 2, 1]], n: 2, k: 1 }, 1),
   caseFrom({ times: [[1, 2, 1]], n: 2, k: 2 }, -1)
-], (seed) => { const n = 2 + (seed % 6); const times = Array.from({ length: n - 1 }, (_, i) => [i + 1, i + 2, 1 + ((seed + i) % 9)]); if (seed % 3) times.push([1, n, 2 + seed % 5]); return caseFrom({ times, n, k: 1 }, networkDelay(times, n, 1)); }, "Return how long it takes for a signal from `k` to reach every node, or `-1` if some node is unreachable.", ["Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2\nOutput: 2", "Input: times = [[1,2,1]], n = 2, k = 1\nOutput: 1", "Input: times = [[1,2,1]], n = 2, k = 2\nOutput: -1"], "```python\nimport heapq\nfrom collections import defaultdict\n\nclass Solution:\n    def networkDelayTime(self, times, n, k):\n        graph = defaultdict(list)\n        for u, v, w in times: graph[u].append((v, w))\n        dist = {}\n        heap = [(0, k)]\n        while heap:\n            d, node = heapq.heappop(heap)\n            if node in dist: continue\n            dist[node] = d\n            for nxt, w in graph[node]:\n                if nxt not in dist: heapq.heappush(heap, (d + w, nxt))\n        return max(dist.values()) if len(dist) == n else -1\n```", "class Solution:\n    def networkDelayTime(self, times, n, k):\n        pass"));
+], (seed) => { const { times, n, k } = networkDelaySeed(seed); return caseFrom({ times, n, k }, networkDelay(times, n, k)); }, "Return how long it takes for a signal from `k` to reach every node, or `-1` if some node is unreachable.", ["Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2\nOutput: 2", "Input: times = [[1,2,1]], n = 2, k = 1\nOutput: 1", "Input: times = [[1,2,1]], n = 2, k = 2\nOutput: -1"], "```python\nimport heapq\nfrom collections import defaultdict\n\nclass Solution:\n    def networkDelayTime(self, times, n, k):\n        graph = defaultdict(list)\n        for u, v, w in times: graph[u].append((v, w))\n        dist = {}\n        heap = [(0, k)]\n        while heap:\n            d, node = heapq.heappop(heap)\n            if node in dist: continue\n            dist[node] = d\n            for nxt, w in graph[node]:\n                if nxt not in dist: heapq.heappush(heap, (d + w, nxt))\n        return max(dist.values()) if len(dist) == n else -1\n```", "class Solution:\n    def networkDelayTime(self, times, n, k):\n        pass"));
 
 problems.push(makeProblem(96, "swim-in-rising-water", "Swim in Rising Water", "Hard", ["Array", "Binary Search", "Depth-First Search", "Breadth-First Search", "Union Find", "Heap", "Matrix"], "swimInWater", [
   caseFrom({ grid: [[0, 2], [1, 3]] }, 3),
@@ -600,7 +735,7 @@ problems.push(makeProblem(97, "alien-dictionary", "Alien Dictionary", "Hard", ["
   caseFrom({ words: ["wrt", "wrf", "er", "ett", "rftt"] }, "wertf"),
   caseFrom({ words: ["z", "x"] }, "zx"),
   caseFrom({ words: ["abc", "ab"] }, "")
-], (seed) => { const samples = [[["za","zb","ca","cb"], "azbc"], [["baa","abcd","abca","cab","cad"], alienOrder(["baa","abcd","abca","cab","cad"])], [["x","x"], "x"], [["abc","ab"], ""]]; const [words, expected] = samples[seed % samples.length]; return caseFrom({ words }, expected); }, "Infer one valid character ordering from words sorted according to an unknown alphabet. Return an empty string when the ordering is impossible.", ["Input: words = [wrt,wrf,er,ett,rftt]\nOutput: wertf", "Input: words = [z,x]\nOutput: zx", "Input: words = [abc,ab]\nOutput: \"\""], "```python\nfrom collections import defaultdict, deque\n\nclass Solution:\n    def alienOrder(self, words):\n        chars = set(''.join(words))\n        graph = {ch: set() for ch in chars}\n        indeg = {ch: 0 for ch in chars}\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b): return ''\n            for x, y in zip(a, b):\n                if x != y:\n                    if y not in graph[x]: graph[x].add(y); indeg[y] += 1\n                    break\n        queue = deque(sorted(ch for ch in chars if indeg[ch] == 0))\n        out = []\n        while queue:\n            ch = queue.popleft(); out.append(ch)\n            for nxt in sorted(graph[ch]):\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0: queue.append(nxt)\n        return ''.join(out) if len(out) == len(chars) else ''\n```", "class Solution:\n    def alienOrder(self, words):\n        pass", alienChecker));
+], (seed) => { const words = alienWordsSeed(seed); return caseFrom({ words }, alienOrder(words)); }, "Infer one valid character ordering from words sorted according to an unknown alphabet. Return an empty string when the ordering is impossible.", ["Input: words = [wrt,wrf,er,ett,rftt]\nOutput: wertf", "Input: words = [z,x]\nOutput: zx", "Input: words = [abc,ab]\nOutput: \"\""], "```python\nfrom collections import defaultdict, deque\n\nclass Solution:\n    def alienOrder(self, words):\n        chars = set(''.join(words))\n        graph = {ch: set() for ch in chars}\n        indeg = {ch: 0 for ch in chars}\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b): return ''\n            for x, y in zip(a, b):\n                if x != y:\n                    if y not in graph[x]: graph[x].add(y); indeg[y] += 1\n                    break\n        queue = deque(sorted(ch for ch in chars if indeg[ch] == 0))\n        out = []\n        while queue:\n            ch = queue.popleft(); out.append(ch)\n            for nxt in sorted(graph[ch]):\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0: queue.append(nxt)\n        return ''.join(out) if len(out) == len(chars) else ''\n```", "class Solution:\n    def alienOrder(self, words):\n        pass", alienChecker));
 
 problems.push(makeProblem(98, "cheapest-flights-within-k-stops", "Cheapest Flights Within K Stops", "Medium", ["Dynamic Programming", "Depth-First Search", "Breadth-First Search", "Graph", "Heap", "Shortest Path"], "findCheapestPrice", [
   caseFrom({ n: 4, flights: [[0, 1, 100], [1, 2, 100], [2, 3, 100], [0, 3, 500]], src: 0, dst: 3, k: 1 }, 500),

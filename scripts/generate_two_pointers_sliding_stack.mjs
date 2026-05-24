@@ -1020,7 +1020,7 @@ for (const spec of stackSpecs) {
     }, TARGET_CASES);
   } else if (spec.id === 25) {
     cases = fillCases(spec.visible.map((temperatures) => caseFrom({ temperatures }, dailyTemps(temperatures))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
-      const temperatures = Array.from({ length: 1 + (seed % 16) }, (_, i) => 30 + ((seed * 7 + i * i + i) % 70));
+      const temperatures = Array.from({ length: 1 + (mix(seed, 340) % 40) }, (_, i) => 30 + (mix(seed, i + 341) % 71));
       return caseFrom({ temperatures }, dailyTemps(temperatures));
     });
   } else if (spec.id === 26) {
@@ -1036,7 +1036,7 @@ for (const spec of stackSpecs) {
     });
   } else {
     cases = fillCases(spec.visible.map((heights) => caseFrom({ heights }, largestRectangle(heights))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
-      const heights = Array.from({ length: 1 + (seed % 14) }, (_, i) => 1 + ((seed * 9 + i * 4 + i * i) % 15));
+      const heights = Array.from({ length: 1 + (mix(seed, 360) % 40) }, (_, i) => 1 + (mix(seed, i + 361) % 100));
       return caseFrom({ heights }, largestRectangle(heights));
     });
   }

@@ -238,8 +238,8 @@ function leastInterval(tasks, n) {
 }
 
 function tasksSeed(seed) {
-  const letters = "ABCDE";
-  return Array.from({ length: 8 + (seed % 18) }, (_, i) => letters[(seed + i * i) % letters.length]);
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return Array.from({ length: 8 + (mix(seed, 170) % 60) }, (_, i) => letters[mix(seed, i + 171) % (3 + (seed % 12))]);
 }
 
 function twitterRun(operations, values) {

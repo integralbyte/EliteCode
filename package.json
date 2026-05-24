@@ -16,7 +16,8 @@
     "test:backend": ".venv/bin/python -m pytest tests",
     "test:frontend": "vitest run",
     "test:e2e": "playwright test",
-    "audit:cases": "node scripts/audit_problem_cases.mjs"
+    "audit:cases": "node scripts/audit_problem_cases.mjs",
+    "audit:edge": "node scripts/audit_edge_coverage.mjs"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

@@ -25,6 +25,7 @@ npm test
 npm run test:e2e
 npm run validate:problems
 npm run audit:cases
+npm run audit:edge
 ```
 
 ## Adding Problems

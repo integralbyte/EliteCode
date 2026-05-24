@@ -181,7 +181,7 @@ function makeProblem(id, slug, title, difficulty, tags, method, visible, maker, 
 const problems = [
   makeProblem(99, "climbing-stairs", "Climbing Stairs", "Easy", ["Math", "Dynamic Programming", "Memoization"], "climbStairs",
     [caseFrom({ n: 2 }, 2), caseFrom({ n: 5 }, 8), caseFrom({ n: 1 }, 1)],
-    (seed) => { const n = 1 + (seed % 45); return caseFrom({ n }, climbStairs(n)); },
+    (seed) => { const n = 1 + (seed % 75); return caseFrom({ n }, climbStairs(n)); },
     "You can climb 1 or 2 steps at a time. Return how many distinct ways reach exactly step `n`.",
     ["Input: n = 2\nOutput: 2", "Input: n = 5\nOutput: 8", "Input: n = 1\nOutput: 1"],
     "```python\nclass Solution:\n    def climbStairs(self, n):\n        a = b = 1\n        for _ in range(n):\n            a, b = b, a + b\n        return a\n```", "class Solution:\n    def climbStairs(self, n):\n        pass"),

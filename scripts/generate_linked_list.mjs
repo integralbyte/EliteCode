@@ -71,8 +71,18 @@ function fillCases(visible, maker, target = TARGET_CASES) {
   return { visible: visible.length, cases };
 }
 
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
 function valuesFromSeed(seed, length = 1 + (seed % 11)) {
-  return Array.from({ length }, (_, index) => ((seed * 17 + index * 9) % 41) - 20);
+  return Array.from({ length }, (_, index) => (mix(seed, index + 1) % 101) - 50);
 }
 
 function sortedValues(seed, length = 1 + (seed % 9)) {
@@ -435,8 +445,8 @@ const problems = [
       caseFrom({ l1: listNode([9, 9, 9]), l2: listNode([7]) }, [6, 0, 0, 1])
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const left = Array.from({ length: 1 + (seed % 12) }, (_, index) => (seed + index * 3) % 10);
-      const right = Array.from({ length: 1 + ((seed * 2) % 12) }, (_, index) => (seed * 2 + index * 5) % 10);
+      const left = Array.from({ length: 1 + (mix(seed, 90) % 30) }, (_, index) => mix(seed, index + 91) % 10);
+      const right = Array.from({ length: 1 + (mix(seed, 130) % 30) }, (_, index) => mix(seed, index + 131) % 10);
       return caseFrom({ l1: listNode(left), l2: listNode(right) }, addDigitLists(left, right));
     });
     return {

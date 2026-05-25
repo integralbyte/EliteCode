@@ -625,7 +625,10 @@ const validPalindromeInputs = [
   "short"
 ];
 
-const simpleStrings = ["abcabcbb", "bbbbb", "pwwkew", "", "au", "dvdf", "abba", "tmmzuxt", "abcdef", "aab", "anviaj", "ohvhjdml", "abcadeafg", "zzzzzz", "longest", "qrsvbspk", "aabaab!bb", "12345123", "abcdefga", "nfpdmpi", "wobgrovw", "a".repeat(20), "ab".repeat(12), "abcd".repeat(8), "thequickbrownfox", "abbaacdef", "xyzxyza", "dvdfxyz", "abc def", "space bar", "caseCASE", "AaBbCc", "mississippi", "subdermatoglyphic", "redivider", "algorithm", "datastructures", "slidingwindow", "hashmap", "queue", "stack", "monotonic", "window", "repeat", "unique"];
+const simpleStrings = [
+  "abcabcbb", "bbbbb", "pwwkew", "", "au", "dvdf", "abba", "tmmzuxt", "abcdef", "aab", "anviaj", "ohvhjdml", "abcadeafg", "zzzzzz", "longest", "qrsvbspk", "aabaab!bb", "12345123", "abcdefga", "nfpdmpi", "wobgrovw", "a".repeat(20), "ab".repeat(12), "abcd".repeat(8), "thequickbrownfox", "abbaacdef", "xyzxyza", "dvdfxyz", "abc def", "space bar", "caseCASE", "AaBbCc", "mississippi", "subdermatoglyphic", "redivider", "algorithm", "datastructures", "slidingwindow", "hashmap", "queue", "stack", "monotonic", "window", "repeat", "unique",
+  ..."abcdefghijklmnopqrstuvwxyz".split("").map((_, index, chars) => chars.slice(0, index + 1).join(""))
+];
 
 const problems = [
   {

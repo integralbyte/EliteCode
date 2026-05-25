@@ -603,7 +603,7 @@ const problems = [
       caseFrom({ root: treeNode([]) }, 0)
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const values = randomTreeValues(seed);
+      const values = seed % 4 === 0 ? Array.from({ length: 1 + (mix(seed, 500) % 28) }, (_, index) => index) : randomTreeValues(seed);
       return caseFrom({ root: treeNode(values) }, goodNodes(fromArray(values)));
     });
     return {

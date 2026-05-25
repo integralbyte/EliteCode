@@ -362,7 +362,7 @@ const problems = [
       ],
       Array.from({ length: 42 }, (_, i) => i + 1),
       (seed) => {
-        const base = sortedUnique(seed, 1 + (seed % 15));
+        const base = sortedUnique(seed, 1 + (seed % 24));
         const nums = rotate(base, seed % base.length);
         return caseFrom({ nums }, findMin(nums));
       }
@@ -397,9 +397,9 @@ const problems = [
       ],
       Array.from({ length: 42 }, (_, i) => i + 1),
       (seed) => {
-        const base = sortedUnique(seed, 1 + (seed % 15));
+        const base = sortedUnique(seed, 1 + (seed % 24));
         const nums = rotate(base, seed % base.length);
-        const target = seed % 3 === 0 ? nums[seed % nums.length] : base[0] - seed - 2;
+        const target = seed % 3 === 0 ? base[0] - seed - 2 : nums[mix(seed, 404) % nums.length];
         return caseFrom({ nums, target }, searchRotated(nums, target));
       }
     ),

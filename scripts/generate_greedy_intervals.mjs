@@ -105,6 +105,13 @@ function meetingRoomsSeed(seed) {
     return interval;
   });
 }
+function meetingRoomsTwoSeed(seed) {
+  if (seed % 4 === 0) {
+    const count = 1 + (mix(seed, 310) % 24);
+    return Array.from({ length: count }, (_, index) => [index, count + 5]);
+  }
+  return intervalSeed(seed);
+}
 function partitionSeed(seed) { if (seed % 5 === 0) return word(seed, 1 + (seed % 26), "abcdefghijklmnopqrstuvwxyz"); const chunks = []; const alphabet = "abcdefghijklmnopqrstuvwxyz"; for (let i = 0; i < 1 + (mix(seed, 50) % 8); i += 1) { const a = alphabet[mix(seed, i + 51) % alphabet.length]; const b = alphabet[mix(seed, i + 71) % alphabet.length]; chunks.push(`${a}${word(seed + i, mix(seed, i + 91) % 5, "abcde")}${seed % 3 === 0 ? a : b}`); } return chunks.join(""); }
 function starParenSeed(seed) {
   const fixed = [
@@ -198,7 +205,7 @@ const problems = [
     "```python\nclass Solution:\n    def canAttendMeetings(self, intervals):\n        intervals.sort()\n        return all(intervals[i][0] >= intervals[i - 1][1] for i in range(1, len(intervals)))\n```", "class Solution:\n    def canAttendMeetings(self, intervals):\n        pass"),
   makeProblem(134, "meeting-rooms-ii", "Meeting Rooms II", "Medium", ["Array", "Two Pointers", "Greedy", "Sorting", "Heap"], "minMeetingRooms",
     [caseFrom({ intervals: [[0,30],[5,10],[15,20]] }, 2), caseFrom({ intervals: [[7,10],[2,4]] }, 1), caseFrom({ intervals: [] }, 0)],
-    (seed) => { const intervals = intervalSeed(seed); return caseFrom({ intervals }, rooms(intervals)); }, "Return the minimum number of rooms required to host all meetings.", ["Input: intervals = [[0,30],[5,10],[15,20]]\nOutput: 2", "Input: intervals = [[7,10],[2,4]]\nOutput: 1", "Input: intervals = []\nOutput: 0"],
+    (seed) => { const intervals = meetingRoomsTwoSeed(seed); return caseFrom({ intervals }, rooms(intervals)); }, "Return the minimum number of rooms required to host all meetings.", ["Input: intervals = [[0,30],[5,10],[15,20]]\nOutput: 2", "Input: intervals = [[7,10],[2,4]]\nOutput: 1", "Input: intervals = []\nOutput: 0"],
     "```python\nimport heapq\n\nclass Solution:\n    def minMeetingRooms(self, intervals):\n        heap = []\n        for start, end in sorted(intervals):\n            if heap and heap[0] <= start: heapq.heappop(heap)\n            heapq.heappush(heap, end)\n        return len(heap)\n```", "class Solution:\n    def minMeetingRooms(self, intervals):\n        pass"),
   makeProblem(135, "minimum-interval-to-include-each-query", "Minimum Interval to Include Each Query", "Hard", ["Array", "Binary Search", "Line Sweep", "Sorting", "Heap"], "minInterval",
     [caseFrom({ intervals: [[1,4],[2,4],[3,6],[4,4]], queries: [2,3,4,5] }, [3,3,1,4]), caseFrom({ intervals: [[2,3],[2,5],[1,8],[20,25]], queries: [2,19,5,22] }, [2,-1,4,6]), caseFrom({ intervals: [[5,8]], queries: [4,5,9] }, [-1,4,-1])],

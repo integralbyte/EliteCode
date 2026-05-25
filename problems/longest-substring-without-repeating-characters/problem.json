@@ -465,61 +465,61 @@
       "id": "hidden-46",
       "name": "Hidden Case 46",
       "input": {
-        "s": ""
+        "s": "a"
       },
-      "expected": 0,
+      "expected": 1,
       "hidden": true
     },
     {
       "id": "hidden-47",
       "name": "Hidden Case 47",
       "input": {
-        "s": "C22BAc2A2ccAcABc2"
+        "s": "ab"
       },
-      "expected": 4,
+      "expected": 2,
       "hidden": true
     },
     {
       "id": "hidden-48",
       "name": "Hidden Case 48",
       "input": {
-        "s": "tgmrrmrltohi"
+        "s": "abc"
       },
-      "expected": 7,
+      "expected": 3,
       "hidden": true
     },
     {
       "id": "hidden-49",
       "name": "Hidden Case 49",
       "input": {
-        "s": "babbbcaaaccaaccacccbbbaacaccaabbbcacba"
+        "s": "abcd"
       },
-      "expected": 3,
+      "expected": 4,
       "hidden": true
     },
     {
       "id": "hidden-50",
       "name": "Hidden Case 50",
       "input": {
-        "s": "cddeeedefefcedebdedddebdbfad"
+        "s": "abcde"
       },
-      "expected": 4,
+      "expected": 5,
       "hidden": true
     },
     {
       "id": "hidden-51",
       "name": "Hidden Case 51",
       "input": {
-        "s": ""
+        "s": "abcdef"
       },
-      "expected": 0,
+      "expected": 6,
       "hidden": true
     },
     {
       "id": "hidden-52",
       "name": "Hidden Case 52",
       "input": {
-        "s": "ogoilhlmihmroitlroi"
+        "s": "abcdefg"
       },
       "expected": 7,
       "hidden": true
@@ -528,171 +528,171 @@
       "id": "hidden-53",
       "name": "Hidden Case 53",
       "input": {
-        "s": "ccbacbabaccbcccbb"
+        "s": "abcdefgh"
       },
-      "expected": 3,
+      "expected": 8,
       "hidden": true
     },
     {
       "id": "hidden-54",
       "name": "Hidden Case 54",
       "input": {
-        "s": "ebabccf"
+        "s": "abcdefghi"
       },
-      "expected": 3,
+      "expected": 9,
       "hidden": true
     },
     {
       "id": "hidden-55",
       "name": "Hidden Case 55",
       "input": {
-        "s": "bA21aA2A3accbbcCb1Ca31aAbB"
+        "s": "abcdefghij"
       },
-      "expected": 6,
+      "expected": 10,
       "hidden": true
     },
     {
       "id": "hidden-56",
       "name": "Hidden Case 56",
       "input": {
-        "s": ""
+        "s": "abcdefghijk"
       },
-      "expected": 0,
+      "expected": 11,
       "hidden": true
     },
     {
       "id": "hidden-57",
       "name": "Hidden Case 57",
       "input": {
-        "s": "aaaaccbbabbabbacbcbacabac"
+        "s": "abcdefghijkl"
       },
-      "expected": 3,
+      "expected": 12,
       "hidden": true
     },
     {
       "id": "hidden-58",
       "name": "Hidden Case 58",
       "input": {
-        "s": "eeddabfffadbceaefeacfabafbbe"
+        "s": "abcdefghijklm"
       },
-      "expected": 6,
+      "expected": 13,
       "hidden": true
     },
     {
       "id": "hidden-59",
       "name": "Hidden Case 59",
       "input": {
-        "s": "a2cbA12ccBA13cbB3cA23BbC"
+        "s": "abcdefghijklmn"
       },
-      "expected": 7,
+      "expected": 14,
       "hidden": true
     },
     {
       "id": "hidden-60",
       "name": "Hidden Case 60",
       "input": {
-        "s": "aomiaiamlmomtihgarrggmglhohtirlmahottht"
+        "s": "abcdefghijklmno"
       },
-      "expected": 8,
+      "expected": 15,
       "hidden": true
     },
     {
       "id": "hidden-61",
       "name": "Hidden Case 61",
       "input": {
-        "s": ""
+        "s": "abcdefghijklmnop"
       },
-      "expected": 0,
+      "expected": 16,
       "hidden": true
     },
     {
       "id": "hidden-62",
       "name": "Hidden Case 62",
       "input": {
-        "s": "ccaaabe"
+        "s": "abcdefghijklmnopq"
       },
-      "expected": 3,
+      "expected": 17,
       "hidden": true
     },
     {
       "id": "hidden-63",
       "name": "Hidden Case 63",
       "input": {
-        "s": "3aa2Ba3AaBBb2bAcaBab2b3b1c2cAc1b"
+        "s": "abcdefghijklmnopqr"
       },
-      "expected": 6,
+      "expected": 18,
       "hidden": true
     },
     {
       "id": "hidden-64",
       "name": "Hidden Case 64",
       "input": {
-        "s": "tlaaaggmmrhaogiloolhih"
+        "s": "abcdefghijklmnopqrs"
       },
-      "expected": 8,
+      "expected": 19,
       "hidden": true
     },
     {
       "id": "hidden-65",
       "name": "Hidden Case 65",
       "input": {
-        "s": "cababbacabacaccac"
+        "s": "abcdefghijklmnopqrst"
       },
-      "expected": 3,
+      "expected": 20,
       "hidden": true
     },
     {
       "id": "hidden-66",
       "name": "Hidden Case 66",
       "input": {
-        "s": ""
+        "s": "abcdefghijklmnopqrstu"
       },
-      "expected": 0,
+      "expected": 21,
       "hidden": true
     },
     {
       "id": "hidden-67",
       "name": "Hidden Case 67",
       "input": {
-        "s": "cCBcABcC3ab13bcbab1AB1ABAaA"
+        "s": "abcdefghijklmnopqrstuv"
       },
-      "expected": 8,
+      "expected": 22,
       "hidden": true
     },
     {
       "id": "hidden-68",
       "name": "Hidden Case 68",
       "input": {
-        "s": "oarrorhlrlmthhmhahmaimgtog"
+        "s": "abcdefghijklmnopqrstuvw"
       },
-      "expected": 6,
+      "expected": 23,
       "hidden": true
     },
     {
       "id": "hidden-69",
       "name": "Hidden Case 69",
       "input": {
-        "s": "bbabbbbbcaaccaca"
+        "s": "abcdefghijklmnopqrstuvwx"
       },
-      "expected": 3,
+      "expected": 24,
       "hidden": true
     },
     {
       "id": "hidden-70",
       "name": "Hidden Case 70",
       "input": {
-        "s": "daaadad"
+        "s": "abcdefghijklmnopqrstuvwxy"
       },
-      "expected": 2,
+      "expected": 25,
       "hidden": true
     },
     {
       "id": "hidden-71",
       "name": "Hidden Case 71",
       "input": {
-        "s": ""
+        "s": "abcdefghijklmnopqrstuvwxyz"
       },
-      "expected": 0,
+      "expected": 26,
       "hidden": true
     },
     {

@@ -179,6 +179,21 @@ function lisSeed(seed) {
 }
 function canPartition(values) { const sum = values.reduce((a, b) => a + b, 0); if (sum % 2) return false; const target = sum / 2; const dp = Array(target + 1).fill(false); dp[0] = true; for (const value of values) for (let t = target; t >= value; t -= 1) dp[t] ||= dp[t - value]; return dp[target]; }
 function uniquePaths(m, n) { const dp = Array(n).fill(1); for (let r = 1; r < m; r += 1) for (let c = 1; c < n; c += 1) dp[c] += dp[c - 1]; return dp[n - 1]; }
+function lcsSeed(seed) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  if (seed % 4 === 0) {
+    const length = 1 + (mix(seed, 380) % 22);
+    const text = alphabet.slice(0, length);
+    return { text1: text, text2: text };
+  }
+  if (seed % 4 === 1) {
+    const length = 1 + (mix(seed, 381) % 22);
+    return { text1: alphabet.slice(0, length), text2: alphabet.slice(0, length).split("").reverse().join("") };
+  }
+  const text1 = word(seed, 1 + (seed % 18), "abcdef");
+  const text2 = seed % 4 === 2 ? word(seed + 9, 1 + (seed % 12), "uvwxyz") : word(seed + 4, 1 + ((seed * 2) % 18), "abcdef");
+  return { text1, text2 };
+}
 function lcs(a, b) { const dp = Array(b.length + 1).fill(0); for (let i = a.length - 1; i >= 0; i -= 1) { let prev = 0; for (let j = b.length - 1; j >= 0; j -= 1) { const old = dp[j]; dp[j] = a[i] === b[j] ? 1 + prev : Math.max(dp[j], dp[j + 1]); prev = old; } } return dp[0]; }
 function stockCooldown(prices) { let hold = -Infinity, sold = 0, rest = 0; for (const price of prices) { const oldSold = sold; sold = hold + price; hold = Math.max(hold, rest - price); rest = Math.max(rest, oldSold); } return Math.max(sold, rest); }
 function coinChange2(amount, coins) { const dp = Array(amount + 1).fill(0); dp[0] = 1; for (const coin of coins) for (let a = coin; a <= amount; a += 1) dp[a] += dp[a - coin]; return dp[amount]; }
@@ -186,11 +201,35 @@ function targetSumWays(values, target) { let map = new Map([[0, 1]]); for (const
 function interleave(a, b, c) { if (a.length + b.length !== c.length) return false; const dp = Array(b.length + 1).fill(false); dp[0] = true; for (let j = 1; j <= b.length; j += 1) dp[j] = dp[j - 1] && b[j - 1] === c[j - 1]; for (let i = 1; i <= a.length; i += 1) { dp[0] = dp[0] && a[i - 1] === c[i - 1]; for (let j = 1; j <= b.length; j += 1) dp[j] = (dp[j] && a[i - 1] === c[i + j - 1]) || (dp[j - 1] && b[j - 1] === c[i + j - 1]); } return dp[b.length]; }
 function lip(matrix) { const rows = matrix.length, cols = matrix[0].length, memo = Array.from({ length: rows }, () => Array(cols).fill(0)); function dfs(r, c) { if (memo[r][c]) return memo[r][c]; let best = 1; for (const [dr, dc] of [[1,0],[-1,0],[0,1],[0,-1]]) { const nr = r + dr, nc = c + dc; if (nr >= 0 && nc >= 0 && nr < rows && nc < cols && matrix[nr][nc] > matrix[r][c]) best = Math.max(best, 1 + dfs(nr, nc)); } return memo[r][c] = best; } return Math.max(...matrix.flatMap((row, r) => row.map((_, c) => dfs(r, c)))); }
 function distinct(s, t) { const dp = Array(t.length + 1).fill(0); dp[0] = 1; for (const ch of s) for (let j = t.length - 1; j >= 0; j -= 1) if (ch === t[j]) dp[j + 1] += dp[j]; return dp[t.length]; }
+function editSeed(seed) {
+  if (seed % 5 === 0) return { word1: "", word2: word(seed, 1 + (mix(seed, 390) % 22), "abcdef") };
+  if (seed % 5 === 1) return { word1: word(seed, 1 + (mix(seed, 391) % 22), "abcdef"), word2: "" };
+  if (seed % 5 === 2) {
+    const length = 1 + (mix(seed, 392) % 22);
+    return { word1: "a".repeat(length), word2: "b".repeat(length) };
+  }
+  return {
+    word1: seed % 9 === 0 ? "" : word(seed, seed % 14, "abcdef"),
+    word2: seed % 7 === 0 ? "" : word(seed + 77, (seed * 2) % 14, "abcxyz")
+  };
+}
 function edit(a, b) { const dp = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0)); for (let i = 0; i <= a.length; i += 1) dp[i][0] = i; for (let j = 0; j <= b.length; j += 1) dp[0][j] = j; for (let i = 1; i <= a.length; i += 1) for (let j = 1; j <= b.length; j += 1) dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]); return dp[a.length][b.length]; }
 function burst(values) { const arr = [1, ...values, 1], n = arr.length; const dp = Array.from({ length: n }, () => Array(n).fill(0)); for (let len = 2; len < n; len += 1) for (let left = 0; left + len < n; left += 1) { const right = left + len; for (let mid = left + 1; mid < right; mid += 1) dp[left][right] = Math.max(dp[left][right], dp[left][mid] + dp[mid][right] + arr[left] * arr[mid] * arr[right]); } return dp[0][n - 1]; }
 function regex(s, p) { const dp = Array.from({ length: s.length + 1 }, () => Array(p.length + 1).fill(false)); dp[0][0] = true; for (let j = 2; j <= p.length; j += 1) if (p[j - 1] === "*") dp[0][j] = dp[0][j - 2]; for (let i = 1; i <= s.length; i += 1) for (let j = 1; j <= p.length; j += 1) { if (p[j - 1] === "." || p[j - 1] === s[i - 1]) dp[i][j] = dp[i - 1][j - 1]; else if (p[j - 1] === "*") dp[i][j] = dp[i][j - 2] || ((p[j - 2] === "." || p[j - 2] === s[i - 1]) && dp[i - 1][j]); } return dp[s.length][p.length]; }
 
-const matrix = (seed) => Array.from({ length: 1 + (seed % 6) }, (_, r) => Array.from({ length: 1 + ((seed * 3) % 6) }, (_, c) => mix(seed + r, c) % 50));
+function matrix(seed) {
+  if (seed % 4 === 0) {
+    const length = 1 + (mix(seed, 400) % 24);
+    const offset = mix(seed, 402) % 100000;
+    return [Array.from({ length }, (_, index) => offset + index)];
+  }
+  if (seed % 4 === 1) {
+    const length = 1 + (mix(seed, 401) % 18);
+    const offset = mix(seed, 403) % 100000;
+    return Array.from({ length }, (_, index) => [offset + index]);
+  }
+  return Array.from({ length: 1 + (seed % 6) }, (_, r) => Array.from({ length: 1 + ((seed * 3) % 6) }, (_, c) => mix(seed + r, c) % 50));
+}
 const stringSamples = ["bananas", "cbbd", "forgeeksskeegfor", "abcdd", "levelup", "noonabc"];
 
 const palindromeChecker = `
@@ -322,7 +361,7 @@ const problems = [
     "```python\nclass Solution:\n    def uniquePaths(self, m, n):\n        dp = [1] * n\n        for _ in range(1, m):\n            for c in range(1, n): dp[c] += dp[c - 1]\n        return dp[-1]\n```", "class Solution:\n    def uniquePaths(self, m, n):\n        pass"),
   makeProblem(112, "longest-common-subsequence", "Longest Common Subsequence", "Medium", ["String", "Dynamic Programming"], "longestCommonSubsequence",
     [caseFrom({ text1: "abcde", text2: "ace" }, 3), caseFrom({ text1: "abc", text2: "abc" }, 3), caseFrom({ text1: "abc", text2: "def" }, 0)],
-    (seed) => { const a = word(seed, 1 + (seed % 18), "abcdef"), b = seed % 4 === 0 ? word(seed + 9, 1 + (seed % 12), "uvwxyz") : word(seed + 4, 1 + ((seed * 2) % 18), "abcdef"); return caseFrom({ text1: a, text2: b }, lcs(a, b)); },
+    (seed) => { const { text1, text2 } = lcsSeed(seed); return caseFrom({ text1, text2 }, lcs(text1, text2)); },
     "Return the length of the longest sequence that appears in both strings in the same relative order.",
     ["Input: text1 = abcde, text2 = ace\nOutput: 3", "Input: text1 = abc, text2 = abc\nOutput: 3", "Input: text1 = abc, text2 = def\nOutput: 0"],
     "```python\nclass Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        dp = [0] * (len(text2) + 1)\n        for i in range(len(text1) - 1, -1, -1):\n            prev = 0\n            for j in range(len(text2) - 1, -1, -1):\n                old = dp[j]\n                dp[j] = 1 + prev if text1[i] == text2[j] else max(dp[j], dp[j + 1])\n                prev = old\n        return dp[0]\n```", "class Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        pass"),
@@ -364,7 +403,7 @@ const problems = [
     "```python\nclass Solution:\n    def numDistinct(self, s, t):\n        dp = [0] * (len(t) + 1)\n        dp[0] = 1\n        for ch in s:\n            for i in range(len(t) - 1, -1, -1):\n                if ch == t[i]: dp[i + 1] += dp[i]\n        return dp[-1]\n```", "class Solution:\n    def numDistinct(self, s, t):\n        pass"),
   makeProblem(119, "edit-distance", "Edit Distance", "Medium", ["String", "Dynamic Programming"], "minDistance",
     [caseFrom({ word1: "horse", word2: "ros" }, 3), caseFrom({ word1: "intention", word2: "execution" }, 5), caseFrom({ word1: "", word2: "abc" }, 3)],
-    (seed) => { const word1 = seed % 9 === 0 ? "" : word(seed, seed % 14, "abcdef"); const word2 = seed % 7 === 0 ? "" : word(seed + 77, (seed * 2) % 14, "abcxyz"); return caseFrom({ word1, word2 }, edit(word1, word2)); },
+    (seed) => { const { word1, word2 } = editSeed(seed); return caseFrom({ word1, word2 }, edit(word1, word2)); },
     "Return the minimum number of insertions, deletions, or replacements needed to convert `word1` into `word2`.",
     ["Input: word1 = horse, word2 = ros\nOutput: 3", "Input: word1 = intention, word2 = execution\nOutput: 5", "Input: word1 = \"\", word2 = abc\nOutput: 3"],
     "```python\nclass Solution:\n    def minDistance(self, word1, word2):\n        prev = list(range(len(word2) + 1))\n        for i, a in enumerate(word1, 1):\n            cur = [i] + [0] * len(word2)\n            for j, b in enumerate(word2, 1):\n                cur[j] = prev[j - 1] if a == b else 1 + min(prev[j], cur[j - 1], prev[j - 1])\n            prev = cur\n        return prev[-1]\n```", "class Solution:\n    def minDistance(self, word1, word2):\n        pass"),

@@ -204,6 +204,10 @@ function orangesRotting(grid) {
 }
 
 function orangesSeed(seed) {
+  if (seed % 5 === 0) {
+    const length = 2 + (mix(seed, 300) % 24);
+    return [Array.from({ length }, (_, index) => (index === 0 ? 2 : 1))];
+  }
   const rows = 1 + (seed % 7);
   const cols = 1 + (Math.floor(seed / 7) % 7);
   const grid = intGrid(seed, rows, cols).map((row, r) => row.map((v, c) => (v === 0 ? 0 : (mix(seed + r, c) % 6 === 0 ? 2 : 1))));

@@ -507,10 +507,10 @@
       "id": 51,
       "title": "Subtree of Another Tree",
       "category": "Trees",
-      "time": "O(m * n)",
-      "space": "O(h)",
-      "source_url": "https://neetcode.io/solutions/subtree-of-another-tree",
-      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "time": "O(n + m)",
+      "space": "O(n + m)",
+      "source_url": "https://cp-algorithms.com/string/prefix-function.html",
+      "source_note": "Tree serialization plus linear string matching complexity reference and local expected-solution review.",
       "status": "reviewed"
     },
     "lowest-common-ancestor-of-a-binary-search-tree": {
@@ -657,10 +657,10 @@
       "id": 66,
       "title": "K Closest Points to Origin",
       "category": "Heap / Priority Queue",
-      "time": "O(n log k)",
-      "space": "O(k)",
-      "source_url": "https://neetcode.io/solutions/k-closest-points-to-origin",
-      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "time": "O(n) average",
+      "space": "O(1) extra",
+      "source_url": "https://en.wikipedia.org/wiki/Quickselect",
+      "source_note": "Quickselect selection complexity reference plus local expected-solution review.",
       "status": "reviewed"
     },
     "kth-largest-element-in-an-array": {
@@ -1027,20 +1027,20 @@
       "id": 103,
       "title": "Longest Palindromic Substring",
       "category": "1-D Dynamic Programming",
-      "time": "O(n^2)",
-      "space": "O(1)",
-      "source_url": "https://neetcode.io/solutions/longest-palindromic-substring",
-      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://cp-algorithms.com/string/manacher.html",
+      "source_note": "Manacher algorithm complexity reference plus local expected-solution review.",
       "status": "reviewed"
     },
     "palindromic-substrings": {
       "id": 104,
       "title": "Palindromic Substrings",
       "category": "1-D Dynamic Programming",
-      "time": "O(n^2)",
-      "space": "O(1)",
-      "source_url": "https://neetcode.io/solutions/palindromic-substrings",
-      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://cp-algorithms.com/string/manacher.html",
+      "source_note": "Manacher algorithm complexity reference plus local expected-solution review.",
       "status": "reviewed"
     },
     "decode-ways": {

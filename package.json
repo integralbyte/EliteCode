@@ -21,7 +21,8 @@
     "audit:manual": "node scripts/audit_manual_edges.mjs",
     "import:images": "node scripts/import_problem_images.mjs",
     "audit:images": "node scripts/audit_problem_images.mjs",
-    "audit:complexity": ".venv/bin/python scripts/audit_reference_complexity.py --write reports/reference_complexity_report.json --strict"
+    "audit:complexity": ".venv/bin/python scripts/audit_reference_complexity.py --write reports/reference_complexity_report.json --strict",
+    "audit:complexity:sources": "node scripts/audit_complexity_sources.mjs"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

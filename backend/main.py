@@ -61,6 +61,21 @@ def get_problem(slug: str) -> dict[str, Any]:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
+@app.get("/api/problem-test-packs/{slug}")
+def get_problem_test_pack(slug: str) -> dict[str, Any]:
+    try:
+        problem = catalog.get(slug)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return {
+        "slug": problem.slug,
+        "entrypoint": problem.entrypoint.model_dump(),
+        "time_limit_ms": problem.time_limit_ms,
+        "memory_limit_mb": problem.memory_limit_mb,
+        "cases": [case.model_dump() for case in problem.cases],
+    }
+
+
 @app.get("/api/problem-assets/{slug}/{asset_path:path}")
 def get_problem_asset(slug: str, asset_path: str) -> FileResponse:
     try:

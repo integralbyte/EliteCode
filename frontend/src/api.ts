@@ -49,6 +49,17 @@ export interface Problem {
   cases: ProblemCase[];
 }
 
+export interface ProblemTestPack {
+  slug: string;
+  entrypoint: {
+    class_name: string;
+    method_name: string;
+  };
+  time_limit_ms?: number;
+  memory_limit_mb?: number;
+  cases: ProblemCase[];
+}
+
 export interface Progress {
   slug: string;
   language: Language;
@@ -198,6 +209,10 @@ async function getStaticProblem(slug: string): Promise<Problem> {
   return request<Problem>(`/problem-data/${slug}.json`);
 }
 
+async function getStaticTestPack(slug: string): Promise<ProblemTestPack> {
+  return request<ProblemTestPack>(`/problem-data/test-packs/${slug}.json`);
+}
+
 function getLocalProgress(slug: string): Progress {
   return readLocalJson<Progress>(`${LOCAL_PROGRESS_PREFIX}${slug}`, {
     slug,
@@ -234,6 +249,8 @@ function markLocalSolved(slug: string, code: string, settings: Record<string, un
 export const api = {
   getProblems: () => withStaticFallback(request<ProblemsResponse>("/api/problems"), getStaticProblems),
   getProblem: (slug: string) => withStaticFallback(request<Problem>(`/api/problems/${slug}`), () => getStaticProblem(slug)),
+  getProblemTestPack: (slug: string) =>
+    withStaticFallback(request<ProblemTestPack>(`/api/problem-test-packs/${slug}`), () => getStaticTestPack(slug)),
   getProgress: (slug: string) => withStaticFallback(request<Progress>(`/api/progress/${slug}?language=python`), () => getLocalProgress(slug)),
   saveProgress: (slug: string, code: string, settings: Record<string, unknown>) =>
     withStaticFallback(

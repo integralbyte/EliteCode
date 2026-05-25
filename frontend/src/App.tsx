@@ -221,7 +221,8 @@ export default function App() {
     setError("");
     try {
       if (executionRuntime === "pyscript") {
-        const result = await runWithPyScript(problem, code, problem.cases);
+        const testPack = await api.getProblemTestPack(problem.slug);
+        const result = await runWithPyScript({ ...problem, ...testPack }, code, testPack.cases);
         const record: SubmissionRecord = {
           id: Date.now(),
           slug: problem.slug,

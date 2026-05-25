@@ -5,11 +5,13 @@ const root = process.cwd();
 const problemsDir = path.join(root, "problems");
 const publicDir = path.join(root, "frontend", "public");
 const dataDir = path.join(publicDir, "problem-data");
+const testPacksDir = path.join(dataDir, "test-packs");
 const assetsDir = path.join(publicDir, "problem-assets");
 
 await fs.rm(dataDir, { recursive: true, force: true });
 await fs.rm(assetsDir, { recursive: true, force: true });
 await fs.mkdir(dataDir, { recursive: true });
+await fs.mkdir(testPacksDir, { recursive: true });
 await fs.mkdir(assetsDir, { recursive: true });
 
 const entries = await fs.readdir(problemsDir, { withFileTypes: true });
@@ -25,7 +27,15 @@ for (const entry of entries) {
       ...problem,
       cases: problem.cases.filter((testCase) => !testCase.hidden)
     };
+    const testPack = {
+      slug: problem.slug,
+      entrypoint: problem.entrypoint,
+      time_limit_ms: problem.time_limit_ms,
+      memory_limit_mb: problem.memory_limit_mb,
+      cases: problem.cases
+    };
     await fs.writeFile(path.join(dataDir, `${slug}.json`), JSON.stringify(publicProblem) + "\n");
+    await fs.writeFile(path.join(testPacksDir, `${slug}.json`), JSON.stringify(testPack) + "\n");
     problems.push({
       id: problem.id,
       slug: problem.slug,

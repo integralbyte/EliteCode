@@ -208,13 +208,20 @@ function generatedArrayCase(slug, seed) {
   }
 
   if (slug === "top-k-frequent-elements") {
-    const distinct = 2 + (seed % 12);
-    const nums = [];
-    for (let value = 0; value < distinct; value += 1) {
-      const count = distinct - value + (seed % 3);
-      for (let i = 0; i < count; i += 1) nums.push(value - Math.floor(distinct / 2));
+    const distinct = 2 + (mix(seed, 170) % 24);
+    const values = [];
+    let attempt = 0;
+    while (values.length < distinct) {
+      const value = (mix(seed, attempt + 171) % 4001) - 2000;
+      if (!values.includes(value)) values.push(value);
+      attempt += 1;
     }
-    const k = 1 + (seed % distinct);
+    const nums = [];
+    for (let rank = 0; rank < distinct; rank += 1) {
+      const count = distinct - rank + 1 + (seed % 5);
+      for (let i = 0; i < count; i += 1) nums.push(values[rank]);
+    }
+    const k = 1 + (mix(seed, 195) % distinct);
     return caseFrom({ nums: shuffle(nums, seed), k }, topK(nums, k));
   }
 

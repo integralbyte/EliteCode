@@ -175,7 +175,7 @@ function lruSeed(seed) {
   const capacity = 2 + (seed % 4);
   const operations = ["LRUCache"];
   const values = [[capacity]];
-  for (let i = 0; i < 14 + (seed % 7); i += 1) {
+  for (let i = 0; i < 8 + (mix(seed, 310) % 24); i += 1) {
     const key = (seed + i * 2) % 7;
     if (i % 3 === 0) {
       operations.push("get");

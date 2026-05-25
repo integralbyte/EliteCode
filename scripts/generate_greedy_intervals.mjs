@@ -75,6 +75,21 @@ function canAttend(intervals) { intervals = [...intervals].sort((a, b) => a[0] -
 function rooms(intervals) { const events = []; for (const [s, e] of intervals) { events.push([s, 1], [e, -1]); } events.sort((a, b) => a[0] - b[0] || a[1] - b[1]); let cur = 0, best = 0; for (const [, d] of events) { cur += d; best = Math.max(best, cur); } return best; }
 function minInterval(intervals, queries) { return queries.map((q) => { let best = Infinity; for (const [s, e] of intervals) if (s <= q && q <= e) best = Math.min(best, e - s + 1); return Number.isFinite(best) ? best : -1; }); }
 function intervalSeed(seed) { const count = 1 + (mix(seed, 20) % 18); const arr = []; for (let i = 0; i < count; i += 1) { const s = (mix(seed, i + 21) % 80) - 20; arr.push([s, s + 1 + (mix(seed, i + 42) % 24)]); } return arr; }
+function insertSeed(seed) {
+  const count = mix(seed, 30) % 20;
+  const intervals = Array.from({ length: count }, (_, i) => {
+    const start = i * 5 + (mix(seed, i + 31) % 2);
+    return [start, start + 1 + (mix(seed, i + 51) % 3)];
+  });
+  if (count === 0) return { intervals, newInterval: [seed % 7, seed % 7 + 2] };
+  if (seed % 4 === 0) return { intervals, newInterval: [intervals[0][0] - 6, intervals[0][0] - 2] };
+  if (seed % 4 === 1) return { intervals, newInterval: [intervals.at(-1)[1] + 2, intervals.at(-1)[1] + 7] };
+  if (seed % 4 === 2) {
+    const mid = Math.floor(count / 2);
+    return { intervals, newInterval: [intervals[Math.max(0, mid - 1)][0], intervals[Math.min(count - 1, mid + 1)][1]] };
+  }
+  return { intervals, newInterval: [intervals[0][0] - 1, intervals.at(-1)[1] + 1] };
+}
 function partitionSeed(seed) { if (seed % 5 === 0) return word(seed, 1 + (seed % 26), "abcdefghijklmnopqrstuvwxyz"); const chunks = []; const alphabet = "abcdefghijklmnopqrstuvwxyz"; for (let i = 0; i < 1 + (mix(seed, 50) % 8); i += 1) { const a = alphabet[mix(seed, i + 51) % alphabet.length]; const b = alphabet[mix(seed, i + 71) % alphabet.length]; chunks.push(`${a}${word(seed + i, mix(seed, i + 91) % 5, "abcde")}${seed % 3 === 0 ? a : b}`); } return chunks.join(""); }
 function starParenSeed(seed) {
   const fixed = [
@@ -132,11 +147,11 @@ const problems = [
     "```python\nclass Solution:\n    def jump(self, nums):\n        jumps = end = far = 0\n        for i in range(len(nums) - 1):\n            far = max(far, i + nums[i])\n            if i == end:\n                jumps += 1; end = far\n        return jumps\n```", "class Solution:\n    def jump(self, nums):\n        pass"),
   makeProblem(125, "gas-station", "Gas Station", "Medium", ["Array", "Greedy"], "canCompleteCircuit",
     [caseFrom({ gas: [1,2,3,4,5], cost: [3,4,5,1,2] }, 3), caseFrom({ gas: [2,3,4], cost: [3,4,3] }, -1), caseFrom({ gas: [5], cost: [4] }, 0)],
-    (seed) => { const gas = pos(seed, 3 + (seed % 8), 9), cost = pos(seed + 5, gas.length, 9); return caseFrom({ gas, cost }, gasStation(gas, cost)); }, "Return the starting station index that can complete the circuit, or `-1`.", ["Input: gas = [1,2,3,4,5], cost = [3,4,5,1,2]\nOutput: 3", "Input: gas = [2,3,4], cost = [3,4,3]\nOutput: -1", "Input: gas = [5], cost = [4]\nOutput: 0"],
+    (seed) => { const gas = pos(seed, 1 + (mix(seed, 250) % 20), 9), cost = pos(seed + 5, gas.length, 9); return caseFrom({ gas, cost }, gasStation(gas, cost)); }, "Return the starting station index that can complete the circuit, or `-1`.", ["Input: gas = [1,2,3,4,5], cost = [3,4,5,1,2]\nOutput: 3", "Input: gas = [2,3,4], cost = [3,4,3]\nOutput: -1", "Input: gas = [5], cost = [4]\nOutput: 0"],
     "```python\nclass Solution:\n    def canCompleteCircuit(self, gas, cost):\n        total = tank = start = 0\n        for i, (g, c) in enumerate(zip(gas, cost)):\n            diff = g - c; total += diff; tank += diff\n            if tank < 0: start = i + 1; tank = 0\n        return start if total >= 0 else -1\n```", "class Solution:\n    def canCompleteCircuit(self, gas, cost):\n        pass"),
   makeProblem(126, "hand-of-straights", "Hand of Straights", "Medium", ["Array", "Hash Table", "Greedy", "Sorting"], "isNStraightHand",
     [caseFrom({ hand: [1,2,3,6,2,3,4,7,8], groupSize: 3 }, true), caseFrom({ hand: [1,2,3,4,5], groupSize: 4 }, false), caseFrom({ hand: [8,10,12], groupSize: 1 }, true)],
-    (seed) => { const hand = pos(seed, 6 + (seed % 8), 10); const groupSize = 1 + (seed % 4); return caseFrom({ hand, groupSize }, straights(hand, groupSize)); }, "Return whether cards can be rearranged into groups of consecutive values of length `groupSize`.", ["Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3\nOutput: true", "Input: hand = [1,2,3,4,5], groupSize = 4\nOutput: false", "Input: hand = [8,10,12], groupSize = 1\nOutput: true"],
+    (seed) => { const hand = pos(seed, 1 + (mix(seed, 260) % 20), 10); const groupSize = 1 + (seed % 4); return caseFrom({ hand, groupSize }, straights(hand, groupSize)); }, "Return whether cards can be rearranged into groups of consecutive values of length `groupSize`.", ["Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3\nOutput: true", "Input: hand = [1,2,3,4,5], groupSize = 4\nOutput: false", "Input: hand = [8,10,12], groupSize = 1\nOutput: true"],
     "```python\nfrom collections import Counter\n\nclass Solution:\n    def isNStraightHand(self, hand, groupSize):\n        if len(hand) % groupSize: return False\n        counts = Counter(hand)\n        for start in sorted(counts):\n            need = counts[start]\n            if need:\n                for value in range(start, start + groupSize):\n                    if counts[value] < need: return False\n                    counts[value] -= need\n        return True\n```", "class Solution:\n    def isNStraightHand(self, hand, groupSize):\n        pass"),
   makeProblem(127, "merge-triplets-to-form-target-triplet", "Merge Triplets to Form Target Triplet", "Medium", ["Array", "Greedy"], "mergeTriplets",
     [caseFrom({ triplets: [[2,5,3],[1,8,4],[1,7,5]], target: [2,7,5] }, true), caseFrom({ triplets: [[3,4,5],[4,5,6]], target: [3,2,5] }, false), caseFrom({ triplets: [[1,1,1]], target: [1,1,1] }, true)],
@@ -152,7 +167,7 @@ const problems = [
     "```python\nclass Solution:\n    def checkValidString(self, s):\n        low = high = 0\n        for ch in s:\n            if ch == '(':\n                low += 1; high += 1\n            elif ch == ')':\n                low -= 1; high -= 1\n            else:\n                low -= 1; high += 1\n            if high < 0: return False\n            low = max(low, 0)\n        return low == 0\n```", "class Solution:\n    def checkValidString(self, s):\n        pass"),
   makeProblem(130, "insert-interval", "Insert Interval", "Medium", ["Array"], "insert",
     [caseFrom({ intervals: [[1,3],[6,9]], newInterval: [2,5] }, [[1,5],[6,9]]), caseFrom({ intervals: [[1,2],[3,5],[6,7],[8,10]], newInterval: [4,8] }, [[1,2],[3,10]]), caseFrom({ intervals: [], newInterval: [4,8] }, [[4,8]])],
-    (seed) => { const intervals = mergeIntervals(intervalSeed(seed)); const ni = [seed % 12, seed % 12 + 2 + (seed % 6)]; return caseFrom({ intervals, newInterval: ni }, insertInterval(intervals, ni)); }, "Insert a new interval into sorted non-overlapping intervals and merge overlaps.", ["Input: intervals = [[1,3],[6,9]], newInterval = [2,5]\nOutput: [[1,5],[6,9]]", "Input: intervals = [[1,2],[3,5],[6,7],[8,10]], newInterval = [4,8]\nOutput: [[1,2],[3,10]]", "Input: intervals = [], newInterval = [4,8]\nOutput: [[4,8]]"],
+    (seed) => { const { intervals, newInterval } = insertSeed(seed); return caseFrom({ intervals, newInterval }, insertInterval(intervals, newInterval)); }, "Insert a new interval into sorted non-overlapping intervals and merge overlaps.", ["Input: intervals = [[1,3],[6,9]], newInterval = [2,5]\nOutput: [[1,5],[6,9]]", "Input: intervals = [[1,2],[3,5],[6,7],[8,10]], newInterval = [4,8]\nOutput: [[1,2],[3,10]]", "Input: intervals = [], newInterval = [4,8]\nOutput: [[4,8]]"],
     "```python\nclass Solution:\n    def insert(self, intervals, newInterval):\n        out = []\n        start, end = newInterval\n        placed = False\n        for a, b in intervals:\n            if b < start: out.append([a, b])\n            elif end < a:\n                if not placed: out.append([start, end]); placed = True\n                out.append([a, b])\n            else:\n                start, end = min(start, a), max(end, b)\n        if not placed: out.append([start, end])\n        return out\n```", "class Solution:\n    def insert(self, intervals, newInterval):\n        pass"),
   makeProblem(131, "merge-intervals", "Merge Intervals", "Medium", ["Array", "Sorting"], "merge",
     [caseFrom({ intervals: [[1,3],[2,6],[8,10],[15,18]] }, [[1,6],[8,10],[15,18]]), caseFrom({ intervals: [[1,4],[4,5]] }, [[1,5]]), caseFrom({ intervals: [[5,7]] }, [[5,7]])],

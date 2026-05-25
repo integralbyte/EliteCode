@@ -123,8 +123,8 @@ function wordBreakSeed(seed) {
 }
 
 function interleaveSeed(seed) {
-  const s1 = word(seed, seed % 9, "abc");
-  const s2 = word(seed + 101, (seed * 2) % 9, "xyz");
+  const s1 = word(seed, mix(seed, 430) % 18, "abc");
+  const s2 = word(seed + 101, mix(seed, 431) % 18, "xyz");
   let s3 = "";
   let i = 0;
   let j = 0;
@@ -226,7 +226,7 @@ const problems = [
     "```python\nclass Solution:\n    def climbStairs(self, n):\n        a = b = 1\n        for _ in range(n):\n            a, b = b, a + b\n        return a\n```", "class Solution:\n    def climbStairs(self, n):\n        pass"),
   makeProblem(100, "min-cost-climbing-stairs", "Min Cost Climbing Stairs", "Easy", ["Array", "Dynamic Programming"], "minCostClimbingStairs",
     [caseFrom({ cost: [10, 15, 20] }, 15), caseFrom({ cost: [1, 100, 1, 1, 1, 100, 1] }, 4), caseFrom({ cost: [3, 4] }, 3)],
-    (seed) => { const cost = posNums(seed, 2 + (seed % 10), 30); return caseFrom({ cost }, minCost(cost)); },
+    (seed) => { const cost = posNums(seed, 2 + (mix(seed, 240) % 18), 30); return caseFrom({ cost }, minCost(cost)); },
     "Each stair has a cost paid when stepped on. You may start at stair 0 or 1 and move one or two stairs. Return the minimum cost to reach the top.",
     ["Input: cost = [10,15,20]\nOutput: 15", "Input: cost = [1,100,1,1,1,100,1]\nOutput: 4", "Input: cost = [3,4]\nOutput: 3"],
     "```python\nclass Solution:\n    def minCostClimbingStairs(self, cost):\n        one = two = 0\n        for value in reversed(cost):\n            one, two = value + min(one, two), one\n        return min(one, two)\n```", "class Solution:\n    def minCostClimbingStairs(self, cost):\n        pass"),
@@ -268,7 +268,7 @@ const problems = [
     "```python\nclass Solution:\n    def coinChange(self, coins, amount):\n        dp = [0] + [float('inf')] * amount\n        for value in range(1, amount + 1):\n            dp[value] = min((dp[value - coin] + 1 for coin in coins if coin <= value), default=float('inf'))\n        return -1 if dp[amount] == float('inf') else dp[amount]\n```", "class Solution:\n    def coinChange(self, coins, amount):\n        pass"),
   makeProblem(107, "maximum-product-subarray", "Maximum Product Subarray", "Medium", ["Array", "Dynamic Programming"], "maxProduct",
     [caseFrom({ nums: [2, 3, -2, 4] }, 6), caseFrom({ nums: [-2, 0, -1] }, 0), caseFrom({ nums: [-2, 3, -4] }, 24)],
-    (seed) => { const arr = nums(seed, 2 + (seed % 9), -5, 11); return caseFrom({ nums: arr }, maxProduct(arr)); },
+    (seed) => { const arr = nums(seed, 1 + (seed % 14), -5, 11); return caseFrom({ nums: arr }, maxProduct(arr)); },
     "Return the largest product of a non-empty contiguous subarray.",
     ["Input: nums = [2,3,-2,4]\nOutput: 6", "Input: nums = [-2,0,-1]\nOutput: 0", "Input: nums = [-2,3,-4]\nOutput: 24"],
     "```python\nclass Solution:\n    def maxProduct(self, nums):\n        best = hi = lo = nums[0]\n        for value in nums[1:]:\n            hi, lo = max(value, hi * value, lo * value), min(value, hi * value, lo * value)\n            best = max(best, hi)\n        return best\n```", "class Solution:\n    def maxProduct(self, nums):\n        pass"),
@@ -328,7 +328,7 @@ const problems = [
     "```python\nclass Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        dp = [0] * (len(text2) + 1)\n        for i in range(len(text1) - 1, -1, -1):\n            prev = 0\n            for j in range(len(text2) - 1, -1, -1):\n                old = dp[j]\n                dp[j] = 1 + prev if text1[i] == text2[j] else max(dp[j], dp[j + 1])\n                prev = old\n        return dp[0]\n```", "class Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        pass"),
   makeProblem(113, "best-time-to-buy-and-sell-stock-with-cooldown", "Best Time to Buy and Sell Stock with Cooldown", "Medium", ["Array", "Dynamic Programming"], "maxProfit",
     [caseFrom({ prices: [1, 2, 3, 0, 2] }, 3), caseFrom({ prices: [1] }, 0), caseFrom({ prices: [6, 1, 6, 4, 3, 0, 2] }, 7)],
-    (seed) => { const prices = posNums(seed, 1 + (seed % 10), 20); return caseFrom({ prices }, stockCooldown(prices)); },
+    (seed) => { const prices = posNums(seed, 1 + (mix(seed, 280) % 18), 20); return caseFrom({ prices }, stockCooldown(prices)); },
     "You may buy and sell repeatedly, but after selling you must wait one day before buying again. Return maximum profit.",
     ["Input: prices = [1,2,3,0,2]\nOutput: 3", "Input: prices = [1]\nOutput: 0", "Input: prices = [6,1,6,4,3,0,2]\nOutput: 7"],
     "```python\nclass Solution:\n    def maxProfit(self, prices):\n        hold, sold, rest = float('-inf'), 0, 0\n        for price in prices:\n            old_sold = sold\n            sold = hold + price\n            hold = max(hold, rest - price)\n            rest = max(rest, old_sold)\n        return max(sold, rest)\n```", "class Solution:\n    def maxProfit(self, prices):\n        pass"),

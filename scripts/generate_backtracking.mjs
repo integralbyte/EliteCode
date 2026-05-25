@@ -265,7 +265,7 @@ function comboCandidates(seed, length = 2 + (mix(seed, 8) % 20)) {
 }
 
 function dupCandidates(seed) {
-  return Array.from({ length: 5 + (mix(seed, 15) % 7) }, (_, i) => 1 + (mix(seed, i + 16) % 18)).sort((a, b) => a - b);
+  return Array.from({ length: 3 + (mix(seed, 15) % 18) }, (_, i) => 1 + (mix(seed, i + 16) % 18)).sort((a, b) => a - b);
 }
 
 function boardSeed(seed) {

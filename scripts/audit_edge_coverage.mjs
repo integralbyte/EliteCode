@@ -4,11 +4,11 @@ import path from "node:path";
 const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
 const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
-const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 8);
+const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 11);
 const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 250);
 const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 10);
 const minArrayExpectedValues = Number(process.env.ELITECODE_MIN_ARRAY_EXPECTED_VALUES ?? 50);
-const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 8);
+const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 11);
 const minCompositeMaxInputSize = Number(process.env.ELITECODE_MIN_COMPOSITE_MAX_INPUT_SIZE ?? 20);
 
 const finiteDomains = {
@@ -129,9 +129,13 @@ function addScalarFeatures(features, value, prefix) {
     if (value < 0) features.add(`${prefix}:negative`);
     if (value > 0) features.add(`${prefix}:positive`);
     if (Number.isInteger(value)) features.add(`${prefix}:integer`);
+    if (Number.isInteger(value) && value % 2 === 0) features.add(`${prefix}:even-number`);
+    if (Number.isInteger(value) && Math.abs(value % 2) === 1) features.add(`${prefix}:odd-number`);
+    if (Number.isInteger(value) && value > 0 && Number.isInteger(Math.log2(value))) features.add(`${prefix}:power-of-two`);
     if (Math.abs(value) <= 1) features.add(`${prefix}:small-number`);
     if (Math.abs(value) >= 50) features.add(`${prefix}:largeish-number`);
     if (Math.abs(value) >= 1000) features.add(`${prefix}:large-number`);
+    if (Number.isInteger(value) && value >= 0xffffffff - 1024) features.add(`${prefix}:near-uint32-limit`);
   } else if (typeof value === "boolean") {
     features.add(`${prefix}:boolean-${value}`);
   } else if (typeof value === "string") {
@@ -161,7 +165,16 @@ function collectFeatures(value, features, prefix = "input") {
     if (value.includes(0)) features.add(`${prefix}:contains-zero`);
     if (value.some((item) => item < 0)) features.add(`${prefix}:contains-negative`);
     if (value.some((item) => item > 0)) features.add(`${prefix}:contains-positive`);
+    if (value.length > 0 && value.every((item) => item === 0)) features.add(`${prefix}:all-zero`);
+    if (value.length > 0 && value.every((item) => item > 0)) features.add(`${prefix}:all-positive`);
+    if (value.length > 0 && value.every((item) => item >= 0)) features.add(`${prefix}:all-nonnegative`);
+    if (value.length > 0 && value.every((item) => item <= 0)) features.add(`${prefix}:all-nonpositive`);
+    if (value.some((item) => Math.abs(item) >= 50)) features.add(`${prefix}:contains-largeish`);
+    if (value.some((item) => Math.abs(item) >= 1000)) features.add(`${prefix}:contains-large`);
     if (new Set(value).size < value.length) features.add(`${prefix}:duplicates`);
+    if (value.length > 0 && new Set(value).size === value.length) features.add(`${prefix}:all-distinct`);
+    if (value.length > 1 && value.every((item) => item === value[0])) features.add(`${prefix}:uniform-values`);
+    if (value.some((item, index) => index > 0 && item === value[index - 1])) features.add(`${prefix}:adjacent-duplicate`);
     if (value.every((item, index) => index === 0 || value[index - 1] <= item)) features.add(`${prefix}:sorted`);
     if (value.every((item, index) => index === 0 || value[index - 1] >= item)) features.add(`${prefix}:reverse-sorted`);
   } else if (isStringArray(value)) {

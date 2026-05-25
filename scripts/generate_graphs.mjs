@@ -484,7 +484,7 @@ function minCostPoints(points) {
 }
 
 function pointsSeed(seed) {
-  return Array.from({ length: 2 + (seed % 7) }, (_, i) => [((seed * 17 + i * 5) % 31) - 15, ((seed * 13 + i * 7) % 29) - 14]);
+  return Array.from({ length: 1 + (mix(seed, 190) % 18) }, (_, i) => [((seed * 17 + i * 5) % 31) - 15, ((seed * 13 + i * 7) % 29) - 14]);
 }
 
 function networkDelay(times, n, k) {

@@ -2,9 +2,7 @@
 
 ![EliteCode banner](./EliteCode%20Banner.jpeg)
 
-EliteCode is a local-first coding practice app for solving algorithm problems offline. It includes a React editor UI, a FastAPI backend, SQLite progress storage, file-based problem packs, and a local Python judge.
-
-The bundled catalog covers 150 original EliteCode problem packs with 300,000 visible and hidden test cases.
+EliteCode is an open-source, offline LeetCode-style platform for algorithm practice. It includes the NeetCode 150 as original EliteCode problem packs, backed by 300,000+ test cases and saved progress.
 
 ## Quick Start
 

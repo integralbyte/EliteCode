@@ -226,7 +226,7 @@ export default function App() {
         const record: SubmissionRecord = {
           id: Date.now(),
           slug: problem.slug,
-          language: "python",
+          language: "pyscript",
           verdict: result.verdict,
           passed: result.passed,
           runtime_ms: result.runtime_ms,
@@ -905,7 +905,7 @@ function Submissions({ submissions }: { submissions: SubmissionRecord[] }) {
             <span>{submission.created_at}</span>
           </div>
           <div>
-            <span>{submission.language}</span>
+            <span>{formatSubmissionRuntime(submission.language)}</span>
             <span>{formatMs(submission.runtime_ms)}</span>
             {submission.results.analysis?.runtime ? <span>{submission.results.analysis.runtime.relative_label}</span> : null}
           </div>
@@ -913,6 +913,10 @@ function Submissions({ submissions }: { submissions: SubmissionRecord[] }) {
       ))}
     </div>
   );
+}
+
+function formatSubmissionRuntime(runtime: SubmissionRecord["language"]): string {
+  return runtime === "pyscript" ? "PyScript" : "Python";
 }
 
 function TestcasePanel({

@@ -131,7 +131,7 @@ export interface SubmissionAnalysis {
 export interface SubmissionRecord {
   id: number;
   slug: string;
-  language: Language;
+  language: ExecutionRuntime;
   verdict: string;
   passed: boolean;
   runtime_ms: number;

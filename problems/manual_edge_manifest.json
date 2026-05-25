@@ -5050,30 +5050,31 @@
           "case_id": "case-2",
           "name": "Case 2",
           "coverage_labels": [
-            "empty-array",
-            "matrix-or-nested-list",
-            "sorted-array",
-            "reverse-sorted-array",
-            "positive-output"
-          ],
-          "input_digest": "f035ac23eff5de4f997813d6be7d093ec82bf40ca736c82f986ce14dac77ecb7",
-          "expected_digest": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-          "rationale": "Manual Number of Connected Components in an Undirected Graph edge 2 is pinned to empty-array, matrix-or-nested-list, sorted-array, reverse-sorted-array, positive-output with input {\"n\":4,\"edges\":[]} so this reviewed visible behavior cannot be silently replaced by generic generated data."
-        },
-        {
-          "case_id": "case-3",
-          "name": "Case 3",
-          "coverage_labels": [
             "matrix-or-nested-list",
             "contains-zero",
             "sorted-array",
             "zero-value",
             "unit-value",
+            "single-component",
             "positive-output"
           ],
-          "input_digest": "5d0f45389a01f06194fd6e518666acfbfe4c9b09a144b87dcab63f7b9600b171",
+          "input_digest": "d757621e12e33cc46149a4dad1e51de81a24cde6d18d1b68f8592e5d27622d43",
           "expected_digest": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
-          "rationale": "Manual Number of Connected Components in an Undirected Graph edge 3 is pinned to matrix-or-nested-list, contains-zero, sorted-array, zero-value, unit-value, positive-output with input {\"n\":3,\"edges\":[[0,1],[1,2]]} so this reviewed visible behavior cannot be silently replaced by generic generated data."
+          "rationale": "Manual Number of Connected Components in an Undirected Graph edge 2 is pinned to the NeetCode connected-chain example with input {\"n\":5,\"edges\":[[0,1],[1,2],[2,3],[3,4]]}, ensuring the reviewed one-component diagram case stays aligned with its visible image."
+        },
+        {
+          "case_id": "case-3",
+          "name": "Case 3",
+          "coverage_labels": [
+            "empty-array",
+            "matrix-or-nested-list",
+            "no-edges",
+            "all-isolated-nodes",
+            "positive-output"
+          ],
+          "input_digest": "f035ac23eff5de4f997813d6be7d093ec82bf40ca736c82f986ce14dac77ecb7",
+          "expected_digest": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "rationale": "Manual Number of Connected Components in an Undirected Graph edge 3 is pinned to an empty-edge local case with input {\"n\":4,\"edges\":[]}, preserving coverage for isolated vertices after the first two visible cases were aligned with NeetCode images."
         }
       ]
     },

@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T12:59:21.557Z",
+  "source": "NeetCode question example images",
+  "neetcode": {
+    "title": "Number of Connected Components in an Undirected Graph",
+    "url": "https://neetcode.io/problems/count-connected-components/question"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "neetcode-example-1.png",
+      "source_url": "https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/d99cd414-340e-4c6f-083b-1f00fdf9eb00/public",
+      "page_url": "https://neetcode.io/problems/count-connected-components/question",
+      "alt": "Connected components example 1",
+      "content_type": "image/png",
+      "bytes": 14303,
+      "sha256": "f16ca74308f19d2ba4d45c3927d6b995aa18281dac49c405817e8bf492703ba3"
+    },
+    {
+      "index": 2,
+      "file": "neetcode-example-2.png",
+      "source_url": "https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/3f57f075-5114-473a-b198-b6da0da1cd00/public",
+      "page_url": "https://neetcode.io/problems/count-connected-components/question",
+      "alt": "Connected components example 2",
+      "content_type": "image/png",
+      "bytes": 17260,
+      "sha256": "4728d6b65c4e9bd813ce0c035d92a1736a3f526ddabfb963893ec2c930c0a455"
+    }
+  ]
+}

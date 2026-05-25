@@ -10,7 +10,7 @@
     "Graph"
   ],
   "companies": [],
-  "statement": "# Number of Connected Components in an Undirected Graph\n\nReturn how many connected components exist in an undirected graph.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: n = 5, edges = [[0,1],[1,2],[3,4]]\nOutput: 2\n```\n\n**Example 2**\n\n```text\nInput: n = 4, edges = []\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: n = 3, edges = [[0,1],[1,2]]\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
+  "statement": "# Number of Connected Components in an Undirected Graph\n\nReturn how many connected components exist in an undirected graph.\n\n## Examples\n\n**Example 1**\n\n![Number of Connected Components example 1](/api/problem-assets/number-of-connected-components-in-an-undirected-graph/neetcode-example-1.png)\n\n```text\nInput: n = 5, edges = [[0,1],[1,2],[3,4]]\nOutput: 2\n```\n\n**Example 2**\n\n![Number of Connected Components example 2](/api/problem-assets/number-of-connected-components-in-an-undirected-graph/neetcode-example-2.png)\n\n```text\nInput: n = 5, edges = [[0,1],[1,2],[2,3],[3,4]]\nOutput: 1\n```\n\n**Example 3**\n\n```text\nInput: n = 4, edges = []\nOutput: 4\n```\n\n## Constraints\n\n- Inputs are sized for local offline execution.\n- Return values follow the method description.",
   "editorial": "Use the graph structure directly: traverse reachable states, maintain visited or distance state, and update the answer when each node or cell is settled.",
   "solution_notes": "```python\nclass Solution:\n    def countComponents(self, n, edges):\n        parent = list(range(n))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        count = n\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                parent[ra] = rb; count -= 1\n        return count\n```",
   "hints": [
@@ -57,17 +57,7 @@
       "id": "case-2",
       "name": "Case 2",
       "input": {
-        "n": 4,
-        "edges": []
-      },
-      "expected": 4,
-      "hidden": false
-    },
-    {
-      "id": "case-3",
-      "name": "Case 3",
-      "input": {
-        "n": 3,
+        "n": 5,
         "edges": [
           [
             0,
@@ -76,10 +66,28 @@
           [
             1,
             2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
           ]
         ]
       },
       "expected": 1,
+      "hidden": false
+    },
+    {
+      "id": "case-3",
+      "name": "Case 3",
+      "input": {
+        "n": 4,
+        "edges": []
+      },
+      "expected": 4,
       "hidden": false
     },
     {

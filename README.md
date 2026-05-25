@@ -2,9 +2,7 @@
 
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/72e04930-5725-47b9-835d-2a935601305f" />
 
-EliteCode is an open-source, offline LeetCode-style workspace you run locally. It includes a browser workbench, persistent progress, file-based problem packs, and a local Python judge.
-
-The bundled starter catalog is based on NeetCode 150: 150 problems with 300,000+ visible and hidden test cases. EliteCode can load additional packs, so it is not limited to that catalog.
+EliteCode is an open-source, offline LeetCode-style platform for algorithm practice. It includes the NeetCode 150 as original EliteCode problem packs, backed by 300,000+ test cases and saved progress.
 
 ## Quick Start
 

@@ -165,6 +165,21 @@ function randomTreeValues(seed, maxSize = 31) {
   return normalize(values);
 }
 
+function unbalancedTreeValues(seed) {
+  const depth = 4 + (mix(seed, 460) % 28);
+  const values = [];
+  for (let i = 0; i < depth; i += 1) {
+    values.push((mix(seed, i + 461) % 101) - 50);
+    if (i < depth - 1) values.push(null);
+  }
+  return normalize(values);
+}
+
+function completeTreeValues(seed) {
+  const length = 1 + (mix(seed, 490) % 63);
+  return Array.from({ length }, (_, i) => (mix(seed, i + 491) % 101) - 50);
+}
+
 function invert(rootNode) {
   if (!rootNode) return null;
   const left = invert(rootNode.left);
@@ -441,7 +456,7 @@ const problems = [
       caseFrom({ root: treeNode([]) }, true)
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const values = seed % 3 === 0 ? [1, 2, null, 3, null, 4, null, 5] : randomTreeValues(seed);
+      const values = seed % 3 === 0 ? unbalancedTreeValues(seed) : seed % 3 === 1 ? completeTreeValues(seed) : randomTreeValues(seed, 63);
       return caseFrom({ root: treeNode(values) }, balanced(fromArray(values)));
     });
     return {

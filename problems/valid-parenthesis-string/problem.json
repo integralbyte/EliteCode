@@ -121,6 +121,24 @@
       "hidden": false
     },
     {
+      "id": "case-11",
+      "name": "Case 11",
+      "input": {
+        "s": "()()"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "id": "case-12",
+      "name": "Case 12",
+      "input": {
+        "s": "*)*"
+      },
+      "expected": true,
+      "hidden": false
+    },
+    {
       "id": "hidden-1",
       "name": "Hidden Case 1",
       "input": {
@@ -18010,24 +18028,6 @@
         "s": "(((((((((((((((((**************************"
       },
       "expected": true,
-      "hidden": true
-    },
-    {
-      "id": "hidden-1989",
-      "name": "Hidden Case 1989",
-      "input": {
-        "s": "***********))))))))))))))))"
-      },
-      "expected": false,
-      "hidden": true
-    },
-    {
-      "id": "hidden-1990",
-      "name": "Hidden Case 1990",
-      "input": {
-        "s": ")(*)()()))(*)()*)))*)()(()"
-      },
-      "expected": false,
       "hidden": true
     }
   ]

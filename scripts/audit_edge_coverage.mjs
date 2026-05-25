@@ -3,13 +3,13 @@ import path from "node:path";
 
 const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
-const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1200);
-const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 11);
+const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1300);
+const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 12);
 const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 500);
 const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 15);
 const minArrayExpectedValues = Number(process.env.ELITECODE_MIN_ARRAY_EXPECTED_VALUES ?? 100);
 const minStringExpectedValues = Number(process.env.ELITECODE_MIN_STRING_EXPECTED_VALUES ?? 1000);
-const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 11);
+const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 12);
 const minCompositeMaxInputSize = Number(process.env.ELITECODE_MIN_COMPOSITE_MAX_INPUT_SIZE ?? 20);
 
 const finiteDomains = {
@@ -153,6 +153,7 @@ function addScalarFeatures(features, value, prefix) {
     if (/^[A-Z]+$/.test(value)) features.add(`${prefix}:uppercase-string`);
     if (/^[0-9]+$/.test(value)) features.add(`${prefix}:digit-string`);
     if (/^[()[\]{}*]+$/.test(value)) features.add(`${prefix}:delimiter-string`);
+    if (value.includes("*")) features.add(`${prefix}:wildcard-string`);
   }
 }
 

@@ -334,14 +334,14 @@ function twitterRun(operations, values) {
 function twitterSeed(seed) {
   const operations = ["Twitter"];
   const values = [[]];
-  for (let i = 0; i < 16 + (seed % 8); i += 1) {
-    const user = 1 + ((seed + i) % 4);
+  for (let i = 0; i < 8 + (mix(seed, 30) % 40); i += 1) {
+    const user = 1 + (mix(seed, i + 31) % 6);
     if (i % 5 === 0) {
       operations.push("follow");
-      values.push([user, 1 + ((user + seed) % 4)]);
+      values.push([user, 1 + (mix(seed, i + 71) % 6)]);
     } else if (i % 7 === 0) {
       operations.push("unfollow");
-      values.push([user, 1 + ((user + 1) % 4)]);
+      values.push([user, 1 + (mix(seed, i + 91) % 6)]);
     } else if (i % 4 === 0) {
       operations.push("getNewsFeed");
       values.push([user]);
@@ -351,7 +351,7 @@ function twitterSeed(seed) {
     }
   }
   operations.push("getNewsFeed");
-  values.push([1 + (seed % 4)]);
+  values.push([1 + (mix(seed, 120) % 6)]);
   return { operations, values };
 }
 

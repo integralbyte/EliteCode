@@ -205,12 +205,19 @@ function orangesRotting(grid) {
 
 function orangesSeed(seed) {
   if (seed % 5 === 0) {
-    const length = 2 + (mix(seed, 300) % 24);
-    return [Array.from({ length }, (_, index) => (index === 0 ? 2 : 1))];
+    const length = 2 + (mix(seed, 300) % 36);
+    return [Array.from({ length }, (_, index) => {
+      if (index === 0) return 2;
+      return mix(seed, index + 301) % 7 === 0 ? 0 : 1;
+    })];
   }
-  const rows = 1 + (seed % 7);
-  const cols = 1 + (Math.floor(seed / 7) % 7);
-  const grid = intGrid(seed, rows, cols).map((row, r) => row.map((v, c) => (v === 0 ? 0 : (mix(seed + r, c) % 6 === 0 ? 2 : 1))));
+  const rows = 1 + (mix(seed, 302) % 9);
+  const cols = 1 + (mix(seed, 303) % 9);
+  const grid = Array.from({ length: rows }, (_, r) => Array.from({ length: cols }, (_, c) => {
+    const roll = mix(seed, r * cols + c + 304) % 7;
+    if (roll === 0) return 0;
+    return roll === 1 ? 2 : 1;
+  }));
   grid[0][0] = 2;
   if (seed % 10 === 0) grid[rows - 1][cols - 1] = 1;
   return grid;

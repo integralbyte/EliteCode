@@ -108,6 +108,7 @@ function makeProblem(id, slug, title, difficulty, tags, method, visible, maker, 
 const knownHappyNumbers = [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100, 103, 109, 129, 130, 133, 139, 167, 176, 188, 190, 192, 193, 203, 208, 219, 226, 230, 236, 239, 262, 263, 280, 291, 293, 301, 302, 310, 313, 319, 320, 326, 329, 331, 338, 356, 362, 365, 367, 368, 376, 379, 383, 386, 391, 392, 397];
 
 function happySeed(seed) {
+  if (seed % 31 === 0) return 0;
   if (seed % 4 === 0) return knownHappyNumbers[mix(seed, 151) % knownHappyNumbers.length] * (10 ** (mix(seed, 152) % 4));
   return 1 + (mix(seed, 150) % 5000);
 }
@@ -126,7 +127,7 @@ const problems = [
     (seed) => { const m = matrixSeed(seed); if (seed % 2 === 0) m[0][0] = 0; return caseFrom({ matrix: m }, zeroes(deepCopy(m))); }, "If a matrix cell is zero, set its entire row and column to zero in place.", ["Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]\nOutput: [[1,0,1],[0,0,0],[1,0,1]]", "Input: matrix = [[0,1,2],[3,4,5]]\nOutput: [[0,0,0],[0,4,5]]", "Input: matrix = [[1]]\nOutput: [[1]]"],
     "```python\nclass Solution:\n    def setZeroes(self, matrix):\n        rows = {r for r, row in enumerate(matrix) for c, value in enumerate(row) if value == 0}\n        cols = {c for r, row in enumerate(matrix) for c, value in enumerate(row) if value == 0}\n        for r in range(len(matrix)):\n            for c in range(len(matrix[0])):\n                if r in rows or c in cols: matrix[r][c] = 0\n```", "class Solution:\n    def setZeroes(self, matrix):\n        pass"),
   makeProblem(139, "happy-number", "Happy Number", "Easy", ["Hash Table", "Math", "Two Pointers"], "isHappy",
-    [caseFrom({ n: 19 }, true), caseFrom({ n: 2 }, false), caseFrom({ n: 1 }, true)],
+    [caseFrom({ n: 19 }, true), caseFrom({ n: 2 }, false), caseFrom({ n: 1 }, true), caseFrom({ n: 0 }, false)],
     (seed) => { const n = happySeed(seed); return caseFrom({ n }, isHappy(n)); }, "Repeatedly replace a number by the sum of squares of its digits. Return whether the process reaches 1.", ["Input: n = 19\nOutput: true", "Input: n = 2\nOutput: false", "Input: n = 1\nOutput: true"],
     "```python\nclass Solution:\n    def isHappy(self, n):\n        seen = set()\n        while n != 1 and n not in seen:\n            seen.add(n)\n            n = sum(int(ch) ** 2 for ch in str(n))\n        return n == 1\n```", "class Solution:\n    def isHappy(self, n):\n        pass"),
   makeProblem(140, "plus-one", "Plus One", "Easy", ["Array", "Math"], "plusOne",
@@ -155,7 +156,7 @@ const problems = [
     "```python\nclass Solution:\n    def hammingWeight(self, n):\n        count = 0\n        while n:\n            n &= n - 1; count += 1\n        return count\n```", "class Solution:\n    def hammingWeight(self, n):\n        pass"),
   makeProblem(146, "counting-bits", "Counting Bits", "Easy", ["Dynamic Programming", "Bit Manipulation"], "countBits",
     [caseFrom({ n: 2 }, [0,1,1]), caseFrom({ n: 5 }, [0,1,1,2,1,2]), caseFrom({ n: 0 }, [0])],
-    (seed) => { const n = mix(seed, 160) % 2000; return caseFrom({ n }, countBits(n)); }, "Return an array where index `i` contains the number of set bits in `i` for every `0 <= i <= n`.", ["Input: n = 2\nOutput: [0,1,1]", "Input: n = 5\nOutput: [0,1,1,2,1,2]", "Input: n = 0\nOutput: [0]"],
+    (seed) => { const n = seed <= 1800 ? seed : mix(seed, 160) % 4096; return caseFrom({ n }, countBits(n)); }, "Return an array where index `i` contains the number of set bits in `i` for every `0 <= i <= n`.", ["Input: n = 2\nOutput: [0,1,1]", "Input: n = 5\nOutput: [0,1,1,2,1,2]", "Input: n = 0\nOutput: [0]"],
     "```python\nclass Solution:\n    def countBits(self, n):\n        out = [0] * (n + 1)\n        for i in range(1, n + 1): out[i] = out[i >> 1] + (i & 1)\n        return out\n```", "class Solution:\n    def countBits(self, n):\n        pass"),
   makeProblem(147, "reverse-bits", "Reverse Bits", "Easy", ["Divide and Conquer", "Bit Manipulation"], "reverseBits",
     [caseFrom({ n: 43261596 }, 964176192), caseFrom({ n: 0 }, 0), caseFrom({ n: 1 }, 2147483648)],

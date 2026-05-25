@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:53.601Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "102",
+    "title": "Binary Tree Level Order Traversal",
+    "title_slug": "binary-tree-level-order-traversal",
+    "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 11387,
+      "sha256": "a7b9a0e897e18faeb48b320153e58043a8d1fbc25287fb8ac9aad99ddd973510"
+    }
+  ]
+}

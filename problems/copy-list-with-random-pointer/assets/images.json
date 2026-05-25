@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-05-25T11:51:48.580Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "138",
+    "title": "Copy List with Random Pointer",
+    "title_slug": "copy-list-with-random-pointer",
+    "url": "https://leetcode.com/problems/copy-list-with-random-pointer/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2019/12/18/e1.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 62511,
+      "sha256": "fbaaa1177b5822dffbc432c38e86e2915622661427c6710cf1a1d315b4eb5583"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2019/12/18/e2.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 36354,
+      "sha256": "0976f258daf2b2a54c0a8160b5c38cf23a4d804bde462930ebdee78e8a780fe2"
+    },
+    {
+      "index": 3,
+      "file": "original-3.png",
+      "source_url": "https://assets.leetcode.com/uploads/2019/12/18/e3.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 48603,
+      "sha256": "2b825a8b0e4ed32c98b0c9e74d8b0bd0cf1caa1af6f906a6e1a6f198be811fb9"
+    }
+  ]
+}

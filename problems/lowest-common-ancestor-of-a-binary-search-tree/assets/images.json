@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:53.292Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "235",
+    "title": "Lowest Common Ancestor of a Binary Search Tree",
+    "title_slug": "lowest-common-ancestor-of-a-binary-search-tree",
+    "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2018/12/14/binarysearchtree_improved.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 7660,
+      "sha256": "4a5ed538cb9877a2c2061c061757da393d7e10095bc997f3c1c9354aa829e8a3"
+    }
+  ]
+}

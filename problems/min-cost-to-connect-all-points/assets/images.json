@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:07.246Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "1584",
+    "title": "Min Cost to Connect All Points",
+    "title_slug": "min-cost-to-connect-all-points",
+    "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2020/08/26/d.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 7012,
+      "sha256": "e1301e6e8b978a7dda8a91456de819cff28ab2b189aa954e57c27aa76c3e8c23"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2020/08/26/c.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 10326,
+      "sha256": "bd22b0e37fc5253f15cb9e758b21a2237fa0ed4a6cea82946a3820790ab3dcad"
+    }
+  ]
+}

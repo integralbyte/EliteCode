@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:38.781Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "11",
+    "title": "Container With Most Water",
+    "title_slug": "container-with-most-water",
+    "url": "https://leetcode.com/problems/container-with-most-water/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 18362,
+      "sha256": "400006d6c28fdfacef3877d3c2ab499157cd30a9f3813c9de0875d2fe1a5d9f0"
+    }
+  ]
+}

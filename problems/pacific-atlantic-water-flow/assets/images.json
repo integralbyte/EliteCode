@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:04.007Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "417",
+    "title": "Pacific Atlantic Water Flow",
+    "title_slug": "pacific-atlantic-water-flow",
+    "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/06/08/waterflow-grid.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 45313,
+      "sha256": "37bd62cee0dc4794fec84063f58d135891a899be06c64d80c53949830bc0a5b1"
+    }
+  ]
+}

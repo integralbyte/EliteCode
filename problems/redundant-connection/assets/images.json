@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:05.949Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "684",
+    "title": "Redundant Connection",
+    "title_slug": "redundant-connection",
+    "url": "https://leetcode.com/problems/redundant-connection/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/05/02/reduntant1-1-graph.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 6938,
+      "sha256": "a7d30527605d82e5b24bba20d03a9e32e36d9ff61687ef521c7d004af8220ed7"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/05/02/reduntant1-2-graph.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 9741,
+      "sha256": "3334f4a2b90290a646b63e0344d0dae473214c3c8cfb5fa92089f127db9cd152"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:22.042Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "73",
+    "title": "Set Matrix Zeroes",
+    "title_slug": "set-matrix-zeroes",
+    "url": "https://leetcode.com/problems/set-matrix-zeroes/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13796,
+      "sha256": "e78d0a6c3007c1563be2a0fd708c95a9fa2986ec7878320ef22ea52156f50a4e"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 21603,
+      "sha256": "b6a8cf837160d5551a108abb010206b60b43c0425df595cda20a8cf324a6438c"
+    }
+  ]
+}

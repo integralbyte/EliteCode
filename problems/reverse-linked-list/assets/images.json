@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:46.109Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "206",
+    "title": "Reverse Linked List",
+    "title_slug": "reverse-linked-list",
+    "url": "https://leetcode.com/problems/reverse-linked-list/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 19131,
+      "sha256": "8a1642bcf208c4cd5abb60f9c1abf1a8a959e0350197831d824b235475711d6e"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 7808,
+      "sha256": "e9b523f585c79784182250e04a258156e4ab62ce0057de144ee0395e411ab220"
+    }
+  ]
+}

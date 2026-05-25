@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:58.238Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "973",
+    "title": "K Closest Points to Origin",
+    "title_slug": "k-closest-points-to-origin",
+    "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/03/03/closestplane1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 17372,
+      "sha256": "556b0406bf6c36628591e9e90be8ed45c5cbc13194751a45b6119e981a1b3e57"
+    }
+  ]
+}

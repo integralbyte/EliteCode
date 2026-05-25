@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:48.918Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "2",
+    "title": "Add Two Numbers",
+    "title_slug": "add-two-numbers",
+    "url": "https://leetcode.com/problems/add-two-numbers/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 19627,
+      "sha256": "cca5af59ccd4e3eed06f079e54c8e05cd4c0561c596e1dee7d1ff11fb6710d76"
+    }
+  ]
+}

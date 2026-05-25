@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:04.344Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "130",
+    "title": "Surrounded Regions",
+    "title_slug": "surrounded-regions",
+    "url": "https://leetcode.com/problems/surrounded-regions/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 39525,
+      "sha256": "3d7e931c49c268dcb23efe277549661c5caa6f8880e5b26fbd01ace4dc7ad996"
+    }
+  ]
+}

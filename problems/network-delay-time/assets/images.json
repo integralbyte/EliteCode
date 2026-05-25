@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:07.642Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "743",
+    "title": "Network Delay Time",
+    "title_slug": "network-delay-time",
+    "url": "https://leetcode.com/problems/network-delay-time/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 7562,
+      "sha256": "23518f812fc455d4fb5f2224b68e4d4f5fb84347e0963ee636efc582690c2496"
+    }
+  ]
+}

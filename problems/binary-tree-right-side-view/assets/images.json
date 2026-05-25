@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:54.044Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "199",
+    "title": "Binary Tree Right Side View",
+    "title_slug": "binary-tree-right-side-view",
+    "url": "https://leetcode.com/problems/binary-tree-right-side-view/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2024/11/24/tmpd5jn43fs-1.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 13025,
+      "sha256": "9069af61e5fcb28e78ea0dc43c0343f5c2d4a65d7d5a9b150d22d9280ac332a3"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2024/11/24/tmpkpe40xeh-1.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 16028,
+      "sha256": "53ec82a4f77d9d683102239e6c5ba2efcc36685629d7e6046cf941c5532f8e6a"
+    }
+  ]
+}

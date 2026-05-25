@@ -56,3 +56,17 @@ class Solution:
 
     assert response.status_code == 200
     assert response.json()["verdict"] == "Accepted"
+
+
+def test_problem_asset_route_serves_local_images() -> None:
+    response = client.get("/api/problem-assets/valid-sudoku/original-1.png")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "image/png"
+    assert response.content.startswith(b"\x89PNG\r\n\x1a\n")
+
+
+def test_problem_asset_route_rejects_traversal() -> None:
+    response = client.get("/api/problem-assets/valid-sudoku/%2E%2E/problem.json")
+
+    assert response.status_code == 404

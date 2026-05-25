@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:51.866Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "110",
+    "title": "Balanced Binary Tree",
+    "title_slug": "balanced-binary-tree",
+    "url": "https://leetcode.com/problems/balanced-binary-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/06/balance_1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 10768,
+      "sha256": "ea4f78fa4861dd8c5f3477a8e26e837740b4950429e18c4c9b4ab4267c79005b"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 14999,
+      "sha256": "b524be8760678aa43ce4198bf8fa45a2dd9d50babd9a469ba2d6cb9e6ba9b874"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:14.766Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "97",
+    "title": "Interleaving String",
+    "title_slug": "interleaving-string",
+    "url": "https://leetcode.com/problems/interleaving-string/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/09/02/interleave.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 30824,
+      "sha256": "8f66f2e27a8261d159ffccdd4c1229c1343e387e060ab9162afaf2f60a172453"
+    }
+  ]
+}

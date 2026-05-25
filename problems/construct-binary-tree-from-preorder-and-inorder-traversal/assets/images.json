@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:55.697Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "105",
+    "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+    "title_slug": "construct-binary-tree-from-preorder-and-inorder-traversal",
+    "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/02/19/tree.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 11138,
+      "sha256": "3eb710807f6f5b8c8d0d8b09c12c866b6eacfa56614aea0f48c062dc78ff0817"
+    }
+  ]
+}

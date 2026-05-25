@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:50.246Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "25",
+    "title": "Reverse Nodes in k-Group",
+    "title_slug": "reverse-nodes-in-k-group",
+    "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 19377,
+      "sha256": "7132640c7a542c3525aa21e4af4dfb5e2ffa237accc3fc8b070fae1195681093"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/03/reverse_ex2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 18884,
+      "sha256": "004975cbc7a9fa40fd5adf505ad6e74282de4cc8bac33136c12025db0fb4cd33"
+    }
+  ]
+}

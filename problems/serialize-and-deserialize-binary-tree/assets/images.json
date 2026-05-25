@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:56.503Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "297",
+    "title": "Serialize and Deserialize Binary Tree",
+    "title_slug": "serialize-and-deserialize-binary-tree",
+    "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/09/15/serdeser.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 14985,
+      "sha256": "ea6473b09507f16776571d260fb7c2eb2b26d0b339413ab965f19572869afa6a"
+    }
+  ]
+}

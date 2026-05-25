@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-05-25T11:51:52.401Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "100",
+    "title": "Same Tree",
+    "title_slug": "same-tree",
+    "url": "https://leetcode.com/problems/same-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13336,
+      "sha256": "4d39c3d2570947ac234fa6bbd9fc2d097ab555c1fd4dd25d49312eb01fad0bc2"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 8285,
+      "sha256": "1772e2714f39739a85499e235e40533ebe0ecb604461e65c46eb50d1927b229f"
+    },
+    {
+      "index": 3,
+      "file": "original-3.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13102,
+      "sha256": "cc40ec621e48dfb6f65a727002d7e06edf88c6e76eca0b62c3d5d2cdcbf6ebab"
+    }
+  ]
+}

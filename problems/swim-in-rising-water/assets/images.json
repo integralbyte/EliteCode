@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:08.038Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "778",
+    "title": "Swim in Rising Water",
+    "title_slug": "swim-in-rising-water",
+    "url": "https://leetcode.com/problems/swim-in-rising-water/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 3363,
+      "sha256": "6bf405edf6b84c51ea345eaec9ece1c5c3d96612af7f97d4f2b79b0a90c4d925"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 22389,
+      "sha256": "b98c77b80edb1b35afdb12da56fad93cb824a458ce35c11822470c10f7174b5f"
+    }
+  ]
+}

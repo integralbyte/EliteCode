@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:23.825Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "2013",
+    "title": "Detect Squares",
+    "title_slug": "detect-squares",
+    "url": "https://leetcode.com/problems/detect-squares/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2021/09/01/image.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 122233,
+      "sha256": "e561d8ce34e1d26cea4e4908770e967e95306d4ee7e1bbff3f33e65ce0504861"
+    }
+  ]
+}

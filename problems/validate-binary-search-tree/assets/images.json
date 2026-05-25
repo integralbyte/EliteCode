@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:54.779Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "98",
+    "title": "Validate Binary Search Tree",
+    "title_slug": "validate-binary-search-tree",
+    "url": "https://leetcode.com/problems/validate-binary-search-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/12/01/tree1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 6825,
+      "sha256": "10ee346df62af0e4339b8483ba21a6c8fb8c7cf9e1d1bc0018b5a2922741bb74"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/12/01/tree2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 12328,
+      "sha256": "9e5b68796e3137c3037cbd7126ad0b2c9e2214c2334c808f08ba3c30cebe6339"
+    }
+  ]
+}

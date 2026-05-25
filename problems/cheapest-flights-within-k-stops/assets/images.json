@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-05-25T11:52:08.700Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "787",
+    "title": "Cheapest Flights Within K Stops",
+    "title_slug": "cheapest-flights-within-k-stops",
+    "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2022/03/18/cheapest-flights-within-k-stops-3drawio.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 23339,
+      "sha256": "0cfdc196b0ccf36c8fba0e7262294151ae4d1748d80330b3f89c6acf8807636c"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2022/03/18/cheapest-flights-within-k-stops-1drawio.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 15168,
+      "sha256": "f9beaedf1ff601a4690e8f967927b656612dce864974be136e41e911f9ee5ff7"
+    },
+    {
+      "index": 3,
+      "file": "original-3.png",
+      "source_url": "https://assets.leetcode.com/uploads/2022/03/18/cheapest-flights-within-k-stops-2drawio.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 15254,
+      "sha256": "333c5dd6c8c92f163a9a65d51ca9806b2d08518a5e8bbf89938e1e9cc1e9879c"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:02.230Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "51",
+    "title": "N-Queens",
+    "title_slug": "n-queens",
+    "url": "https://leetcode.com/problems/n-queens/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/11/13/queens.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 31523,
+      "sha256": "9e4a12ea5d25e23b1c1f40c84208997d0f1559c478afc33d0f6e3fe0e04a516f"
+    }
+  ]
+}

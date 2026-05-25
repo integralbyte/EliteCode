@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:51.142Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "104",
+    "title": "Maximum Depth of Binary Tree",
+    "title_slug": "maximum-depth-of-binary-tree",
+    "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/11/26/tmp-tree.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 12823,
+      "sha256": "dd545aade79ce83d6f39b96421c9c4fa57e7a1a6f33cb7a1ed5af6cd2469f00c"
+    }
+  ]
+}

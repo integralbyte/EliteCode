@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-05-25T11:51:47.083Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "141",
+    "title": "Linked List Cycle",
+    "title_slug": "linked-list-cycle",
+    "url": "https://leetcode.com/problems/linked-list-cycle/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 11301,
+      "sha256": "1869c60c6fe4c1a59fdcfb853132b00d57f538b45c443ffbc10cc44cb1ddf567"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 4582,
+      "sha256": "cc15a23b6081e840d87cf7a2dd98273b6f63c0864183754ce2d1e72261471b2a"
+    },
+    {
+      "index": 3,
+      "file": "original-3.png",
+      "source_url": "https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 1963,
+      "sha256": "034aa9d397f09df7c03fd0064fa71a775a84ef6f6be220d2270381a38157208d"
+    }
+  ]
+}

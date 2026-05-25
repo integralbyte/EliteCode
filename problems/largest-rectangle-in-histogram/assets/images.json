@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:43.018Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "84",
+    "title": "Largest Rectangle in Histogram",
+    "title_slug": "largest-rectangle-in-histogram",
+    "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 12560,
+      "sha256": "ff27f42456cd292f2f7f875f6b1fdb8b3a997a6da8cc6355978cdfa1de10702a"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/01/04/histogram-1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 6900,
+      "sha256": "65c572040fc605a08e0674592fdb730a62ccf5bc3b478ec2788240e4e20c7ccf"
+    }
+  ]
+}

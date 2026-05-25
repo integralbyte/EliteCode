@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:13.354Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "62",
+    "title": "Unique Paths",
+    "title_slug": "unique-paths",
+    "url": "https://leetcode.com/problems/unique-paths/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 9685,
+      "sha256": "0d20ad91997e3af0b01800691e56c7d1e5aa6c00fb2984d87e3193f34029b540"
+    }
+  ]
+}

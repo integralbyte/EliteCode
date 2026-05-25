@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:02.779Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "695",
+    "title": "Max Area of Island",
+    "title_slug": "max-area-of-island",
+    "url": "https://leetcode.com/problems/max-area-of-island/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/05/01/maxarea1-grid.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 136231,
+      "sha256": "147fe6ab6974be6d0160ca7f8c62ce39bb0f4ed6af574be947ef23b775ff63da"
+    }
+  ]
+}

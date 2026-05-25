@@ -10,7 +10,7 @@
     "Binary Tree"
   ],
   "companies": [],
-  "statement": "# Maximum Depth of Binary Tree\n\nReturn the number of nodes on the longest path from the root down to a leaf.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: root = [8,3,10,1,6,null,14]\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: root = [1,null,2,null,3]\nOutput: 3\n```\n\n**Example 3**\n\n```text\nInput: root = []\nOutput: 0\n```\n\n## Constraints\n\n- The judge provides a `TreeNode` class with `val`, `left`, and `right` fields.\n- Trees are shown in level-order form with `null` for missing children.\n- Node counts are sized for local offline execution.",
+  "statement": "# Maximum Depth of Binary Tree\n\nReturn the number of nodes on the longest path from the root down to a leaf.\n\n<!-- elitecode-source-images:start -->\n## Diagram\n\n![Maximum Depth of Binary Tree diagram 1](/api/problem-assets/maximum-depth-of-binary-tree/original-1.jpg)\n<!-- elitecode-source-images:end -->\n\n## Examples\n\n**Example 1**\n\n```text\nInput: root = [8,3,10,1,6,null,14]\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: root = [1,null,2,null,3]\nOutput: 3\n```\n\n**Example 3**\n\n```text\nInput: root = []\nOutput: 0\n```\n\n## Constraints\n\n- The judge provides a `TreeNode` class with `val`, `left`, and `right` fields.\n- Trees are shown in level-order form with `null` for missing children.\n- Node counts are sized for local offline execution.",
   "editorial": "The depth of a null node is zero. Each real node contributes one plus the larger depth of its children.",
   "solution_notes": "```python\nclass Solution:\n    def maxDepth(self, root):\n        if not root:\n            return 0\n        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))\n```",
   "hints": [

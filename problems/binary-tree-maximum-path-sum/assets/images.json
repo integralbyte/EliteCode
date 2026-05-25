@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:56.189Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "124",
+    "title": "Binary Tree Maximum Path Sum",
+    "title_slug": "binary-tree-maximum-path-sum",
+    "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/13/exx1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 6990,
+      "sha256": "26b8c8c3a57643297660340b141f258ae57d12a4d1599d022cff01b0fbad6338"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/13/exx2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13062,
+      "sha256": "952a26627d709d426f0103faa4a36a8384342bd99cf8ed7ab8f33096c720554f"
+    }
+  ]
+}

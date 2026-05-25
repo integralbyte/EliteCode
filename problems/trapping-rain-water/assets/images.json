@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:39.193Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "42",
+    "title": "Trapping Rain Water",
+    "title_slug": "trapping-rain-water",
+    "url": "https://leetcode.com/problems/trapping-rain-water/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 7848,
+      "sha256": "b016d05ee3a8eed86b505df491b6c8e424e47c4b964c13c009870b9b717b1ea2"
+    }
+  ]
+}

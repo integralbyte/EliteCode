@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:46.523Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "21",
+    "title": "Merge Two Sorted Lists",
+    "title_slug": "merge-two-sorted-lists",
+    "url": "https://leetcode.com/problems/merge-two-sorted-lists/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 26408,
+      "sha256": "90a091941ce944f574352dab91c97e5e754aef7a4b12598097414d7afe5fcff9"
+    }
+  ]
+}

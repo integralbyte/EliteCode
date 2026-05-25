@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:03.198Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "133",
+    "title": "Clone Graph",
+    "title_slug": "clone-graph",
+    "url": "https://leetcode.com/problems/clone-graph/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2019/11/04/133_clone_graph_question.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 72478,
+      "sha256": "730f3ffba539b8c04f0ca933f06691766f7598af1bffdb79613bbe3f83789a57"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2020/01/07/graph.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 1956,
+      "sha256": "8af703f3b911e70d98590a098e6e9985a99769ca182251c7691d1d149064bf25"
+    }
+  ]
+}

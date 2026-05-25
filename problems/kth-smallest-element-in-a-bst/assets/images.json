@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:55.303Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "230",
+    "title": "Kth Smallest Element in a BST",
+    "title_slug": "kth-smallest-element-in-a-bst",
+    "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/01/28/kthtree1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 8694,
+      "sha256": "e2cf52270df27182d65661247fb2c23a0ce37c535b9275d9d98d82b663edc548"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/01/28/kthtree2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 11740,
+      "sha256": "797c3a7eec5f92a7915c85761245aa75015cafaf3d9eb7ff948539475e52c646"
+    }
+  ]
+}

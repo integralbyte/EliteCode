@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:21.600Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "54",
+    "title": "Spiral Matrix",
+    "title_slug": "spiral-matrix",
+    "url": "https://leetcode.com/problems/spiral-matrix/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 10159,
+      "sha256": "aaafaf48b199b8cbcbe59c169de2a03dcde8f4623c410b941d69184df0e4b18a"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 14152,
+      "sha256": "9bf084bc4106f0b6cf78822f53eaba27c79277a49efe3f3cd6ca185e8f8eeb17"
+    }
+  ]
+}

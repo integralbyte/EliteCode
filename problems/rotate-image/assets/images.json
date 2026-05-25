@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:21.082Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "48",
+    "title": "Rotate Image",
+    "title_slug": "rotate-image",
+    "url": "https://leetcode.com/problems/rotate-image/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 16754,
+      "sha256": "d906842cd222e68cfbcd8ce98c052b5100c2388a23e959411a1221376464db58"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/08/28/mat2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 31770,
+      "sha256": "0339cf8f3f7ab69964affe676241648ac2a6ada6b63c3f0c7c737b458e97df01"
+    }
+  ]
+}

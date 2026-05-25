@@ -60,6 +60,24 @@ def get_problem(slug: str) -> dict[str, Any]:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
+@app.get("/api/problem-assets/{slug}/{asset_path:path}")
+def get_problem_asset(slug: str, asset_path: str) -> FileResponse:
+    try:
+        catalog.get(slug)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+    asset_root = (DEFAULT_PROBLEMS_DIR / slug / "assets").resolve()
+    target = (asset_root / asset_path).resolve()
+    try:
+        target.relative_to(asset_root)
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail="Asset not found.") from exc
+    if not target.exists() or not target.is_file():
+        raise HTTPException(status_code=404, detail="Asset not found.")
+    return FileResponse(target)
+
+
 @app.post("/api/problems/reload")
 def reload_problems() -> dict[str, Any]:
     catalog.load()

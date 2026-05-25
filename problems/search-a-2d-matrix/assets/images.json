@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:43.639Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "74",
+    "title": "Search a 2D Matrix",
+    "title_slug": "search-a-2d-matrix",
+    "url": "https://leetcode.com/problems/search-a-2d-matrix/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/05/mat.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13466,
+      "sha256": "9c223e910078177c855f1b3b1a9b0d9449e440e414c9fa44cff88e1b20add3af"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/05/mat2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13298,
+      "sha256": "81a828f24e23829eb89a1c0367fb9da8b3e56737d2e7712f515fa9d0f680baf2"
+    }
+  ]
+}

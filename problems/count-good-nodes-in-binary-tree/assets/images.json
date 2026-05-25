@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:54.362Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "1448",
+    "title": "Count Good Nodes in Binary Tree",
+    "title_slug": "count-good-nodes-in-binary-tree",
+    "url": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2020/04/02/test_sample_1.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 7593,
+      "sha256": "bdc4e704f16486b639dae1d0eb33a98d3d0ca3f5ea5ef44f30968077a58b8e79"
+    },
+    {
+      "index": 2,
+      "file": "original-2.png",
+      "source_url": "https://assets.leetcode.com/uploads/2020/04/02/test_sample_2.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 4716,
+      "sha256": "ebf8cfd4f8e539b887928c2c71eebf1d66b85695e6a611866ee7264aa4f39739"
+    }
+  ]
+}

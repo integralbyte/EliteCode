@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:51:48.047Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "19",
+    "title": "Remove Nth Node From End of List",
+    "title_slug": "remove-nth-node-from-end-of-list",
+    "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/10/03/remove_ex1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 18128,
+      "sha256": "35c75c8b745680a95679103724e8cf2be5997140952b9925a2f35ec653421a38"
+    }
+  ]
+}

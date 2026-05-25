@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:03.717Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "994",
+    "title": "Rotting Oranges",
+    "title_slug": "rotting-oranges",
+    "url": "https://leetcode.com/problems/rotting-oranges/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2019/02/16/oranges.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 42586,
+      "sha256": "389e767470d1f33e7330168071a721a71f16ad08f0ce42bc621cfa9b374661c8"
+    }
+  ]
+}

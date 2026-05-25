@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:57.421Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "212",
+    "title": "Word Search II",
+    "title_slug": "word-search-ii",
+    "url": "https://leetcode.com/problems/word-search-ii/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/11/07/search1.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 13870,
+      "sha256": "76cbfc0cbd2d778647cf5a9102ec6103851a2b42ff58e69eba80921d5bf54610"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2020/11/07/search2.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 3792,
+      "sha256": "f0b160ee55b404cc324e95ceceb35de9a434e49619588413dc0e48bbfa25abfc"
+    }
+  ]
+}

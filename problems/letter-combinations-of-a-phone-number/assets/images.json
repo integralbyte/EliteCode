@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-25T11:52:01.718Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "17",
+    "title": "Letter Combinations of a Phone Number",
+    "title_slug": "letter-combinations-of-a-phone-number",
+    "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.png",
+      "source_url": "https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png",
+      "alt": "",
+      "content_type": "image/png",
+      "bytes": 310876,
+      "sha256": "298134a0c91db5427f8624b243e95e3dbc17fbf98beca0156b5a67c024d3daf6"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:52:06.702Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "332",
+    "title": "Reconstruct Itinerary",
+    "title_slug": "reconstruct-itinerary",
+    "url": "https://leetcode.com/problems/reconstruct-itinerary/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 12277,
+      "sha256": "15016787ff1f400e299d567453c4dcb663471f0b79d6e61e1594c7a5ff3bf959"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/03/14/itinerary2-graph.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 10497,
+      "sha256": "b2ea615ef1dfafd3d4b11bf053856d04a95af1eb2a9271bf3bbb719beea4f1cf"
+    }
+  ]
+}

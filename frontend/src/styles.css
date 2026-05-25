@@ -487,6 +487,16 @@ button {
   border: 1px solid #2d3037;
 }
 
+.markdown img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 14px 0 18px;
+  border: 1px solid #2d3037;
+  border-radius: 7px;
+  background: #111217;
+}
+
 .hint-section {
   margin-top: 20px;
 }

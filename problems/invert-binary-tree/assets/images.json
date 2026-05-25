@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T11:51:50.757Z",
+  "source": "LeetCode question img tags",
+  "leetcode": {
+    "frontend_id": "226",
+    "title": "Invert Binary Tree",
+    "title_slug": "invert-binary-tree",
+    "url": "https://leetcode.com/problems/invert-binary-tree/"
+  },
+  "images": [
+    {
+      "index": 1,
+      "file": "original-1.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 34272,
+      "sha256": "3241d90c7458408b21f146e36a60fb75840fdeca199ac0bfdb11e172e40856c7"
+    },
+    {
+      "index": 2,
+      "file": "original-2.jpg",
+      "source_url": "https://assets.leetcode.com/uploads/2021/03/14/invert2-tree.jpg",
+      "alt": "",
+      "content_type": "image/jpeg",
+      "bytes": 15045,
+      "sha256": "fda8a199fd912ec4282d3244e182612e7b144b0834e07f880da610d000eae796"
+    }
+  ]
+}

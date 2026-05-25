@@ -130,13 +130,13 @@ function findDuplicate(nums) {
   return -1;
 }
 
-function duplicateArray(seed, n = 2 + (seed % 12)) {
+function duplicateArray(seed, n = 2 + (mix(seed, 180) % 80)) {
   const values = Array.from({ length: n }, (_, index) => index + 1);
-  const duplicate = 1 + (seed % n);
-  const insertAt = seed % (n + 1);
+  const duplicate = 1 + (mix(seed, 181) % n);
+  const insertAt = mix(seed, 182) % (n + 1);
   values.splice(insertAt, 0, duplicate);
   for (let i = values.length - 1; i > 0; i -= 1) {
-    const j = (seed * 7 + i * 3) % (i + 1);
+    const j = mix(seed, i + 183) % (i + 1);
     [values[i], values[j]] = [values[j], values[i]];
   }
   return values;
@@ -200,10 +200,10 @@ function reverseKGroup(values, k) {
 }
 
 function randomNodes(seed) {
-  const length = 1 + (seed % 7);
+  const length = mix(seed, 240) % 15;
   return Array.from({ length }, (_, index) => {
-    const randomIndex = (seed + index * 2) % (length + 1);
-    return [((seed + index) * 13) % 50, randomIndex === length ? null : randomIndex];
+    const randomIndex = mix(seed, index + 241) % (length + 1);
+    return [(mix(seed, index + 260) % 201) - 100, randomIndex === length ? null : randomIndex];
   });
 }
 

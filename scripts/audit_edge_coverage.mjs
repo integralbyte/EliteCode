@@ -3,7 +3,7 @@ import path from "node:path";
 
 const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
-const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 500);
+const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
 const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 4);
 
 const finiteDomains = {

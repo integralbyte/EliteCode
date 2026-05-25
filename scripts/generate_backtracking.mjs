@@ -438,7 +438,7 @@ const problems = [
     const visibleRaw = [[1, 2, 2], [0, 0], []];
     const visible = visibleRaw.map((nums) => caseFrom({ nums }, subsetsWithDup(nums)));
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const nums = Array.from({ length: mix(seed, 40) % 7 }, (_, i) => (mix(seed, i + 41) % 9) - 4).sort((a, b) => a - b);
+      const nums = Array.from({ length: mix(seed, 40) % 9 }, (_, i) => (mix(seed, i + 41) % 17) - 8).sort((a, b) => a - b);
       return caseFrom({ nums }, subsetsWithDup(nums));
     });
     return {
@@ -515,8 +515,8 @@ const problems = [
     const visible = visibleRaw.map((digits) => caseFrom({ digits }, letterCombinations(digits)));
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
       const chars = "23456789";
-      const length = mix(seed, 50) % 5;
-      const digits = Array.from({ length }, (_, i) => chars[mix(seed, i + 51) % chars.length]).join("");
+      const length = seed % 19 === 0 ? 0 : 4;
+      const digits = Array.from({ length }, (_, i) => chars[Math.floor(seed / (8 ** i)) % chars.length]).join("");
       return caseFrom({ digits }, letterCombinations(digits));
     });
     return {

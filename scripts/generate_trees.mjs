@@ -53,6 +53,16 @@ function caseFrom(input, expected) {
   return { input, expected };
 }
 
+function mix(seed, salt = 0) {
+  let value = (seed + 0x9e3779b9 + salt * 0x85ebca6b) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  value = Math.imul(value, 0x846ca68b) >>> 0;
+  value ^= value >>> 16;
+  return value >>> 0;
+}
+
 function treeNode(values, extra = {}) {
   return { __elite_type: "tree_node", values, ...extra };
 }
@@ -233,9 +243,9 @@ function insertBST(rootNode, value) {
 
 function uniqueValues(seed, length = 7 + (seed % 8)) {
   const values = [];
-  let candidate = seed * 13 - 40;
+  let candidate = 0;
   while (values.length < length) {
-    const value = ((candidate * 17 + values.length * 23) % 101) - 50;
+    const value = (mix(seed + candidate, values.length + 90) % 2001) - 1000;
     if (!values.includes(value)) values.push(value);
     candidate += 1;
   }

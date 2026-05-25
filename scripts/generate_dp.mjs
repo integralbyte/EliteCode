@@ -253,7 +253,7 @@ const problems = [
     "```python\nclass Solution:\n    def canPartition(self, nums):\n        total = sum(nums)\n        if total % 2: return False\n        target = total // 2\n        possible = {0}\n        for value in nums:\n            possible |= {x + value for x in list(possible) if x + value <= target}\n        return target in possible\n```", "class Solution:\n    def canPartition(self, nums):\n        pass"),
   makeProblem(111, "unique-paths", "Unique Paths", "Medium", ["Math", "Dynamic Programming", "Combinatorics"], "uniquePaths",
     [caseFrom({ m: 3, n: 7 }, 28), caseFrom({ m: 3, n: 2 }, 3), caseFrom({ m: 1, n: 5 }, 1)],
-    (seed) => { const m = 1 + (seed % 26), n = 1 + (Math.floor(seed / 26) % 26); return caseFrom({ m, n }, uniquePaths(m, n)); },
+    (seed) => { const m = 1 + (seed % 500), n = 1 + (Math.floor(seed / 500) % 4); return caseFrom({ m, n }, uniquePaths(m, n)); },
     "A robot moves only right or down through an `m x n` grid. Return the number of paths from top-left to bottom-right.",
     ["Input: m = 3, n = 7\nOutput: 28", "Input: m = 3, n = 2\nOutput: 3", "Input: m = 1, n = 5\nOutput: 1"],
     "```python\nclass Solution:\n    def uniquePaths(self, m, n):\n        dp = [1] * n\n        for _ in range(1, m):\n            for c in range(1, n): dp[c] += dp[c - 1]\n        return dp[-1]\n```", "class Solution:\n    def uniquePaths(self, m, n):\n        pass"),

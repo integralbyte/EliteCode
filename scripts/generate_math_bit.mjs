@@ -49,6 +49,7 @@ function reverseInt(x) { const sign = x < 0 ? -1 : 1; const value = sign * Numbe
 
 const matrixSeed = (seed, square = false) => { const rows = square ? 1 + (mix(seed, 1) % 7) : 1 + (mix(seed, 2) % 8); const cols = square ? rows : 1 + (mix(seed, 3) % 8); return Array.from({ length: rows }, (_, r) => Array.from({ length: cols }, (_, c) => (mix(seed, r * cols + c + 4) % 101) - 50)); };
 const intArray = (seed, len = 4 + (mix(seed, 10) % 12)) => Array.from({ length: len }, (_, i) => (mix(seed, i + 11) % 101) - 50);
+const powBases = Array.from({ length: 41 }, (_, index) => index - 20).filter((value) => value !== 0);
 
 const floatChecker = `
 from __future__ import annotations
@@ -85,7 +86,7 @@ const problems = [
     "```python\nclass Solution:\n    def setZeroes(self, matrix):\n        rows = {r for r, row in enumerate(matrix) for c, value in enumerate(row) if value == 0}\n        cols = {c for r, row in enumerate(matrix) for c, value in enumerate(row) if value == 0}\n        for r in range(len(matrix)):\n            for c in range(len(matrix[0])):\n                if r in rows or c in cols: matrix[r][c] = 0\n```", "class Solution:\n    def setZeroes(self, matrix):\n        pass"),
   makeProblem(139, "happy-number", "Happy Number", "Easy", ["Hash Table", "Math", "Two Pointers"], "isHappy",
     [caseFrom({ n: 19 }, true), caseFrom({ n: 2 }, false), caseFrom({ n: 1 }, true)],
-    (seed) => { const n = 1 + ((seed * 37) % 500); return caseFrom({ n }, isHappy(n)); }, "Repeatedly replace a number by the sum of squares of its digits. Return whether the process reaches 1.", ["Input: n = 19\nOutput: true", "Input: n = 2\nOutput: false", "Input: n = 1\nOutput: true"],
+    (seed) => { const n = 1 + (mix(seed, 150) % 5000); return caseFrom({ n }, isHappy(n)); }, "Repeatedly replace a number by the sum of squares of its digits. Return whether the process reaches 1.", ["Input: n = 19\nOutput: true", "Input: n = 2\nOutput: false", "Input: n = 1\nOutput: true"],
     "```python\nclass Solution:\n    def isHappy(self, n):\n        seen = set()\n        while n != 1 and n not in seen:\n            seen.add(n)\n            n = sum(int(ch) ** 2 for ch in str(n))\n        return n == 1\n```", "class Solution:\n    def isHappy(self, n):\n        pass"),
   makeProblem(140, "plus-one", "Plus One", "Easy", ["Array", "Math"], "plusOne",
     [caseFrom({ digits: [1,2,3] }, [1,2,4]), caseFrom({ digits: [9,9] }, [1,0,0]), caseFrom({ digits: [0] }, [1])],
@@ -93,7 +94,7 @@ const problems = [
     "```python\nclass Solution:\n    def plusOne(self, digits):\n        for i in range(len(digits) - 1, -1, -1):\n            if digits[i] < 9:\n                digits[i] += 1; return digits\n            digits[i] = 0\n        return [1] + digits\n```", "class Solution:\n    def plusOne(self, digits):\n        pass"),
   makeProblem(141, "powx-n", "Pow(x, n)", "Medium", ["Math", "Recursion"], "myPow",
     [caseFrom({ x: 2.0, n: 10 }, 1024.0), caseFrom({ x: 2.0, n: -2 }, 0.25), caseFrom({ x: -2.0, n: 3 }, -8.0)],
-    (seed) => { const base = (mix(seed, 170) % 41) - 20; const x = base === 0 ? 2 : base; const n = (mix(seed, 171) % 25) - 12; return caseFrom({ x, n }, powVal(x, n)); }, "Return `x` raised to integer power `n`.", ["Input: x = 2.0, n = 10\nOutput: 1024.0", "Input: x = 2.0, n = -2\nOutput: 0.25", "Input: x = -2.0, n = 3\nOutput: -8.0"],
+    (seed) => { const x = powBases[seed % powBases.length]; const n = (Math.floor(seed / powBases.length) % 25) - 12; return caseFrom({ x, n }, powVal(x, n)); }, "Return `x` raised to integer power `n`.", ["Input: x = 2.0, n = 10\nOutput: 1024.0", "Input: x = 2.0, n = -2\nOutput: 0.25", "Input: x = -2.0, n = 3\nOutput: -8.0"],
     "```python\nclass Solution:\n    def myPow(self, x, n):\n        if n < 0:\n            x, n = 1 / x, -n\n        result = 1.0\n        while n:\n            if n & 1: result *= x\n            x *= x; n >>= 1\n        return result\n```", "class Solution:\n    def myPow(self, x, n):\n        pass", floatChecker),
   makeProblem(142, "multiply-strings", "Multiply Strings", "Medium", ["Math", "String", "Simulation"], "multiply",
     [caseFrom({ num1: "123", num2: "456" }, "56088"), caseFrom({ num1: "0", num2: "999" }, "0"), caseFrom({ num1: "12", num2: "12" }, "144")],

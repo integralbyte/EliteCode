@@ -149,7 +149,7 @@ function caseFrom(input, expected) {
 function shuffle(values, seed) {
   const out = [...values];
   for (let i = out.length - 1; i > 0; i -= 1) {
-    const j = (seed * 1103515245 + i * 12345) % (i + 1);
+    const j = mix(seed, i) % (i + 1);
     [out[i], out[j]] = [out[j], out[i]];
   }
   return out;
@@ -167,7 +167,7 @@ function mix(seed, salt = 0) {
 
 function wordFromSeed(seed, length = 3 + (seed % 7)) {
   const letters = "abcdefghijklmnopqrstuvwxyz";
-  return Array.from({ length }, (_, i) => letters[(seed * 7 + i * 11) % letters.length]).join("");
+  return Array.from({ length }, (_, i) => letters[mix(seed, i + 200) % letters.length]).join("");
 }
 
 function generatedArrayCase(slug, seed) {
@@ -180,7 +180,7 @@ function generatedArrayCase(slug, seed) {
   }
 
   if (slug === "valid-anagram") {
-    const base = wordFromSeed(seed, seed % 2 === 0 ? 0 : 1 + (seed % 40));
+    const base = wordFromSeed(seed, seed % 17 === 0 ? 0 : 1 + (mix(seed, 301) % 60));
     const t = seed % 3 === 0 ? shuffle([...base], seed).join("") : shuffle([...base], seed).join("") + "x";
     return caseFrom({ s: base, t }, anagram(base, t));
   }
@@ -219,8 +219,8 @@ function generatedArrayCase(slug, seed) {
   }
 
   if (slug === "product-of-array-except-self") {
-    const length = 2 + (seed % 40);
-    const nums = Array.from({ length }, (_, i) => ((seed + i * 3) % 9) - 4 || 1);
+    const length = 2 + (mix(seed, 401) % 20);
+    const nums = Array.from({ length }, (_, i) => ((mix(seed, i + 402) % 5) - 2) || 1);
     if (seed % 4 === 0) nums[seed % length] = 0;
     if (seed % 8 === 0 && length > 2) nums[(seed + 1) % length] = 0;
     return caseFrom({ nums }, productExceptSelf(nums));

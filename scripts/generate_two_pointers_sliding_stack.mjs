@@ -144,11 +144,11 @@ function minWindowSeed(seed) {
 function bracketSeed(seed) {
   const opens = ["(", "[", "{"];
   const closes = { "(": ")", "[": "]", "{": "}" };
-  const depth = 1 + (mix(seed, 9) % 9);
+  const depth = 1 + (mix(seed, 9) % 16);
   let s = "";
   const stack = [];
   for (let i = 0; i < depth; i += 1) {
-    const open = opens[mix(seed, i) % opens.length];
+    const open = opens[mix(seed, i + 29) % opens.length];
     stack.push(open);
     s += open;
     if (i % 2 === 1 && seed % 5 !== 0) s += closes[stack.pop()];
@@ -159,6 +159,7 @@ function bracketSeed(seed) {
   }
   if (seed % 11 === 0) s += opens[seed % opens.length];
   if (seed % 13 === 0) s = closes[opens[seed % opens.length]] + s;
+  if (seed % 17 === 0) s = s.slice(1);
   return s;
 }
 

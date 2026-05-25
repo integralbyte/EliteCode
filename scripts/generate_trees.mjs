@@ -291,6 +291,15 @@ function bstValues(seed, length = 7 + (mix(seed, 80) % 24)) {
   return toArray(rootNode);
 }
 
+function invalidBstValues(seed) {
+  const rootValue = (mix(seed, 610) % 301) - 150;
+  const leftValue = rootValue - 1 - (mix(seed, 611) % 80);
+  const rightValue = rootValue + 1 + (mix(seed, 612) % 80);
+  const badRightLeft = rootValue - (mix(seed, 613) % 40);
+  const rightRight = rightValue + 1 + (mix(seed, 614) % 80);
+  return normalize([rootValue, leftValue, rightValue, null, null, badRightLeft, rightRight]);
+}
+
 function kthSmallest(values, k) {
   const sorted = [];
   function walk(current) {
@@ -644,7 +653,7 @@ const problems = [
       caseFrom({ root: treeNode([2, 2, 3]) }, false)
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const values = seed % 3 === 0 ? [10, 5, 15, null, null, 6, 20] : bstValues(seed);
+      const values = seed % 3 === 0 ? invalidBstValues(seed) : bstValues(seed);
       return caseFrom({ root: treeNode(values) }, isValidBST(fromArray(values)));
     });
     return {

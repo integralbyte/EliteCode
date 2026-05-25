@@ -3,13 +3,13 @@ import path from "node:path";
 
 const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
-const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1300);
-const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 12);
+const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1400);
+const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 13);
 const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 500);
 const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 15);
 const minArrayExpectedValues = Number(process.env.ELITECODE_MIN_ARRAY_EXPECTED_VALUES ?? 100);
 const minStringExpectedValues = Number(process.env.ELITECODE_MIN_STRING_EXPECTED_VALUES ?? 1000);
-const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 12);
+const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 13);
 const minCompositeMaxInputSize = Number(process.env.ELITECODE_MIN_COMPOSITE_MAX_INPUT_SIZE ?? 20);
 
 const finiteDomains = {
@@ -133,6 +133,7 @@ function addScalarFeatures(features, value, prefix) {
     if (Number.isInteger(value) && value % 2 === 0) features.add(`${prefix}:even-number`);
     if (Number.isInteger(value) && Math.abs(value % 2) === 1) features.add(`${prefix}:odd-number`);
     if (Number.isInteger(value) && value > 0 && Number.isInteger(Math.log2(value))) features.add(`${prefix}:power-of-two`);
+    if (Number.isInteger(value) && value !== 0 && value % 10 === 0) features.add(`${prefix}:multiple-of-ten`);
     if (Math.abs(value) <= 1) features.add(`${prefix}:small-number`);
     if (Math.abs(value) >= 50) features.add(`${prefix}:largeish-number`);
     if (Math.abs(value) >= 1000) features.add(`${prefix}:large-number`);
@@ -152,7 +153,14 @@ function addScalarFeatures(features, value, prefix) {
     if (/^[a-z]+$/.test(value)) features.add(`${prefix}:lowercase-string`);
     if (/^[A-Z]+$/.test(value)) features.add(`${prefix}:uppercase-string`);
     if (/^[0-9]+$/.test(value)) features.add(`${prefix}:digit-string`);
-    if (/^[()[\]{}*]+$/.test(value)) features.add(`${prefix}:delimiter-string`);
+    if (/^[()[\]{}*]+$/.test(value)) {
+      features.add(`${prefix}:delimiter-string`);
+      const opens = (value.match(/[([{]/g) ?? []).length;
+      const closes = (value.match(/[)\]}]/g) ?? []).length;
+      if (opens > 0 && closes > 0 && opens === closes) features.add(`${prefix}:balanced-delimiter-counts`);
+      if (opens !== closes) features.add(`${prefix}:unbalanced-delimiter-counts`);
+      if (/[()[\]{}]/.test(value) && value.includes("*")) features.add(`${prefix}:wildcard-delimiter-mix`);
+    }
     if (value.includes("*")) features.add(`${prefix}:wildcard-string`);
   }
 }

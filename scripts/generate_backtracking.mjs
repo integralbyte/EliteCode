@@ -282,13 +282,16 @@ function pathWord(board) {
 }
 
 function stringSeed(seed) {
-  if (seed % 6 === 0) return "a".repeat(1 + (seed % 8));
-  if (seed % 6 === 1) return `${word(seed, 3 + (seed % 4), "abc")}${word(seed + 7, 2 + (seed % 3), "cba")}`;
+  if (seed % 6 === 0) {
+    const ch = "abcde"[mix(seed, 40) % 5];
+    return ch.repeat(1 + (mix(seed, 41) % 10));
+  }
+  if (seed % 6 === 1) return `${word(seed, 3 + (mix(seed, 42) % 6), "abcd")}${word(seed + 7, 2 + (mix(seed, 43) % 5), "dcba")}`;
   if (seed % 6 === 2) {
-    const left = word(seed, 2 + (seed % 5), "abcd");
+    const left = word(seed, 2 + (mix(seed, 44) % 7), "abcde");
     return `${left}${[...left].reverse().join("")}`;
   }
-  return word(seed, 1 + (mix(seed, 30) % 10), "abcde");
+  return word(seed, 1 + (mix(seed, 30) % 13), "abcdefg");
 }
 
 const unorderedOuterChecker = `

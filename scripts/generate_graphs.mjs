@@ -111,14 +111,14 @@ function numIslands(grid) {
 }
 
 function intGrid(seed, rows = null, cols = null) {
-  rows = rows ?? (1 + (seed % 8));
-  cols = cols ?? (1 + (Math.floor(seed / 8) % 8));
+  rows = rows ?? (1 + (mix(seed, 40) % 9));
+  cols = cols ?? (1 + (mix(seed, 41) % 9));
   return Array.from({ length: rows }, (_, r) =>
     Array.from({ length: cols }, (_, c) => {
       if (seed % 11 === 0) return 0;
       if (seed % 11 === 1) return 1;
       if (seed % 11 === 2) return (r + c) % 2;
-      return mix(seed + r, c) % 5 === 0 ? 0 : 1;
+      return mix(seed, r * cols + c + 42) % 5 === 0 ? 0 : 1;
     })
   );
 }
@@ -527,10 +527,10 @@ function swim(grid) {
 }
 
 function swimGrid(seed) {
-  const n = 1 + (mix(seed, 260) % 6);
+  const n = 1 + (mix(seed, 260) % 7);
   const values = Array.from({ length: n * n }, (_, i) => i);
   for (let i = values.length - 1; i > 0; i -= 1) {
-    const j = mix(seed, i + 261) % (i + 1);
+    const j = mix(seed, i + 331) % (i + 1);
     [values[i], values[j]] = [values[j], values[i]];
   }
   return Array.from({ length: n }, (_, r) => values.slice(r * n, r * n + n));

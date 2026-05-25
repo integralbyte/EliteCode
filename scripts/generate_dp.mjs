@@ -108,10 +108,14 @@ function palindromeSeed(seed) {
 
 function decodeSeed(seed) {
   if (seed % 11 === 0) return "0" + String(10 + (seed % 89));
-  if (seed % 11 === 1) return "10".repeat(1 + (seed % 14));
-  if (seed % 11 === 2) return "27".repeat(1 + (seed % 13));
+  if (seed % 11 === 1) return "10".repeat(1 + (mix(seed, 14) % 24));
+  if (seed % 11 === 2) return "27".repeat(1 + (mix(seed, 15) % 24));
   if (seed % 11 === 3) return "1".repeat(1 + (mix(seed, 10) % 36));
-  return Array.from({ length: 1 + (mix(seed, 11) % 40) }, (_, i) => String(1 + (mix(seed, i) % 9))).join("");
+  if (seed % 11 === 4) {
+    const length = 2 + (mix(seed, 12) % 38);
+    return Array.from({ length }, (_, i) => (i % 5 === 4 ? "0" : String(1 + (mix(seed, i + 13) % 2)))).join("");
+  }
+  return Array.from({ length: 1 + (mix(seed, 11) % 50) }, (_, i) => String(1 + (mix(seed, i + 17) % 9))).join("");
 }
 
 function wordBreakSeed(seed) {
@@ -137,12 +141,13 @@ function interleaveSeed(seed) {
 }
 
 function regexSeed(seed) {
-  const s = word(seed, 1 + (seed % 10), "abc");
-  if (seed % 4 === 0) return { s, p: `${s}d` };
-  if (seed % 4 === 1) return { s, p: ".*" };
-  if (seed % 4 === 2) return { s, p: s.replace(/[abc]/g, ".") };
-  if (seed % 8 === 3) return { s, p: `${s[0]}*${s.slice(1)}` };
-  if (seed % 8 === 7) return { s, p: `${s}d*` };
+  const s = word(seed, 1 + (mix(seed, 450) % 14), "abcd");
+  if (seed % 5 === 0) return { s, p: `${s}z` };
+  if (seed % 5 === 1) return { s, p: ".*" };
+  if (seed % 5 === 2) return { s, p: s.replace(/[abcd]/g, ".") };
+  if (seed % 5 === 3) return { s, p: `${s}d*` };
+  const middle = Math.floor(s.length / 2);
+  if (seed % 10 === 4) return { s, p: `${s.slice(0, middle)}z${s.slice(middle + 1)}` };
   return { s, p: `${s.slice(0, Math.max(0, s.length - 1))}.` };
 }
 
@@ -276,13 +281,13 @@ const problems = [
     "```python\nclass Solution:\n    def minCostClimbingStairs(self, cost):\n        one = two = 0\n        for value in reversed(cost):\n            one, two = value + min(one, two), one\n        return min(one, two)\n```", "class Solution:\n    def minCostClimbingStairs(self, cost):\n        pass"),
   makeProblem(101, "house-robber", "House Robber", "Medium", ["Array", "Dynamic Programming"], "rob",
     [caseFrom({ nums: [2, 7, 9, 3, 1] }, 12), caseFrom({ nums: [5] }, 5), caseFrom({ nums: [2, 1, 1, 2] }, 4)],
-    (seed) => { const arr = posNums(seed, 1 + (seed % 12), 40); return caseFrom({ nums: arr }, robLine(arr)); },
+    (seed) => { const arr = posNums(seed, 1 + (seed % 13), 40); return caseFrom({ nums: arr }, robLine(arr)); },
     "Choose non-adjacent houses to maximize robbed money.",
     ["Input: nums = [2,7,9,3,1]\nOutput: 12", "Input: nums = [5]\nOutput: 5", "Input: nums = [2,1,1,2]\nOutput: 4"],
     "```python\nclass Solution:\n    def rob(self, nums):\n        take = skip = 0\n        for value in nums:\n            take, skip = skip + value, max(take, skip)\n        return max(take, skip)\n```", "class Solution:\n    def rob(self, nums):\n        pass"),
   makeProblem(102, "house-robber-ii", "House Robber II", "Medium", ["Array", "Dynamic Programming"], "rob",
     [caseFrom({ nums: [2, 3, 2] }, 3), caseFrom({ nums: [1, 2, 3, 1] }, 4), caseFrom({ nums: [9] }, 9)],
-    (seed) => { const arr = posNums(seed, 1 + (seed % 12), 40); return caseFrom({ nums: arr }, robCircle(arr)); },
+    (seed) => { const arr = posNums(seed, 1 + (seed % 13), 40); return caseFrom({ nums: arr }, robCircle(arr)); },
     "Houses form a circle, so the first and last houses are adjacent. Return the maximum non-adjacent sum.",
     ["Input: nums = [2,3,2]\nOutput: 3", "Input: nums = [1,2,3,1]\nOutput: 4", "Input: nums = [9]\nOutput: 9"],
     "```python\nclass Solution:\n    def rob(self, nums):\n        def line(arr):\n            take = skip = 0\n            for value in arr:\n                take, skip = skip + value, max(take, skip)\n            return max(take, skip)\n        return nums[0] if len(nums) == 1 else max(line(nums[1:]), line(nums[:-1]))\n```", "class Solution:\n    def rob(self, nums):\n        pass"),
@@ -414,7 +419,7 @@ const problems = [
     "```python\nclass Solution:\n    def minDistance(self, word1, word2):\n        prev = list(range(len(word2) + 1))\n        for i, a in enumerate(word1, 1):\n            cur = [i] + [0] * len(word2)\n            for j, b in enumerate(word2, 1):\n                cur[j] = prev[j - 1] if a == b else 1 + min(prev[j], cur[j - 1], prev[j - 1])\n            prev = cur\n        return prev[-1]\n```", "class Solution:\n    def minDistance(self, word1, word2):\n        pass"),
   makeProblem(120, "burst-balloons", "Burst Balloons", "Hard", ["Array", "Dynamic Programming"], "maxCoins",
     [caseFrom({ nums: [3, 1, 5, 8] }, 167), caseFrom({ nums: [1, 5] }, 10), caseFrom({ nums: [7] }, 7)],
-    (seed) => { const arr = posNums(seed, 1 + (seed % 6), 8); return caseFrom({ nums: arr }, burst(arr)); },
+    (seed) => { const arr = posNums(seed, 1 + (mix(seed, 520) % 7), 10); return caseFrom({ nums: arr }, burst(arr)); },
     "When bursting a balloon, gain `left * current * right` using nearest remaining neighbors. Return the maximum coins.",
     ["Input: nums = [3,1,5,8]\nOutput: 167", "Input: nums = [1,5]\nOutput: 10", "Input: nums = [7]\nOutput: 7"],
     "```python\nclass Solution:\n    def maxCoins(self, nums):\n        arr = [1] + nums + [1]\n        n = len(arr)\n        dp = [[0] * n for _ in range(n)]\n        for length in range(2, n):\n            for left in range(n - length):\n                right = left + length\n                dp[left][right] = max(dp[left][mid] + dp[mid][right] + arr[left] * arr[mid] * arr[right] for mid in range(left + 1, right))\n        return dp[0][n - 1]\n```", "class Solution:\n    def maxCoins(self, nums):\n        pass"),

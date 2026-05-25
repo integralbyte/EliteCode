@@ -7,8 +7,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CATALOG_PATH = path.join(ROOT, "scripts", "neetcode150_catalog.json");
 const PROBLEMS_DIR = path.join(ROOT, "problems");
 const LEETCODE_GRAPHQL_URL = "https://leetcode.com/graphql";
-const SOURCE_BLOCK_START = "<!-- elitecode-source-images:start -->";
-const SOURCE_BLOCK_END = "<!-- elitecode-source-images:end -->";
+const LEGACY_SOURCE_BLOCK_START = "<!-- elitecode-source-images:start -->";
+const LEGACY_SOURCE_BLOCK_END = "<!-- elitecode-source-images:end -->";
 
 const slugOverrides = new Map([
   ["add-and-search-word-data-structure-design", "design-add-and-search-words-data-structure"],
@@ -24,6 +24,10 @@ const contentTypeExtensions = new Map([
 ]);
 
 const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"]);
+
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 function htmlDecode(value) {
   return value
@@ -143,9 +147,19 @@ async function downloadImage(url, referer) {
   };
 }
 
-function removeExistingImageBlock(statement) {
-  const blockPattern = new RegExp(`\\n?${SOURCE_BLOCK_START.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[\\s\\S]*?${SOURCE_BLOCK_END.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\n?`, "g");
-  return statement.replace(blockPattern, "\n\n").replace(/\n{3,}/g, "\n\n").trimEnd();
+function removeExistingImageBlock(statement, slug) {
+  const legacyBlockPattern = new RegExp(`\\n?${escapeRegex(LEGACY_SOURCE_BLOCK_START)}[\\s\\S]*?${escapeRegex(LEGACY_SOURCE_BLOCK_END)}\\n?`, "g");
+  let nextStatement = statement.replace(legacyBlockPattern, "\n\n");
+
+  if (slug) {
+    const generatedSectionPattern = new RegExp(
+      `\\n## Diagrams?\\n\\n(?:!\\[[^\\]]*\\]\\(/api/problem-assets/${escapeRegex(slug)}/[^)]+\\)\\n*)+(?=\\n## |$)`,
+      "g",
+    );
+    nextStatement = nextStatement.replace(generatedSectionPattern, "\n");
+  }
+
+  return nextStatement.replace(/\n{3,}/g, "\n\n").trimEnd();
 }
 
 function buildImageBlock(problem, images) {
@@ -153,11 +167,12 @@ function buildImageBlock(problem, images) {
   const markdownImages = images
     .map((image, index) => `![${problem.title} diagram ${index + 1}](/api/problem-assets/${problem.slug}/${image.file})`)
     .join("\n\n");
-  return `${SOURCE_BLOCK_START}\n${heading}\n\n${markdownImages}\n${SOURCE_BLOCK_END}`;
+  return `${heading}\n\n${markdownImages}`;
 }
 
 function insertImageBlock(statement, block) {
-  const cleanStatement = removeExistingImageBlock(statement);
+  const slug = /\/api\/problem-assets\/([^/)]+)\//.exec(block)?.[1] || "";
+  const cleanStatement = removeExistingImageBlock(statement, slug);
   const examplesIndex = cleanStatement.search(/\n## Examples\b/);
   if (examplesIndex >= 0) {
     return `${cleanStatement.slice(0, examplesIndex).trimEnd()}\n\n${block}\n${cleanStatement.slice(examplesIndex)}`;
@@ -186,7 +201,7 @@ async function main() {
     const imageRefs = extractImageUrls(question?.content || "");
 
     if (imageRefs.length === 0) {
-      const withoutOldBlock = removeExistingImageBlock(problem.statement);
+      const withoutOldBlock = removeExistingImageBlock(problem.statement, problem.slug);
       if (!dryRun && withoutOldBlock !== problem.statement) {
         problem.statement = withoutOldBlock;
         await writeJson(problemPath, problem);

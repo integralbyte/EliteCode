@@ -9,7 +9,7 @@
     "Combinatorics"
   ],
   "companies": [],
-  "statement": "# Unique Paths\n\nA robot moves only right or down through an `m x n` grid. Return the number of paths from top-left to bottom-right.\n\n<!-- elitecode-source-images:start -->\n## Diagram\n\n![Unique Paths diagram 1](/api/problem-assets/unique-paths/original-1.png)\n<!-- elitecode-source-images:end -->\n\n## Examples\n\n**Example 1**\n\n```text\nInput: m = 3, n = 7\nOutput: 28\n```\n\n**Example 2**\n\n```text\nInput: m = 3, n = 2\nOutput: 3\n```\n\n**Example 3**\n\n```text\nInput: m = 1, n = 5\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
+  "statement": "# Unique Paths\n\nA robot moves only right or down through an `m x n` grid. Return the number of paths from top-left to bottom-right.\n\n## Diagram\n\n![Unique Paths diagram 1](/api/problem-assets/unique-paths/original-1.png)\n\n## Examples\n\n**Example 1**\n\n```text\nInput: m = 3, n = 7\nOutput: 28\n```\n\n**Example 2**\n\n```text\nInput: m = 3, n = 2\nOutput: 3\n```\n\n**Example 3**\n\n```text\nInput: m = 1, n = 5\nOutput: 1\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
   "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
   "solution_notes": "```python\nclass Solution:\n    def uniquePaths(self, m, n):\n        dp = [1] * n\n        for _ in range(1, m):\n            for c in range(1, n): dp[c] += dp[c - 1]\n        return dp[-1]\n```",
   "hints": [

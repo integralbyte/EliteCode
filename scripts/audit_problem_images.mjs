@@ -56,6 +56,10 @@ async function main() {
     const manifestPath = path.join(assetsDir, "images.json");
     const manifestExists = await exists(manifestPath);
 
+    if ((problem.statement || "").includes("elitecode-source-images")) {
+      fail(errors, `${problem.slug}: statement contains visible source-image marker text`);
+    }
+
     for (const asset of statementAssetUrls(problem.statement || "")) {
       if (asset.slug !== problem.slug) {
         fail(errors, `${problem.slug}: statement points to ${asset.slug}`);

@@ -138,7 +138,7 @@ class Storage:
         code: str,
         verdict: str,
         passed: bool,
-        runtime_ms: int,
+        runtime_ms: float,
         results: dict[str, Any],
     ) -> SubmissionRecord:
         with self.connect() as con:

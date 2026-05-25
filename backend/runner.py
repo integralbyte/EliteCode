@@ -366,7 +366,7 @@ def main():
                     )
                 ):
                     actual = []
-            elapsed_ms = int((time.perf_counter() - started) * 1000)
+            elapsed_ms = round((time.perf_counter() - started) * 1000, 3)
             results.append({
                 "case_id": case["id"],
                 "actual": jsonable(actual),
@@ -376,7 +376,7 @@ def main():
                 "error": None
             })
         except Exception:
-            elapsed_ms = int((time.perf_counter() - started) * 1000)
+            elapsed_ms = round((time.perf_counter() - started) * 1000, 3)
             results.append({
                 "case_id": case["id"],
                 "actual": None,
@@ -540,7 +540,7 @@ class PythonJudge:
         stdout: str = "",
         stderr: str = "",
         message: str = "",
-        runtime_ms: int = 0,
+        runtime_ms: float = 0,
     ) -> CaseResult:
         return CaseResult(
             case_id=case.id,
@@ -559,7 +559,7 @@ class PythonJudge:
 
     def _summarize(self, slug: str, case_results: list[CaseResult]) -> JudgeResult:
         passed_cases = sum(1 for result in case_results if result.passed)
-        total_runtime = sum(result.runtime_ms for result in case_results)
+        total_runtime = round(sum(result.runtime_ms for result in case_results), 3)
         if passed_cases == len(case_results):
             verdict = "Accepted"
         else:

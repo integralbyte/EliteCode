@@ -111,7 +111,33 @@ class CaseResult(BaseModel):
     stdout: str = ""
     stderr: str = ""
     message: str = ""
-    runtime_ms: int = 0
+    runtime_ms: float = 0
+
+
+class ComplexityEstimate(BaseModel):
+    label: str
+    confidence: Literal["low", "medium", "high"]
+    reason: str
+    features: list[str] = Field(default_factory=list)
+    observed_growth: str | None = None
+    observed_exponent: float | None = None
+
+
+class RuntimeComparison(BaseModel):
+    user_runtime_ms: float
+    reference_runtime_ms: float
+    delta_ms: float
+    ratio: float | None = None
+    relative_label: str
+    reference_verdict: str
+    reference_name: str = "Curated expected solution"
+
+
+class SubmissionAnalysis(BaseModel):
+    runtime: RuntimeComparison | None = None
+    user_complexity: ComplexityEstimate
+    reference_complexity: ComplexityEstimate | None = None
+    notes: list[str] = Field(default_factory=list)
 
 
 class JudgeResult(BaseModel):
@@ -120,8 +146,9 @@ class JudgeResult(BaseModel):
     passed: bool
     total_cases: int
     passed_cases: int
-    runtime_ms: int
+    runtime_ms: float
     case_results: list[CaseResult]
+    analysis: SubmissionAnalysis | None = None
 
 
 class SubmissionRecord(BaseModel):
@@ -130,7 +157,6 @@ class SubmissionRecord(BaseModel):
     language: Language
     verdict: str
     passed: bool
-    runtime_ms: int
+    runtime_ms: float
     created_at: str
     results: dict[str, Any]
-

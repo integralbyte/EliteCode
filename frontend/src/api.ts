@@ -78,6 +78,33 @@ export interface JudgeResult {
   passed_cases: number;
   runtime_ms: number;
   case_results: CaseResult[];
+  analysis?: SubmissionAnalysis | null;
+}
+
+export interface ComplexityEstimate {
+  label: string;
+  confidence: "low" | "medium" | "high";
+  reason: string;
+  features: string[];
+  observed_growth?: string | null;
+  observed_exponent?: number | null;
+}
+
+export interface RuntimeComparison {
+  user_runtime_ms: number;
+  reference_runtime_ms: number;
+  delta_ms: number;
+  ratio?: number | null;
+  relative_label: string;
+  reference_verdict: string;
+  reference_name: string;
+}
+
+export interface SubmissionAnalysis {
+  runtime?: RuntimeComparison | null;
+  user_complexity: ComplexityEstimate;
+  reference_complexity?: ComplexityEstimate | null;
+  notes: string[];
 }
 
 export interface SubmissionRecord {
@@ -137,4 +164,3 @@ export const api = {
       body: JSON.stringify(payload)
     })
 };
-

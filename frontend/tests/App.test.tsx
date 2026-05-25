@@ -48,7 +48,35 @@ const acceptedResult = {
       message: "",
       runtime_ms: 1
     }
-  ]
+  ],
+  analysis: {
+    runtime: {
+      user_runtime_ms: 1,
+      reference_runtime_ms: 1,
+      delta_ms: 0,
+      ratio: 1,
+      relative_label: "within 20% of expected",
+      reference_verdict: "Accepted",
+      reference_name: "Curated expected solution"
+    },
+    user_complexity: {
+      label: "O(n)",
+      confidence: "medium",
+      reason: "The deepest detected input-dependent loop nesting is 1.",
+      features: ["max loop nesting: 1"],
+      observed_growth: null,
+      observed_exponent: null
+    },
+    reference_complexity: {
+      label: "O(n)",
+      confidence: "medium",
+      reason: "The deepest detected input-dependent loop nesting is 1.",
+      features: ["max loop nesting: 1"],
+      observed_growth: null,
+      observed_exponent: null
+    },
+    notes: ["Complexity is an estimate."]
+  }
 };
 
 describe("App", () => {
@@ -88,6 +116,8 @@ describe("App", () => {
     fireEvent.click(screen.getByRole("button", { name: /run/i }));
 
     expect(await screen.findByText(/Accepted · 1\/1 cases/)).toBeInTheDocument();
+    expect(screen.getByText("Performance")).toBeInTheDocument();
+    expect(screen.getByText("Your complexity")).toBeInTheDocument();
   });
 
   it("autosaves edited code", async () => {

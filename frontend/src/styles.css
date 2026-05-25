@@ -1178,6 +1178,91 @@ kbd {
   gap: 10px;
 }
 
+.performance-panel {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #2d3037;
+  border-radius: 8px;
+  background: #17191f;
+}
+
+.performance-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.performance-header strong,
+.complexity-card strong,
+.metric-card strong {
+  color: #f2f4f7;
+}
+
+.performance-header span,
+.metric-card span,
+.complexity-card span,
+.analysis-note,
+.analysis-notes {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metric-grid,
+.complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.complexity-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-card,
+.complexity-card {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 10px;
+  border-radius: 7px;
+  background: #101115;
+  border: 1px solid #2d3037;
+}
+
+.metric-card strong,
+.complexity-card strong {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.complexity-card p,
+.analysis-note {
+  margin: 0;
+  color: #c5c9d0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.complexity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.complexity-meta span {
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: #24262d;
+}
+
+.analysis-notes {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.5;
+}
+
 .result-value {
   display: grid;
   gap: 5px;

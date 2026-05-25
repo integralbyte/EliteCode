@@ -58,6 +58,31 @@ class Solution:
     assert response.json()["verdict"] == "Accepted"
 
 
+def test_submit_api_returns_performance_analysis() -> None:
+    code = """
+class Solution:
+    def twoSum(self, nums, target):
+        seen = {}
+        for index, value in enumerate(nums):
+            need = target - value
+            if need in seen:
+                return [seen[need], index]
+            seen[value] = index
+"""
+
+    response = client.post(
+        "/api/submit",
+        json={"slug": "two-sum", "language": "python", "code": code},
+    )
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["verdict"] == "Accepted"
+    assert payload["analysis"]["runtime"]["reference_verdict"] == "Accepted"
+    assert payload["analysis"]["user_complexity"]["label"] == "O(n)"
+    assert payload["analysis"]["reference_complexity"]["label"] == "O(n)"
+
+
 def test_problem_asset_route_serves_local_images() -> None:
     response = client.get("/api/problem-assets/valid-sudoku/original-1.png")
 

@@ -30,8 +30,18 @@ import type { ComponentType, MouseEvent as ReactMouseEvent, ReactNode } from "re
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { api, type CaseResult, type JudgeResult, type Problem, type ProblemCase, type ProblemSummary, type SubmissionRecord } from "./api";
-import { difficultyClass, firstFailedCase, prettyJson, summarizeResult, verdictClass } from "./utils";
+import {
+  api,
+  type CaseResult,
+  type ComplexityEstimate,
+  type JudgeResult,
+  type Problem,
+  type ProblemCase,
+  type ProblemSummary,
+  type SubmissionAnalysis,
+  type SubmissionRecord
+} from "./api";
+import { difficultyClass, firstFailedCase, formatMs, prettyJson, summarizeResult, verdictClass } from "./utils";
 
 type LeftTab = "description" | "editorial" | "solutions" | "submissions";
 type ConsoleTab = "testcase" | "result";
@@ -826,7 +836,8 @@ function Submissions({ submissions }: { submissions: SubmissionRecord[] }) {
           </div>
           <div>
             <span>{submission.language}</span>
-            <span>{submission.runtime_ms} ms</span>
+            <span>{formatMs(submission.runtime_ms)}</span>
+            {submission.results.analysis?.runtime ? <span>{submission.results.analysis.runtime.relative_label}</span> : null}
           </div>
         </div>
       ))}
@@ -925,6 +936,7 @@ function ResultPanel({ result, activeFailure }: { result: JudgeResult | null; ac
           </span>
         ))}
       </div>
+      {result.analysis ? <PerformanceAnalysis analysis={result.analysis} /> : null}
       {focusCase ? (
         <div className="result-detail">
           <ResultValue label="Input" value={focusCase.hidden ? "Hidden test case" : prettyJson(focusCase.input)} />
@@ -935,6 +947,67 @@ function ResultPanel({ result, activeFailure }: { result: JudgeResult | null; ac
           {focusCase.message ? <ResultValue label="Message" value={focusCase.message} /> : null}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function PerformanceAnalysis({ analysis }: { analysis: SubmissionAnalysis }) {
+  const runtime = analysis.runtime;
+
+  return (
+    <section className="performance-panel" aria-label="Performance analysis">
+      <div className="performance-header">
+        <strong>Performance</strong>
+        <span>Compared with the curated expected solution</span>
+      </div>
+      {runtime ? (
+        <div className="metric-grid">
+          <MetricCard label="Your runtime" value={formatMs(runtime.user_runtime_ms)} />
+          <MetricCard label="Expected runtime" value={formatMs(runtime.reference_runtime_ms)} />
+          <MetricCard label="Comparison" value={runtime.relative_label} />
+        </div>
+      ) : (
+        <p className="analysis-note">Runtime comparison appears after an accepted submission with a valid expected solution benchmark.</p>
+      )}
+      <div className="complexity-grid">
+        <ComplexityCard title="Your complexity" estimate={analysis.user_complexity} />
+        {analysis.reference_complexity ? <ComplexityCard title="Expected complexity" estimate={analysis.reference_complexity} /> : null}
+      </div>
+      {analysis.notes.length ? (
+        <ul className="analysis-notes">
+          {analysis.notes.map((note) => (
+            <li key={note}>{note}</li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
+  );
+}
+
+function MetricCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="metric-card">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
+function ComplexityCard({ title, estimate }: { title: string; estimate: ComplexityEstimate }) {
+  return (
+    <div className="complexity-card">
+      <div>
+        <span>{title}</span>
+        <strong>{estimate.label}</strong>
+      </div>
+      <p>{estimate.reason}</p>
+      {estimate.observed_growth ? <p>{estimate.observed_growth}</p> : null}
+      <div className="complexity-meta">
+        <span>Confidence: {estimate.confidence}</span>
+        {estimate.features.slice(0, 3).map((feature) => (
+          <span key={feature}>{feature}</span>
+        ))}
+      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from .models import JudgeResult, ProblemCase, RunRequest, SaveProgressRequest
+from .performance import analyze_submission
 from .problem_loader import DEFAULT_PROBLEMS_DIR, ProblemCatalog
 from .runner import PythonJudge
 from .storage import Storage
@@ -118,6 +119,7 @@ def run_code(request: RunRequest) -> dict[str, Any]:
 def submit_code(request: RunRequest) -> dict[str, Any]:
     problem, cases = _resolve_cases(request, submit=True)
     result = judge.run(problem, request.code, cases)
+    result.analysis = analyze_submission(problem, request.code, result, cases, judge.run)
     storage.save_progress(
         problem.slug,
         request.language,

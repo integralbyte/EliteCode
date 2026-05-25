@@ -5,6 +5,7 @@ const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
 const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
 const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 8);
+const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 250);
 
 const finiteDomains = {
   "generate-parentheses": { field: "n", values: range(1, 8) },
@@ -198,6 +199,13 @@ for (const dir of await fs.readdir(problemsRoot)) {
     if (problem.cases.length < minCases) failures.push(`${problem.slug} has ${problem.cases.length} cases, expected at least ${minCases}`);
     if (!finiteDomains[problem.slug] && uniqueInputs.size < minUnique) failures.push(`${problem.slug} has ${uniqueInputs.size} unique inputs, expected at least ${minUnique}`);
     if (features.size < minFeatureFamilies) failures.push(`${problem.slug} exposes ${features.size} edge feature families, expected at least ${minFeatureFamilies}`);
+    if (problem.cases.every((item) => typeof item.expected === "boolean")) {
+      const trueCases = problem.cases.filter((item) => item.expected === true).length;
+      const falseCases = problem.cases.length - trueCases;
+      if (trueCases < minBooleanClassCases || falseCases < minBooleanClassCases) {
+        failures.push(`${problem.slug} has boolean output split true=${trueCases}, false=${falseCases}; expected at least ${minBooleanClassCases} of each`);
+      }
+    }
     if (!problem.cases.some((item) => item.hidden)) failures.push(`${problem.slug} has no hidden cases`);
     if (!problem.cases.some((item) => !item.hidden)) failures.push(`${problem.slug} has no visible cases`);
 

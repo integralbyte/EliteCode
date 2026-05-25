@@ -33,6 +33,26 @@ const pos = (seed, len = 5 + (mix(seed, 3) % 14), mod = 23) => Array.from({ leng
 function word(seed, len = 1 + (mix(seed, 5) % 22), alphabet = "abcdef") { return Array.from({ length: len }, (_, i) => alphabet[mix(seed, i + 6) % alphabet.length]).join(""); }
 function maxSubArray(a) { let best = a[0], cur = 0; for (const v of a) { cur = Math.max(v, cur + v); best = Math.max(best, cur); } return best; }
 function canJump(a) { let reach = 0; for (let i = 0; i < a.length; i += 1) { if (i > reach) return false; reach = Math.max(reach, i + a[i]); } return true; }
+function jumpGameSeed(seed) {
+  if (seed % 4 === 0) {
+    const prefixLength = 1 + (mix(seed, 16) % 14);
+    const suffixLength = 1 + (mix(seed, 17) % 30);
+    return [
+      ...Array.from({ length: prefixLength }, () => 1),
+      0,
+      ...Array.from({ length: suffixLength }, (_, i) => 1 + (mix(seed, i + 18) % 8))
+    ];
+  }
+
+  const length = 3 + (mix(seed, 19) % 36);
+  const values = pos(seed, length, 8);
+  if (seed % 5 === 0 && length > 4) {
+    const zero = 1 + (mix(seed, 20) % (length - 2));
+    values[zero] = 0;
+    values[zero - 1] = Math.max(values[zero - 1], 2);
+  }
+  return values;
+}
 function jumps(a) { let jumps = 0, end = 0, far = 0; for (let i = 0; i < a.length - 1; i += 1) { far = Math.max(far, i + a[i]); if (i === end) { jumps += 1; end = far; } } return jumps; }
 function gasStation(gas, cost) { let total = 0, tank = 0, start = 0; for (let i = 0; i < gas.length; i += 1) { const diff = gas[i] - cost[i]; total += diff; tank += diff; if (tank < 0) { tank = 0; start = i + 1; } } return total >= 0 ? start : -1; }
 function straights(hand, size) { if (hand.length % size) return false; const counts = new Map(); for (const v of hand) counts.set(v, (counts.get(v) ?? 0) + 1); for (const start of [...counts.keys()].sort((a, b) => a - b)) { const need = counts.get(start); if (!need) continue; for (let v = start; v < start + size; v += 1) { if ((counts.get(v) ?? 0) < need) return false; counts.set(v, counts.get(v) - need); } } return true; }
@@ -95,7 +115,7 @@ const problems = [
     "```python\nclass Solution:\n    def maxSubArray(self, nums):\n        best = cur = nums[0]\n        for value in nums[1:]:\n            cur = max(value, cur + value)\n            best = max(best, cur)\n        return best\n```", "class Solution:\n    def maxSubArray(self, nums):\n        pass"),
   makeProblem(123, "jump-game", "Jump Game", "Medium", ["Array", "Dynamic Programming", "Greedy"], "canJump",
     [caseFrom({ nums: [2,3,1,1,4] }, true), caseFrom({ nums: [3,2,1,0,4] }, false), caseFrom({ nums: [0] }, true)],
-    (seed) => { const a = pos(seed, 3 + (seed % 8), 5); if (seed % 4 === 0) a[Math.floor(a.length / 2)] = 0; return caseFrom({ nums: a }, canJump(a)); }, "Return whether the last index can be reached from index 0.", ["Input: nums = [2,3,1,1,4]\nOutput: true", "Input: nums = [3,2,1,0,4]\nOutput: false", "Input: nums = [0]\nOutput: true"],
+    (seed) => { const a = jumpGameSeed(seed); return caseFrom({ nums: a }, canJump(a)); }, "Return whether the last index can be reached from index 0.", ["Input: nums = [2,3,1,1,4]\nOutput: true", "Input: nums = [3,2,1,0,4]\nOutput: false", "Input: nums = [0]\nOutput: true"],
     "```python\nclass Solution:\n    def canJump(self, nums):\n        reach = 0\n        for i, jump in enumerate(nums):\n            if i > reach: return False\n            reach = max(reach, i + jump)\n        return True\n```", "class Solution:\n    def canJump(self, nums):\n        pass"),
   makeProblem(124, "jump-game-ii", "Jump Game II", "Medium", ["Array", "Dynamic Programming", "Greedy"], "jump",
     [caseFrom({ nums: [2,3,1,1,4] }, 2), caseFrom({ nums: [2,3,0,1,4] }, 2), caseFrom({ nums: [1,1,1] }, 2)],

@@ -105,6 +105,20 @@ function slidingStringSeed(seed) {
 }
 
 function inclusionSeed(seed) {
+  const fixed = [
+    { s1: "a", s2: "a" },
+    { s1: "abc", s2: "ab" },
+    { s1: "aab", s2: "eidaba" },
+    { s1: "aab", s2: "eidabb" },
+    { s1: "xyz", s2: "zyxabc" },
+    { s1: "xyz", s2: "abczyx" },
+    { s1: "abcd", s2: "dcba" },
+    { s1: "abcd", s2: "abc" },
+    { s1: "zz", s2: "azzzb" },
+    { s1: "abc", s2: "defghijkl" }
+  ];
+  if (seed >= 0 && seed < fixed.length) return fixed[seed];
+
   const s1 = wordSeed(seed, 1 + (mix(seed, 6) % 8), "abcdef");
   if (seed % 3 === 0) {
     const perm = shuffle([...s1], seed).join("");

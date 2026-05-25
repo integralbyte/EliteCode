@@ -73,6 +73,57 @@
       "hidden": false
     },
     {
+      "id": "case-4",
+      "name": "Case 4",
+      "input": {
+        "words": [
+          "z",
+          "x",
+          "z"
+        ]
+      },
+      "expected": "",
+      "hidden": false
+    },
+    {
+      "id": "case-5",
+      "name": "Case 5",
+      "input": {
+        "words": [
+          "solo"
+        ]
+      },
+      "expected": "los",
+      "hidden": false
+    },
+    {
+      "id": "case-6",
+      "name": "Case 6",
+      "input": {
+        "words": [
+          "ab",
+          "ab",
+          "ac"
+        ]
+      },
+      "expected": "abc",
+      "hidden": false
+    },
+    {
+      "id": "case-7",
+      "name": "Case 7",
+      "input": {
+        "words": [
+          "za",
+          "zb",
+          "ca",
+          "cb"
+        ]
+      },
+      "expected": "azbc",
+      "hidden": false
+    },
+    {
       "id": "hidden-1",
       "name": "Hidden Case 1",
       "input": {
@@ -383,18 +434,12 @@
       "name": "Hidden Case 17",
       "input": {
         "words": [
-          "unmn",
-          "bo",
-          "knp",
-          "pmn",
-          "topp",
-          "g",
-          "xn",
-          "hrr",
-          "wqmp"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnoqrubkptgxhw",
+      "expected": "",
       "hidden": true
     },
     {
@@ -418,24 +463,10 @@
       "name": "Hidden Case 19",
       "input": {
         "words": [
-          "omnn",
-          "amm",
-          "vp",
-          "r",
-          "copq",
-          "uqqp",
-          "gmpp",
-          "xoqn",
-          "dnmr",
-          "mrmn",
-          "j",
-          "yn",
-          "nr",
-          "q",
-          "wp"
+          "solo"
         ]
       },
-      "expected": "oapvrcugxdmjynqw",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -490,21 +521,12 @@
       "name": "Hidden Case 23",
       "input": {
         "words": [
-          "oo",
-          "ir",
-          "f",
-          "xqop",
-          "pmp",
-          "un",
-          "kro",
-          "anm",
-          "h",
-          "sq",
-          "mqp",
-          "cnq"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "noifqrxpukahsmc",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -614,22 +636,13 @@
       "name": "Hidden Case 29",
       "input": {
         "words": [
-          "r",
-          "fppo",
-          "gro",
-          "poq",
-          "u",
-          "bnm",
-          "qror",
-          "zoro",
-          "d",
-          "eo",
-          "nr",
-          "o",
-          "am"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mrfgpubqzdenoa",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -698,21 +711,12 @@
       "name": "Hidden Case 34",
       "input": {
         "words": [
-          "c",
-          "bmp",
-          "arp",
-          "h",
-          "npq",
-          "xpqp",
-          "tnqq",
-          "go",
-          "vp",
-          "wo",
-          "l",
-          "f"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "cbahmnopqrxtgvwlf",
+      "expected": "",
       "hidden": true
     },
     {
@@ -789,15 +793,10 @@
       "name": "Hidden Case 38",
       "input": {
         "words": [
-          "m",
-          "s",
-          "erp",
-          "jrnr",
-          "fqmm",
-          "amqn"
+          "solo"
         ]
       },
-      "expected": "mnpqrsejfa",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -927,19 +926,12 @@
       "name": "Hidden Case 46",
       "input": {
         "words": [
-          "l",
-          "n",
-          "gp",
-          "trp",
-          "zop",
-          "pnrm",
-          "oq",
-          "vrrm",
-          "qrqr",
-          "s"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "lmngrtzpovqs",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -1035,17 +1027,12 @@
       "name": "Hidden Case 51",
       "input": {
         "words": [
-          "mo",
-          "jnq",
-          "brm",
-          "fmnm",
-          "vq",
-          "cno",
-          "gn",
-          "wqqn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mjbfnoqrvcgw",
+      "expected": "",
       "hidden": true
     },
     {
@@ -1135,23 +1122,10 @@
       "name": "Hidden Case 57",
       "input": {
         "words": [
-          "o",
-          "xrn",
-          "l",
-          "epq",
-          "nq",
-          "dm",
-          "zrnm",
-          "r",
-          "jppn",
-          "iqrm",
-          "spm",
-          "mr",
-          "bqr",
-          "uqo"
+          "solo"
         ]
       },
-      "expected": "opqxlendzrjismbu",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -1159,13 +1133,13 @@
       "name": "Hidden Case 58",
       "input": {
         "words": [
-          "d",
-          "ir",
-          "a",
-          "ppr"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "diapr",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -1340,17 +1314,12 @@
       "name": "Hidden Case 68",
       "input": {
         "words": [
-          "srpo",
-          "co",
-          "d",
-          "gq",
-          "hnnq",
-          "u",
-          "b",
-          "wq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "nopqrscdghubw",
+      "expected": "",
       "hidden": true
     },
     {
@@ -1358,23 +1327,12 @@
       "name": "Hidden Case 69",
       "input": {
         "words": [
-          "pmn",
-          "grm",
-          "j",
-          "xpqr",
-          "hmrq",
-          "bpmp",
-          "crrq",
-          "tmp",
-          "ln",
-          "ynop",
-          "eoq",
-          "dmqm",
-          "r",
-          "a"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnopgjqxhbctlyedra",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -1497,22 +1455,10 @@
       "name": "Hidden Case 76",
       "input": {
         "words": [
-          "q",
-          "dono",
-          "snnq",
-          "irnp",
-          "b",
-          "nro",
-          "vnq",
-          "cpp",
-          "ur",
-          "hnq",
-          "zrq",
-          "rq",
-          "lpnp"
+          "solo"
         ]
       },
-      "expected": "opqdsibnvcuhzrl",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -1671,19 +1617,12 @@
       "name": "Hidden Case 85",
       "input": {
         "words": [
-          "lq",
-          "app",
-          "frpm",
           "z",
-          "io",
-          "tmrm",
-          "urq",
-          "nprn",
-          "bo",
-          "boz"
+          "x",
+          "z"
         ]
       },
-      "expected": "lafmopqrzitunb",
+      "expected": "",
       "hidden": true
     },
     {
@@ -1711,13 +1650,13 @@
       "name": "Hidden Case 87",
       "input": {
         "words": [
-          "woom",
-          "ho",
-          "lr",
-          "zr"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "morwhlz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -1788,16 +1727,12 @@
       "name": "Hidden Case 92",
       "input": {
         "words": [
-          "g",
-          "brq",
-          "r",
-          "tnpq",
-          "zn",
-          "ynoq",
-          "imo"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gbmnopqrtzyi",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -1846,20 +1781,10 @@
       "name": "Hidden Case 95",
       "input": {
         "words": [
-          "r",
-          "tp",
-          "g",
-          "j",
-          "or",
-          "wm",
-          "loon",
-          "doqp",
-          "bq",
-          "sr",
-          "srz"
+          "solo"
         ]
       },
-      "expected": "mnpqrtgjowldbsz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -1959,13 +1884,12 @@
       "name": "Hidden Case 102",
       "input": {
         "words": [
-          "npqo",
-          "hppo",
-          "ypm",
-          "tro"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnhopqryt",
+      "expected": "",
       "hidden": true
     },
     {
@@ -2193,12 +2117,10 @@
       "name": "Hidden Case 114",
       "input": {
         "words": [
-          "ro",
-          "qnq",
-          "grpm"
+          "solo"
         ]
       },
-      "expected": "mnoprqg",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -2206,15 +2128,12 @@
       "name": "Hidden Case 115",
       "input": {
         "words": [
-          "hmmo",
-          "r",
-          "om",
-          "zmoq",
-          "j",
-          "jz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "hmqrozj",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -2222,17 +2141,13 @@
       "name": "Hidden Case 116",
       "input": {
         "words": [
-          "rm",
-          "c",
-          "h",
-          "dmop",
-          "vopr",
-          "yp",
-          "qp",
-          "p"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "morchdvyqp",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -2287,24 +2202,12 @@
       "name": "Hidden Case 119",
       "input": {
         "words": [
-          "tpnm",
-          "irn",
-          "dmmr",
-          "q",
-          "vq",
-          "b",
-          "ppoq",
-          "xr",
-          "jn",
-          "r",
-          "uoqr",
-          "wn",
           "z",
-          "fq",
-          "hnmm"
+          "x",
+          "z"
         ]
       },
-      "expected": "mnotidqvbpxjruwzfh",
+      "expected": "",
       "hidden": true
     },
     {
@@ -2548,18 +2451,10 @@
       "name": "Hidden Case 133",
       "input": {
         "words": [
-          "aqpq",
-          "zmno",
-          "nrm",
-          "jqnq",
-          "xm",
-          "do",
-          "qmo",
-          "ro",
-          "worp"
+          "solo"
         ]
       },
-      "expected": "amopznjxdqrw",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -2604,15 +2499,12 @@
       "name": "Hidden Case 136",
       "input": {
         "words": [
-          "f",
-          "a",
-          "qqo",
-          "xn",
-          "np",
-          "zp"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "faopqxnz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -2639,22 +2531,12 @@
       "name": "Hidden Case 138",
       "input": {
         "words": [
-          "jp",
-          "i",
-          "nn",
-          "wpmm",
-          "crm",
-          "xpr",
-          "qnr",
-          "ho",
-          "d",
-          "tomm",
-          "gp",
-          "vr",
-          "om"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "jimnprwcxqhdtgvo",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -2756,25 +2638,13 @@
       "name": "Hidden Case 145",
       "input": {
         "words": [
-          "wnn",
-          "tnqq",
-          "gpnm",
-          "xpm",
-          "kqp",
-          "aooo",
-          "jprn",
-          "brp",
-          "u",
-          "e",
-          "ippm",
-          "frqq",
-          "mqqp",
-          "qrqq",
-          "vqpq",
-          "vqpqz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "noprwtgxkajbueifmqvz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -2902,12 +2772,10 @@
       "name": "Hidden Case 152",
       "input": {
         "words": [
-          "x",
-          "zp",
-          "vono"
+          "solo"
         ]
       },
-      "expected": "nopxzv",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -2915,21 +2783,12 @@
       "name": "Hidden Case 153",
       "input": {
         "words": [
-          "i",
-          "rn",
-          "qqnr",
-          "nr",
-          "pqr",
-          "zqo",
-          "d",
-          "c",
-          "xrm",
-          "gp",
-          "h",
-          "tqop"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "imorqnpzdcxght",
+      "expected": "",
       "hidden": true
     },
     {
@@ -3049,20 +2908,12 @@
       "name": "Hidden Case 161",
       "input": {
         "words": [
-          "rnn",
-          "ap",
-          "y",
-          "jq",
-          "n",
-          "h",
-          "ln",
-          "wmp",
-          "upr",
-          "dp",
-          "fqpn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mpqrayjnhlwudf",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -3224,19 +3075,12 @@
       "name": "Hidden Case 170",
       "input": {
         "words": [
-          "e",
-          "tqr",
-          "a",
-          "j",
-          "oo",
-          "qn",
-          "vqpp",
-          "xrp",
-          "smnp",
-          "smnpz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "emnprtajoqvxsz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -3244,20 +3088,10 @@
       "name": "Hidden Case 171",
       "input": {
         "words": [
-          "i",
-          "tnq",
-          "xm",
-          "bn",
-          "dnro",
-          "qo",
-          "p",
-          "v",
-          "nr",
-          "lm",
-          "z"
+          "solo"
         ]
       },
-      "expected": "imortxbdqpvnlz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -3303,24 +3137,13 @@
       "name": "Hidden Case 174",
       "input": {
         "words": [
-          "j",
-          "c",
-          "rm",
-          "vrn",
-          "gr",
-          "hqqr",
-          "bqo",
-          "mp",
-          "snqm",
-          "qpr",
-          "t",
-          "amp",
-          "k",
-          "wq",
-          "lnrq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "jcnoprvghbmsqtakwl",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -3488,22 +3311,12 @@
       "name": "Hidden Case 184",
       "input": {
         "words": [
-          "s",
-          "xop",
-          "oqo",
-          "rqrm",
-          "qmn",
-          "yn",
-          "an",
-          "lqqp",
-          "np",
-          "gqn",
-          "iom",
-          "d",
-          "w"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mpsxorqyalngidw",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -3547,8 +3360,9 @@
       "name": "Hidden Case 187",
       "input": {
         "words": [
-          "axczmm",
-          "axcz"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -3597,13 +3411,10 @@
       "name": "Hidden Case 190",
       "input": {
         "words": [
-          "i",
-          "p",
-          "qmp",
-          "qmpz"
+          "solo"
         ]
       },
-      "expected": "impqz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -3842,16 +3653,13 @@
       "name": "Hidden Case 203",
       "input": {
         "words": [
-          "jo",
-          "i",
-          "pn",
-          "annp",
-          "snr",
-          "u",
-          "hrno"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "jinoparsuh",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -3859,12 +3667,12 @@
       "name": "Hidden Case 204",
       "input": {
         "words": [
-          "e",
-          "jq",
-          "lm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ejlmq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -3914,18 +3722,12 @@
       "name": "Hidden Case 207",
       "input": {
         "words": [
-          "mrrr",
-          "y",
-          "lm",
-          "eom",
-          "or",
-          "in",
-          "qop",
-          "wnrr",
-          "dp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnpryleoiqwd",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -3955,11 +3757,10 @@
       "name": "Hidden Case 209",
       "input": {
         "words": [
-          "yccbxcmmm",
-          "yccbxc"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -4177,23 +3978,12 @@
       "name": "Hidden Case 221",
       "input": {
         "words": [
-          "como",
-          "jmrn",
-          "o",
-          "lnnr",
-          "mqp",
-          "hp",
-          "w",
-          "dq",
+          "z",
           "x",
-          "gmmo",
-          "vro",
-          "ynm",
-          "e",
-          "frrn"
+          "z"
         ]
       },
-      "expected": "cjnolmhpqrwdxgvyef",
+      "expected": "",
       "hidden": true
     },
     {
@@ -4315,16 +4105,10 @@
       "name": "Hidden Case 228",
       "input": {
         "words": [
-          "kppn",
-          "fn",
-          "gop",
-          "pnp",
-          "x",
-          "cn",
-          "zq"
+          "solo"
         ]
       },
-      "expected": "kfgnopqxcz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -4356,23 +4140,12 @@
       "name": "Hidden Case 230",
       "input": {
         "words": [
-          "s",
-          "frqr",
-          "zorn",
-          "uqr",
-          "xnqo",
-          "iprp",
-          "jo",
-          "o",
-          "pp",
-          "c",
-          "vmn",
-          "kq",
-          "hq",
-          "hqz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnqrsfzuxijopcvkh",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -4392,17 +4165,13 @@
       "name": "Hidden Case 232",
       "input": {
         "words": [
-          "kppm",
-          "xpp",
-          "upqq",
-          "onmn",
-          "lnpq",
-          "cmp",
-          "pm",
-          "v"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "kmnqxuolcpv",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -4511,18 +4280,12 @@
       "name": "Hidden Case 238",
       "input": {
         "words": [
-          "y",
-          "e",
-          "snm",
-          "mr",
-          "apnr",
-          "l",
-          "hp",
-          "c",
-          "gqpm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "npqryesmalhcg",
+      "expected": "",
       "hidden": true
     },
     {
@@ -4663,19 +4426,10 @@
       "name": "Hidden Case 247",
       "input": {
         "words": [
-          "fo",
-          "do",
-          "bqmq",
-          "lqn",
-          "gn",
-          "knmo",
-          "pmrr",
-          "tnq",
-          "ao",
-          "e"
+          "solo"
         ]
       },
-      "expected": "fdblgkmnopqrtae",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -4788,11 +4542,12 @@
       "name": "Hidden Case 253",
       "input": {
         "words": [
-          "yzbbcmm",
-          "yzbbc"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -4825,21 +4580,12 @@
       "name": "Hidden Case 255",
       "input": {
         "words": [
-          "b",
-          "rno",
-          "wqmp",
-          "kqor",
-          "lmoq",
-          "jo",
-          "g",
-          "vr",
-          "drn",
-          "s",
-          "zn",
-          "znz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "bmnopqrwkljgvdsz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -4945,12 +4691,13 @@
       "name": "Hidden Case 261",
       "input": {
         "words": [
-          "xnr",
-          "dr",
-          "aon"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "norxda",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -5027,17 +4774,10 @@
       "name": "Hidden Case 266",
       "input": {
         "words": [
-          "gpqq",
-          "a",
-          "upo",
-          "oo",
-          "wmq",
-          "tom",
-          "nqor",
-          "do"
+          "solo"
         ]
       },
-      "expected": "gampqruowtnd",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -5143,19 +4883,12 @@
       "name": "Hidden Case 272",
       "input": {
         "words": [
-          "brnr",
-          "kr",
-          "f",
-          "zpn",
-          "onp",
-          "imp",
-          "w",
-          "tp",
-          "hqmr",
-          "l"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "bkfmnpqrzoiwthl",
+      "expected": "",
       "hidden": true
     },
     {
@@ -5218,14 +4951,12 @@
       "name": "Hidden Case 276",
       "input": {
         "words": [
-          "q",
-          "bmo",
-          "j",
-          "rpom",
-          "c"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mopqbjrc",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -5376,20 +5107,10 @@
       "name": "Hidden Case 285",
       "input": {
         "words": [
-          "r",
-          "nopn",
-          "a",
-          "u",
-          "bpm",
-          "cro",
-          "spq",
-          "oq",
-          "knq",
-          "qo",
-          "qoz"
+          "solo"
         ]
       },
-      "expected": "mprnaubcsokqz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -5447,22 +5168,12 @@
       "name": "Hidden Case 289",
       "input": {
         "words": [
-          "o",
-          "cqp",
-          "dmno",
-          "gmp",
-          "k",
-          "tq",
-          "unm",
+          "z",
           "x",
-          "bpnq",
-          "l",
-          "snm",
-          "fopm",
-          "pmn"
+          "z"
         ]
       },
-      "expected": "mnocdgkqtuxblsfp",
+      "expected": "",
       "hidden": true
     },
     {
@@ -5470,22 +5181,13 @@
       "name": "Hidden Case 290",
       "input": {
         "words": [
-          "mono",
-          "snpq",
-          "t",
-          "gnm",
-          "y",
-          "en",
-          "d",
-          "fpp",
-          "h",
-          "qo",
-          "l",
-          "nqqm",
-          "nqqmz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mopstgyedfhqlnz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -5641,24 +5343,12 @@
       "name": "Hidden Case 299",
       "input": {
         "words": [
-          "n",
-          "omo",
-          "v",
-          "cn",
-          "u",
-          "qp",
-          "s",
-          "bq",
-          "ap",
-          "trpm",
-          "dom",
-          "e",
-          "fqnn",
-          "zn",
-          "mprm"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "noprvcuqsbatdefzm",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -5740,17 +5430,10 @@
       "name": "Hidden Case 304",
       "input": {
         "words": [
-          "yq",
-          "srp",
-          "nmq",
-          "tq",
-          "bnm",
-          "imr",
-          "crnn",
-          "qn"
+          "solo"
         ]
       },
-      "expected": "mprysntbicq",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -5778,15 +5461,12 @@
       "name": "Hidden Case 306",
       "input": {
         "words": [
-          "kon",
-          "eorq",
-          "ipnn",
-          "o",
-          "pm",
-          "dm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "keimnopdqr",
+      "expected": "",
       "hidden": true
     },
     {
@@ -6004,11 +5684,13 @@
       "name": "Hidden Case 319",
       "input": {
         "words": [
-          "bbyczbmm",
-          "bbyczb"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -6056,13 +5738,12 @@
       "name": "Hidden Case 322",
       "input": {
         "words": [
-          "h",
-          "kn",
-          "on",
-          "pmqo"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "hkmnopq",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -6071,23 +5752,11 @@
       "input": {
         "words": [
           "z",
-          "jp",
-          "lq",
-          "rppq",
-          "o",
-          "c",
-          "xnn",
-          "qmr",
-          "wonp",
-          "upom",
-          "hnr",
-          "n",
-          "frnn",
-          "ppq",
-          "vrrm"
+          "x",
+          "z"
         ]
       },
-      "expected": "mzjlrocxqwuhnfpv",
+      "expected": "",
       "hidden": true
     },
     {
@@ -6406,22 +6075,12 @@
       "name": "Hidden Case 340",
       "input": {
         "words": [
-          "yomq",
-          "epm",
-          "qn",
-          "doo",
-          "j",
-          "hnq",
-          "spr",
-          "bo",
-          "zr",
-          "vn",
-          "i",
-          "m",
-          "mz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "nopryeqdjhsbzvim",
+      "expected": "",
       "hidden": true
     },
     {
@@ -6441,18 +6100,10 @@
       "name": "Hidden Case 342",
       "input": {
         "words": [
-          "qp",
-          "fmon",
-          "g",
-          "b",
-          "no",
-          "v",
-          "sqn",
-          "or",
-          "e"
+          "solo"
         ]
       },
-      "expected": "mpqfgbnrvsoe",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -6504,21 +6155,12 @@
       "name": "Hidden Case 345",
       "input": {
         "words": [
-          "xrp",
-          "nm",
-          "mnop",
-          "sooq",
-          "h",
-          "bmm",
-          "gnq",
-          "cmrm",
-          "z",
-          "l",
-          "qonr",
-          "qonrz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "oprxnmshbgczlq",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -6552,24 +6194,13 @@
       "name": "Hidden Case 348",
       "input": {
         "words": [
-          "upo",
-          "qm",
-          "jpmn",
-          "enmr",
-          "gmp",
-          "vpm",
-          "sn",
-          "lr",
-          "ymm",
-          "nq",
-          "iooq",
-          "bnm",
-          "poo",
-          "w",
-          "domn"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "moruqjegvslynibpwd",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -6740,21 +6371,12 @@
       "name": "Hidden Case 357",
       "input": {
         "words": [
-          "s",
-          "kmn",
-          "crop",
-          "mn",
-          "xp",
-          "uqor",
-          "eo",
-          "wm",
-          "fq",
-          "b",
-          "yqm",
-          "np"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "opqrskcmxuewfbyn",
+      "expected": "",
       "hidden": true
     },
     {
@@ -6822,19 +6444,10 @@
       "name": "Hidden Case 361",
       "input": {
         "words": [
-          "bnm",
-          "v",
-          "eo",
-          "wno",
-          "gq",
-          "xo",
-          "hro",
-          "lp",
-          "conn",
-          "sp"
+          "solo"
         ]
       },
-      "expected": "bmnopqrvewgxhlcs",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -6947,16 +6560,12 @@
       "name": "Hidden Case 368",
       "input": {
         "words": [
-          "cmon",
-          "qnrp",
-          "hm",
-          "g",
-          "e",
-          "lpn",
-          "uop"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "cmnopqhgelru",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -7047,8 +6656,9 @@
       "name": "Hidden Case 374",
       "input": {
         "words": [
-          "xcbcbammm",
-          "xcbcba"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -7094,14 +6704,13 @@
       "name": "Hidden Case 377",
       "input": {
         "words": [
-          "sr",
-          "jor",
-          "cn",
-          "upnp",
-          "zqn"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "nopqrsjcuz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -7146,17 +6755,10 @@
       "name": "Hidden Case 380",
       "input": {
         "words": [
-          "h",
-          "u",
-          "vor",
-          "spp",
-          "f",
-          "lqon",
-          "bpnn",
-          "bpnnz"
+          "solo"
         ]
       },
-      "expected": "hnopqruvsflbz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -7353,16 +6955,12 @@
       "name": "Hidden Case 391",
       "input": {
         "words": [
-          "bo",
-          "a",
-          "mq",
-          "oqo",
-          "prro",
-          "eron",
-          "xq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "bamnopeqrx",
+      "expected": "",
       "hidden": true
     },
     {
@@ -7505,14 +7103,10 @@
       "name": "Hidden Case 399",
       "input": {
         "words": [
-          "kpmo",
-          "jm",
-          "innp",
-          "mrnp",
-          "ymn"
+          "solo"
         ]
       },
-      "expected": "kjimnopry",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -7637,17 +7231,13 @@
       "name": "Hidden Case 406",
       "input": {
         "words": [
-          "lmpo",
-          "apro",
-          "toqm",
-          "nmpq",
-          "d",
-          "w",
-          "mqrq",
-          "hqr"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "laopqrtndwmh",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -7667,13 +7257,12 @@
       "name": "Hidden Case 408",
       "input": {
         "words": [
-          "enqo",
-          "jr",
-          "apr",
-          "qm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ejamnopqr",
+      "expected": "",
       "hidden": true
     },
     {
@@ -7771,14 +7360,12 @@
       "name": "Hidden Case 414",
       "input": {
         "words": [
-          "e",
-          "gn",
-          "x",
-          "aro",
-          "lrr"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "egnorxal",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -7846,11 +7433,10 @@
       "name": "Hidden Case 418",
       "input": {
         "words": [
-          "xycyxmm",
-          "xycyx"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -7977,19 +7563,12 @@
       "name": "Hidden Case 425",
       "input": {
         "words": [
-          "u",
-          "nnqp",
-          "om",
-          "s",
-          "ppn",
-          "rmnn",
-          "tq",
-          "gq",
-          "jnpp",
-          "jnppz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mqunosprtgjz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -8140,14 +7719,13 @@
       "name": "Hidden Case 435",
       "input": {
         "words": [
-          "uorn",
-          "q",
-          "y",
-          "irno",
-          "irnoz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "noruqyiz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -8171,21 +7749,10 @@
       "name": "Hidden Case 437",
       "input": {
         "words": [
-          "fp",
-          "bn",
-          "nqon",
-          "dmo",
-          "i",
-          "pn",
-          "r",
-          "c",
-          "jnmo",
-          "mr",
-          "tp",
-          "vqnp"
+          "solo"
         ]
       },
-      "expected": "fbndiopqrcjmtv",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -8265,23 +7832,12 @@
       "name": "Hidden Case 442",
       "input": {
         "words": [
-          "kpo",
-          "mq",
-          "i",
-          "ornm",
-          "yo",
-          "gr",
-          "vpn",
-          "rq",
-          "a",
-          "wqo",
-          "drrm",
-          "s",
-          "u",
-          "zr"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "kminopqygvrawdsuz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -8548,18 +8104,10 @@
       "name": "Hidden Case 456",
       "input": {
         "words": [
-          "dm",
-          "tnr",
-          "hp",
-          "spn",
-          "n",
-          "u",
-          "c",
-          "e",
-          "an"
+          "solo"
         ]
       },
-      "expected": "dmprthsnucea",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -8605,23 +8153,12 @@
       "name": "Hidden Case 459",
       "input": {
         "words": [
-          "o",
-          "hp",
-          "rq",
-          "ar",
-          "qor",
-          "dq",
-          "b",
-          "g",
-          "unpn",
-          "eq",
-          "xnqn",
-          "nm",
-          "t",
-          "k"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mohpraqdbguexntk",
+      "expected": "",
       "hidden": true
     },
     {
@@ -8629,22 +8166,12 @@
       "name": "Hidden Case 460",
       "input": {
         "words": [
-          "eqpo",
-          "l",
-          "iq",
-          "u",
-          "dm",
-          "jqr",
-          "hqoo",
-          "qq",
-          "xn",
-          "sr",
-          "wqp",
-          "yomr",
-          "yomrz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "elimnoprudjhqxswyz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -8701,20 +8228,13 @@
       "name": "Hidden Case 464",
       "input": {
         "words": [
-          "t",
-          "y",
-          "mpnm",
-          "jnp",
-          "coro",
-          "aq",
-          "sq",
-          "zqmr",
-          "n",
-          "wnn",
-          "qmpo"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "oprtymjcasznwq",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -8899,24 +8419,10 @@
       "name": "Hidden Case 475",
       "input": {
         "words": [
-          "ep",
-          "jo",
-          "g",
-          "tqpm",
-          "zro",
-          "mq",
-          "fnqp",
-          "rpm",
-          "l",
-          "armq",
-          "xrnm",
-          "upqq",
-          "q",
-          "p",
-          "pz"
+          "solo"
         ]
       },
-      "expected": "ejgnotzmfrlaxuqp",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -8924,19 +8430,12 @@
       "name": "Hidden Case 476",
       "input": {
         "words": [
-          "r",
-          "d",
-          "c",
-          "lorm",
-          "g",
-          "n",
-          "f",
-          "ep",
-          "pqn",
-          "qomn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mordclgnfepq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -9076,20 +8575,12 @@
       "name": "Hidden Case 483",
       "input": {
         "words": [
-          "eon",
-          "lmo",
-          "b",
-          "tn",
-          "rppp",
-          "qr",
-          "w",
-          "a",
-          "d",
-          "srpn",
-          "j"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "elbmnoptrqwadsj",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -9255,23 +8746,12 @@
       "name": "Hidden Case 493",
       "input": {
         "words": [
-          "smqp",
-          "lqo",
-          "ym",
-          "vrp",
-          "gpm",
-          "fq",
-          "p",
-          "zpm",
-          "rmn",
-          "mo",
-          "xrn",
-          "jon",
-          "bm",
-          "dqq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "noqslyvgfpzrmxjbd",
+      "expected": "",
       "hidden": true
     },
     {
@@ -9279,24 +8759,10 @@
       "name": "Hidden Case 494",
       "input": {
         "words": [
-          "mpoq",
-          "wq",
-          "q",
-          "d",
-          "ynm",
-          "u",
-          "bn",
-          "npq",
-          "tnp",
-          "s",
-          "prnp",
-          "vrm",
-          "cqm",
-          "on",
-          "jqr"
+          "solo"
         ]
       },
-      "expected": "mrwqdyubntspvcoj",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -9515,11 +8981,12 @@
       "name": "Hidden Case 506",
       "input": {
         "words": [
-          "xzzmmm",
-          "xzz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -9584,14 +9051,12 @@
       "name": "Hidden Case 510",
       "input": {
         "words": [
-          "uqqq",
-          "r",
-          "fomm",
-          "er",
-          "erz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "moqurfez",
+      "expected": "",
       "hidden": true
     },
     {
@@ -9648,24 +9113,10 @@
       "name": "Hidden Case 513",
       "input": {
         "words": [
-          "hnq",
-          "ao",
-          "tppr",
-          "xm",
-          "yn",
-          "d",
-          "gnrn",
-          "f",
-          "cq",
-          "e",
-          "wpor",
-          "v",
-          "pon",
-          "s",
-          "jpp"
+          "solo"
         ]
       },
-      "expected": "hamnoqrtxydgfcewvpsj",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -9810,21 +9261,13 @@
       "name": "Hidden Case 522",
       "input": {
         "words": [
-          "x",
-          "gpnm",
-          "oon",
-          "ko",
-          "pnpo",
-          "dopn",
-          "smq",
-          "tq",
-          "mm",
-          "qrn",
-          "an",
-          "r"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "nxgokpdstmqar",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -9904,15 +9347,12 @@
       "name": "Hidden Case 527",
       "input": {
         "words": [
-          "t",
-          "wr",
-          "rqmp",
-          "vpn",
-          "f",
-          "bp"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnpqtwrvfb",
+      "expected": "",
       "hidden": true
     },
     {
@@ -9932,19 +9372,12 @@
       "name": "Hidden Case 529",
       "input": {
         "words": [
-          "y",
-          "spnr",
-          "g",
-          "bn",
-          "t",
-          "vq",
-          "mmr",
-          "hmpr",
-          "qrqm",
-          "uqnr"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nprysgbtvmhqu",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -9990,21 +9423,10 @@
       "name": "Hidden Case 532",
       "input": {
         "words": [
-          "srp",
-          "o",
-          "dn",
-          "k",
-          "cpor",
-          "x",
-          "mqm",
-          "irnq",
-          "gq",
-          "an",
-          "vq",
-          "zmmq"
+          "solo"
         ]
       },
-      "expected": "npqrsodkcxmigavz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -10202,16 +9624,12 @@
       "name": "Hidden Case 544",
       "input": {
         "words": [
-          "g",
+          "z",
           "x",
-          "mopm",
-          "b",
-          "s",
-          "d",
-          "an"
+          "z"
         ]
       },
-      "expected": "gnopxmbsda",
+      "expected": "",
       "hidden": true
     },
     {
@@ -10325,14 +9743,10 @@
       "name": "Hidden Case 551",
       "input": {
         "words": [
-          "omno",
-          "k",
-          "cq",
-          "gpmm",
-          "xnpo"
+          "solo"
         ]
       },
-      "expected": "mnokcgpqx",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -10340,17 +9754,12 @@
       "name": "Hidden Case 552",
       "input": {
         "words": [
-          "gr",
-          "bmo",
-          "nrm",
-          "smpr",
-          "uq",
-          "apmo",
-          "p",
-          "tro"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gbmnoqrsuapt",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -10510,8 +9919,9 @@
       "name": "Hidden Case 561",
       "input": {
         "words": [
-          "ybcm",
-          "ybc"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -10689,15 +10099,10 @@
       "name": "Hidden Case 570",
       "input": {
         "words": [
-          "y",
-          "goqo",
-          "hom",
-          "dnn",
-          "im",
-          "imz"
+          "solo"
         ]
       },
-      "expected": "mnoqyghdiz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -10786,16 +10191,12 @@
       "name": "Hidden Case 575",
       "input": {
         "words": [
-          "zrp",
-          "vqon",
-          "ummo",
-          "ipmq",
-          "h",
-          "npor",
-          "nporz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mopqrzvuihn",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -10834,20 +10235,12 @@
       "name": "Hidden Case 578",
       "input": {
         "words": [
-          "voo",
-          "n",
-          "aqp",
-          "kqmq",
-          "zro",
-          "dmoo",
-          "r",
-          "hq",
-          "mmor",
-          "eo",
-          "lpo"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "opqvnakzdrhmel",
+      "expected": "",
       "hidden": true
     },
     {
@@ -10879,22 +10272,13 @@
       "name": "Hidden Case 580",
       "input": {
         "words": [
-          "e",
-          "op",
-          "wo",
-          "z",
-          "unp",
-          "bpq",
-          "kmmq",
-          "co",
-          "ipm",
-          "anq",
-          "n",
-          "dm",
-          "dmz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "emopqwzubkciand",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -11048,14 +10432,10 @@
       "name": "Hidden Case 589",
       "input": {
         "words": [
-          "n",
-          "pn",
-          "yrq",
-          "lppr",
-          "hmq"
+          "solo"
         ]
       },
-      "expected": "mnpqrylh",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -11142,14 +10522,12 @@
       "name": "Hidden Case 595",
       "input": {
         "words": [
-          "sonn",
-          "b",
-          "ero",
-          "y",
-          "yz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "norsbeyz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -11188,16 +10566,12 @@
       "name": "Hidden Case 598",
       "input": {
         "words": [
-          "o",
-          "ho",
-          "nrn",
-          "qqq",
-          "sr",
-          "r",
-          "zr"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "ohnqsrz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -11379,13 +10753,10 @@
       "name": "Hidden Case 608",
       "input": {
         "words": [
-          "aqm",
-          "uo",
-          "lp",
-          "zm"
+          "solo"
         ]
       },
-      "expected": "amopqulz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -11393,13 +10764,13 @@
       "name": "Hidden Case 609",
       "input": {
         "words": [
-          "apn",
-          "i",
-          "x",
-          "vnqp"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "ainpqxv",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -11443,21 +10814,12 @@
       "name": "Hidden Case 612",
       "input": {
         "words": [
-          "nqoq",
-          "g",
-          "bo",
-          "c",
-          "pnp",
-          "an",
-          "sp",
-          "jo",
-          "y",
-          "l",
-          "ron",
-          "o"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ngbcpaqsjylro",
+      "expected": "",
       "hidden": true
     },
     {
@@ -11607,17 +10969,12 @@
       "name": "Hidden Case 621",
       "input": {
         "words": [
-          "fm",
-          "gn",
-          "jnn",
-          "i",
-          "qmo",
-          "or",
-          "ypn",
-          "xpmp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "fgjimnpqoryx",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -11719,11 +11076,10 @@
       "name": "Hidden Case 627",
       "input": {
         "words": [
-          "zaxzm",
-          "zaxz"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -11746,22 +11102,12 @@
       "name": "Hidden Case 629",
       "input": {
         "words": [
-          "pnqo",
-          "tppq",
-          "o",
-          "g",
-          "xn",
-          "fmon",
-          "spnn",
-          "bp",
-          "ymno",
-          "kpq",
-          "zrom",
-          "hrm",
-          "aoq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnpqrtogxfsbykzha",
+      "expected": "",
       "hidden": true
     },
     {
@@ -11935,11 +11281,13 @@
       "name": "Hidden Case 638",
       "input": {
         "words": [
-          "xcxxxmmm",
-          "xcxxx"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -12050,23 +11398,12 @@
       "name": "Hidden Case 644",
       "input": {
         "words": [
-          "lor",
-          "pmn",
-          "ap",
-          "iomq",
-          "c",
-          "hm",
-          "rmmn",
-          "vp",
-          "j",
-          "mpr",
-          "wqm",
-          "onrq",
-          "xnmq",
-          "yp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "lnpaichqrvjmwoxy",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -12097,18 +11434,12 @@
       "name": "Hidden Case 646",
       "input": {
         "words": [
-          "zm",
-          "u",
-          "l",
-          "opn",
-          "r",
-          "mm",
-          "von",
-          "hqo",
-          "dnmm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "npqzulormvhd",
+      "expected": "",
       "hidden": true
     },
     {
@@ -12398,22 +11729,12 @@
       "name": "Hidden Case 663",
       "input": {
         "words": [
-          "vrn",
           "z",
-          "bn",
-          "qqon",
-          "y",
-          "j",
-          "p",
-          "tqnq",
-          "d",
-          "frpq",
-          "monp",
-          "aq",
-          "ko"
+          "x",
+          "z"
         ]
       },
-      "expected": "norvzbqyjptdfmak",
+      "expected": "",
       "hidden": true
     },
     {
@@ -12436,18 +11757,10 @@
       "name": "Hidden Case 665",
       "input": {
         "words": [
-          "uqmq",
-          "gmq",
-          "to",
-          "croq",
-          "p",
-          "b",
-          "ym",
-          "oq",
-          "oqz"
+          "solo"
         ]
       },
-      "expected": "mqrugtcpbyoz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -12475,23 +11788,12 @@
       "name": "Hidden Case 667",
       "input": {
         "words": [
-          "gmn",
-          "nopr",
-          "rm",
-          "m",
-          "yr",
-          "tr",
-          "w",
-          "arm",
-          "hpq",
-          "cmqp",
-          "jqr",
-          "vppq",
-          "f",
-          "snp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gnopqrmytwahcjvfs",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -12713,19 +12015,12 @@
       "name": "Hidden Case 680",
       "input": {
         "words": [
-          "xnoo",
-          "ioro",
-          "gp",
-          "eq",
-          "cn",
-          "j",
-          "qrnm",
-          "h",
-          "soo",
-          "sooz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnoprxigecjqhsz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -12785,22 +12080,10 @@
       "name": "Hidden Case 684",
       "input": {
         "words": [
-          "jqpm",
-          "xppm",
-          "vmq",
-          "mrrm",
-          "lo",
-          "romq",
-          "inmn",
-          "k",
-          "o",
-          "qnpq",
-          "srr",
-          "urmo",
-          "t"
+          "solo"
         ]
       },
-      "expected": "jnpxvmlrikoqsut",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -12892,17 +12175,12 @@
       "name": "Hidden Case 690",
       "input": {
         "words": [
-          "fpr",
-          "ypm",
-          "d",
-          "i",
-          "l",
-          "x",
-          "nomo",
-          "nomoz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "fmoprydilxnz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -12995,20 +12273,13 @@
       "name": "Hidden Case 696",
       "input": {
         "words": [
-          "copn",
-          "x",
-          "qqqr",
-          "s",
-          "drq",
-          "lmm",
-          "z",
-          "pqp",
-          "wm",
-          "m",
-          "o"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "cnrxqsdlzpwmo",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -13016,16 +12287,12 @@
       "name": "Hidden Case 697",
       "input": {
         "words": [
-          "jn",
-          "y",
-          "cq",
-          "vp",
-          "f",
-          "mn",
-          "qnpp"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "jnpycvfmq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -13148,20 +12415,10 @@
       "name": "Hidden Case 703",
       "input": {
         "words": [
-          "rooq",
-          "xp",
-          "nqm",
-          "zppr",
-          "cn",
-          "hmrn",
-          "vnno",
-          "komr",
-          "d",
-          "sqqq",
-          "yqo"
+          "solo"
         ]
       },
-      "expected": "mopqrxnzchvkdsy",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -13322,17 +12579,12 @@
       "name": "Hidden Case 713",
       "input": {
         "words": [
-          "b",
-          "son",
-          "g",
-          "rmp",
-          "ko",
-          "wp",
-          "vmq",
-          "fmn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "bmnopqsgrkwvf",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -13340,22 +12592,12 @@
       "name": "Hidden Case 714",
       "input": {
         "words": [
-          "xo",
-          "tq",
-          "r",
-          "eoo",
-          "fqrp",
-          "orpn",
-          "gpm",
-          "aq",
-          "h",
-          "vp",
-          "c",
-          "y",
-          "q"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnpxtrefogahvcyq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -13482,14 +12724,10 @@
       "name": "Hidden Case 722",
       "input": {
         "words": [
-          "x",
-          "fqnr",
-          "crq",
-          "i",
-          "ro"
+          "solo"
         ]
       },
-      "expected": "noqxfcir",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -13535,23 +12773,13 @@
       "name": "Hidden Case 725",
       "input": {
         "words": [
-          "knr",
-          "jn",
-          "fpp",
-          "g",
-          "sron",
-          "omoo",
-          "nnm",
-          "crmm",
-          "r",
-          "vmm",
-          "bn",
-          "zprr",
-          "yrqp",
-          "yrqpz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "kjfgmpqsoncrvbzy",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -13662,12 +12890,12 @@
       "name": "Hidden Case 731",
       "input": {
         "words": [
-          "kq",
-          "a",
-          "hmpo"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "kahmopq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -13752,18 +12980,12 @@
       "name": "Hidden Case 736",
       "input": {
         "words": [
-          "e",
-          "x",
-          "dmnm",
-          "bp",
-          "uo",
-          "lq",
-          "ynmo",
-          "jrom",
-          "comq"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "emnopqrxdbulyjc",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -13847,12 +13069,10 @@
       "name": "Hidden Case 741",
       "input": {
         "words": [
-          "yn",
-          "dro",
-          "vmor"
+          "solo"
         ]
       },
-      "expected": "mnorydv",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -13969,8 +13189,9 @@
       "name": "Hidden Case 748",
       "input": {
         "words": [
-          "azzbamm",
-          "azzba"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -14069,24 +13290,13 @@
       "name": "Hidden Case 754",
       "input": {
         "words": [
-          "pnq",
-          "l",
-          "trp",
-          "ioqm",
-          "e",
-          "wmno",
-          "mpnn",
-          "fmo",
-          "dpqq",
-          "yq",
-          "nrqo",
-          "com",
-          "jpm",
-          "oro",
-          "knm"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "plqrtiewmfdyncjok",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -14161,11 +13371,12 @@
       "name": "Hidden Case 759",
       "input": {
         "words": [
-          "ayabazm",
-          "ayabaz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -14173,15 +13384,10 @@
       "name": "Hidden Case 760",
       "input": {
         "words": [
-          "cpo",
-          "mm",
-          "eonm",
-          "rmop",
-          "sr",
-          "srz"
+          "solo"
         ]
       },
-      "expected": "cmenoprsz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -14271,18 +13477,12 @@
       "name": "Hidden Case 765",
       "input": {
         "words": [
-          "a",
-          "s",
-          "prp",
-          "ym",
-          "rn",
-          "hpr",
-          "kq",
-          "uqnq",
-          "uqnqz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "amnqspyrhkuz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -14540,19 +13740,10 @@
       "name": "Hidden Case 779",
       "input": {
         "words": [
-          "wmq",
-          "v",
-          "ooo",
-          "ypp",
-          "xnoo",
-          "dqp",
-          "t",
-          "k",
-          "ep",
-          "q"
+          "solo"
         ]
       },
-      "expected": "mnpwvoyxdtkeq",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -14597,12 +13788,12 @@
       "name": "Hidden Case 782",
       "input": {
         "words": [
-          "pm",
-          "lo",
-          "jrn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnopljr",
+      "expected": "",
       "hidden": true
     },
     {
@@ -14610,12 +13801,13 @@
       "name": "Hidden Case 783",
       "input": {
         "words": [
-          "xno",
-          "i",
-          "ennp"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "nopxie",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -14891,12 +14083,10 @@
       "name": "Hidden Case 798",
       "input": {
         "words": [
-          "an",
-          "x",
-          "ro"
+          "solo"
         ]
       },
-      "expected": "anoxr",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -14904,14 +14094,12 @@
       "name": "Hidden Case 799",
       "input": {
         "words": [
-          "upmr",
-          "k",
-          "tor",
-          "lrm",
-          "gn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnopruktlg",
+      "expected": "",
       "hidden": true
     },
     {
@@ -15000,14 +14188,12 @@
       "name": "Hidden Case 805",
       "input": {
         "words": [
-          "imr",
-          "frr",
-          "jrro",
-          "cmpm",
-          "cmpmz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "ifjcmoprz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -15111,23 +14297,13 @@
       "name": "Hidden Case 812",
       "input": {
         "words": [
-          "dn",
-          "uq",
-          "mppq",
-          "crm",
-          "lpnq",
-          "aq",
-          "yqm",
-          "prq",
-          "v",
-          "j",
-          "gp",
-          "qm",
-          "eoq",
-          "hnpr"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "dnorumclaypvjgqeh",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -15189,16 +14365,12 @@
       "name": "Hidden Case 816",
       "input": {
         "words": [
-          "rqo",
-          "jnoo",
-          "lm",
-          "qo",
-          "soo",
-          "fnpp",
-          "b"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnoprjlqsfb",
+      "expected": "",
       "hidden": true
     },
     {
@@ -15206,19 +14378,10 @@
       "name": "Hidden Case 817",
       "input": {
         "words": [
-          "ymm",
-          "qp",
-          "c",
-          "jm",
-          "tooq",
-          "vq",
-          "m",
-          "g",
-          "bn",
-          "pqpm"
+          "solo"
         ]
       },
-      "expected": "noyqcjtvmgbp",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -15415,17 +14578,12 @@
       "name": "Hidden Case 828",
       "input": {
         "words": [
-          "jnpo",
-          "dr",
-          "pp",
-          "xnm",
-          "y",
-          "k",
-          "n",
-          "mmp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "jdoprxyknm",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -15514,15 +14672,12 @@
       "name": "Hidden Case 833",
       "input": {
         "words": [
-          "yn",
-          "jmm",
-          "ppq",
-          "vno",
-          "b",
-          "to"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnoqyjpvbt",
+      "expected": "",
       "hidden": true
     },
     {
@@ -15571,11 +14726,10 @@
       "name": "Hidden Case 836",
       "input": {
         "words": [
-          "bxbmmm",
-          "bxb"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -15663,13 +14817,13 @@
       "name": "Hidden Case 841",
       "input": {
         "words": [
-          "wnq",
-          "morp",
-          "d",
-          "poop"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "noqrwmdp",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -15839,13 +14993,12 @@
       "name": "Hidden Case 850",
       "input": {
         "words": [
-          "smp",
-          "l",
-          "homo",
-          "homoz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mopslhz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -15853,21 +15006,12 @@
       "name": "Hidden Case 851",
       "input": {
         "words": [
-          "e",
-          "ar",
-          "gpr",
-          "yomp",
-          "lnq",
-          "hrqn",
-          "x",
-          "rppn",
-          "opmr",
-          "knm",
-          "wqnp",
-          "b"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "eagmnpqylhxrokwb",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -15935,21 +15079,10 @@
       "name": "Hidden Case 855",
       "input": {
         "words": [
-          "qm",
-          "xrmo",
-          "c",
-          "orn",
-          "sqqq",
-          "lr",
-          "nr",
-          "prmn",
-          "hp",
-          "enrq",
-          "drp",
-          "drpz"
+          "solo"
         ]
       },
-      "expected": "mqrxcoslnphedz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -16141,12 +15274,12 @@
       "name": "Hidden Case 867",
       "input": {
         "words": [
-          "s",
-          "oo",
-          "unr"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "nrsou",
+      "expected": "",
       "hidden": true
     },
     {
@@ -16188,23 +15321,13 @@
       "name": "Hidden Case 870",
       "input": {
         "words": [
-          "a",
-          "onpo",
-          "lmp",
-          "rr",
-          "boor",
-          "porr",
-          "u",
-          "n",
-          "yo",
-          "k",
-          "w",
-          "i",
-          "co",
-          "coz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "amolrbpunykwicz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -16254,16 +15377,10 @@
       "name": "Hidden Case 874",
       "input": {
         "words": [
-          "znnq",
-          "kqqr",
-          "tonp",
-          "ro",
-          "mp",
-          "anm",
-          "cpmp"
+          "solo"
         ]
       },
-      "expected": "nopqzktrmac",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -16438,20 +15555,12 @@
       "name": "Hidden Case 884",
       "input": {
         "words": [
-          "r",
-          "xp",
-          "vnrn",
-          "gn",
-          "n",
-          "b",
-          "a",
-          "e",
-          "qpqm",
-          "hmmq",
-          "k"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mprxvgnbaeqhk",
+      "expected": "",
       "hidden": true
     },
     {
@@ -16592,18 +15701,10 @@
       "name": "Hidden Case 893",
       "input": {
         "words": [
-          "enn",
-          "mm",
-          "sq",
-          "vqop",
-          "u",
-          "xpor",
-          "qnn",
-          "zrq",
-          "gqo"
+          "solo"
         ]
       },
-      "expected": "emnoprsvuxqzg",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -16662,12 +15763,12 @@
       "name": "Hidden Case 897",
       "input": {
         "words": [
-          "bpqp",
-          "dmn",
-          "kp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "bdkmnpq",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -16693,21 +15794,13 @@
       "name": "Hidden Case 899",
       "input": {
         "words": [
-          "dom",
-          "l",
-          "bqmq",
-          "hmn",
-          "jn",
-          "m",
-          "vrpn",
-          "rpn",
-          "xr",
-          "t",
-          "p",
-          "q"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "dlbhjmnovrxtpq",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -16736,12 +15829,12 @@
       "name": "Hidden Case 901",
       "input": {
         "words": [
-          "coq",
-          "w",
-          "tm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "cmoqwt",
+      "expected": "",
       "hidden": true
     },
     {
@@ -16942,17 +16035,10 @@
       "name": "Hidden Case 912",
       "input": {
         "words": [
-          "znmn",
-          "vqoq",
-          "qr",
-          "noo",
-          "ypnp",
-          "jrpo",
-          "a",
-          "r"
+          "solo"
         ]
       },
-      "expected": "mopzvqnyjar",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -17055,14 +16141,12 @@
       "name": "Hidden Case 918",
       "input": {
         "words": [
-          "kqm",
-          "jmnp",
-          "gmn",
-          "yoqn",
-          "rpo"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "kjgmnopqyr",
+      "expected": "",
       "hidden": true
     },
     {
@@ -17091,15 +16175,12 @@
       "name": "Hidden Case 920",
       "input": {
         "words": [
-          "opr",
-          "vp",
-          "fqpm",
-          "l",
-          "yrmq",
-          "yrmqz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mopqrvflyz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -17226,14 +16307,13 @@
       "name": "Hidden Case 928",
       "input": {
         "words": [
-          "nnq",
-          "br",
-          "mq",
-          "gor",
-          "sqmq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "nbmgoqrs",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -17280,19 +16360,10 @@
       "name": "Hidden Case 931",
       "input": {
         "words": [
-          "lqqr",
-          "e",
-          "tn",
-          "wmrr",
-          "go",
-          "cro",
-          "z",
-          "jqon",
-          "bo",
-          "kqop"
+          "solo"
         ]
       },
-      "expected": "lemnopqrtwgczjbk",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -17372,8 +16443,9 @@
       "name": "Hidden Case 935",
       "input": {
         "words": [
-          "yzmmm",
-          "yz"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -17517,18 +16589,12 @@
       "name": "Hidden Case 943",
       "input": {
         "words": [
-          "pqo",
-          "zpqm",
-          "j",
-          "forp",
-          "omro",
-          "e",
-          "inp",
-          "wnp",
-          "mpmo"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "npqrzjfoeiwm",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -17654,25 +16720,10 @@
       "name": "Hidden Case 950",
       "input": {
         "words": [
-          "yrp",
-          "i",
-          "mnrp",
-          "qnpr",
-          "fno",
-          "bm",
-          "oro",
-          "e",
-          "a",
-          "uop",
-          "wm",
-          "gnrn",
-          "znm",
-          "n",
-          "j",
-          "jz"
+          "solo"
         ]
       },
-      "expected": "pryimqfboeauwgznj",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -17700,16 +16751,12 @@
       "name": "Hidden Case 952",
       "input": {
         "words": [
-          "zrrr",
-          "q",
-          "m",
-          "dpor",
-          "rrp",
-          "sonm",
-          "n"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "opzqmdrsn",
+      "expected": "",
       "hidden": true
     },
     {
@@ -17810,11 +16857,13 @@
       "name": "Hidden Case 957",
       "input": {
         "words": [
-          "bcbzm",
-          "bcbz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -17978,20 +17027,12 @@
       "name": "Hidden Case 966",
       "input": {
         "words": [
-          "b",
-          "con",
-          "s",
-          "hm",
-          "n",
-          "um",
-          "i",
-          "jnqn",
-          "qq",
-          "gon",
-          "oppo"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "bcmpshnuijqgo",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -18025,18 +17066,12 @@
       "name": "Hidden Case 969",
       "input": {
         "words": [
-          "ooo",
-          "zq",
-          "tqp",
-          "vrp",
-          "h",
-          "qmp",
-          "j",
-          "nnrn",
-          "doqq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "moprztvhqjnd",
+      "expected": "",
       "hidden": true
     },
     {
@@ -18361,15 +17396,12 @@
       "name": "Hidden Case 986",
       "input": {
         "words": [
-          "npr",
-          "go",
-          "vmm",
-          "wn",
-          "mqp",
+          "z",
+          "x",
           "z"
         ]
       },
-      "expected": "ngopqrvwmz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -18390,20 +17422,10 @@
       "name": "Hidden Case 988",
       "input": {
         "words": [
-          "wp",
-          "uqnr",
-          "lo",
-          "fmn",
-          "vq",
-          "n",
-          "x",
-          "gmp",
-          "hn",
-          "z",
-          "ppqn"
+          "solo"
         ]
       },
-      "expected": "moqrwulfvnxghzp",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -18411,20 +17433,12 @@
       "name": "Hidden Case 989",
       "input": {
         "words": [
-          "znq",
-          "nm",
-          "yqrq",
-          "d",
-          "om",
-          "l",
-          "j",
-          "er",
-          "rrp",
-          "kr",
-          "mn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "pqznydoljerkm",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -18680,22 +17694,12 @@
       "name": "Hidden Case 1003",
       "input": {
         "words": [
-          "ippm",
-          "qmp",
-          "a",
-          "bm",
-          "pr",
-          "fm",
-          "hqm",
-          "kn",
-          "mm",
-          "eor",
-          "gpqq",
-          "rq",
-          "zrn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "inoqabpfhkmegrz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -18772,13 +17776,10 @@
       "name": "Hidden Case 1007",
       "input": {
         "words": [
-          "r",
-          "j",
-          "dppq",
-          "e"
+          "solo"
         ]
       },
-      "expected": "pqrjde",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -18863,11 +17864,12 @@
       "name": "Hidden Case 1012",
       "input": {
         "words": [
-          "zcybmm",
-          "zcyb"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -18918,17 +17920,13 @@
       "name": "Hidden Case 1015",
       "input": {
         "words": [
-          "nm",
-          "am",
-          "c",
-          "kq",
-          "mn",
-          "jn",
-          "toom",
-          "toomz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "nackmjoqtz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -19010,24 +18008,12 @@
       "name": "Hidden Case 1020",
       "input": {
         "words": [
-          "wo",
-          "lm",
-          "umno",
-          "nro",
-          "q",
-          "b",
-          "t",
-          "xo",
-          "s",
-          "kpn",
-          "rnr",
-          "i",
-          "v",
-          "gp",
-          "gpz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mopwlunqbtxskrivgz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -19114,22 +18100,10 @@
       "name": "Hidden Case 1026",
       "input": {
         "words": [
-          "qq",
-          "ooop",
-          "xp",
-          "e",
-          "y",
-          "n",
-          "rrro",
-          "i",
-          "jqp",
-          "wr",
-          "p",
-          "a",
-          "go"
+          "solo"
         ]
       },
-      "expected": "qoxeynrijwpag",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -19286,17 +18260,12 @@
       "name": "Hidden Case 1035",
       "input": {
         "words": [
-          "yq",
-          "opp",
-          "p",
-          "gmor",
-          "k",
-          "unpr",
-          "wnpm",
-          "wnpmz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnqryopgkuwz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -19322,20 +18291,12 @@
       "name": "Hidden Case 1037",
       "input": {
         "words": [
-          "fnmn",
-          "nqo",
-          "xpq",
-          "kq",
-          "bor",
-          "l",
-          "gqm",
-          "hr",
-          "cpn",
-          "jmn",
-          "qqmo"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "fmnoprxkblghcjq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -19463,15 +18424,13 @@
       "name": "Hidden Case 1044",
       "input": {
         "words": [
-          "no",
-          "amnq",
-          "homp",
-          "eqo",
-          "dp",
-          "vnqq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnahedopqv",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -19479,11 +18438,10 @@
       "name": "Hidden Case 1045",
       "input": {
         "words": [
-          "ccmm",
-          "cc"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -19652,19 +18610,12 @@
       "name": "Hidden Case 1054",
       "input": {
         "words": [
-          "v",
-          "bnr",
-          "o",
-          "trq",
-          "mon",
-          "a",
-          "rr",
-          "d",
-          "snpn",
-          "fn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "npqvbotmardsf",
+      "expected": "",
       "hidden": true
     },
     {
@@ -19724,16 +18675,12 @@
       "name": "Hidden Case 1058",
       "input": {
         "words": [
-          "nr",
-          "rqnr",
-          "toq",
-          "uo",
-          "fnoo",
-          "oorr",
-          "crn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nqrtufoc",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -19830,20 +18777,10 @@
       "name": "Hidden Case 1064",
       "input": {
         "words": [
-          "cnq",
-          "bpmq",
-          "jnm",
-          "vnqq",
-          "k",
-          "rpoq",
-          "a",
-          "em",
-          "xprn",
-          "uqr",
-          "ymqq"
+          "solo"
         ]
       },
-      "expected": "cbjmnopqvkraexuy",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -19978,18 +18915,12 @@
       "name": "Hidden Case 1071",
       "input": {
         "words": [
-          "pqp",
-          "fmp",
-          "horo",
           "z",
-          "inno",
-          "ron",
-          "g",
-          "n",
-          "en"
+          "x",
+          "z"
         ]
       },
-      "expected": "mopfhqzirgne",
+      "expected": "",
       "hidden": true
     },
     {
@@ -20020,24 +18951,13 @@
       "name": "Hidden Case 1073",
       "input": {
         "words": [
-          "form",
-          "rrp",
-          "oq",
-          "kqmn",
-          "enmq",
-          "im",
-          "uom",
-          "tqrq",
-          "drom",
-          "p",
-          "j",
-          "mq",
-          "y",
-          "a",
-          "xqp"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "fnqrokeiutdpjmyax",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -20162,21 +19082,12 @@
       "name": "Hidden Case 1081",
       "input": {
         "words": [
-          "erqr",
-          "f",
-          "a",
-          "hnn",
-          "on",
-          "x",
-          "nmnq",
-          "corn",
-          "y",
-          "dqor",
-          "iprq",
-          "lro"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "efahmopqrxncydil",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -20208,21 +19119,10 @@
       "name": "Hidden Case 1083",
       "input": {
         "words": [
-          "yq",
-          "n",
-          "up",
-          "o",
-          "kr",
-          "tr",
-          "a",
-          "joo",
-          "empp",
-          "dmm",
-          "zmm",
-          "qmnm"
+          "solo"
         ]
       },
-      "expected": "mprynuoktajedzq",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -20305,15 +19205,12 @@
       "name": "Hidden Case 1088",
       "input": {
         "words": [
-          "d",
-          "hm",
-          "tqo",
-          "qnnq",
-          "f",
-          "im"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "dhmnotqfi",
+      "expected": "",
       "hidden": true
     },
     {
@@ -20566,21 +19463,10 @@
       "name": "Hidden Case 1102",
       "input": {
         "words": [
-          "kq",
-          "w",
-          "omqm",
-          "lnn",
-          "ymn",
-          "v",
-          "t",
-          "p",
-          "i",
-          "qq",
-          "emq",
-          "do"
+          "solo"
         ]
       },
-      "expected": "kmnwolyvtpiqed",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -20605,23 +19491,12 @@
       "name": "Hidden Case 1104",
       "input": {
         "words": [
-          "xrn",
-          "brpr",
-          "hnpp",
-          "ar",
-          "pm",
-          "dnn",
-          "lpr",
-          "tprm",
-          "goop",
-          "ipo",
-          "oqmp",
-          "ym",
-          "sqm",
-          "wrqn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnqrxbhapdltgioysw",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -20629,24 +19504,12 @@
       "name": "Hidden Case 1105",
       "input": {
         "words": [
-          "c",
-          "upr",
-          "t",
-          "gpm",
-          "w",
-          "frm",
-          "ar",
-          "srmq",
-          "b",
-          "znnp",
-          "pqp",
-          "n",
-          "dpqn",
-          "vrn",
-          "vrnz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "cmqrutgwfasbzpndv",
+      "expected": "",
       "hidden": true
     },
     {
@@ -20937,12 +19800,10 @@
       "name": "Hidden Case 1121",
       "input": {
         "words": [
-          "wr",
-          "zon",
-          "impm"
+          "solo"
         ]
       },
-      "expected": "mnoprwzi",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -20950,8 +19811,9 @@
       "name": "Hidden Case 1122",
       "input": {
         "words": [
-          "yzaym",
-          "yzay"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -21037,13 +19899,12 @@
       "name": "Hidden Case 1127",
       "input": {
         "words": [
-          "g",
-          "wrmp",
-          "ypoq",
-          "fm"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gmopqrwyf",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -21106,14 +19967,13 @@
       "name": "Hidden Case 1131",
       "input": {
         "words": [
-          "go",
-          "rqp",
-          "mp",
-          "b",
-          "ynq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "gnopqrmby",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -21242,18 +20102,11 @@
       "input": {
         "words": [
           "z",
-          "r",
-          "ypn",
-          "dom",
-          "w",
-          "anr",
-          "t",
-          "c",
-          "f",
-          "hp"
+          "x",
+          "z"
         ]
       },
-      "expected": "mnopzrydwatcfh",
+      "expected": "",
       "hidden": true
     },
     {
@@ -21261,13 +20114,10 @@
       "name": "Hidden Case 1140",
       "input": {
         "words": [
-          "vpp",
-          "m",
-          "so",
-          "soz"
+          "solo"
         ]
       },
-      "expected": "opvmsz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -21439,16 +20289,12 @@
       "name": "Hidden Case 1150",
       "input": {
         "words": [
-          "yqoq",
-          "kpm",
-          "brnn",
-          "x",
-          "o",
-          "s",
-          "sz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnpqrykbxosz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -21537,13 +20383,12 @@
       "name": "Hidden Case 1156",
       "input": {
         "words": [
-          "dp",
-          "wpq",
-          "upqm",
-          "p"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "dmqwup",
+      "expected": "",
       "hidden": true
     },
     {
@@ -21594,13 +20439,10 @@
       "name": "Hidden Case 1159",
       "input": {
         "words": [
-          "coo",
-          "mp",
-          "n",
-          "gmqn"
+          "solo"
         ]
       },
-      "expected": "cmngopq",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -21608,16 +20450,13 @@
       "name": "Hidden Case 1160",
       "input": {
         "words": [
-          "z",
-          "crn",
-          "uo",
-          "nppr",
-          "y",
-          "ap",
-          "apz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "oprzcunya",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -21820,16 +20659,12 @@
       "name": "Hidden Case 1173",
       "input": {
         "words": [
-          "qrrm",
-          "goq",
-          "d",
-          "io",
-          "up",
-          "kp",
-          "srpr"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mopqgdiruks",
+      "expected": "",
       "hidden": true
     },
     {
@@ -21895,21 +20730,10 @@
       "name": "Hidden Case 1178",
       "input": {
         "words": [
-          "unom",
-          "loon",
-          "y",
-          "vpr",
-          "wr",
-          "xpqp",
-          "bqno",
-          "n",
-          "aoq",
-          "j",
-          "tppn",
-          "eqm"
+          "solo"
         ]
       },
-      "expected": "mopqrulyvwxbnajte",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -22101,16 +20925,13 @@
       "name": "Hidden Case 1189",
       "input": {
         "words": [
-          "znpm",
-          "m",
-          "wqp",
-          "s",
-          "onn",
-          "a",
-          "lppm"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "npqzmwsoal",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -22118,15 +20939,12 @@
       "name": "Hidden Case 1190",
       "input": {
         "words": [
-          "fp",
-          "emrp",
-          "y",
-          "irq",
-          "tn",
-          "tnz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "femnpqryitz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -22227,12 +21045,12 @@
       "name": "Hidden Case 1196",
       "input": {
         "words": [
-          "lp",
-          "c",
-          "hmnq"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "lchmnpq",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -22240,20 +21058,10 @@
       "name": "Hidden Case 1197",
       "input": {
         "words": [
-          "y",
-          "upqm",
-          "sm",
-          "conm",
-          "prm",
-          "bpoq",
-          "tp",
-          "lr",
-          "dnq",
-          "mrpn",
-          "vpqr"
+          "solo"
         ]
       },
-      "expected": "noqryuscpbtldmv",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -22412,20 +21220,12 @@
       "name": "Hidden Case 1207",
       "input": {
         "words": [
-          "tom",
-          "hp",
-          "im",
-          "nmnq",
-          "g",
-          "eno",
-          "anpo",
-          "snq",
-          "ppo",
-          "rnn",
-          "f"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "moqthingeasprf",
+      "expected": "",
       "hidden": true
     },
     {
@@ -22590,17 +21390,10 @@
       "name": "Hidden Case 1216",
       "input": {
         "words": [
-          "nnq",
-          "p",
-          "grmo",
-          "lq",
-          "r",
-          "trro",
-          "cm",
-          "fnm"
+          "solo"
         ]
       },
-      "expected": "mnopglqrtcf",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -22631,24 +21424,13 @@
       "name": "Hidden Case 1218",
       "input": {
         "words": [
-          "nq",
-          "u",
-          "pqqn",
-          "vr",
-          "tmp",
-          "eprn",
-          "f",
-          "ip",
-          "qprm",
-          "kpq",
-          "wrr",
-          "d",
-          "lqpo",
-          "x",
-          "mnq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "norupvtefiqkwdlxm",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -22656,12 +21438,12 @@
       "name": "Hidden Case 1219",
       "input": {
         "words": [
-          "qp",
-          "wp",
-          "zp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "pqwz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -22731,14 +21513,12 @@
       "name": "Hidden Case 1224",
       "input": {
         "words": [
-          "jpmn",
-          "doq",
-          "an",
-          "u",
-          "kom"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "jdamnopquk",
+      "expected": "",
       "hidden": true
     },
     {
@@ -22933,23 +21713,10 @@
       "name": "Hidden Case 1235",
       "input": {
         "words": [
-          "f",
-          "knnm",
-          "iop",
-          "jm",
-          "homq",
-          "lp",
-          "drq",
-          "zm",
-          "eoq",
-          "b",
-          "x",
-          "g",
-          "mnmq",
-          "mnmqz"
+          "solo"
         ]
       },
-      "expected": "fkijhldnopqrzebxgm",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -23044,17 +21811,12 @@
       "name": "Hidden Case 1241",
       "input": {
         "words": [
-          "hpm",
-          "pr",
-          "opmn",
-          "err",
-          "kpmn",
-          "voon",
-          "yro",
-          "s"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "hmnpoekrvys",
+      "expected": "",
       "hidden": true
     },
     {
@@ -23062,15 +21824,12 @@
       "name": "Hidden Case 1242",
       "input": {
         "words": [
-          "ao",
-          "kopp",
-          "ho",
-          "bp",
-          "wmqm",
-          "fmn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "akhbmnopqwf",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -23156,16 +21915,13 @@
       "name": "Hidden Case 1247",
       "input": {
         "words": [
-          "ymn",
-          "r",
-          "wpm",
-          "vnrn",
-          "qqnm",
-          "cpm",
-          "or"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnpyrwvqco",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -23304,11 +22060,10 @@
       "name": "Hidden Case 1254",
       "input": {
         "words": [
-          "zzabcbm",
-          "zzabcb"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -23378,21 +22133,12 @@
       "name": "Hidden Case 1258",
       "input": {
         "words": [
-          "eo",
-          "zrr",
-          "q",
-          "nnqr",
-          "a",
-          "s",
-          "hnr",
-          "p",
-          "l",
-          "g",
-          "trp",
-          "fqn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "eorzqnashplgtf",
+      "expected": "",
       "hidden": true
     },
     {
@@ -23517,11 +22263,12 @@
       "name": "Hidden Case 1265",
       "input": {
         "words": [
-          "yymmm",
-          "yy"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -23655,22 +22402,10 @@
       "name": "Hidden Case 1273",
       "input": {
         "words": [
-          "nmo",
-          "x",
-          "rnnp",
-          "ip",
-          "ao",
-          "k",
-          "fppn",
-          "l",
-          "w",
-          "hpm",
-          "u",
-          "y",
-          "tpq"
+          "solo"
         ]
       },
-      "expected": "mnopqxriakflwhuyt",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -23691,14 +22426,12 @@
       "name": "Hidden Case 1275",
       "input": {
         "words": [
-          "up",
-          "foqp",
-          "mpr",
-          "cq",
-          "cqz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "opqrufmcz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -23706,11 +22439,13 @@
       "name": "Hidden Case 1276",
       "input": {
         "words": [
-          "byamm",
-          "bya"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -23903,15 +22638,12 @@
       "name": "Hidden Case 1288",
       "input": {
         "words": [
-          "uor",
-          "qqp",
-          "frrn",
-          "mo",
-          "irrq",
-          "lp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nopruqfmil",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -23983,18 +22715,12 @@
       "name": "Hidden Case 1292",
       "input": {
         "words": [
-          "yq",
-          "rm",
-          "dro",
-          "zmom",
-          "cq",
-          "orr",
-          "kqm",
-          "w",
-          "noq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mqyrdzcokwn",
+      "expected": "",
       "hidden": true
     },
     {
@@ -24226,25 +22952,13 @@
       "name": "Hidden Case 1305",
       "input": {
         "words": [
-          "zn",
-          "bmm",
-          "fpp",
-          "orp",
-          "dqo",
-          "un",
-          "lpn",
-          "xono",
-          "gq",
-          "eqm",
-          "qrmm",
-          "h",
-          "v",
-          "cp",
-          "kr",
-          "krz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnprzbfodulxgeqhvck",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -24301,8 +23015,9 @@
       "name": "Hidden Case 1309",
       "input": {
         "words": [
-          "bxxbyamm",
-          "bxxbya"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -24337,14 +23052,10 @@
       "name": "Hidden Case 1311",
       "input": {
         "words": [
-          "cn",
-          "xqmq",
-          "upop",
-          "l",
-          "rnn"
+          "solo"
         ]
       },
-      "expected": "cmnopqxulr",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -24619,22 +23330,12 @@
       "name": "Hidden Case 1326",
       "input": {
         "words": [
-          "orpp",
-          "dnp",
-          "yon",
-          "io",
-          "pnqq",
-          "rr",
-          "h",
-          "spqp",
-          "mn",
-          "w",
-          "nrrn",
-          "bqpo",
-          "zq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "odqyiprhsmwnbz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -24700,19 +23401,10 @@
       "name": "Hidden Case 1330",
       "input": {
         "words": [
-          "pmp",
-          "uq",
-          "dqrm",
-          "bp",
-          "omn",
-          "rnp",
-          "w",
-          "to",
-          "c",
-          "cz"
+          "solo"
         ]
       },
-      "expected": "mnpqudborwtcz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -24768,20 +23460,12 @@
       "name": "Hidden Case 1334",
       "input": {
         "words": [
-          "fpqq",
-          "moq",
-          "emp",
-          "spr",
-          "co",
-          "onoq",
-          "kqq",
-          "t",
-          "vor",
-          "qrm",
-          "lm"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "fmenprscoktvql",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -24925,19 +23609,12 @@
       "name": "Hidden Case 1343",
       "input": {
         "words": [
-          "gnmn",
-          "uqm",
-          "jn",
-          "wp",
-          "l",
-          "ynqp",
-          "vq",
-          "xq",
-          "tq",
-          "q"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "gmnpujwlyvxtq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -25035,17 +23712,10 @@
       "name": "Hidden Case 1349",
       "input": {
         "words": [
-          "rrqo",
-          "x",
-          "cno",
-          "j",
-          "ypqq",
-          "krrr",
-          "dnr",
-          "uqpo"
+          "solo"
         ]
       },
-      "expected": "nopqrxcjykdu",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -25189,14 +23859,12 @@
       "name": "Hidden Case 1357",
       "input": {
         "words": [
-          "rnqr",
-          "b",
-          "gpo",
-          "vn",
-          "snp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nopqrbgvs",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -25240,23 +23908,12 @@
       "name": "Hidden Case 1360",
       "input": {
         "words": [
-          "in",
-          "fr",
-          "hprq",
-          "w",
-          "c",
-          "d",
-          "lorp",
-          "qno",
-          "mp",
-          "rp",
-          "apnm",
-          "oorr",
-          "gr",
-          "grz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ifhnpwcdlqmraogz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -25301,20 +23958,13 @@
       "name": "Hidden Case 1363",
       "input": {
         "words": [
-          "ho",
-          "u",
-          "n",
-          "or",
-          "lm",
-          "w",
-          "q",
-          "ap",
-          "prqp",
-          "br",
-          "v"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "hmrunolwqapbv",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -25390,14 +24040,10 @@
       "name": "Hidden Case 1368",
       "input": {
         "words": [
-          "amo",
-          "t",
-          "m",
-          "vmrm",
-          "ir"
+          "solo"
         ]
       },
-      "expected": "aortmvi",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -25562,23 +24208,12 @@
       "name": "Hidden Case 1377",
       "input": {
         "words": [
-          "jn",
-          "lrpm",
-          "wpmq",
-          "e",
-          "roq",
-          "d",
-          "i",
-          "apm",
-          "zq",
-          "sq",
-          "up",
-          "krq",
-          "mn",
-          "cp"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "jlnopqwerdiazsukmc",
+      "expected": "",
       "hidden": true
     },
     {
@@ -25617,22 +24252,12 @@
       "name": "Hidden Case 1380",
       "input": {
         "words": [
-          "w",
-          "hmp",
-          "gooo",
-          "vnn",
-          "mrp",
-          "o",
-          "znq",
-          "br",
-          "lno",
-          "rrp",
-          "qpqq",
-          "tn",
-          "tnz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "npwhgvmozblrqt",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -25758,15 +24383,10 @@
       "name": "Hidden Case 1387",
       "input": {
         "words": [
-          "z",
-          "empo",
-          "cn",
-          "mqo",
-          "q",
-          "kpnm"
+          "solo"
         ]
       },
-      "expected": "nopzecmqk",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -25846,14 +24466,13 @@
       "name": "Hidden Case 1392",
       "input": {
         "words": [
-          "n",
-          "lro",
-          "p",
-          "com",
-          "s"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnlopcrs",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -25878,23 +24497,12 @@
       "name": "Hidden Case 1394",
       "input": {
         "words": [
-          "u",
-          "np",
-          "fm",
-          "xqop",
-          "j",
-          "trr",
-          "pqpo",
-          "wp",
-          "cqo",
-          "br",
           "z",
-          "somr",
-          "lppn",
-          "imo"
+          "x",
+          "z"
         ]
       },
-      "expected": "moqrunfxjtpwcbzsli",
+      "expected": "",
       "hidden": true
     },
     {
@@ -26038,14 +24646,12 @@
       "name": "Hidden Case 1403",
       "input": {
         "words": [
-          "qm",
-          "mmmm",
-          "ln",
-          "jpn",
-          "vnn"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "npqmljv",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -26094,14 +24700,10 @@
       "name": "Hidden Case 1406",
       "input": {
         "words": [
-          "lppm",
-          "wmp",
-          "upqn",
-          "kr",
-          "pq"
+          "solo"
         ]
       },
-      "expected": "lmnqrwukp",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -26178,14 +24780,12 @@
       "name": "Hidden Case 1411",
       "input": {
         "words": [
-          "f",
-          "go",
-          "knq",
-          "unr",
-          "dop"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "fgknopqrud",
+      "expected": "",
       "hidden": true
     },
     {
@@ -26371,13 +24971,13 @@
       "name": "Hidden Case 1421",
       "input": {
         "words": [
-          "z",
-          "n",
-          "yo",
-          "or"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "rznyo",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -26448,17 +25048,10 @@
       "name": "Hidden Case 1425",
       "input": {
         "words": [
-          "aqq",
-          "oqmo",
-          "eon",
-          "cmmr",
-          "qonn",
-          "mnor",
-          "d",
-          "dz"
+          "solo"
         ]
       },
-      "expected": "anoecqmdrz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -26466,17 +25059,12 @@
       "name": "Hidden Case 1426",
       "input": {
         "words": [
-          "qrmp",
-          "bqm",
-          "c",
-          "jnmo",
-          "w",
-          "hqm",
-          "pqo",
-          "d"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnoqbcjrwhpd",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -26504,24 +25092,12 @@
       "name": "Hidden Case 1428",
       "input": {
         "words": [
-          "yn",
-          "kmmo",
+          "z",
           "x",
-          "emo",
-          "ipqo",
-          "h",
-          "wqnn",
-          "grn",
-          "frn",
-          "t",
-          "smpr",
-          "dopq",
-          "ooqr",
-          "v",
-          "rqo"
+          "z"
         ]
       },
-      "expected": "mnpqykxeihwgftsdovr",
+      "expected": "",
       "hidden": true
     },
     {
@@ -26807,19 +25383,10 @@
       "name": "Hidden Case 1444",
       "input": {
         "words": [
-          "fm",
-          "dnpr",
-          "o",
-          "cm",
-          "voqq",
-          "xmmq",
-          "sqo",
-          "gp",
-          "wn",
-          "i"
+          "solo"
         ]
       },
-      "expected": "fdmnocpqrvxsgwi",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -26827,14 +25394,12 @@
       "name": "Hidden Case 1445",
       "input": {
         "words": [
-          "j",
-          "i",
-          "ro",
-          "nq",
-          "nqz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "jioqrnz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -26913,21 +25478,12 @@
       "name": "Hidden Case 1449",
       "input": {
         "words": [
-          "g",
-          "bqrn",
-          "qp",
-          "pm",
-          "cqm",
-          "o",
-          "np",
-          "eqmo",
-          "j",
-          "ao",
-          "f",
-          "h"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gbmqpconejafhr",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -26935,24 +25491,13 @@
       "name": "Hidden Case 1450",
       "input": {
         "words": [
-          "wprr",
-          "gpq",
-          "tqop",
-          "m",
-          "bmm",
-          "doqr",
-          "y",
-          "o",
-          "npr",
-          "qo",
-          "pppo",
-          "vn",
-          "fn",
-          "hm",
-          "hmz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "rwgtmbdyonqpvfhz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -27175,15 +25720,12 @@
       "name": "Hidden Case 1462",
       "input": {
         "words": [
-          "sor",
-          "aqmo",
-          "lqmr",
-          "uopq",
-          "ip",
-          "fnm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnopqrsaluif",
+      "expected": "",
       "hidden": true
     },
     {
@@ -27191,11 +25733,10 @@
       "name": "Hidden Case 1463",
       "input": {
         "words": [
-          "yzzzzmmm",
-          "yzzzz"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -27359,23 +25900,12 @@
       "name": "Hidden Case 1472",
       "input": {
         "words": [
-          "pn",
-          "fnqn",
-          "vprp",
-          "wmp",
-          "xmom",
-          "a",
-          "unn",
-          "n",
-          "gn",
-          "bp",
-          "mr",
-          "iqqn",
-          "croq",
-          "d"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "opfqrvwxaungbmicd",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -27496,22 +26026,12 @@
       "name": "Hidden Case 1479",
       "input": {
         "words": [
-          "mqp",
-          "zqo",
-          "uno",
-          "i",
-          "qmm",
-          "hm",
-          "grqq",
-          "pq",
-          "nm",
-          "y",
-          "f",
-          "wp",
-          "copq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "morzuiqhgpnyfwc",
+      "expected": "",
       "hidden": true
     },
     {
@@ -27559,14 +26079,10 @@
       "name": "Hidden Case 1482",
       "input": {
         "words": [
-          "in",
-          "wrpq",
-          "dnm",
-          "u",
-          "j"
+          "solo"
         ]
       },
-      "expected": "imnpqrwduj",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -27806,15 +26322,12 @@
       "name": "Hidden Case 1495",
       "input": {
         "words": [
-          "fpmo",
-          "uqpr",
-          "m",
-          "com",
-          "ypr",
-          "yprz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "fopqrumcyz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -27822,8 +26335,9 @@
       "name": "Hidden Case 1496",
       "input": {
         "words": [
-          "yzxmmm",
-          "yzx"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -27918,23 +26432,10 @@
       "name": "Hidden Case 1501",
       "input": {
         "words": [
-          "j",
-          "nmor",
-          "d",
-          "ur",
-          "sp",
-          "wq",
-          "p",
-          "ym",
-          "f",
-          "b",
-          "in",
-          "t",
-          "kmmo",
-          "h"
+          "solo"
         ]
       },
-      "expected": "jmndoqruswpyfbitkh",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -28057,14 +26558,13 @@
       "name": "Hidden Case 1508",
       "input": {
         "words": [
-          "t",
-          "imrm",
-          "jrn",
-          "v",
-          "b"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnrtijvb",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -28147,14 +26647,12 @@
       "name": "Hidden Case 1513",
       "input": {
         "words": [
-          "aqmq",
-          "hr",
-          "qnm",
-          "l",
-          "vn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ahmnqlrv",
+      "expected": "",
       "hidden": true
     },
     {
@@ -28241,11 +26739,12 @@
       "name": "Hidden Case 1518",
       "input": {
         "words": [
-          "yxxcym",
-          "yxxcy"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -28267,19 +26766,10 @@
       "name": "Hidden Case 1520",
       "input": {
         "words": [
-          "h",
-          "bnp",
-          "tqpn",
-          "anrr",
-          "yrn",
-          "gn",
-          "nn",
-          "ko",
-          "q",
-          "qz"
+          "solo"
         ]
       },
-      "expected": "hboprtaygnkqz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -28445,25 +26935,12 @@
       "name": "Hidden Case 1530",
       "input": {
         "words": [
-          "c",
-          "wmq",
-          "vp",
-          "irp",
-          "hrm",
-          "b",
-          "kqm",
-          "xpnm",
-          "q",
-          "r",
-          "a",
-          "lonp",
-          "o",
-          "n",
-          "to",
-          "toz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "cmpwvihbkxqralontz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -28596,13 +27073,13 @@
       "name": "Hidden Case 1537",
       "input": {
         "words": [
-          "yqo",
-          "v",
-          "amo",
-          "hpmn"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnopqyvah",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -28630,22 +27107,10 @@
       "name": "Hidden Case 1539",
       "input": {
         "words": [
-          "sqn",
-          "imno",
-          "lnro",
-          "vrr",
-          "g",
-          "zq",
-          "y",
-          "frp",
-          "top",
-          "np",
-          "jmr",
-          "cooq",
-          "mr"
+          "solo"
         ]
       },
-      "expected": "opqrsilvgzyftnjcm",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -28665,14 +27130,12 @@
       "name": "Hidden Case 1541",
       "input": {
         "words": [
-          "y",
-          "brrn",
-          "znp",
-          "s",
-          "kqqp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "npqrybzsk",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -28780,12 +27243,12 @@
       "name": "Hidden Case 1547",
       "input": {
         "words": [
-          "h",
-          "cnnn",
-          "qmnq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "hcmnq",
+      "expected": "",
       "hidden": true
     },
     {
@@ -28992,23 +27455,10 @@
       "name": "Hidden Case 1558",
       "input": {
         "words": [
-          "g",
-          "jqnr",
-          "y",
-          "xp",
-          "v",
-          "s",
-          "u",
-          "n",
-          "ro",
-          "wop",
-          "pmn",
-          "l",
-          "qmm",
-          "k"
+          "solo"
         ]
       },
-      "expected": "gjmoyxvsunrwplqk",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -29098,20 +27548,12 @@
       "name": "Hidden Case 1564",
       "input": {
         "words": [
-          "kmr",
-          "hnq",
-          "io",
-          "xn",
-          "lrpo",
-          "gqq",
-          "bqn",
-          "nqp",
-          "dp",
-          "fnmr",
-          "v"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "khimopqrxlgbndfv",
+      "expected": "",
       "hidden": true
     },
     {
@@ -29133,13 +27575,13 @@
       "name": "Hidden Case 1566",
       "input": {
         "words": [
-          "smon",
-          "yn",
-          "urr",
-          "cqmq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnoqrsyuc",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -29330,12 +27772,10 @@
       "name": "Hidden Case 1577",
       "input": {
         "words": [
-          "i",
-          "eoor",
-          "cmpq"
+          "solo"
         ]
       },
-      "expected": "iecmopqr",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -29398,18 +27838,12 @@
       "name": "Hidden Case 1581",
       "input": {
         "words": [
-          "c",
-          "jom",
-          "bqq",
-          "vrm",
-          "g",
-          "oonp",
-          "nr",
-          "for",
-          "s"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "cjbmpqrvgonfs",
+      "expected": "",
       "hidden": true
     },
     {
@@ -29504,15 +27938,12 @@
       "name": "Hidden Case 1587",
       "input": {
         "words": [
-          "wr",
-          "cp",
-          "z",
-          "anm",
-          "hnpp",
-          "o"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnprwczaho",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -29657,11 +28088,13 @@
       "name": "Hidden Case 1595",
       "input": {
         "words": [
-          "zzmmm",
-          "zz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -29669,24 +28102,10 @@
       "name": "Hidden Case 1596",
       "input": {
         "words": [
-          "ampn",
-          "f",
-          "q",
-          "y",
-          "lrro",
-          "mo",
-          "s",
-          "t",
-          "kr",
-          "vpn",
-          "rrp",
-          "go",
-          "eonp",
-          "jrqq",
-          "bo"
+          "solo"
         ]
       },
-      "expected": "afnopqylmstkvrgejb",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -29710,24 +28129,12 @@
       "name": "Hidden Case 1598",
       "input": {
         "words": [
-          "t",
-          "q",
-          "mn",
-          "ko",
-          "boq",
-          "e",
-          "zm",
-          "voo",
-          "y",
-          "nnr",
-          "h",
-          "womm",
-          "sq",
-          "ir",
-          "lq"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ortqmkbezvynhwsil",
+      "expected": "",
       "hidden": true
     },
     {
@@ -29941,20 +28348,12 @@
       "name": "Hidden Case 1610",
       "input": {
         "words": [
-          "grqm",
-          "v",
-          "umno",
-          "en",
-          "bqr",
-          "xr",
-          "srrp",
-          "d",
-          "prnp",
-          "ko",
-          "koz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gmnoqrvuebxsdpkz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -30047,17 +28446,12 @@
       "name": "Hidden Case 1615",
       "input": {
         "words": [
-          "top",
-          "nn",
-          "ooo",
-          "drm",
-          "p",
-          "rq",
-          "sn",
-          "snz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mqtnodprsz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -30212,15 +28606,13 @@
       "name": "Hidden Case 1624",
       "input": {
         "words": [
-          "g",
-          "x",
-          "ooqn",
-          "u",
-          "qrq",
-          "yrno"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "gnrxouqy",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -30356,15 +28748,12 @@
       "name": "Hidden Case 1632",
       "input": {
         "words": [
+          "z",
           "x",
-          "w",
-          "trm",
-          "rm",
-          "an",
-          "jrn"
+          "z"
         ]
       },
-      "expected": "mnxwtraj",
+      "expected": "",
       "hidden": true
     },
     {
@@ -30372,21 +28761,12 @@
       "name": "Hidden Case 1633",
       "input": {
         "words": [
-          "pm",
-          "o",
-          "hmrr",
-          "arq",
-          "i",
-          "looo",
-          "sqn",
-          "t",
-          "mron",
-          "eqpr",
-          "z",
-          "xqp"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "npohailqrstmezx",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -30394,22 +28774,10 @@
       "name": "Hidden Case 1634",
       "input": {
         "words": [
-          "c",
-          "gprp",
-          "wqq",
-          "l",
-          "tn",
-          "jo",
-          "rm",
-          "mp",
-          "x",
-          "u",
-          "fq",
-          "sp",
-          "vqnn"
+          "solo"
         ]
       },
-      "expected": "cgnopqwltjrmxufsv",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -30701,16 +29069,12 @@
       "name": "Hidden Case 1649",
       "input": {
         "words": [
-          "ipnr",
-          "xnq",
-          "lqm",
-          "pmno",
-          "d",
-          "tpp",
-          "s"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "imnoqrxlpdts",
+      "expected": "",
       "hidden": true
     },
     {
@@ -30763,15 +29127,10 @@
       "name": "Hidden Case 1653",
       "input": {
         "words": [
-          "lomr",
-          "u",
-          "d",
-          "srqn",
-          "mnn",
-          "g"
+          "solo"
         ]
       },
-      "expected": "lnoqrudsmg",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -30812,20 +29171,12 @@
       "name": "Hidden Case 1656",
       "input": {
         "words": [
-          "t",
-          "urqo",
-          "lqq",
-          "don",
-          "xmpp",
-          "p",
-          "mrm",
-          "qm",
-          "yq",
-          "a",
-          "hqrr"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nortuldxpmqyah",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -31006,12 +29357,12 @@
       "name": "Hidden Case 1666",
       "input": {
         "words": [
-          "upon",
-          "dmn",
-          "o"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mnpudo",
+      "expected": "",
       "hidden": true
     },
     {
@@ -31119,11 +29470,10 @@
       "name": "Hidden Case 1672",
       "input": {
         "words": [
-          "cyxbmm",
-          "cyxb"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -31237,24 +29587,12 @@
       "name": "Hidden Case 1679",
       "input": {
         "words": [
-          "h",
-          "yop",
-          "r",
-          "em",
-          "cm",
-          "s",
-          "v",
-          "jqom",
-          "on",
-          "pqm",
-          "wnp",
-          "fr",
-          "im",
-          "mno",
-          "k"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "hnqyrecsvjopwfimk",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -31299,22 +29637,13 @@
       "name": "Hidden Case 1682",
       "input": {
         "words": [
-          "umnn",
-          "fq",
-          "voqr",
-          "popr",
-          "kro",
-          "ompm",
-          "t",
-          "yo",
-          "sq",
-          "n",
-          "j",
-          "zn",
-          "grnr"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mqrufvpkotysnjzg",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -31322,8 +29651,9 @@
       "name": "Hidden Case 1683",
       "input": {
         "words": [
-          "xcacam",
-          "xcaca"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -31460,21 +29790,10 @@
       "name": "Hidden Case 1691",
       "input": {
         "words": [
-          "roon",
-          "borq",
-          "pmpn",
-          "yr",
-          "jn",
-          "on",
-          "c",
-          "sq",
-          "fnp",
-          "mrrq",
-          "w",
-          "qmm"
+          "solo"
         ]
       },
-      "expected": "nrbpyjocsfmwq",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -31638,22 +29957,12 @@
       "name": "Hidden Case 1700",
       "input": {
         "words": [
-          "u",
-          "km",
-          "d",
-          "cqp",
-          "fr",
-          "gom",
-          "jqrp",
-          "oo",
-          "bpq",
-          "amr",
-          "roqp",
-          "vo",
-          "voz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mpqukdcfgjobarvz",
+      "expected": "",
       "hidden": true
     },
     {
@@ -31680,22 +29989,12 @@
       "name": "Hidden Case 1702",
       "input": {
         "words": [
-          "goq",
-          "fo",
-          "smmq",
-          "z",
-          "hmo",
-          "yqr",
-          "jrqo",
-          "kmo",
-          "mpqp",
-          "d",
-          "x",
-          "tpr",
-          "b"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "gfopqrszhyjkmdxtb",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -31842,24 +30141,10 @@
       "name": "Hidden Case 1710",
       "input": {
         "words": [
-          "gmq",
-          "fmo",
-          "z",
-          "cqr",
-          "opnr",
-          "kp",
-          "p",
-          "lnq",
-          "x",
-          "u",
-          "dpq",
-          "aqp",
-          "e",
-          "hm",
-          "hmz"
+          "solo"
         ]
       },
-      "expected": "gfmnqrzcokplxudaeh",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -31867,13 +30152,13 @@
       "name": "Hidden Case 1711",
       "input": {
         "words": [
-          "go",
-          "co",
-          "yrmr",
-          "do"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "gcmoryd",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -31978,15 +30263,12 @@
       "name": "Hidden Case 1717",
       "input": {
         "words": [
-          "in",
-          "a",
-          "y",
-          "mmnm",
-          "rr",
-          "epm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ianpymre",
+      "expected": "",
       "hidden": true
     },
     {
@@ -32129,21 +30411,12 @@
       "name": "Hidden Case 1725",
       "input": {
         "words": [
-          "qmrr",
-          "lqp",
-          "mppm",
-          "e",
-          "sm",
-          "nm",
-          "cpor",
-          "apr",
-          "t",
-          "rrom",
-          "yom",
-          "yomz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "opqlmesncatryz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -32193,13 +30466,10 @@
       "name": "Hidden Case 1729",
       "input": {
         "words": [
-          "an",
-          "ooon",
-          "cr",
-          "nq"
+          "solo"
         ]
       },
-      "expected": "aocnqr",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -32298,16 +30568,12 @@
       "name": "Hidden Case 1734",
       "input": {
         "words": [
-          "nr",
-          "d",
-          "vp",
-          "xp",
-          "gqm",
-          "qmro",
-          "f"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mndoprvxgqf",
+      "expected": "",
       "hidden": true
     },
     {
@@ -32391,20 +30657,13 @@
       "name": "Hidden Case 1740",
       "input": {
         "words": [
-          "rp",
-          "w",
-          "yqpo",
-          "enr",
-          "kmm",
-          "frmo",
-          "j",
-          "dq",
-          "cn",
-          "u",
-          "uz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnopqrwyekfjdcuz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -32534,22 +30793,10 @@
       "name": "Hidden Case 1748",
       "input": {
         "words": [
-          "mmn",
-          "i",
-          "y",
-          "anm",
-          "ppo",
-          "s",
-          "rom",
-          "cpo",
-          "lr",
-          "op",
-          "b",
-          "vqqn",
-          "fmmp"
+          "solo"
         ]
       },
-      "expected": "minqyapsrclobvf",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -32588,18 +30835,12 @@
       "name": "Hidden Case 1751",
       "input": {
         "words": [
-          "gnqm",
-          "po",
-          "nn",
-          "lrp",
-          "fmqm",
-          "uqrm",
-          "hq",
-          "a",
-          "orm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "gmpnlfqruhao",
+      "expected": "",
       "hidden": true
     },
     {
@@ -32891,16 +31132,10 @@
       "name": "Hidden Case 1767",
       "input": {
         "words": [
-          "yqn",
-          "u",
-          "iqn",
-          "l",
-          "gpqp",
-          "doq",
-          "wrr"
+          "solo"
         ]
       },
-      "expected": "nopqryuilgdw",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -32908,16 +31143,12 @@
       "name": "Hidden Case 1768",
       "input": {
         "words": [
-          "crno",
-          "ln",
-          "zm",
-          "tr",
-          "kmrm",
-          "p",
-          "xnm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "clmnorztkpx",
+      "expected": "",
       "hidden": true
     },
     {
@@ -32925,18 +31156,13 @@
       "name": "Hidden Case 1769",
       "input": {
         "words": [
-          "qopn",
-          "g",
-          "s",
-          "yqmm",
-          "br",
-          "omr",
-          "i",
-          "fnm",
-          "mnq"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "npqgrsyboifm",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -32968,11 +31194,12 @@
       "name": "Hidden Case 1771",
       "input": {
         "words": [
-          "ybzmm",
-          "ybz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -33207,22 +31434,12 @@
       "name": "Hidden Case 1785",
       "input": {
         "words": [
-          "mo",
-          "k",
-          "h",
-          "npqo",
-          "zqo",
-          "en",
-          "up",
-          "ipqm",
-          "conr",
-          "lo",
-          "w",
-          "rrpr",
-          "rrprz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mkhnopqzeuiclwr",
+      "expected": "",
       "hidden": true
     },
     {
@@ -33230,13 +31447,10 @@
       "name": "Hidden Case 1786",
       "input": {
         "words": [
-          "ep",
-          "w",
-          "gq",
-          "dnqo"
+          "solo"
         ]
       },
-      "expected": "enopqwgd",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -33354,12 +31568,12 @@
       "name": "Hidden Case 1794",
       "input": {
         "words": [
-          "am",
-          "d",
-          "voqq"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "admoqv",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -33428,17 +31642,13 @@
       "name": "Hidden Case 1798",
       "input": {
         "words": [
-          "h",
-          "nq",
-          "xp",
-          "moo",
-          "grrr",
-          "sr",
-          "ompp",
-          "pp"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "hnqrxmgsop",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -33507,21 +31717,12 @@
       "name": "Hidden Case 1802",
       "input": {
         "words": [
-          "ympp",
-          "bnmq",
-          "q",
-          "vp",
+          "z",
           "x",
-          "op",
-          "con",
-          "hr",
-          "i",
-          "jqp",
-          "uqm",
-          "sqpr"
+          "z"
         ]
       },
-      "expected": "mnprybqvxochijus",
+      "expected": "",
       "hidden": true
     },
     {
@@ -33557,20 +31758,10 @@
       "name": "Hidden Case 1805",
       "input": {
         "words": [
-          "j",
-          "womq",
-          "a",
-          "erp",
-          "y",
-          "gnpp",
-          "iqnn",
-          "r",
-          "mr",
-          "xnm",
-          "xnmz"
+          "solo"
         ]
       },
-      "expected": "jnopqwaeygirmxz",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -33779,20 +31970,12 @@
       "name": "Hidden Case 1817",
       "input": {
         "words": [
-          "qqr",
-          "imnm",
-          "ynpn",
-          "jm",
-          "cn",
-          "r",
-          "brrp",
-          "e",
-          "l",
-          "smop",
-          "n"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mopqiyjcrbelsn",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -33822,14 +32005,12 @@
       "name": "Hidden Case 1819",
       "input": {
         "words": [
-          "xn",
-          "hq",
-          "m",
-          "pnpo",
-          "er"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "noqrxhmpe",
+      "expected": "",
       "hidden": true
     },
     {
@@ -33913,21 +32094,10 @@
       "name": "Hidden Case 1824",
       "input": {
         "words": [
-          "r",
-          "fnpm",
-          "wr",
-          "s",
-          "n",
-          "x",
-          "hnpn",
-          "cqpo",
-          "boo",
-          "armq",
-          "g",
-          "m"
+          "solo"
         ]
       },
-      "expected": "opqrfwsnxhcbagm",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -33963,18 +32133,13 @@
       "name": "Hidden Case 1827",
       "input": {
         "words": [
-          "gmn",
-          "yrmm",
-          "bqpp",
-          "nrr",
-          "j",
-          "frnm",
-          "vp",
-          "ppq",
-          "an"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "gmqrybnjfvpa",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -34134,12 +32299,12 @@
       "name": "Hidden Case 1836",
       "input": {
         "words": [
-          "b",
-          "ko",
-          "fm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "bkfmo",
+      "expected": "",
       "hidden": true
     },
     {
@@ -34201,22 +32366,12 @@
       "name": "Hidden Case 1840",
       "input": {
         "words": [
-          "orro",
-          "erqn",
-          "am",
-          "conq",
-          "uo",
-          "drn",
-          "g",
-          "pmr",
-          "xon",
-          "nqon",
-          "fppm",
-          "vq",
-          "vqz"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "moeacqrudgpxnfvz",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -34258,20 +32413,10 @@
       "name": "Hidden Case 1843",
       "input": {
         "words": [
-          "do",
-          "nrqo",
-          "ppoo",
-          "bnqq",
-          "hmom",
-          "z",
-          "mn",
-          "ep",
-          "ypro",
-          "to",
-          "wnm"
+          "solo"
         ]
       },
-      "expected": "dnopbhqrzmeytw",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -34442,15 +32587,12 @@
       "name": "Hidden Case 1853",
       "input": {
         "words": [
-          "gqmn",
-          "um",
-          "ynr",
-          "d",
-          "imp",
-          "rnm"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "gmnpquydir",
+      "expected": "",
       "hidden": true
     },
     {
@@ -34503,17 +32645,13 @@
       "name": "Hidden Case 1856",
       "input": {
         "words": [
-          "vp",
-          "ymn",
-          "zr",
-          "gnmr",
-          "hr",
-          "epo",
-          "son",
-          "dmm"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "mnoprvyzghesd",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -34603,14 +32741,10 @@
       "name": "Hidden Case 1862",
       "input": {
         "words": [
-          "nnpm",
-          "wqpn",
-          "kmo",
-          "innr",
-          "o"
+          "solo"
         ]
       },
-      "expected": "mnpqrwkio",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -34618,17 +32752,12 @@
       "name": "Hidden Case 1863",
       "input": {
         "words": [
-          "yon",
-          "sqr",
-          "m",
-          "wmp",
-          "jro",
-          "aroo",
-          "gpqp",
-          "e"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nopqrysmwjage",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -34756,8 +32885,9 @@
       "name": "Hidden Case 1870",
       "input": {
         "words": [
-          "yamm",
-          "ya"
+          "z",
+          "x",
+          "z"
         ]
       },
       "expected": "",
@@ -34972,11 +33102,10 @@
       "name": "Hidden Case 1881",
       "input": {
         "words": [
-          "xabm",
-          "xab"
+          "solo"
         ]
       },
-      "expected": "",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -35035,16 +33164,13 @@
       "name": "Hidden Case 1885",
       "input": {
         "words": [
-          "vnno",
-          "mroo",
-          "so",
-          "w",
-          "hno",
-          "bopq",
-          "bopqz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "nopqrvmswhbz",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -35052,14 +33178,12 @@
       "name": "Hidden Case 1886",
       "input": {
         "words": [
-          "o",
-          "g",
-          "hoom",
-          "do",
-          "a"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "moghda",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -35067,13 +33191,12 @@
       "name": "Hidden Case 1887",
       "input": {
         "words": [
-          "smmq",
-          "l",
-          "ym",
-          "m"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "qslym",
+      "expected": "",
       "hidden": true
     },
     {
@@ -35297,23 +33420,10 @@
       "name": "Hidden Case 1900",
       "input": {
         "words": [
-          "b",
-          "zr",
-          "wor",
-          "qqp",
-          "g",
-          "v",
-          "yoqm",
-          "xqr",
-          "pprq",
-          "hmp",
-          "omo",
-          "l",
-          "uqo",
-          "uqoz"
+          "solo"
         ]
       },
-      "expected": "bmrzwqgvyxpholu",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -35383,20 +33493,12 @@
       "name": "Hidden Case 1904",
       "input": {
         "words": [
-          "l",
-          "pp",
-          "wrq",
-          "r",
-          "srm",
-          "enor",
-          "zqpn",
-          "c",
-          "v",
-          "yqr",
-          "xn"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "lmnopqwrsezcvyx",
+      "expected": "",
       "hidden": true
     },
     {
@@ -35485,19 +33587,12 @@
       "name": "Hidden Case 1909",
       "input": {
         "words": [
-          "sp",
-          "p",
-          "c",
-          "g",
-          "w",
-          "bp",
-          "mmp",
-          "opon",
-          "hqn",
-          "x"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "nqspcgwbmohx",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -35588,11 +33683,13 @@
       "name": "Hidden Case 1914",
       "input": {
         "words": [
-          "byzxazm",
-          "byzxaz"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -35668,21 +33765,10 @@
       "name": "Hidden Case 1919",
       "input": {
         "words": [
-          "i",
-          "zp",
-          "trm",
-          "r",
-          "pqmr",
-          "n",
-          "monp",
-          "yrqm",
-          "aqrr",
-          "oop",
-          "eopn",
-          "hpm"
+          "solo"
         ]
       },
-      "expected": "iqztrpnmyaoeh",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -35716,19 +33802,12 @@
       "name": "Hidden Case 1921",
       "input": {
         "words": [
-          "enpm",
-          "mmqo",
-          "fqno",
-          "hopn",
-          "rr",
-          "bm",
-          "dmm",
-          "krrr",
-          "wqrp",
-          "vnpr"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "emfhnopqrbdkwv",
+      "expected": "",
       "hidden": true
     },
     {
@@ -35932,17 +34011,12 @@
       "name": "Hidden Case 1932",
       "input": {
         "words": [
-          "j",
-          "pq",
-          "dn",
-          "upo",
-          "y",
-          "srop",
-          "mrp",
-          "brq"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "jnopdqruysmb",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -36037,23 +34111,12 @@
       "name": "Hidden Case 1938",
       "input": {
         "words": [
-          "xopr",
-          "von",
-          "qq",
-          "fmnn",
-          "w",
-          "uo",
-          "bmqn",
-          "epm",
-          "r",
-          "gmn",
-          "jpo",
-          "nmop",
-          "lr",
-          "iop"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "mopxvqfwubergjnli",
+      "expected": "",
       "hidden": true
     },
     {
@@ -36140,17 +34203,13 @@
       "name": "Hidden Case 1943",
       "input": {
         "words": [
-          "lqr",
-          "vo",
-          "jno",
-          "wqr",
-          "kpoo",
-          "nmpo",
-          "y",
-          "morm"
+          "za",
+          "zb",
+          "ca",
+          "cb"
         ]
       },
-      "expected": "lopqrvjwknym",
+      "expected": "abzc",
       "hidden": true
     },
     {
@@ -36338,21 +34397,12 @@
       "name": "Hidden Case 1955",
       "input": {
         "words": [
-          "znpm",
-          "ano",
-          "i",
-          "m",
-          "bqmm",
-          "cnnr",
-          "g",
-          "pm",
-          "rrp",
-          "kpq",
-          "em",
-          "emz"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "noqzaimbcgprke",
+      "expected": "",
       "hidden": true
     },
     {
@@ -36385,18 +34435,10 @@
       "name": "Hidden Case 1957",
       "input": {
         "words": [
-          "vnpr",
-          "bn",
-          "dnn",
-          "y",
-          "or",
-          "gqno",
-          "tr",
-          "jpr",
-          "noo"
+          "solo"
         ]
       },
-      "expected": "pqrvbdyogtjn",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -36678,16 +34720,12 @@
       "name": "Hidden Case 1972",
       "input": {
         "words": [
-          "cr",
-          "iqp",
-          "v",
-          "s",
-          "em",
-          "aooq",
-          "m"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "ciopqrvseam",
+      "expected": "",
       "hidden": true
     },
     {
@@ -36752,13 +34790,10 @@
       "name": "Hidden Case 1976",
       "input": {
         "words": [
-          "q",
-          "c",
-          "oqmn",
-          "ypo"
+          "solo"
         ]
       },
-      "expected": "mnpqcoy",
+      "expected": "los",
       "hidden": true
     },
     {
@@ -36785,20 +34820,12 @@
       "name": "Hidden Case 1978",
       "input": {
         "words": [
-          "vnpn",
-          "op",
-          "ir",
-          "jn",
-          "koqq",
-          "t",
-          "eonm",
-          "umn",
-          "dm",
-          "fnpo",
-          "gm"
+          "ab",
+          "ab",
+          "ac"
         ]
       },
-      "expected": "mnpqrvoijkteudfg",
+      "expected": "abc",
       "hidden": true
     },
     {
@@ -36984,23 +35011,12 @@
       "name": "Hidden Case 1989",
       "input": {
         "words": [
-          "xmqr",
-          "yro",
-          "up",
-          "an",
-          "mom",
-          "kn",
-          "nnqn",
-          "wr",
-          "spq",
-          "j",
-          "h",
-          "bnp",
-          "in",
-          "vrr"
+          "z",
+          "x",
+          "z"
         ]
       },
-      "expected": "opqrxyuamknwsjhbiv",
+      "expected": "",
       "hidden": true
     },
     {
@@ -37062,77 +35078,6 @@
         ]
       },
       "expected": "hmqzun",
-      "hidden": true
-    },
-    {
-      "id": "hidden-1994",
-      "name": "Hidden Case 1994",
-      "input": {
-        "words": [
-          "l",
-          "tmm",
-          "hq",
-          "m",
-          "smp",
-          "dnmq",
-          "epm"
-        ]
-      },
-      "expected": "lnpqthmsde",
-      "hidden": true
-    },
-    {
-      "id": "hidden-1995",
-      "name": "Hidden Case 1995",
-      "input": {
-        "words": [
-          "xqp",
-          "zoqn",
-          "kn",
-          "cmm",
-          "rnp",
-          "o",
-          "irmm",
-          "trm",
-          "dqm",
-          "dqmz"
-        ]
-      },
-      "expected": "mnpqxzkcroitd",
-      "hidden": true
-    },
-    {
-      "id": "hidden-1996",
-      "name": "Hidden Case 1996",
-      "input": {
-        "words": [
-          "g",
-          "qr",
-          "m",
-          "uon",
-          "e",
-          "on",
-          "wrmq",
-          "ynoo",
-          "an",
-          "v"
-        ]
-      },
-      "expected": "gnqmrueowyav",
-      "hidden": true
-    },
-    {
-      "id": "hidden-1997",
-      "name": "Hidden Case 1997",
-      "input": {
-        "words": [
-          "v",
-          "b",
-          "xnm",
-          "qrmo"
-        ]
-      },
-      "expected": "mnorvbxq",
       "hidden": true
     }
   ]

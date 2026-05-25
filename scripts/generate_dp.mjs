@@ -78,12 +78,32 @@ function word(seed, length = 3 + (seed % 15), alphabet = "abcdefghi") {
 }
 
 function palindromeSeed(seed) {
-  const core = word(seed, 1 + (seed % 8), "abcd");
-  if (seed % 5 === 0) return core + [...core].reverse().join("");
-  if (seed % 5 === 1) return word(seed, 4 + (seed % 12), "abcde");
-  if (seed % 5 === 2) return "x" + core + [...core].reverse().join("") + "y";
-  if (seed % 5 === 3) return "a".repeat(1 + (seed % 20));
-  return core + "z" + [...core].reverse().join("");
+  const fixed = [
+    "",
+    "a",
+    "aa",
+    "ab",
+    "aba",
+    "abba",
+    "abcd",
+    "abcddcba",
+    "zzzzzzzzzzzzzzzzzzzz",
+    "abababababababab",
+    "abcbaqwertrewq",
+    "zyxwvutsrqponm"
+  ];
+  if (seed <= fixed.length) return fixed[seed - 1];
+
+  const core = word(seed, 1 + (mix(seed, 301) % 24), "abcdxyz");
+  const reversed = [...core].reverse().join("");
+  if (seed % 8 === 0) return core + reversed;
+  if (seed % 8 === 1) return word(seed, 4 + (mix(seed, 302) % 36), "abcdef");
+  if (seed % 8 === 2) return "x" + core + reversed + "y";
+  if (seed % 8 === 3) return "a".repeat(1 + (mix(seed, 303) % 60));
+  if (seed % 8 === 4) return core + "z" + reversed;
+  if (seed % 8 === 5) return Array.from({ length: 4 + (mix(seed, 304) % 44) }, (_, i) => (i % 2 === 0 ? "a" : "b")).join("");
+  if (seed % 8 === 6) return `${core.slice(0, Math.ceil(core.length / 2))}m${reversed}`;
+  return `${word(seed, 2 + (mix(seed, 305) % 20), "abc")}${word(seed + 19, 2 + (mix(seed, 306) % 20), "xyz")}`;
 }
 
 function decodeSeed(seed) {
@@ -246,8 +266,32 @@ const problems = [
     ["Input: nums = [10,9,2,5,3,7,101,18]\nOutput: 4", "Input: nums = [0,1,0,3,2,3]\nOutput: 4", "Input: nums = [7,7,7]\nOutput: 1"],
     "```python\nimport bisect\n\nclass Solution:\n    def lengthOfLIS(self, nums):\n        tails = []\n        for value in nums:\n            i = bisect.bisect_left(tails, value)\n            if i == len(tails): tails.append(value)\n            else: tails[i] = value\n        return len(tails)\n```", "class Solution:\n    def lengthOfLIS(self, nums):\n        pass"),
   makeProblem(110, "partition-equal-subset-sum", "Partition Equal Subset Sum", "Medium", ["Array", "Dynamic Programming"], "canPartition",
-    [caseFrom({ nums: [1, 5, 11, 5] }, true), caseFrom({ nums: [1, 2, 3, 5] }, false), caseFrom({ nums: [2, 2, 3, 5] }, false)],
-    (seed) => { const arr = posNums(seed, 3 + (seed % 9), 12); return caseFrom({ nums: arr }, canPartition(arr)); },
+    [
+      [1, 5, 11, 5],
+      [1, 2, 3, 5],
+      [2, 2, 3, 5],
+      [1],
+      [7, 7],
+      [1, 1, 1, 1, 1, 1],
+      [2, 4, 6, 10],
+      [100, 1, 2, 3],
+      [3, 3, 3, 4, 5],
+      [8, 8, 8, 8, 16]
+    ].map((nums) => caseFrom({ nums }, canPartition(nums))),
+    (seed) => {
+      let arr;
+      if (seed % 7 === 0) arr = Array.from({ length: 1 + (mix(seed, 401) % 18) }, () => 1 + (mix(seed, 402) % 80));
+      else if (seed % 7 === 1) arr = [1 + (mix(seed, 403) % 5000)];
+      else if (seed % 7 === 2) {
+        const value = 1 + (mix(seed, 404) % 5000);
+        arr = [value, value];
+      } else if (seed % 7 === 3) {
+        const base = 1 + (mix(seed, 405) % 12);
+        arr = [1, 2, 4, 8, 16, 32].slice(0, 1 + (seed % 6)).map((value) => value * base);
+      }
+      else arr = posNums(seed, 3 + (mix(seed, 403) % 24), 40);
+      return caseFrom({ nums: arr }, canPartition(arr));
+    },
     "Return whether the array can be split into two subsets with equal sum.",
     ["Input: nums = [1,5,11,5]\nOutput: true", "Input: nums = [1,2,3,5]\nOutput: false", "Input: nums = [2,2,3,5]\nOutput: false"],
     "```python\nclass Solution:\n    def canPartition(self, nums):\n        total = sum(nums)\n        if total % 2: return False\n        target = total // 2\n        possible = {0}\n        for value in nums:\n            possible |= {x + value for x in list(possible) if x + value <= target}\n        return target in possible\n```", "class Solution:\n    def canPartition(self, nums):\n        pass"),

@@ -356,6 +356,10 @@ function itinerarySeed(seed) {
 }
 
 function alienWordsSeed(seed) {
+  if (seed % 17 === 0) return ["z", "x", "z"];
+  if (seed % 19 === 0) return ["solo"];
+  if (seed % 23 === 0) return ["ab", "ab", "ac"];
+  if (seed % 29 === 0) return ["za", "zb", "ca", "cb"];
   if (seed % 11 === 0) {
     const prefix = Array.from({ length: 2 + (seed % 5) }, (_, i) => "abcxyz"[mix(seed, i + 260) % 6]).join("");
     return [`${prefix}${"m".repeat(1 + (seed % 3))}`, prefix];
@@ -734,7 +738,11 @@ problems.push(makeProblem(96, "swim-in-rising-water", "Swim in Rising Water", "H
 problems.push(makeProblem(97, "alien-dictionary", "Alien Dictionary", "Hard", ["Array", "String", "Depth-First Search", "Breadth-First Search", "Graph", "Topological Sort"], "alienOrder", [
   caseFrom({ words: ["wrt", "wrf", "er", "ett", "rftt"] }, "wertf"),
   caseFrom({ words: ["z", "x"] }, "zx"),
-  caseFrom({ words: ["abc", "ab"] }, "")
+  caseFrom({ words: ["abc", "ab"] }, ""),
+  caseFrom({ words: ["z", "x", "z"] }, ""),
+  caseFrom({ words: ["solo"] }, "los"),
+  caseFrom({ words: ["ab", "ab", "ac"] }, "abc"),
+  caseFrom({ words: ["za", "zb", "ca", "cb"] }, "azbc")
 ], (seed) => { const words = alienWordsSeed(seed); return caseFrom({ words }, alienOrder(words)); }, "Infer one valid character ordering from words sorted according to an unknown alphabet. Return an empty string when the ordering is impossible.", ["Input: words = [wrt,wrf,er,ett,rftt]\nOutput: wertf", "Input: words = [z,x]\nOutput: zx", "Input: words = [abc,ab]\nOutput: \"\""], "```python\nfrom collections import defaultdict, deque\n\nclass Solution:\n    def alienOrder(self, words):\n        chars = set(''.join(words))\n        graph = {ch: set() for ch in chars}\n        indeg = {ch: 0 for ch in chars}\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b): return ''\n            for x, y in zip(a, b):\n                if x != y:\n                    if y not in graph[x]: graph[x].add(y); indeg[y] += 1\n                    break\n        queue = deque(sorted(ch for ch in chars if indeg[ch] == 0))\n        out = []\n        while queue:\n            ch = queue.popleft(); out.append(ch)\n            for nxt in sorted(graph[ch]):\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0: queue.append(nxt)\n        return ''.join(out) if len(out) == len(chars) else ''\n```", "class Solution:\n    def alienOrder(self, words):\n        pass", alienChecker));
 
 problems.push(makeProblem(98, "cheapest-flights-within-k-stops", "Cheapest Flights Within K Stops", "Medium", ["Dynamic Programming", "Depth-First Search", "Breadth-First Search", "Graph", "Heap", "Shortest Path"], "findCheapestPrice", [

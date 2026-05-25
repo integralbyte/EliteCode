@@ -290,18 +290,45 @@ function sudokuGeneratedCase(seed) {
       return digitMap[value];
     })
   );
+
   for (let r = 0; r < 9; r += 1) {
     for (let c = 0; c < 9; c += 1) {
       if (mix(seed, r * 9 + c) % 4 === 0) board[r][c] = ".";
     }
   }
-  if (seed % 5 !== 0) {
+
+  const mode = seed % 7;
+  if (mode === 1) {
     const r = mix(seed, 100) % 9;
     const c1 = mix(seed, 101) % 9;
     let c2 = mix(seed, 102) % 9;
     if (c1 === c2) c2 = (c2 + 1) % 9;
     if (board[r][c1] === ".") board[r][c1] = String(1 + (mix(seed, 103) % 9));
     board[r][c2] = board[r][c1];
+  } else if (mode === 2) {
+    const c = mix(seed, 104) % 9;
+    const r1 = mix(seed, 105) % 9;
+    let r2 = mix(seed, 106) % 9;
+    if (r1 === r2) r2 = (r2 + 1) % 9;
+    if (board[r1][c] === ".") board[r1][c] = String(1 + (mix(seed, 107) % 9));
+    board[r2][c] = board[r1][c];
+  } else if (mode === 3) {
+    const br = Math.floor((mix(seed, 108) % 9) / 3) * 3;
+    const bc = Math.floor((mix(seed, 109) % 9) / 3) * 3;
+    const r1 = br + (mix(seed, 110) % 3);
+    const c1 = bc + (mix(seed, 111) % 3);
+    let r2 = br + (mix(seed, 112) % 3);
+    let c2 = bc + (mix(seed, 113) % 3);
+    if (r1 === r2 && c1 === c2) c2 = bc + ((c2 - bc + 1) % 3);
+    if (board[r1][c1] === ".") board[r1][c1] = String(1 + (mix(seed, 114) % 9));
+    board[r2][c2] = board[r1][c1];
+  } else if (mode === 4) {
+    const r = mix(seed, 115) % 9;
+    const c = mix(seed, 116) % 9;
+    for (let i = 0; i < 9; i += 1) {
+      board[r][i] = ".";
+      board[i][c] = ".";
+    }
   }
   return caseFrom({ board }, validSudoku(board));
 }

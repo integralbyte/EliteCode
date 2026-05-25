@@ -4,7 +4,7 @@ import path from "node:path";
 const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
 const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
-const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 4);
+const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 8);
 
 const finiteDomains = {
   "generate-parentheses": { field: "n", values: range(1, 8) },
@@ -24,8 +24,50 @@ function isNumberArray(value) {
   return Array.isArray(value) && value.every((item) => typeof item === "number");
 }
 
+function isStringArray(value) {
+  return Array.isArray(value) && value.every((item) => typeof item === "string");
+}
+
 function isMatrix(value) {
   return Array.isArray(value) && value.length > 0 && value.every((row) => Array.isArray(row));
+}
+
+function hasDuplicate(values) {
+  return new Set(values).size < values.length;
+}
+
+function hasStringPrefixPair(values) {
+  for (let i = 0; i < values.length; i += 1) {
+    for (let j = 0; j < values.length; j += 1) {
+      if (i !== j && values[i].length > values[j].length && values[i].startsWith(values[j])) return true;
+    }
+  }
+  return false;
+}
+
+function hasMatrixColumnDuplicate(matrix) {
+  const cols = Math.max(...matrix.map((row) => row.length));
+  for (let c = 0; c < cols; c += 1) {
+    const values = matrix.map((row) => row[c]).filter((item) => item !== undefined && item !== ".");
+    if (hasDuplicate(values)) return true;
+  }
+  return false;
+}
+
+function hasSudokuBoxDuplicate(matrix) {
+  if (matrix.length !== 9 || matrix.some((row) => row.length !== 9)) return false;
+  for (let br = 0; br < 9; br += 3) {
+    for (let bc = 0; bc < 9; bc += 3) {
+      const values = [];
+      for (let r = br; r < br + 3; r += 1) {
+        for (let c = bc; c < bc + 3; c += 1) {
+          if (matrix[r][c] !== ".") values.push(matrix[r][c]);
+        }
+      }
+      if (hasDuplicate(values)) return true;
+    }
+  }
+  return false;
 }
 
 function addScalarFeatures(features, value, prefix) {
@@ -47,6 +89,13 @@ function addScalarFeatures(features, value, prefix) {
     if (value === [...value].reverse().join("") && value.length > 1) features.add(`${prefix}:palindrome-string`);
     if (/[^a-zA-Z0-9]/.test(value)) features.add(`${prefix}:punctuation`);
     if (new Set(value).size < value.length) features.add(`${prefix}:repeated-chars`);
+    if (value.length > 1 && new Set(value).size === 1) features.add(`${prefix}:all-same-string`);
+    if (value.length >= 4 && new Set(value).size === value.length) features.add(`${prefix}:all-distinct-string`);
+    if (value.length >= 4 && value.split("").every((ch, index) => ch === value[index % 2])) features.add(`${prefix}:alternating-string`);
+    if (/^[a-z]+$/.test(value)) features.add(`${prefix}:lowercase-string`);
+    if (/^[A-Z]+$/.test(value)) features.add(`${prefix}:uppercase-string`);
+    if (/^[0-9]+$/.test(value)) features.add(`${prefix}:digit-string`);
+    if (/^[()[\]{}*]+$/.test(value)) features.add(`${prefix}:delimiter-string`);
   }
 }
 
@@ -63,6 +112,17 @@ function collectFeatures(value, features, prefix = "input") {
     if (new Set(value).size < value.length) features.add(`${prefix}:duplicates`);
     if (value.every((item, index) => index === 0 || value[index - 1] <= item)) features.add(`${prefix}:sorted`);
     if (value.every((item, index) => index === 0 || value[index - 1] >= item)) features.add(`${prefix}:reverse-sorted`);
+  } else if (isStringArray(value)) {
+    features.add(`${prefix}:string-array`);
+    if (value.length === 0) features.add(`${prefix}:empty-array`);
+    if (value.length === 1) features.add(`${prefix}:single-element-array`);
+    if (value.length >= 10) features.add(`${prefix}:long-array`);
+    if (value.includes("")) features.add(`${prefix}:contains-empty-string`);
+    if (hasDuplicate(value)) features.add(`${prefix}:duplicates`);
+    if (hasStringPrefixPair(value)) features.add(`${prefix}:prefix-pair`);
+    if (new Set(value.map((item) => item.length)).size > 1) features.add(`${prefix}:mixed-string-lengths`);
+    if (value.every((item, index) => index === 0 || value[index - 1] <= item)) features.add(`${prefix}:lexicographically-sorted`);
+    for (const item of value.slice(0, 40)) collectFeatures(item, features, prefix);
   } else if (Array.isArray(value)) {
     if (value.length === 0) features.add(`${prefix}:empty-array`);
     if (value.length === 1) features.add(`${prefix}:single-element-array`);
@@ -76,6 +136,18 @@ function collectFeatures(value, features, prefix = "input") {
       if (cols === 1) features.add(`${prefix}:one-column-matrix`);
       if (rows === cols) features.add(`${prefix}:square-matrix`);
       if (rows !== cols) features.add(`${prefix}:rectangular-matrix`);
+      if (value.every((row) => row.every((item) => typeof item === "string"))) {
+        features.add(`${prefix}:string-matrix`);
+        if (value.some((row) => row.includes("."))) features.add(`${prefix}:contains-placeholder`);
+        if (value.some((row) => hasDuplicate(row.filter((item) => item !== ".")))) features.add(`${prefix}:row-duplicate`);
+        if (hasMatrixColumnDuplicate(value)) features.add(`${prefix}:column-duplicate`);
+        if (hasSudokuBoxDuplicate(value)) features.add(`${prefix}:box-duplicate`);
+      }
+      if (value.every((row) => row.every((item) => typeof item === "number"))) {
+        features.add(`${prefix}:number-matrix`);
+        if (value.every((row) => row.every((item) => item === 0 || item === 1))) features.add(`${prefix}:binary-matrix`);
+        if (value.flat().includes(0)) features.add(`${prefix}:matrix-contains-zero`);
+      }
     }
     for (const item of value.slice(0, 40)) collectFeatures(item, features, prefix);
   } else if (isPlainObject(value)) {

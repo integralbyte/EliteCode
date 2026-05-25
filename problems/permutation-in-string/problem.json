@@ -63,8 +63,8 @@
       "id": "hidden-1",
       "name": "Hidden Case 1",
       "input": {
-        "s1": "ffcabd",
-        "s2": "fdcabfo"
+        "s1": "a",
+        "s2": "a"
       },
       "expected": true,
       "hidden": true
@@ -73,8 +73,8 @@
       "id": "hidden-2",
       "name": "Hidden Case 2",
       "input": {
-        "s1": "fcedffff",
-        "s2": "cdegj"
+        "s1": "abc",
+        "s2": "ab"
       },
       "expected": false,
       "hidden": true
@@ -83,48 +83,48 @@
       "id": "hidden-3",
       "name": "Hidden Case 3",
       "input": {
-        "s1": "bebf",
-        "s2": "ababhig"
+        "s1": "aab",
+        "s2": "eidaba"
       },
-      "expected": false,
+      "expected": true,
       "hidden": true
     },
     {
       "id": "hidden-4",
       "name": "Hidden Case 4",
       "input": {
-        "s1": "bfcec",
-        "s2": "yzxccfebmmpo"
+        "s1": "aab",
+        "s2": "eidabb"
       },
-      "expected": true,
+      "expected": false,
       "hidden": true
     },
     {
       "id": "hidden-5",
       "name": "Hidden Case 5",
       "input": {
-        "s1": "dedbebf",
-        "s2": "adaffcjgijj"
+        "s1": "xyz",
+        "s2": "zyxabc"
       },
-      "expected": false,
+      "expected": true,
       "hidden": true
     },
     {
       "id": "hidden-6",
       "name": "Hidden Case 6",
       "input": {
-        "s1": "cb",
-        "s2": "feaceebhjhhhj"
+        "s1": "xyz",
+        "s2": "abczyx"
       },
-      "expected": false,
+      "expected": true,
       "hidden": true
     },
     {
       "id": "hidden-7",
       "name": "Hidden Case 7",
       "input": {
-        "s1": "ebaee",
-        "s2": "xeabeepppnnnp"
+        "s1": "abcd",
+        "s2": "dcba"
       },
       "expected": true,
       "hidden": true
@@ -133,8 +133,8 @@
       "id": "hidden-8",
       "name": "Hidden Case 8",
       "input": {
-        "s1": "ffcceaf",
-        "s2": "abfbeeacegihjjjgg"
+        "s1": "abcd",
+        "s2": "abc"
       },
       "expected": false,
       "hidden": true
@@ -143,20 +143,20 @@
       "id": "hidden-9",
       "name": "Hidden Case 9",
       "input": {
-        "s1": "aeaffdee",
-        "s2": "bdbbedcefaihjhggiij"
+        "s1": "zz",
+        "s2": "azzzb"
       },
-      "expected": false,
+      "expected": true,
       "hidden": true
     },
     {
       "id": "hidden-10",
       "name": "Hidden Case 10",
       "input": {
-        "s1": "defd",
-        "s2": "zzyyfeddm"
+        "s1": "abc",
+        "s2": "defghijkl"
       },
-      "expected": true,
+      "expected": false,
       "hidden": true
     },
     {

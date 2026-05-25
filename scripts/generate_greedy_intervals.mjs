@@ -47,7 +47,39 @@ function rooms(intervals) { const events = []; for (const [s, e] of intervals) {
 function minInterval(intervals, queries) { return queries.map((q) => { let best = Infinity; for (const [s, e] of intervals) if (s <= q && q <= e) best = Math.min(best, e - s + 1); return Number.isFinite(best) ? best : -1; }); }
 function intervalSeed(seed) { const count = 1 + (mix(seed, 20) % 18); const arr = []; for (let i = 0; i < count; i += 1) { const s = (mix(seed, i + 21) % 80) - 20; arr.push([s, s + 1 + (mix(seed, i + 42) % 24)]); } return arr; }
 function partitionSeed(seed) { if (seed % 5 === 0) return word(seed, 1 + (seed % 26), "abcdefghijklmnopqrstuvwxyz"); const chunks = []; const alphabet = "abcdefghijklmnopqrstuvwxyz"; for (let i = 0; i < 1 + (mix(seed, 50) % 8); i += 1) { const a = alphabet[mix(seed, i + 51) % alphabet.length]; const b = alphabet[mix(seed, i + 71) % alphabet.length]; chunks.push(`${a}${word(seed + i, mix(seed, i + 91) % 5, "abcde")}${seed % 3 === 0 ? a : b}`); } return chunks.join(""); }
-function starParenSeed(seed) { const chars = ["(", ")", "*"]; return Array.from({ length: 1 + (mix(seed, 100) % 32) }, (_, i) => chars[mix(seed, i + 101) % chars.length]).join(""); }
+function starParenSeed(seed) {
+  const fixed = [
+    "",
+    "*",
+    "(",
+    ")",
+    "()",
+    "(*)",
+    "(*))",
+    "(((******)))",
+    "((*)",
+    "*)",
+    "((*)*)",
+    "****",
+    "(()*())",
+    "())*"
+  ];
+  if (seed <= fixed.length) return fixed[seed - 1];
+
+  const left = 1 + (mix(seed, 100) % 28);
+  const stars = 1 + (mix(seed, 101) % 28);
+  const right = 1 + (mix(seed, 102) % 28);
+  if (seed % 6 === 0) return "(".repeat(left) + "*".repeat(stars) + ")".repeat(right);
+  if (seed % 6 === 1) return ")".repeat(1 + (right % 9)) + "*".repeat(stars) + "(".repeat(1 + (left % 11));
+  if (seed % 6 === 2) return "(".repeat(left) + "*".repeat(stars);
+  if (seed % 6 === 3) return "*".repeat(stars) + ")".repeat(right);
+  if (seed % 6 === 4) {
+    const length = 8 + (mix(seed, 103) % 64);
+    return Array.from({ length }, (_, i) => (mix(seed, i + 104) % 3 === 0 ? "(" : mix(seed, i + 105) % 3 === 1 ? "*" : ")")).join("");
+  }
+  const chars = ["(", ")", "*"];
+  return Array.from({ length: 1 + (mix(seed, 106) % 72) }, (_, i) => chars[mix(seed, i + 107) % chars.length]).join("");
+}
 
 function makeProblem(id, slug, title, difficulty, tags, method, visible, maker, body, examples, solution, starter) {
   const filled = fillCases(visible, maker);
@@ -86,7 +118,7 @@ const problems = [
     (seed) => { const s = partitionSeed(seed); return caseFrom({ s }, partitionLabels(s)); }, "Split a string into as many parts as possible so each letter appears in at most one part.", ["Input: s = ababcbacadefegdehijhklij\nOutput: [9,7,8]", "Input: s = eccbbbbdec\nOutput: [10]", "Input: s = abc\nOutput: [1,1,1]"],
     "```python\nclass Solution:\n    def partitionLabels(self, s):\n        last = {ch: i for i, ch in enumerate(s)}\n        out = []\n        start = end = 0\n        for i, ch in enumerate(s):\n            end = max(end, last[ch])\n            if i == end:\n                out.append(end - start + 1); start = i + 1\n        return out\n```", "class Solution:\n    def partitionLabels(self, s):\n        pass"),
   makeProblem(129, "valid-parenthesis-string", "Valid Parenthesis String", "Medium", ["String", "Dynamic Programming", "Stack", "Greedy"], "checkValidString",
-    [caseFrom({ s: "(*)" }, true), caseFrom({ s: "(*))" }, true), caseFrom({ s: ")*(" }, false)],
+    ["(*)", "(*))", ")*(", "", "*", "(", ")", "(((******)))", "((*)", "())*"].map((s) => caseFrom({ s }, validParenStar(s))),
     (seed) => { const s = starParenSeed(seed); return caseFrom({ s }, validParenStar(s)); }, "Return whether `*` can be treated as `(`, `)`, or empty to make the parenthesis string valid.", ["Input: s = (*)\nOutput: true", "Input: s = (*))\nOutput: true", "Input: s = )*(\nOutput: false"],
     "```python\nclass Solution:\n    def checkValidString(self, s):\n        low = high = 0\n        for ch in s:\n            if ch == '(':\n                low += 1; high += 1\n            elif ch == ')':\n                low -= 1; high -= 1\n            else:\n                low -= 1; high += 1\n            if high < 0: return False\n            low = max(low, 0)\n        return low == 0\n```", "class Solution:\n    def checkValidString(self, s):\n        pass"),
   makeProblem(130, "insert-interval", "Insert Interval", "Medium", ["Array"], "insert",

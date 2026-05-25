@@ -23,6 +23,9 @@ const problem = {
   hints: ["Use complements."],
   similar_questions: [],
   starter_code: { python: "class Solution:\n    def twoSum(self, nums, target):\n        pass\n" },
+  entrypoint: { class_name: "Solution", method_name: "twoSum" },
+  time_limit_ms: 2000,
+  memory_limit_mb: 256,
   cases: [{ id: "case-1", name: "Case 1", input: { nums: [2, 7], target: 9 }, expected: [0, 1], hidden: false }]
 };
 
@@ -135,6 +138,15 @@ describe("App", () => {
       },
       { timeout: 1200 }
     );
+  });
+
+  it("shows PyScript as an experimental browser runtime", async () => {
+    render(<App />);
+
+    const runtime = await screen.findByLabelText("Execution runtime");
+    fireEvent.change(runtime, { target: { value: "pyscript" } });
+
+    expect(screen.getByText("Experimental")).toBeInTheDocument();
   });
 });
 

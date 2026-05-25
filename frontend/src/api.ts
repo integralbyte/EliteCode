@@ -1,5 +1,6 @@
 export type Difficulty = "Easy" | "Medium" | "Hard";
 export type Language = "python";
+export type ExecutionRuntime = "python" | "pyscript";
 
 export interface ProblemSummary {
   id: number;
@@ -39,6 +40,12 @@ export interface Problem {
   hints: string[];
   similar_questions: Array<{ title: string; difficulty: string }>;
   starter_code: Record<Language, string>;
+  entrypoint: {
+    class_name: string;
+    method_name: string;
+  };
+  time_limit_ms?: number;
+  memory_limit_mb?: number;
   cases: ProblemCase[];
 }
 
@@ -146,16 +153,99 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   return response.json() as Promise<T>;
 }
 
+async function withStaticFallback<T>(requestPromise: Promise<T>, fallback: () => Promise<T> | T): Promise<T> {
+  try {
+    return await requestPromise;
+  } catch {
+    return fallback();
+  }
+}
+
+const LOCAL_PROGRESS_PREFIX = "elitecode:progress:";
+const LOCAL_SUBMISSIONS_PREFIX = "elitecode:submissions:";
+
+function readLocalJson<T>(key: string, fallback: T): T {
+  try {
+    const raw = window.localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeLocalJson(key: string, value: unknown) {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Static fallback persistence is best effort.
+  }
+}
+
+async function getStaticProblems(): Promise<ProblemsResponse> {
+  const payload = await request<ProblemsResponse>("/problem-data/index.json");
+  const solved = new Set(
+    payload.problems
+      .filter((problem) => readLocalJson<Progress | null>(`${LOCAL_PROGRESS_PREFIX}${problem.slug}`, null)?.solved)
+      .map((problem) => problem.slug)
+  );
+  return {
+    ...payload,
+    problems: payload.problems.map((problem) => ({ ...problem, solved: solved.has(problem.slug) }))
+  };
+}
+
+async function getStaticProblem(slug: string): Promise<Problem> {
+  return request<Problem>(`/problem-data/${slug}.json`);
+}
+
+function getLocalProgress(slug: string): Progress {
+  return readLocalJson<Progress>(`${LOCAL_PROGRESS_PREFIX}${slug}`, {
+    slug,
+    language: "python",
+    code: "",
+    solved: false,
+    settings: {}
+  });
+}
+
+function saveLocalProgress(slug: string, code: string, settings: Record<string, unknown>): Progress {
+  const current = getLocalProgress(slug);
+  const progress = { ...current, code, settings };
+  writeLocalJson(`${LOCAL_PROGRESS_PREFIX}${slug}`, progress);
+  return progress;
+}
+
+function getLocalSubmissions(slug: string): SubmissionRecord[] {
+  return readLocalJson<SubmissionRecord[]>(`${LOCAL_SUBMISSIONS_PREFIX}${slug}`, []);
+}
+
+function saveLocalSubmission(record: SubmissionRecord): SubmissionRecord[] {
+  const submissions = [record, ...getLocalSubmissions(record.slug)];
+  writeLocalJson(`${LOCAL_SUBMISSIONS_PREFIX}${record.slug}`, submissions);
+  return submissions;
+}
+
+function markLocalSolved(slug: string, code: string, settings: Record<string, unknown>): Progress {
+  const progress = { ...getLocalProgress(slug), code, settings, solved: true };
+  writeLocalJson(`${LOCAL_PROGRESS_PREFIX}${slug}`, progress);
+  return progress;
+}
+
 export const api = {
-  getProblems: () => request<ProblemsResponse>("/api/problems"),
-  getProblem: (slug: string) => request<Problem>(`/api/problems/${slug}`),
-  getProgress: (slug: string) => request<Progress>(`/api/progress/${slug}?language=python`),
+  getProblems: () => withStaticFallback(request<ProblemsResponse>("/api/problems"), getStaticProblems),
+  getProblem: (slug: string) => withStaticFallback(request<Problem>(`/api/problems/${slug}`), () => getStaticProblem(slug)),
+  getProgress: (slug: string) => withStaticFallback(request<Progress>(`/api/progress/${slug}?language=python`), () => getLocalProgress(slug)),
   saveProgress: (slug: string, code: string, settings: Record<string, unknown>) =>
-    request<Progress>(`/api/progress/${slug}`, {
-      method: "PUT",
-      body: JSON.stringify({ language: "python", code, settings })
-    }),
-  getSubmissions: (slug: string) => request<SubmissionRecord[]>(`/api/submissions?slug=${slug}`),
+    withStaticFallback(
+      request<Progress>(`/api/progress/${slug}`, {
+        method: "PUT",
+        body: JSON.stringify({ language: "python", code, settings })
+      }),
+      () => saveLocalProgress(slug, code, settings)
+    ),
+  getSubmissions: (slug: string) => withStaticFallback(request<SubmissionRecord[]>(`/api/submissions?slug=${slug}`), () => getLocalSubmissions(slug)),
+  saveBrowserSubmission: saveLocalSubmission,
+  markBrowserSolved: markLocalSolved,
   run: (payload: RunPayload) =>
     request<JudgeResult>("/api/run", {
       method: "POST",

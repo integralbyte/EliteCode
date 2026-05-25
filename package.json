@@ -8,7 +8,7 @@
     "dev": "concurrently -k -n api,web -c cyan,green \"npm run dev:api\" \"npm run dev:web\"",
     "dev:api": ".venv/bin/python -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000",
     "dev:web": "vite --host 127.0.0.1 --port 5173",
-    "build": "vite build",
+    "build": "npm run export:static-data && vite build",
     "preview": ".venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000",
     "install:backend": "python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt",
     "validate:problems": ".venv/bin/python -m backend.problem_loader --validate problems",
@@ -21,6 +21,7 @@
     "audit:manual": "node scripts/audit_manual_edges.mjs",
     "import:images": "node scripts/import_problem_images.mjs",
     "audit:images": "node scripts/audit_problem_images.mjs",
+    "export:static-data": "node scripts/export_static_problem_data.mjs",
     "audit:complexity": ".venv/bin/python scripts/audit_reference_complexity.py --write reports/reference_complexity_report.json --strict",
     "audit:complexity:sources": "node scripts/audit_complexity_sources.mjs"
   },

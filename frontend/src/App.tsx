@@ -34,6 +34,7 @@ import {
   api,
   type CaseResult,
   type ComplexityEstimate,
+  type ExecutionRuntime,
   type JudgeResult,
   type Problem,
   type ProblemCase,
@@ -41,6 +42,7 @@ import {
   type SubmissionAnalysis,
   type SubmissionRecord
 } from "./api";
+import { runWithPyScript } from "./pyscriptRunner";
 import { difficultyClass, firstFailedCase, formatMs, prettyJson, summarizeResult, verdictClass } from "./utils";
 
 type LeftTab = "description" | "editorial" | "solutions" | "submissions";
@@ -59,6 +61,7 @@ const DEFAULT_SETTINGS = {
   wordWrap: true,
   relativeLineNumbers: false,
   actionButtonsPosition: "toolbar",
+  executionRuntime: "python",
   runShortcutEnabled: true,
   submitShortcutEnabled: false
 };
@@ -169,6 +172,7 @@ export default function App() {
   }, [problem, selectedCaseId]);
 
   const activeFailure = useMemo(() => firstFailedCase(judgeResult), [judgeResult]);
+  const executionRuntime = readString(settings.executionRuntime, DEFAULT_SETTINGS.executionRuntime) as ExecutionRuntime;
 
   const updateSettings = (patch: Record<string, unknown>) => {
     setSettings((current) => ({ ...current, ...patch }));
@@ -188,6 +192,14 @@ export default function App() {
     setConsoleTab("result");
     setError("");
     try {
+      if (executionRuntime === "pyscript") {
+        const cases = useCustomCase
+          ? parseCustomCase()
+          : problem.cases.filter((testCase) => !selectedCaseId || testCase.id === selectedCaseId);
+        setJudgeResult(await runWithPyScript(problem, code, cases));
+        return;
+      }
+
       const payload = useCustomCase
         ? { slug: problem.slug, language: "python" as const, code, custom_cases: parseCustomCase() }
         : { slug: problem.slug, language: "python" as const, code, case_ids: selectedCaseId ? [selectedCaseId] : undefined };
@@ -208,6 +220,29 @@ export default function App() {
     setConsoleTab("result");
     setError("");
     try {
+      if (executionRuntime === "pyscript") {
+        const result = await runWithPyScript(problem, code, problem.cases);
+        const record: SubmissionRecord = {
+          id: Date.now(),
+          slug: problem.slug,
+          language: "python",
+          verdict: result.verdict,
+          passed: result.passed,
+          runtime_ms: result.runtime_ms,
+          created_at: new Date().toLocaleString(),
+          results: result
+        };
+        setJudgeResult(result);
+        setSubmissions(api.saveBrowserSubmission(record));
+        if (result.passed) {
+          api.markBrowserSolved(problem.slug, code, settings);
+        }
+        setProblems((current) =>
+          current.map((item) => (item.slug === problem.slug ? { ...item, solved: item.solved || result.passed } : item))
+        );
+        return;
+      }
+
       const result = await api.submit({ slug: problem.slug, language: "python", code });
       setJudgeResult(result);
       setSubmissions(await api.getSubmissions(problem.slug));
@@ -370,7 +405,24 @@ export default function App() {
                     <Code2 size={16} />
                     Code
                   </span>
-                  <span className="select-pill">Python</span>
+                  <label className="runtime-select-shell" title="Choose where Python code runs.">
+                    <span className="sr-only">Execution runtime</span>
+                    <select
+                      className="runtime-select"
+                      value={executionRuntime}
+                      onChange={(event) => updateSettings({ executionRuntime: event.target.value as ExecutionRuntime })}
+                      aria-label="Execution runtime"
+                    >
+                      <option value="python">Python</option>
+                      <option value="pyscript">PyScript</option>
+                    </select>
+                  </label>
+                  {executionRuntime === "pyscript" ? (
+                    <span className="runtime-warning" title="Runs in the browser with Pyodide/PyScript. Experimental: slower cold starts, package limits, and browser sandbox differences.">
+                      <span className="runtime-warning-dot" aria-hidden="true" />
+                      Experimental
+                    </span>
+                  ) : null}
                   <span className="select-pill">Auto</span>
                 </div>
                 <div className="toolbar-right">
@@ -811,7 +863,24 @@ function Description({ problem }: { problem: Problem }) {
 function MarkdownArticle({ content, compact = false }: { content: string; compact?: boolean }) {
   return (
     <div className={`markdown ${compact ? "compact" : ""}`}>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content || "No content yet."}</ReactMarkdown>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          img: ({ src = "", alt = "" }) => (
+            <img
+              src={src}
+              alt={alt}
+              onError={(event) => {
+                if (src.startsWith("/api/problem-assets/")) {
+                  event.currentTarget.src = src.replace("/api/problem-assets/", "/problem-assets/");
+                }
+              }}
+            />
+          )
+        }}
+      >
+        {content || "No content yet."}
+      </ReactMarkdown>
     </div>
   );
 }

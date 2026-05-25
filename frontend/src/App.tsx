@@ -275,7 +275,7 @@ export default function App() {
     <div className="app-shell">
       <header className="topbar">
         <div className="brand-block">
-          <div className="brand-mark">E</div>
+          <img className="brand-logo" src="/elitecode-logo.png" alt="" aria-hidden="true" />
           <span className="brand-name">EliteCode</span>
         </div>
         <nav className="nav-links" aria-label="Primary">

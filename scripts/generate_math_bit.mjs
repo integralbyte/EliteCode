@@ -75,7 +75,15 @@ function reverseInt(x) { const sign = x < 0 ? -1 : 1; const value = sign * Numbe
 
 const matrixSeed = (seed, square = false) => { const rows = square ? 1 + (mix(seed, 1) % 7) : 1 + (mix(seed, 2) % 8); const cols = square ? rows : 1 + (mix(seed, 3) % 8); return Array.from({ length: rows }, (_, r) => Array.from({ length: cols }, (_, c) => (mix(seed, r * cols + c + 4) % 101) - 50)); };
 const intArray = (seed, len = 4 + (mix(seed, 10) % 12)) => Array.from({ length: len }, (_, i) => (mix(seed, i + 11) % 101) - 50);
-const powBases = Array.from({ length: 41 }, (_, index) => index - 20).filter((value) => value !== 0);
+const powBases = [
+  ...Array.from({ length: 41 }, (_, index) => index - 20).filter((value) => value !== 0),
+  0.5,
+  -0.5,
+  1.5,
+  -1.5,
+  2.5,
+  -2.5,
+];
 
 const floatChecker = `
 from __future__ import annotations
@@ -127,7 +135,7 @@ const problems = [
     "```python\nclass Solution:\n    def plusOne(self, digits):\n        for i in range(len(digits) - 1, -1, -1):\n            if digits[i] < 9:\n                digits[i] += 1; return digits\n            digits[i] = 0\n        return [1] + digits\n```", "class Solution:\n    def plusOne(self, digits):\n        pass"),
   makeProblem(141, "powx-n", "Pow(x, n)", "Medium", ["Math", "Recursion"], "myPow",
     [caseFrom({ x: 2.0, n: 10 }, 1024.0), caseFrom({ x: 2.0, n: -2 }, 0.25), caseFrom({ x: -2.0, n: 3 }, -8.0)],
-    (seed) => { const x = powBases[seed % powBases.length]; const n = (Math.floor(seed / powBases.length) % 25) - 12; return caseFrom({ x, n }, powVal(x, n)); }, "Return `x` raised to integer power `n`.", ["Input: x = 2.0, n = 10\nOutput: 1024.0", "Input: x = 2.0, n = -2\nOutput: 0.25", "Input: x = -2.0, n = 3\nOutput: -8.0"],
+    (seed) => { const x = powBases[seed % powBases.length]; const n = (Math.floor(seed / powBases.length) % 41) - 20; return caseFrom({ x, n }, powVal(x, n)); }, "Return `x` raised to integer power `n`.", ["Input: x = 2.0, n = 10\nOutput: 1024.0", "Input: x = 2.0, n = -2\nOutput: 0.25", "Input: x = -2.0, n = 3\nOutput: -8.0"],
     "```python\nclass Solution:\n    def myPow(self, x, n):\n        if n < 0:\n            x, n = 1 / x, -n\n        result = 1.0\n        while n:\n            if n & 1: result *= x\n            x *= x; n >>= 1\n        return result\n```", "class Solution:\n    def myPow(self, x, n):\n        pass", floatChecker),
   makeProblem(142, "multiply-strings", "Multiply Strings", "Medium", ["Math", "String", "Simulation"], "multiply",
     [caseFrom({ num1: "123", num2: "456" }, "56088"), caseFrom({ num1: "0", num2: "999" }, "0"), caseFrom({ num1: "12", num2: "12" }, "144")],

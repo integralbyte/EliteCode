@@ -520,10 +520,10 @@ function swim(grid) {
 }
 
 function swimGrid(seed) {
-  const n = 2 + (seed % 4);
+  const n = 1 + (mix(seed, 260) % 6);
   const values = Array.from({ length: n * n }, (_, i) => i);
   for (let i = values.length - 1; i > 0; i -= 1) {
-    const j = (seed * 7 + i * 3) % (i + 1);
+    const j = mix(seed, i + 261) % (i + 1);
     [values[i], values[j]] = [values[j], values[i]];
   }
   return Array.from({ length: n }, (_, r) => values.slice(r * n, r * n + n));

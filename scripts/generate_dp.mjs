@@ -180,15 +180,20 @@ function lisSeed(seed) {
 function canPartition(values) { const sum = values.reduce((a, b) => a + b, 0); if (sum % 2) return false; const target = sum / 2; const dp = Array(target + 1).fill(false); dp[0] = true; for (const value of values) for (let t = target; t >= value; t -= 1) dp[t] ||= dp[t - value]; return dp[target]; }
 function uniquePaths(m, n) { const dp = Array(n).fill(1); for (let r = 1; r < m; r += 1) for (let c = 1; c < n; c += 1) dp[c] += dp[c - 1]; return dp[n - 1]; }
 function lcsSeed(seed) {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const distinctText = (length, salt) => Array.from(
+    { length },
+    (_, i) => alphabet[(mix(seed, salt + i) + i * 17) % alphabet.length],
+  ).join("");
   if (seed % 4 === 0) {
     const length = 1 + (mix(seed, 380) % 22);
-    const text = alphabet.slice(0, length);
+    const text = distinctText(length, 382);
     return { text1: text, text2: text };
   }
   if (seed % 4 === 1) {
     const length = 1 + (mix(seed, 381) % 22);
-    return { text1: alphabet.slice(0, length), text2: alphabet.slice(0, length).split("").reverse().join("") };
+    const text = distinctText(length, 404);
+    return { text1: text, text2: text.split("").reverse().join("") };
   }
   const text1 = word(seed, 1 + (seed % 18), "abcdef");
   const text2 = seed % 4 === 2 ? word(seed + 9, 1 + (seed % 12), "uvwxyz") : word(seed + 4, 1 + ((seed * 2) % 18), "abcdef");

@@ -3,7 +3,7 @@ import path from "node:path";
 
 const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
-const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
+const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1200);
 const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 11);
 const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 500);
 const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 15);

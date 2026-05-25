@@ -669,9 +669,9 @@ const problems = [
       ],
       Array.from({ length: 42 }, (_, i) => i + 1),
       (seed) => {
-        const numbers = sortedArray(seed, 7 + (seed % 5));
-        const i = seed % Math.floor(numbers.length / 2);
-        const j = numbers.length - 1 - (seed % Math.floor(numbers.length / 3));
+        const numbers = sortedArray(seed, 2 + (mix(seed, 330) % 88));
+        const i = mix(seed, 331) % (numbers.length - 1);
+        const j = i + 1 + (mix(seed, 332) % (numbers.length - i - 1));
         return caseFrom({ numbers, target: numbers[i] + numbers[j] }, twoSumSorted(numbers, numbers[i] + numbers[j]));
       }
     ),

@@ -39,6 +39,32 @@ function plusOne(digits) { const out = [...digits]; for (let i = out.length - 1;
 const powVal = (x, n) => Math.pow(x, n);
 const multiply = (a, b) => (BigInt(a) * BigInt(b)).toString();
 function detectSquaresRun(operations, values) { const points = new Map(), out = []; const key = (x, y) => `${x},${y}`; for (let i = 0; i < operations.length; i++) { const op = operations[i], args = values[i]; if (op === "DetectSquares") points.clear(); else if (op === "add") { const [x, y] = args[0]; points.set(key(x, y), (points.get(key(x, y)) ?? 0) + 1); } else if (op === "count") { const [x, y] = args[0]; let total = 0; for (const [raw, count] of points) { const [px, py] = raw.split(",").map(Number); if (Math.abs(px - x) === 0 || Math.abs(px - x) !== Math.abs(py - y)) continue; total += count * (points.get(key(px, y)) ?? 0) * (points.get(key(x, py)) ?? 0); } out.push(total); } } return out; }
+function detectSquaresSeed(seed) {
+  const operations = ["DetectSquares"];
+  const values = [[]];
+  const queries = 3 + (mix(seed, 29) % 10);
+  const add = (point, count = 1) => {
+    for (let i = 0; i < count; i += 1) {
+      operations.push("add");
+      values.push([point]);
+    }
+  };
+  for (let q = 0; q < queries; q += 1) {
+    const x = (mix(seed, q + 30) % 60) + q * 70;
+    const y = (mix(seed, q + 50) % 60) + q * 70;
+    const side = 1 + (mix(seed, q + 70) % 20);
+    const diagCount = 1 + (mix(seed, q + 90) % 4);
+    const horizontalCount = 1 + (mix(seed, q + 110) % 5);
+    const verticalCount = 1 + (mix(seed, q + 130) % 3);
+    add([x + side, y + side], diagCount);
+    add([x + side, y], horizontalCount);
+    add([x, y + side], verticalCount);
+    if (q % 3 === 0) add([x + side + 1, y + side]);
+    operations.push("count");
+    values.push([[x, y]]);
+  }
+  return { operations, values };
+}
 function single(nums) { return nums.reduce((a, b) => a ^ b, 0); }
 const bits = (n) => n.toString(2).replaceAll("0", "").length;
 function countBits(n) { const out = Array(n + 1).fill(0); for (let i = 1; i <= n; i++) out[i] = out[i >> 1] + (i & 1); return out; }
@@ -102,7 +128,7 @@ const problems = [
     "```python\nclass Solution:\n    def multiply(self, num1, num2):\n        if num1 == '0' or num2 == '0': return '0'\n        out = [0] * (len(num1) + len(num2))\n        for i in range(len(num1) - 1, -1, -1):\n            for j in range(len(num2) - 1, -1, -1):\n                product = int(num1[i]) * int(num2[j]) + out[i + j + 1]\n                out[i + j + 1] = product % 10\n                out[i + j] += product // 10\n        return ''.join(map(str, out)).lstrip('0')\n```", "class Solution:\n    def multiply(self, num1, num2):\n        pass"),
   makeProblem(143, "detect-squares", "Detect Squares", "Medium", ["Array", "Hash Table", "Design", "Counting"], "detectSquares",
     [caseFrom({ operations: ["DetectSquares","add","add","add","count","add","count"], values: [[], [[3,10]], [[11,2]], [[3,2]], [[11,10]], [[11,2]], [[11,10]]] }, [1,2]), caseFrom({ operations: ["DetectSquares","add","count"], values: [[], [[1,1]], [[1,1]]] }, [0]), caseFrom({ operations: ["DetectSquares","add","add","count"], values: [[], [[0,0]], [[1,1]], [[0,1]]] }, [0])],
-    (seed) => { const operations = ["DetectSquares"], values = [[]]; const total = 10 + (mix(seed, 30) % 24); for (let i = 0; i < total; i++) { operations.push("add"); values.push([[mix(seed, i + 31) % 25, mix(seed, i + 61) % 25]]); if (i % 3 === 0 || mix(seed, i + 91) % 5 === 0) { operations.push("count"); values.push([[mix(seed, i + 101) % 25, mix(seed, i + 131) % 25]]); } } return caseFrom({ operations, values }, detectSquaresRun(operations, values)); }, "Design a structure that adds points and counts axis-aligned squares using a query point. The judge calls `detectSquares(operations, values)` and compares outputs from `count`.", ["Input: add [3,10], add [11,2], add [3,2], count [11,10], add [11,2], count [11,10]\nOutput: [1,2]", "Input: add [1,1], count [1,1]\nOutput: [0]", "Input: add [0,0], add [1,1], count [0,1]\nOutput: [0]"],
+    (seed) => { const { operations, values } = detectSquaresSeed(seed); return caseFrom({ operations, values }, detectSquaresRun(operations, values)); }, "Design a structure that adds points and counts axis-aligned squares using a query point. The judge calls `detectSquares(operations, values)` and compares outputs from `count`.", ["Input: add [3,10], add [11,2], add [3,2], count [11,10], add [11,2], count [11,10]\nOutput: [1,2]", "Input: add [1,1], count [1,1]\nOutput: [0]", "Input: add [0,0], add [1,1], count [0,1]\nOutput: [0]"],
     "```python\nfrom collections import Counter\n\nclass DetectSquares:\n    def __init__(self):\n        self.points = Counter()\n\n    def add(self, point):\n        self.points[tuple(point)] += 1\n\n    def count(self, point):\n        x, y = point\n        total = 0\n        for (px, py), count in self.points.items():\n            if px == x or abs(px - x) != abs(py - y): continue\n            total += count * self.points[(px, y)] * self.points[(x, py)]\n        return total\n\nclass Solution:\n    def detectSquares(self, operations, values):\n        obj = None; out = []\n        for op, args in zip(operations, values):\n            if op == 'DetectSquares': obj = DetectSquares()\n            elif op == 'add': obj.add(args[0])\n            elif op == 'count': out.append(obj.count(args[0]))\n        return out\n```", "class DetectSquares:\n    def __init__(self):\n        pass\n\n    def add(self, point):\n        pass\n\n    def count(self, point):\n        pass\n\nclass Solution:\n    def detectSquares(self, operations, values):\n        pass"),
   makeProblem(144, "single-number", "Single Number", "Easy", ["Array", "Bit Manipulation"], "singleNumber",
     [caseFrom({ nums: [2,2,1] }, 1), caseFrom({ nums: [4,1,2,1,2] }, 4), caseFrom({ nums: [-1] }, -1)],

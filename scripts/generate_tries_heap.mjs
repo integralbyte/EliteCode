@@ -105,9 +105,36 @@ function trieRun(operations, values) {
 }
 
 function trieSeed(seed) {
-  const words = [`code${seed}`, `coder${seed}`, `cat${seed}`, `car${seed}`];
-  const operations = ["Trie", "insert", "insert", "search", "startsWith", "search", "insert", "startsWith", "search"];
-  const values = [[], [words[0]], [words[2]], [words[0]], [`co`], [`codex${seed}`], [words[1]], [`coder`], [words[1]]];
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const base = Array.from({ length: 3 + (mix(seed, 100) % 6) }, (_, i) => alphabet[mix(seed, i + 101) % alphabet.length]).join("");
+  const words = [
+    base,
+    `${base}${alphabet[mix(seed, 120) % alphabet.length]}`,
+    `${base.slice(0, Math.max(1, base.length - 1))}${alphabet[mix(seed, 121) % alphabet.length]}`,
+    `z${base}`,
+    `${base}${seed % 10}`
+  ];
+  const operations = ["Trie"];
+  const values = [[]];
+  const inserted = new Set();
+  const total = 10 + (mix(seed, 122) % 18);
+  for (let i = 0; i < total; i += 1) {
+    const word = words[mix(seed, i + 123) % words.length];
+    if (i % 4 === 0 || inserted.size === 0) {
+      operations.push("insert");
+      values.push([word]);
+      inserted.add(word);
+    } else if (i % 4 === 1) {
+      operations.push("search");
+      values.push([word]);
+    } else if (i % 4 === 2) {
+      operations.push("startsWith");
+      values.push([word.slice(0, 1 + (mix(seed, i + 124) % word.length))]);
+    } else {
+      operations.push(mix(seed, i + 125) % 2 === 0 ? "search" : "startsWith");
+      values.push([`${word}x`]);
+    }
+  }
   return { operations, values };
 }
 
@@ -126,9 +153,35 @@ function wordDictionaryRun(operations, values) {
 }
 
 function wordDictionarySeed(seed) {
-  const base = [`map${seed}`, `mad${seed}`, `made${seed}`, `mode${seed}`];
-  const operations = ["WordDictionary", "addWord", "addWord", "search", "search", "addWord", "search", "search"];
-  const values = [[], [base[0]], [base[1]], [`ma.${seed}`], [`m..e${seed}`], [base[2]], [`m..e${seed}`], [`...${seed}`]];
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const root = Array.from({ length: 2 + (mix(seed, 140) % 5) }, (_, i) => alphabet[mix(seed, i + 141) % alphabet.length]).join("");
+  const words = [
+    root,
+    `${root}${alphabet[mix(seed, 150) % alphabet.length]}`,
+    `${root.slice(0, 1)}${alphabet[mix(seed, 151) % alphabet.length]}${root.slice(1)}`,
+    `${root}${seed % 10}`,
+    `q${root}`
+  ];
+  const operations = ["WordDictionary"];
+  const values = [[]];
+  const total = 10 + (mix(seed, 152) % 18);
+  for (let i = 0; i < total; i += 1) {
+    const word = words[mix(seed, i + 153) % words.length];
+    if (i % 4 === 0) {
+      operations.push("addWord");
+      values.push([word]);
+    } else if (i % 4 === 1) {
+      const index = mix(seed, i + 154) % word.length;
+      operations.push("search");
+      values.push([`${word.slice(0, index)}.${word.slice(index + 1)}`]);
+    } else if (i % 4 === 2) {
+      operations.push("search");
+      values.push([word]);
+    } else {
+      operations.push("search");
+      values.push([`${".".repeat(1 + (mix(seed, i + 155) % (word.length + 1)))}z`]);
+    }
+  }
   return { operations, values };
 }
 

@@ -709,7 +709,7 @@ const problems = [
       ],
       Array.from({ length: 42 }, (_, i) => i + 2),
       (seed) => {
-        const height = Array.from({ length: 3 + (seed % 12) }, (_, i) => 1 + ((seed * 3 + i * 7) % 17));
+        const height = Array.from({ length: 2 + (mix(seed, 380) % 50) }, (_, i) => mix(seed, i + 381) % 200);
         return caseFrom({ height }, maxArea(height));
       }
     ),
@@ -734,7 +734,7 @@ const problems = [
       ],
       Array.from({ length: 42 }, (_, i) => i + 1),
       (seed) => {
-        const height = Array.from({ length: 3 + (seed % 14) }, (_, i) => (seed * 5 + i * i + 3) % 9);
+        const height = Array.from({ length: mix(seed, 430) % 55 }, (_, i) => mix(seed, i + 431) % 120);
         return caseFrom({ height }, trap(height));
       }
     ),
@@ -831,7 +831,7 @@ for (const spec of slidingProblems) {
   let cases;
   if (spec.id === 15) {
     cases = fillCases(spec.visible.map((prices) => caseFrom({ prices }, maxProfit(prices))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
-      const prices = Array.from({ length: 2 + (seed % 12) }, (_, i) => 1 + ((seed * 11 + i * 7 + i * i) % 40));
+      const prices = Array.from({ length: 1 + (mix(seed, 480) % 70) }, (_, i) => 1 + (mix(seed, i + 481) % 1000));
       return caseFrom({ prices }, maxProfit(prices));
     });
   } else if (spec.id === 16) {
@@ -841,9 +841,9 @@ for (const spec of slidingProblems) {
     });
   } else if (spec.id === 17) {
     cases = fillCases(spec.visible.map(([s, k]) => caseFrom({ s, k }, charReplacement(s, k))), Array.from({ length: 42 }, (_, i) => i), (seed) => {
-      const letters = "AABBCDE";
-      const s = Array.from({ length: 4 + (seed % 18) }, (_, i) => letters[(seed + i * 3) % letters.length]).join("");
-      const k = seed % 4;
+      const letters = seed % 4 === 0 ? "AAB" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const s = Array.from({ length: 1 + (mix(seed, 520) % 70) }, (_, i) => letters[mix(seed, i + 521) % letters.length]).join("");
+      const k = mix(seed, 600) % Math.max(1, Math.min(12, s.length + 1));
       return caseFrom({ s, k }, charReplacement(s, k));
     });
   } else if (spec.id === 18) {

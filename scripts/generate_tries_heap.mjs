@@ -321,10 +321,10 @@ function medianRun(operations, values) {
 function medianSeed(seed) {
   const operations = ["MedianFinder"];
   const values = [[]];
-  for (let i = 0; i < 14 + (seed % 6); i += 1) {
+  for (let i = 0; i < 8 + (mix(seed, 260) % 35); i += 1) {
     operations.push("addNum");
-    values.push([((seed * 31 + i * 13) % 80) - 40]);
-    if (i % 2 === 1 || i === 0) {
+    values.push([(mix(seed, i + 261) % 2001) - 1000]);
+    if (i % 2 === 1 || i === 0 || mix(seed, i + 310) % 5 === 0) {
       operations.push("findMedian");
       values.push([]);
     }

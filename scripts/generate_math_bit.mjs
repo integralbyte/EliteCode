@@ -55,7 +55,12 @@ from __future__ import annotations
 from typing import Any
 
 def check(input_data: dict[str, Any], expected: float, actual: Any) -> dict[str, Any]:
-    return {"passed": isinstance(actual, (int, float)) and abs(float(actual) - float(expected)) <= 1e-7, "message": ""}
+    if not isinstance(actual, (int, float)):
+        return {"passed": False, "message": "Expected a numeric result."}
+    expected_value = float(expected)
+    actual_value = float(actual)
+    tolerance = 1e-7 * max(1.0, abs(expected_value))
+    return {"passed": abs(actual_value - expected_value) <= tolerance, "message": ""}
 `;
 
 function makeProblem(id, slug, title, difficulty, tags, method, visible, maker, body, examples, solution, starter, checker = null) {
@@ -88,7 +93,7 @@ const problems = [
     "```python\nclass Solution:\n    def plusOne(self, digits):\n        for i in range(len(digits) - 1, -1, -1):\n            if digits[i] < 9:\n                digits[i] += 1; return digits\n            digits[i] = 0\n        return [1] + digits\n```", "class Solution:\n    def plusOne(self, digits):\n        pass"),
   makeProblem(141, "powx-n", "Pow(x, n)", "Medium", ["Math", "Recursion"], "myPow",
     [caseFrom({ x: 2.0, n: 10 }, 1024.0), caseFrom({ x: 2.0, n: -2 }, 0.25), caseFrom({ x: -2.0, n: 3 }, -8.0)],
-    (seed) => { const base = (mix(seed, 170) % 25) - 12; const x = base === 0 ? 2 : base; const n = (mix(seed, 171) % 17) - 8; return caseFrom({ x, n }, powVal(x, n)); }, "Return `x` raised to integer power `n`.", ["Input: x = 2.0, n = 10\nOutput: 1024.0", "Input: x = 2.0, n = -2\nOutput: 0.25", "Input: x = -2.0, n = 3\nOutput: -8.0"],
+    (seed) => { const base = (mix(seed, 170) % 41) - 20; const x = base === 0 ? 2 : base; const n = (mix(seed, 171) % 25) - 12; return caseFrom({ x, n }, powVal(x, n)); }, "Return `x` raised to integer power `n`.", ["Input: x = 2.0, n = 10\nOutput: 1024.0", "Input: x = 2.0, n = -2\nOutput: 0.25", "Input: x = -2.0, n = 3\nOutput: -8.0"],
     "```python\nclass Solution:\n    def myPow(self, x, n):\n        if n < 0:\n            x, n = 1 / x, -n\n        result = 1.0\n        while n:\n            if n & 1: result *= x\n            x *= x; n >>= 1\n        return result\n```", "class Solution:\n    def myPow(self, x, n):\n        pass", floatChecker),
   makeProblem(142, "multiply-strings", "Multiply Strings", "Medium", ["Math", "String", "Simulation"], "multiply",
     [caseFrom({ num1: "123", num2: "456" }, "56088"), caseFrom({ num1: "0", num2: "999" }, "0"), caseFrom({ num1: "12", num2: "12" }, "144")],
@@ -108,7 +113,7 @@ const problems = [
     "```python\nclass Solution:\n    def hammingWeight(self, n):\n        count = 0\n        while n:\n            n &= n - 1; count += 1\n        return count\n```", "class Solution:\n    def hammingWeight(self, n):\n        pass"),
   makeProblem(146, "counting-bits", "Counting Bits", "Easy", ["Dynamic Programming", "Bit Manipulation"], "countBits",
     [caseFrom({ n: 2 }, [0,1,1]), caseFrom({ n: 5 }, [0,1,1,2,1,2]), caseFrom({ n: 0 }, [0])],
-    (seed) => { const n = mix(seed, 160) % 500; return caseFrom({ n }, countBits(n)); }, "Return an array where index `i` contains the number of set bits in `i` for every `0 <= i <= n`.", ["Input: n = 2\nOutput: [0,1,1]", "Input: n = 5\nOutput: [0,1,1,2,1,2]", "Input: n = 0\nOutput: [0]"],
+    (seed) => { const n = mix(seed, 160) % 2000; return caseFrom({ n }, countBits(n)); }, "Return an array where index `i` contains the number of set bits in `i` for every `0 <= i <= n`.", ["Input: n = 2\nOutput: [0,1,1]", "Input: n = 5\nOutput: [0,1,1,2,1,2]", "Input: n = 0\nOutput: [0]"],
     "```python\nclass Solution:\n    def countBits(self, n):\n        out = [0] * (n + 1)\n        for i in range(1, n + 1): out[i] = out[i >> 1] + (i & 1)\n        return out\n```", "class Solution:\n    def countBits(self, n):\n        pass"),
   makeProblem(147, "reverse-bits", "Reverse Bits", "Easy", ["Divide and Conquer", "Bit Manipulation"], "reverseBits",
     [caseFrom({ n: 43261596 }, 964176192), caseFrom({ n: 0 }, 0), caseFrom({ n: 1 }, 2147483648)],
@@ -116,7 +121,7 @@ const problems = [
     "```python\nclass Solution:\n    def reverseBits(self, n):\n        out = 0\n        for _ in range(32):\n            out = (out << 1) | (n & 1)\n            n >>= 1\n        return out\n```", "class Solution:\n    def reverseBits(self, n):\n        pass"),
   makeProblem(148, "missing-number", "Missing Number", "Easy", ["Array", "Hash Table", "Math", "Binary Search", "Bit Manipulation", "Sorting"], "missingNumber",
     [caseFrom({ nums: [3,0,1] }, 2), caseFrom({ nums: [0,1] }, 2), caseFrom({ nums: [9,6,4,2,3,5,7,0,1] }, 8)],
-    (seed) => { const n = 1 + (seed % 30); const miss = seed % (n + 1); const arr = Array.from({ length: n + 1 }, (_, i) => i).filter((x) => x !== miss); return caseFrom({ nums: arr }, missing(arr)); }, "An array contains `n` distinct numbers from `0` through `n` with one missing. Return the missing number.", ["Input: nums = [3,0,1]\nOutput: 2", "Input: nums = [0,1]\nOutput: 2", "Input: nums = [9,6,4,2,3,5,7,0,1]\nOutput: 8"],
+    (seed) => { const n = 1 + (mix(seed, 210) % 1200); const miss = mix(seed, 211) % (n + 1); const arr = Array.from({ length: n + 1 }, (_, i) => i).filter((x) => x !== miss); return caseFrom({ nums: arr }, missing(arr)); }, "An array contains `n` distinct numbers from `0` through `n` with one missing. Return the missing number.", ["Input: nums = [3,0,1]\nOutput: 2", "Input: nums = [0,1]\nOutput: 2", "Input: nums = [9,6,4,2,3,5,7,0,1]\nOutput: 8"],
     "```python\nclass Solution:\n    def missingNumber(self, nums):\n        return len(nums) * (len(nums) + 1) // 2 - sum(nums)\n```", "class Solution:\n    def missingNumber(self, nums):\n        pass"),
   makeProblem(149, "sum-of-two-integers", "Sum of Two Integers", "Medium", ["Math", "Bit Manipulation"], "getSum",
     [caseFrom({ a: 1, b: 2 }, 3), caseFrom({ a: -2, b: 3 }, 1), caseFrom({ a: -5, b: -7 }, -12)],

@@ -1,6 +1,6 @@
 # EliteCode
 
-![EliteCode banner](./EliteCode%20Banner.jpeg)
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/72e04930-5725-47b9-835d-2a935601305f" />
 
 EliteCode is an open-source, offline LeetCode-style platform for algorithm practice. It includes the NeetCode 150 as original EliteCode problem packs, backed by 300,000+ test cases and saved progress.
 

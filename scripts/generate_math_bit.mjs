@@ -97,6 +97,13 @@ function makeProblem(id, slug, title, difficulty, tags, method, visible, maker, 
     solution, hints: ["Watch fixed-width integer boundaries where the prompt requires them.", "For matrix mutation, mark or capture affected rows and columns before overwriting."], starter };
 }
 
+const knownHappyNumbers = [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100, 103, 109, 129, 130, 133, 139, 167, 176, 188, 190, 192, 193, 203, 208, 219, 226, 230, 236, 239, 262, 263, 280, 291, 293, 301, 302, 310, 313, 319, 320, 326, 329, 331, 338, 356, 362, 365, 367, 368, 376, 379, 383, 386, 391, 392, 397];
+
+function happySeed(seed) {
+  if (seed % 4 === 0) return knownHappyNumbers[mix(seed, 151) % knownHappyNumbers.length] * (10 ** (mix(seed, 152) % 4));
+  return 1 + (mix(seed, 150) % 5000);
+}
+
 const problems = [
   makeProblem(136, "rotate-image", "Rotate Image", "Medium", ["Array", "Math", "Matrix"], "rotate",
     [caseFrom({ matrix: [[1,2,3],[4,5,6],[7,8,9]] }, [[7,4,1],[8,5,2],[9,6,3]]), caseFrom({ matrix: [[5]] }, [[5]]), caseFrom({ matrix: [[1,2],[3,4]] }, [[3,1],[4,2]])],
@@ -112,7 +119,7 @@ const problems = [
     "```python\nclass Solution:\n    def setZeroes(self, matrix):\n        rows = {r for r, row in enumerate(matrix) for c, value in enumerate(row) if value == 0}\n        cols = {c for r, row in enumerate(matrix) for c, value in enumerate(row) if value == 0}\n        for r in range(len(matrix)):\n            for c in range(len(matrix[0])):\n                if r in rows or c in cols: matrix[r][c] = 0\n```", "class Solution:\n    def setZeroes(self, matrix):\n        pass"),
   makeProblem(139, "happy-number", "Happy Number", "Easy", ["Hash Table", "Math", "Two Pointers"], "isHappy",
     [caseFrom({ n: 19 }, true), caseFrom({ n: 2 }, false), caseFrom({ n: 1 }, true)],
-    (seed) => { const n = 1 + (mix(seed, 150) % 5000); return caseFrom({ n }, isHappy(n)); }, "Repeatedly replace a number by the sum of squares of its digits. Return whether the process reaches 1.", ["Input: n = 19\nOutput: true", "Input: n = 2\nOutput: false", "Input: n = 1\nOutput: true"],
+    (seed) => { const n = happySeed(seed); return caseFrom({ n }, isHappy(n)); }, "Repeatedly replace a number by the sum of squares of its digits. Return whether the process reaches 1.", ["Input: n = 19\nOutput: true", "Input: n = 2\nOutput: false", "Input: n = 1\nOutput: true"],
     "```python\nclass Solution:\n    def isHappy(self, n):\n        seen = set()\n        while n != 1 and n not in seen:\n            seen.add(n)\n            n = sum(int(ch) ** 2 for ch in str(n))\n        return n == 1\n```", "class Solution:\n    def isHappy(self, n):\n        pass"),
   makeProblem(140, "plus-one", "Plus One", "Easy", ["Array", "Math"], "plusOne",
     [caseFrom({ digits: [1,2,3] }, [1,2,4]), caseFrom({ digits: [9,9] }, [1,0,0]), caseFrom({ digits: [0] }, [1])],

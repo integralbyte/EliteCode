@@ -5,9 +5,10 @@ const problemsRoot = path.resolve(import.meta.dirname, "..", "problems");
 const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
 const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
 const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 11);
-const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 250);
+const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 500);
 const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 10);
 const minArrayExpectedValues = Number(process.env.ELITECODE_MIN_ARRAY_EXPECTED_VALUES ?? 50);
+const minStringExpectedValues = Number(process.env.ELITECODE_MIN_STRING_EXPECTED_VALUES ?? 1000);
 const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 11);
 const minCompositeMaxInputSize = Number(process.env.ELITECODE_MIN_COMPOSITE_MAX_INPUT_SIZE ?? 20);
 
@@ -280,6 +281,12 @@ for (const dir of await fs.readdir(problemsRoot)) {
       const expectedValues = new Set(problem.cases.map((item) => JSON.stringify(item.expected)));
       if (expectedValues.size < minArrayExpectedValues) {
         failures.push(`${problem.slug} has ${expectedValues.size} distinct array outputs, expected at least ${minArrayExpectedValues}`);
+      }
+    }
+    if (problem.cases.every((item) => typeof item.expected === "string")) {
+      const expectedValues = new Set(problem.cases.map((item) => item.expected));
+      if (expectedValues.size < minStringExpectedValues) {
+        failures.push(`${problem.slug} has ${expectedValues.size} distinct string outputs, expected at least ${minStringExpectedValues}`);
       }
     }
     if (!compactInputDomains.has(problem.slug)) {

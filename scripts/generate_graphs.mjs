@@ -287,7 +287,7 @@ function courseSeed(seed) {
   for (let i = 1; i < n; i += 1) {
     if (mix(seed, i) % 3 !== 0) prerequisites.push([i, mix(seed + 3, i) % i]);
   }
-  if (seed % 5 === 0) prerequisites.push([0, n - 1], [n - 1, 0]);
+  if (seed % 4 === 0) prerequisites.push([0, n - 1], [n - 1, 0]);
   return { n, prerequisites };
 }
 

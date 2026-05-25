@@ -132,17 +132,17 @@ function interleaveSeed(seed) {
     if ((mix(seed, i + j) % 2 === 0 && i < s1.length) || j >= s2.length) s3 += s1[i++];
     else s3 += s2[j++];
   }
-  if (seed % 5 === 0) s3 = s3.slice(0, -1) + "q";
+  if (seed % 4 === 0) s3 = s3.slice(0, -1) + "q";
   return { s1, s2, s3 };
 }
 
 function regexSeed(seed) {
   const s = word(seed, 1 + (seed % 10), "abc");
-  if (seed % 6 === 0) return { s, p: ".*" };
-  if (seed % 6 === 1) return { s, p: s.replace(/[abc]/g, ".") };
-  if (seed % 6 === 2) return { s, p: `${s[0]}*${s.slice(1)}` };
-  if (seed % 6 === 3) return { s, p: `${word(seed + 1, 1 + (seed % 5), "abc")}*` };
-  if (seed % 6 === 4) return { s, p: `${s}d*` };
+  if (seed % 4 === 0) return { s, p: `${s}d` };
+  if (seed % 4 === 1) return { s, p: ".*" };
+  if (seed % 4 === 2) return { s, p: s.replace(/[abc]/g, ".") };
+  if (seed % 8 === 3) return { s, p: `${s[0]}*${s.slice(1)}` };
+  if (seed % 8 === 7) return { s, p: `${s}d*` };
   return { s, p: `${s.slice(0, Math.max(0, s.length - 1))}.` };
 }
 

@@ -90,6 +90,21 @@ function insertSeed(seed) {
   }
   return { intervals, newInterval: [intervals[0][0] - 1, intervals.at(-1)[1] + 1] };
 }
+function meetingRoomsSeed(seed) {
+  if (seed % 4 === 0) {
+    const start = mix(seed, 271) % 40;
+    return [[start, start + 10], [start + 1 + (mix(seed, 272) % 7), start + 12 + (mix(seed, 273) % 7)]];
+  }
+  const count = mix(seed, 274) % 18;
+  let cursor = mix(seed, 275) % 7;
+  return Array.from({ length: count }, (_, i) => {
+    cursor += 1 + (mix(seed, i + 276) % 4);
+    const end = cursor + 1 + (mix(seed, i + 296) % 5);
+    const interval = [cursor, end];
+    cursor = end;
+    return interval;
+  });
+}
 function partitionSeed(seed) { if (seed % 5 === 0) return word(seed, 1 + (seed % 26), "abcdefghijklmnopqrstuvwxyz"); const chunks = []; const alphabet = "abcdefghijklmnopqrstuvwxyz"; for (let i = 0; i < 1 + (mix(seed, 50) % 8); i += 1) { const a = alphabet[mix(seed, i + 51) % alphabet.length]; const b = alphabet[mix(seed, i + 71) % alphabet.length]; chunks.push(`${a}${word(seed + i, mix(seed, i + 91) % 5, "abcde")}${seed % 3 === 0 ? a : b}`); } return chunks.join(""); }
 function starParenSeed(seed) {
   const fixed = [
@@ -179,7 +194,7 @@ const problems = [
     "```python\nclass Solution:\n    def eraseOverlapIntervals(self, intervals):\n        intervals.sort(key=lambda item: item[1])\n        end = float('-inf'); keep = 0\n        for start, finish in intervals:\n            if start >= end:\n                keep += 1; end = finish\n        return len(intervals) - keep\n```", "class Solution:\n    def eraseOverlapIntervals(self, intervals):\n        pass"),
   makeProblem(133, "meeting-rooms", "Meeting Rooms", "Easy", ["Array", "Sorting"], "canAttendMeetings",
     [caseFrom({ intervals: [[0,30],[35,40],[45,50]] }, true), caseFrom({ intervals: [[7,10],[2,8]] }, false), caseFrom({ intervals: [] }, true)],
-    (seed) => { const intervals = intervalSeed(seed); return caseFrom({ intervals }, canAttend(intervals)); }, "Return whether one person can attend all meetings without overlapping intervals.", ["Input: intervals = [[0,30],[35,40],[45,50]]\nOutput: true", "Input: intervals = [[7,10],[2,8]]\nOutput: false", "Input: intervals = []\nOutput: true"],
+    (seed) => { const intervals = meetingRoomsSeed(seed); return caseFrom({ intervals }, canAttend(intervals)); }, "Return whether one person can attend all meetings without overlapping intervals.", ["Input: intervals = [[0,30],[35,40],[45,50]]\nOutput: true", "Input: intervals = [[7,10],[2,8]]\nOutput: false", "Input: intervals = []\nOutput: true"],
     "```python\nclass Solution:\n    def canAttendMeetings(self, intervals):\n        intervals.sort()\n        return all(intervals[i][0] >= intervals[i - 1][1] for i in range(1, len(intervals)))\n```", "class Solution:\n    def canAttendMeetings(self, intervals):\n        pass"),
   makeProblem(134, "meeting-rooms-ii", "Meeting Rooms II", "Medium", ["Array", "Two Pointers", "Greedy", "Sorting", "Heap"], "minMeetingRooms",
     [caseFrom({ intervals: [[0,30],[5,10],[15,20]] }, 2), caseFrom({ intervals: [[7,10],[2,4]] }, 1), caseFrom({ intervals: [] }, 0)],

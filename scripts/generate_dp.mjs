@@ -158,6 +158,25 @@ function coinChange(coins, amount) { const dp = Array(amount + 1).fill(Infinity)
 function maxProduct(values) { let best = values[0], hi = values[0], lo = values[0]; for (let i = 1; i < values.length; i += 1) { const value = values[i]; const nextHi = Math.max(value, hi * value, lo * value); lo = Math.min(value, hi * value, lo * value); hi = nextHi; best = Math.max(best, hi); } return best; }
 function wordBreak(s, dict) { const words = new Set(dict); const dp = Array(s.length + 1).fill(false); dp[0] = true; for (let i = 1; i <= s.length; i += 1) for (let j = 0; j < i; j += 1) if (dp[j] && words.has(s.slice(j, i))) dp[i] = true; return dp[s.length]; }
 function lis(values) { const tails = []; for (const value of values) { let l = 0, r = tails.length; while (l < r) { const m = (l + r) >> 1; if (tails[m] < value) l = m + 1; else r = m; } tails[l] = value; } return tails.length; }
+function lisSeed(seed) {
+  if (seed % 5 === 0) {
+    const length = 1 + (mix(seed, 370) % 32);
+    const start = (mix(seed, 371) % 200) - 100;
+    return Array.from({ length }, (_, i) => start + i);
+  }
+  if (seed % 5 === 1) {
+    const length = 1 + (mix(seed, 372) % 32);
+    const start = (mix(seed, 373) % 200) + 100;
+    return Array.from({ length }, (_, i) => start - i);
+  }
+  if (seed % 5 === 2) {
+    const blocks = 1 + (mix(seed, 374) % 12);
+    const values = [];
+    for (let i = 0; i < blocks; i += 1) values.push(i, i - 1, i + 20);
+    return values;
+  }
+  return nums(seed, 4 + (mix(seed, 375) % 36), -50, 101);
+}
 function canPartition(values) { const sum = values.reduce((a, b) => a + b, 0); if (sum % 2) return false; const target = sum / 2; const dp = Array(target + 1).fill(false); dp[0] = true; for (const value of values) for (let t = target; t >= value; t -= 1) dp[t] ||= dp[t - value]; return dp[target]; }
 function uniquePaths(m, n) { const dp = Array(n).fill(1); for (let r = 1; r < m; r += 1) for (let c = 1; c < n; c += 1) dp[c] += dp[c - 1]; return dp[n - 1]; }
 function lcs(a, b) { const dp = Array(b.length + 1).fill(0); for (let i = a.length - 1; i >= 0; i -= 1) { let prev = 0; for (let j = b.length - 1; j >= 0; j -= 1) { const old = dp[j]; dp[j] = a[i] === b[j] ? 1 + prev : Math.max(dp[j], dp[j + 1]); prev = old; } } return dp[0]; }
@@ -261,7 +280,7 @@ const problems = [
     "```python\nclass Solution:\n    def wordBreak(self, s, wordDict):\n        words = set(wordDict)\n        dp = [False] * (len(s) + 1)\n        dp[0] = True\n        for i in range(1, len(s) + 1):\n            dp[i] = any(dp[j] and s[j:i] in words for j in range(i))\n        return dp[-1]\n```", "class Solution:\n    def wordBreak(self, s, wordDict):\n        pass"),
   makeProblem(109, "longest-increasing-subsequence", "Longest Increasing Subsequence", "Medium", ["Array", "Binary Search", "Dynamic Programming"], "lengthOfLIS",
     [caseFrom({ nums: [10, 9, 2, 5, 3, 7, 101, 18] }, 4), caseFrom({ nums: [0, 1, 0, 3, 2, 3] }, 4), caseFrom({ nums: [7, 7, 7] }, 1)],
-    (seed) => { const arr = nums(seed, 4 + (seed % 12), -8, 25); return caseFrom({ nums: arr }, lis(arr)); },
+    (seed) => { const arr = lisSeed(seed); return caseFrom({ nums: arr }, lis(arr)); },
     "Return the length of the longest strictly increasing subsequence.",
     ["Input: nums = [10,9,2,5,3,7,101,18]\nOutput: 4", "Input: nums = [0,1,0,3,2,3]\nOutput: 4", "Input: nums = [7,7,7]\nOutput: 1"],
     "```python\nimport bisect\n\nclass Solution:\n    def lengthOfLIS(self, nums):\n        tails = []\n        for value in nums:\n            i = bisect.bisect_left(tails, value)\n            if i == len(tails): tails.append(value)\n            else: tails[i] = value\n        return len(tails)\n```", "class Solution:\n    def lengthOfLIS(self, nums):\n        pass"),

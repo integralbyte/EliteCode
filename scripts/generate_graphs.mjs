@@ -322,7 +322,7 @@ function redundantSeed(seed) {
 
 function wordLadderSeed(seed) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const length = 3 + (mix(seed, 180) % 4);
+  const length = 2 + (mix(seed, 180) % 13);
   const beginWord = Array.from({ length }, (_, i) => alphabet[mix(seed, i + 181) % 26]).join("");
   const chars = [...beginWord];
   const wordList = [];

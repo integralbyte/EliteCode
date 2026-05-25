@@ -136,6 +136,24 @@ function clone(rootNode) {
 
 function randomTreeValues(seed, maxSize = 17) {
   if (seed % 17 === 0) return [];
+  if (seed % 11 === 0) {
+    const depth = 1 + (mix(seed, 30) % 14);
+    const values = [];
+    for (let i = 0; i < depth; i += 1) {
+      values.push(((seed * 19 + i * 11) % 61) - 30);
+      if (i < depth - 1) values.push(null);
+    }
+    return normalize(values);
+  }
+  if (seed % 13 === 0) {
+    const depth = 1 + (mix(seed, 31) % 14);
+    const values = [];
+    for (let i = 0; i < depth; i += 1) {
+      values.push(((seed * 23 + i * 17) % 61) - 30);
+      if (i < depth - 1) values.push(null);
+    }
+    return normalize(values);
+  }
   const length = 1 + (seed % maxSize);
   const values = [];
   for (let i = 0; i < length; i += 1) {

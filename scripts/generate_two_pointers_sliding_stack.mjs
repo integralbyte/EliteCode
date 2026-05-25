@@ -1040,12 +1040,19 @@ for (const spec of stackSpecs) {
   } else if (spec.id === 26) {
     const visible = spec.visible.map(([[target, position, speed]]) => caseFrom({ target, position, speed }, carFleet(target, position, speed)));
     cases = fillCases(visible, Array.from({ length: 42 }, (_, i) => i), (seed) => {
-      const n = 1 + (seed % 8);
-      const target = 50 + seed;
-      const position = Array.from({ length: n }, (_, i) => (seed * 5 + i * 7) % target);
-      const unique = [...new Set(position)].slice(0, n);
-      while (unique.length < n) unique.push(unique.length);
-      const speed = unique.map((_, i) => 1 + ((seed + i * 3) % 9));
+      const n = 1 + (mix(seed, 350) % 24);
+      const target = 1000 + seed;
+      let unique;
+      let speed;
+      if (seed % 4 === 0) {
+        unique = Array.from({ length: n }, (_, i) => i * 2);
+        speed = unique.map(() => 1);
+      } else {
+        const position = Array.from({ length: n * 2 }, (_, i) => 1 + (mix(seed, i + 351) % (target - 1)));
+        unique = [...new Set(position)].slice(0, n);
+        while (unique.length < n) unique.push(1 + unique.length * 3);
+        speed = unique.map((_, i) => 1 + (mix(seed, i + 352) % 20));
+      }
       return caseFrom({ target, position: unique, speed }, carFleet(target, unique, speed));
     });
   } else {

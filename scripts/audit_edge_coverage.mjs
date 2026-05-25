@@ -6,6 +6,7 @@ const minCases = Number(process.env.ELITECODE_MIN_CASES ?? 2000);
 const minUnique = Number(process.env.ELITECODE_MIN_UNIQUE_NONFINITE ?? 1000);
 const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 8);
 const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 250);
+const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 10);
 
 const finiteDomains = {
   "generate-parentheses": { field: "n", values: range(1, 8) },
@@ -204,6 +205,12 @@ for (const dir of await fs.readdir(problemsRoot)) {
       const falseCases = problem.cases.length - trueCases;
       if (trueCases < minBooleanClassCases || falseCases < minBooleanClassCases) {
         failures.push(`${problem.slug} has boolean output split true=${trueCases}, false=${falseCases}; expected at least ${minBooleanClassCases} of each`);
+      }
+    }
+    if (problem.cases.every((item) => typeof item.expected === "number")) {
+      const expectedValues = new Set(problem.cases.map((item) => item.expected));
+      if (expectedValues.size < minNumericExpectedValues) {
+        failures.push(`${problem.slug} has ${expectedValues.size} distinct numeric outputs, expected at least ${minNumericExpectedValues}`);
       }
     }
     if (!problem.cases.some((item) => item.hidden)) failures.push(`${problem.slug} has no hidden cases`);

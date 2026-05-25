@@ -280,21 +280,16 @@
           "__elite_type": "tree_node",
           "values": [
             -6,
-            5,
-            16,
-            27,
-            -23,
-            -12,
-            -1,
             null,
-            21,
-            -29,
-            -18,
-            -7
+            5,
+            null,
+            16,
+            null,
+            27
           ]
         }
       },
-      "expected": 63,
+      "expected": 48,
       "hidden": true
     },
     {
@@ -329,24 +324,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -31,
-            -20,
-            -9,
-            2,
-            13,
+            21,
             null,
-            -26,
-            -15,
-            -4,
-            7,
-            18,
+            -23,
             null,
-            -21,
-            -10
+            -6,
+            null,
+            11
           ]
         }
       },
-      "expected": 38,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -523,15 +511,36 @@
           "__elite_type": "tree_node",
           "values": [
             18,
+            null,
             -32,
+            null,
             -21,
+            null,
             -10,
+            null,
             1,
-            12
+            null,
+            12,
+            null,
+            23,
+            null,
+            -27,
+            null,
+            -16,
+            null,
+            -5,
+            null,
+            6,
+            null,
+            17,
+            null,
+            -33,
+            null,
+            -22
           ]
         }
       },
-      "expected": 18,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -604,20 +613,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -32,
-            -21,
-            -10,
-            1,
+            11,
             null,
-            -38,
-            -27,
-            -16,
-            -5,
-            6
+            -33
           ]
         }
       },
-      "expected": 6,
+      "expected": 11,
       "hidden": true
     },
     {
@@ -787,26 +789,22 @@
           "__elite_type": "tree_node",
           "values": [
             -19,
+            null,
             -8,
+            null,
             3,
             null,
+            14,
+            null,
             -36,
+            null,
             -25,
-            -14,
-            -3,
-            8,
             null,
-            -31,
-            -20,
-            -9,
-            2,
-            13,
-            null,
-            -26
+            -14
           ]
         }
       },
-      "expected": 13,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -895,16 +893,15 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -24,
-            -13,
-            -2,
+            10,
             null,
-            20,
-            -30
+            27,
+            null,
+            -17
           ]
         }
       },
-      "expected": 20,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -1000,15 +997,14 @@
           "__elite_type": "tree_node",
           "values": [
             5,
+            null,
             16,
+            null,
             -34,
+            null,
             -23,
             null,
-            -1,
-            10,
-            21,
-            -29,
-            -18
+            -12
           ]
         }
       },
@@ -1199,12 +1195,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -25,
-            -14
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            -37,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21
           ]
         }
       },
-      "expected": -14,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -1248,14 +1267,30 @@
           "__elite_type": "tree_node",
           "values": [
             -23,
+            null,
             -12,
+            null,
             -1,
+            null,
             10,
-            21
+            null,
+            21,
+            null,
+            -29,
+            null,
+            -18,
+            null,
+            -7,
+            null,
+            4,
+            null,
+            15,
+            null,
+            26
           ]
         }
       },
-      "expected": 21,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -1472,25 +1507,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -17,
-            -6,
-            5,
+            -1,
+            null,
             16,
-            27,
-            -23,
-            -12,
             null,
-            10,
-            21,
-            -29,
-            -18,
-            -7,
+            -28,
             null,
-            15
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3
           ]
         }
       },
-      "expected": 68,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -1501,25 +1544,30 @@
           "__elite_type": "tree_node",
           "values": [
             1,
+            null,
             12,
+            null,
             23,
+            null,
             -27,
+            null,
             -16,
+            null,
             -5,
             null,
-            17,
-            -33,
-            -22,
-            -11,
-            0,
+            6,
             null,
-            22,
-            -28,
-            -17
+            17,
+            null,
+            -33,
+            null,
+            -22,
+            null,
+            -11
           ]
         }
       },
-      "expected": 48,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -1720,19 +1768,12 @@
           "__elite_type": "tree_node",
           "values": [
             25,
-            -25,
-            -14,
-            -3,
-            8,
-            19,
-            -31,
             null,
-            -9,
-            2
+            -25
           ]
         }
       },
-      "expected": 30,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -1742,21 +1783,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -18,
-            -7,
-            4,
-            15,
-            -35,
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
             -24,
             null,
-            -2,
-            9,
-            20,
-            -30
+            -7,
+            null,
+            10
           ]
         }
       },
-      "expected": 24,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -1975,13 +2030,16 @@
           "__elite_type": "tree_node",
           "values": [
             -12,
+            null,
             -1,
+            null,
             10,
+            null,
             21
           ]
         }
       },
-      "expected": 21,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -2028,17 +2086,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -10,
-            1,
-            12,
-            23,
-            -27,
+            -12,
             null,
-            -5
+            5,
+            null,
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            29
           ]
         }
       },
-      "expected": 26,
+      "expected": 41,
       "hidden": true
     },
     {
@@ -2217,24 +2281,18 @@
           "__elite_type": "tree_node",
           "values": [
             21,
+            null,
             -29,
+            null,
             -18,
             null,
-            4,
-            15,
-            26,
-            -24,
-            -13,
+            -7,
             null,
-            9,
-            20,
-            -30,
-            -19,
-            -8
+            4
           ]
         }
       },
-      "expected": 52,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -2332,13 +2390,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -11,
-            0,
-            11
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            -32
           ]
         }
       },
-      "expected": 11,
+      "expected": 12,
       "hidden": true
     },
     {
@@ -2442,18 +2504,30 @@
           "__elite_type": "tree_node",
           "values": [
             -16,
+            null,
             -5,
+            null,
             6,
+            null,
             17,
             null,
+            28,
+            null,
             -22,
+            null,
             -11,
+            null,
             0,
-            11
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28
           ]
         }
       },
-      "expected": 28,
+      "expected": 51,
       "hidden": true
     },
     {
@@ -2614,25 +2688,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -3,
-            8,
-            19,
+            -23,
             null,
-            -20,
-            -9,
-            2,
-            13,
-            24,
+            -6,
             null,
-            -15,
-            -4,
-            7,
-            18,
-            29
+            11,
+            null,
+            28
           ]
         }
       },
-      "expected": 60,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -2702,7 +2768,9 @@
           "__elite_type": "tree_node",
           "values": [
             8,
+            null,
             19,
+            null,
             -31
           ]
         }
@@ -2881,22 +2949,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -4,
-            7,
-            18,
-            -32,
-            -21,
-            -10,
-            1,
-            12,
+            -33,
             null,
-            -27,
             -16,
-            -5
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26
           ]
         }
       },
-      "expected": 22,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -2932,24 +2997,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -29,
-            -18,
-            -7,
-            4,
-            15,
-            -35,
-            null,
-            -13,
-            -2,
-            9,
-            20,
-            -30,
-            null,
-            -8
+            -29
           ]
         }
       },
-      "expected": 44,
+      "expected": -29,
       "hidden": true
     },
     {
@@ -3165,16 +3217,28 @@
           "__elite_type": "tree_node",
           "values": [
             -5,
+            null,
             6,
+            null,
             17,
+            null,
             -33,
+            null,
             -22,
+            null,
             -11,
-            0
+            null,
+            0,
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28
           ]
         }
       },
-      "expected": 18,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -3430,6 +3494,7 @@
           "__elite_type": "tree_node",
           "values": [
             28,
+            null,
             -22
           ]
         }
@@ -3460,14 +3525,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            3,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
             14,
-            25,
-            -25
+            null,
+            -30
           ]
         }
       },
-      "expected": 42,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -3650,22 +3728,18 @@
           "__elite_type": "tree_node",
           "values": [
             -9,
+            null,
             2,
+            null,
             13,
             null,
-            -26,
-            -15,
-            -4,
-            7,
-            18,
+            24,
             null,
-            -21,
-            -10,
-            1
+            -26
           ]
         }
       },
-      "expected": 18,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -3759,27 +3833,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            2,
-            13,
-            -37,
-            -26,
-            -15,
-            null,
             7,
-            18,
-            -32,
-            -21,
-            -10,
             null,
-            12,
-            23,
-            -27,
-            -16,
-            -5
+            -37
           ]
         }
       },
-      "expected": 41,
+      "expected": 7,
       "hidden": true
     },
     {
@@ -3888,16 +3948,30 @@
           "__elite_type": "tree_node",
           "values": [
             15,
+            null,
             -35,
+            null,
             -24,
+            null,
             -13,
             null,
+            -2,
+            null,
             9,
-            20
+            null,
+            20,
+            null,
+            -30,
+            null,
+            -19,
+            null,
+            -8,
+            null,
+            3
           ]
         }
       },
-      "expected": 20,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -4020,23 +4094,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            10,
-            21,
-            -29,
-            -18,
+            6,
             null,
-            4,
-            15,
-            26,
-            -24,
-            -13,
+            23,
             null,
-            9,
-            20
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24
           ]
         }
       },
-      "expected": 45,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -4299,19 +4379,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            9,
-            20,
-            -30,
+            -4,
             null,
-            -8,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
             3,
-            14,
-            -36,
-            -25
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            -34,
+            null,
+            -17
           ]
         }
       },
-      "expected": 29,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -4369,21 +4461,20 @@
           "__elite_type": "tree_node",
           "values": [
             11,
-            22,
-            -28,
-            -17,
-            -6,
-            5,
             null,
-            27,
-            -23,
-            -12,
-            -1,
-            10
+            22,
+            null,
+            -28,
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5
           ]
         }
       },
-      "expected": 43,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -4594,15 +4685,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            17,
-            28,
-            -22,
-            -11,
-            0
+            -5,
+            null,
+            12,
+            null,
+            29,
+            null,
+            -15,
+            null,
+            2
           ]
         }
       },
-      "expected": 45,
+      "expected": 41,
       "hidden": true
     },
     {
@@ -4612,16 +4707,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -26,
-            -15,
-            -4,
-            7,
-            18,
-            -32
+            -26
           ]
         }
       },
-      "expected": 18,
+      "expected": -26,
       "hidden": true
     },
     {
@@ -4872,27 +4962,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -2,
-            9,
-            20,
-            -30,
-            -19,
-            -8,
-            3,
-            14,
-            null,
-            -25,
-            -14,
-            -3,
-            8,
-            19,
-            null,
-            -20,
-            -9
+            -2
           ]
         }
       },
-      "expected": 49,
+      "expected": -2,
       "hidden": true
     },
     {
@@ -5088,16 +5162,32 @@
           "__elite_type": "tree_node",
           "values": [
             22,
+            null,
             -28,
+            null,
             -17,
             null,
+            -6,
+            null,
             5,
+            null,
             16,
+            null,
             -34,
+            null,
             -23,
+            null,
             -12,
             null,
-            10
+            -1,
+            null,
+            10,
+            null,
+            21,
+            null,
+            -29,
+            null,
+            -18
           ]
         }
       },
@@ -5162,24 +5252,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            24,
-            -26,
-            -15,
-            -4,
-            7,
+            -16,
+            null,
+            1,
+            null,
             18,
             null,
-            -21,
-            -10,
-            1,
-            12,
-            23,
+            -26,
             null,
-            -16
+            -9,
+            null,
+            8,
+            null,
+            25,
+            null,
+            -19,
+            null,
+            -2
           ]
         }
       },
-      "expected": 50,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -5338,14 +5431,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -15,
-            -4,
-            7,
-            18
+            -15
           ]
         }
       },
-      "expected": 18,
+      "expected": -15,
       "hidden": true
     },
     {
@@ -5436,20 +5526,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            23,
-            -27,
-            -16,
-            -5,
-            6,
+            -26,
             null,
-            -33,
+            -9,
+            null,
+            8,
+            null,
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
             -22,
-            -11,
-            0
+            null,
+            -5
           ]
         }
       },
-      "expected": 23,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -5587,26 +5692,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            18,
-            29,
-            -21,
-            -10,
-            1,
-            null,
-            23,
-            -27,
-            -16,
-            -5,
-            6,
-            null,
-            28,
-            -22,
-            -11,
-            0
+            18
           ]
         }
       },
-      "expected": 84,
+      "expected": 18,
       "hidden": true
     },
     {
@@ -5725,16 +5815,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28,
-            -17,
-            -6,
+            -36,
             null,
-            16
+            -19
           ]
         }
       },
-      "expected": 22,
+      "expected": -19,
       "hidden": true
     },
     {
@@ -5808,19 +5895,36 @@
           "__elite_type": "tree_node",
           "values": [
             -19,
+            null,
             -8,
+            null,
             3,
+            null,
             14,
+            null,
             25,
+            null,
             -25,
             null,
+            -14,
+            null,
             -3,
+            null,
             8,
-            19
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9,
+            null,
+            2
           ]
         }
       },
-      "expected": 58,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -6033,12 +6137,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -31,
-            -20
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21,
+            null,
+            -23,
+            null,
+            -6
           ]
         }
       },
-      "expected": -20,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -6065,13 +6186,32 @@
           "__elite_type": "tree_node",
           "values": [
             5,
+            null,
             16,
+            null,
             -34,
-            -23
+            null,
+            -23,
+            null,
+            -12,
+            null,
+            -1,
+            null,
+            10,
+            null,
+            21,
+            null,
+            -29,
+            null,
+            -18,
+            null,
+            -7,
+            null,
+            4
           ]
         }
       },
-      "expected": 21,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -6304,23 +6444,36 @@
           "__elite_type": "tree_node",
           "values": [
             -32,
+            null,
             -21,
+            null,
             -10,
+            null,
             1,
+            null,
             12,
+            null,
             23,
+            null,
             -27,
+            null,
             -16,
             null,
+            -5,
+            null,
             6,
+            null,
             17,
+            null,
             -33,
+            null,
             -22,
+            null,
             -11
           ]
         }
       },
-      "expected": 35,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -6530,18 +6683,14 @@
           "__elite_type": "tree_node",
           "values": [
             1,
-            12,
-            23,
             null,
-            -16,
-            -5,
-            6,
-            17,
-            28
+            12,
+            null,
+            23
           ]
         }
       },
-      "expected": 54,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -6574,21 +6723,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -24,
-            -13,
-            -2,
-            9,
-            20,
-            -30,
-            -19,
+            13,
+            null,
+            -31,
+            null,
+            -14,
             null,
             3,
-            14,
-            25
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            27
           ]
         }
       },
-      "expected": 59,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -6793,8 +6948,8 @@
           "__elite_type": "tree_node",
           "values": [
             25,
-            -25,
-            -14
+            null,
+            -25
           ]
         }
       },
@@ -6861,16 +7016,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -25,
-            -14,
-            -3,
-            8,
-            19,
-            -31
+            3,
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            -34,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7
           ]
         }
       },
-      "expected": 19,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -7020,23 +7192,34 @@
           "__elite_type": "tree_node",
           "values": [
             -12,
+            null,
             -1,
+            null,
             10,
+            null,
             21,
+            null,
             -29,
             null,
+            -18,
+            null,
             -7,
+            null,
             4,
+            null,
             15,
+            null,
             26,
+            null,
             -24,
             null,
-            -2,
-            9
+            -13,
+            null,
+            -2
           ]
         }
       },
-      "expected": 49,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -7161,13 +7344,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -17,
-            -6,
-            5
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9
           ]
         }
       },
-      "expected": 5,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -7252,13 +7441,10 @@
           "__elite_type": "tree_node",
           "values": [
             12,
-            23,
-            -27,
-            -16,
-            -5,
-            6,
             null,
-            -33
+            23,
+            null,
+            -27
           ]
         }
       },
@@ -7447,26 +7633,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -18,
-            -7,
-            4,
-            15,
-            null,
-            -24,
-            -13,
-            -2,
-            9,
-            20,
-            null,
-            -19,
-            -8,
-            3,
-            14,
-            25
+            -8
           ]
         }
       },
-      "expected": 61,
+      "expected": -8,
       "hidden": true
     },
     {
@@ -7521,11 +7692,34 @@
           "__elite_type": "tree_node",
           "values": [
             -25,
-            -14
+            null,
+            -14,
+            null,
+            -3,
+            null,
+            8,
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9,
+            null,
+            2,
+            null,
+            13,
+            null,
+            -37,
+            null,
+            -26,
+            null,
+            -15
           ]
         }
       },
-      "expected": -14,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -7712,22 +7906,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -10,
-            1,
-            12,
+            -9,
             null,
-            -27,
-            -16,
-            -5,
-            6,
-            17,
+            8,
+            null,
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
             null,
             -22,
-            -11
+            null,
+            -5,
+            null,
+            12
           ]
         }
       },
-      "expected": 17,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -7738,22 +7945,12 @@
           "__elite_type": "tree_node",
           "values": [
             8,
-            19,
-            -31,
-            -20,
-            -9,
-            2,
-            13,
-            24,
             null,
-            -15,
-            -4,
-            7,
-            18
+            19
           ]
         }
       },
-      "expected": 31,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -7975,16 +8172,14 @@
           "__elite_type": "tree_node",
           "values": [
             -29,
-            -18,
-            -7,
             null,
-            15,
-            26,
-            -24
+            -18,
+            null,
+            -7
           ]
         }
       },
-      "expected": 26,
+      "expected": -7,
       "hidden": true
     },
     {
@@ -7994,14 +8189,25 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -11,
-            0,
-            11,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
             22,
-            -28,
-            -17,
-            -6,
-            5
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12
           ]
         }
       },
@@ -8294,14 +8500,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1,
-            10,
-            21
+            -29,
+            null,
+            -12
           ]
         }
       },
-      "expected": 21,
+      "expected": -12,
       "hidden": true
     },
     {
@@ -8457,16 +8662,24 @@
           "__elite_type": "tree_node",
           "values": [
             19,
+            null,
             -31,
+            null,
             -20,
+            null,
             -9,
+            null,
             2,
             null,
+            13,
+            null,
             -37,
+            null,
             -26,
+            null,
             -15,
-            -4,
-            7
+            null,
+            -4
           ]
         }
       },
@@ -8589,27 +8802,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -4,
-            7,
-            18,
-            -32,
-            -21,
-            -10,
+            -30,
             null,
-            12,
-            23,
-            -27,
-            -16,
-            -5,
+            -13,
             null,
-            17,
+            4,
+            null,
+            21,
+            null,
+            -23,
+            null,
+            -6,
+            null,
+            11,
+            null,
             -33,
-            -22,
-            -11
+            null,
+            -16,
+            null,
+            1,
+            null,
+            18
           ]
         }
       },
-      "expected": 29,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -8700,15 +8917,36 @@
           "__elite_type": "tree_node",
           "values": [
             -9,
+            null,
             2,
+            null,
             13,
+            null,
             24,
+            null,
             -26,
-            -15
+            null,
+            -15,
+            null,
+            -4,
+            null,
+            7,
+            null,
+            18,
+            null,
+            29,
+            null,
+            -21,
+            null,
+            -10,
+            null,
+            1,
+            null,
+            12
           ]
         }
       },
-      "expected": 30,
+      "expected": 54,
       "hidden": true
     },
     {
@@ -8853,23 +9091,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -5,
-            6,
-            17,
-            -33,
-            -22,
+            21,
             null,
-            0,
+            -23,
+            null,
+            -6,
+            null,
             11,
-            22,
-            -28,
-            -17,
             null,
-            5
+            -33,
+            null,
+            -16,
+            null,
+            1
           ]
         }
       },
-      "expected": 23,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -8964,26 +9202,34 @@
           "__elite_type": "tree_node",
           "values": [
             15,
+            null,
             26,
+            null,
             -24,
+            null,
             -13,
+            null,
             -2,
+            null,
             9,
+            null,
             20,
             null,
-            -19,
-            -8,
-            3,
-            14,
-            25,
+            -30,
             null,
-            -14,
-            -3,
-            8
+            -19,
+            null,
+            -8,
+            null,
+            3,
+            null,
+            14,
+            null,
+            25
           ]
         }
       },
-      "expected": 52,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -9131,19 +9377,15 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            3,
-            14,
-            25,
-            -25,
+            20,
             null,
-            -3,
-            8,
-            19,
-            -31
+            -24,
+            null,
+            -7
           ]
         }
       },
-      "expected": 50,
+      "expected": 20,
       "hidden": true
     },
     {
@@ -9176,20 +9418,28 @@
           "__elite_type": "tree_node",
           "values": [
             -22,
+            null,
             -11,
+            null,
             0,
+            null,
             11,
+            null,
             22,
+            null,
             -28,
+            null,
             -17,
+            null,
             -6,
             null,
-            16,
-            -34
+            5,
+            null,
+            16
           ]
         }
       },
-      "expected": 38,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -9425,10 +9675,26 @@
           "__elite_type": "tree_node",
           "values": [
             2,
+            null,
             13,
+            null,
             24,
             null,
-            -15
+            -26,
+            null,
+            -15,
+            null,
+            -4,
+            null,
+            7,
+            null,
+            18,
+            null,
+            -32,
+            null,
+            -21,
+            null,
+            -10
           ]
         }
       },
@@ -9678,25 +9944,36 @@
           "__elite_type": "tree_node",
           "values": [
             -35,
+            null,
             -24,
+            null,
             -13,
+            null,
             -2,
             null,
+            9,
+            null,
             20,
+            null,
             -30,
+            null,
             -19,
+            null,
             -8,
+            null,
             3,
             null,
+            14,
+            null,
             -36,
+            null,
             -25,
-            -14,
-            -3,
-            8
+            null,
+            -14
           ]
         }
       },
-      "expected": 23,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -9897,19 +10174,16 @@
           "__elite_type": "tree_node",
           "values": [
             -2,
-            9,
-            20,
-            -30,
-            -19,
             null,
-            3,
-            14,
-            25,
-            -25
+            9,
+            null,
+            20,
+            null,
+            -30
           ]
         }
       },
-      "expected": 30,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -9993,23 +10267,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            9,
-            20,
-            -30,
-            -19,
-            -8,
-            3,
-            14,
+            -1,
             null,
-            -25,
-            -14,
-            -3,
-            8,
-            19
+            16,
+            null,
+            -28,
+            null,
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14
           ]
         }
       },
-      "expected": 30,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -10151,9 +10433,16 @@
           "__elite_type": "tree_node",
           "values": [
             22,
+            null,
             -28,
+            null,
             -17,
-            -6
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16
           ]
         }
       },
@@ -10267,20 +10556,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            17,
-            28,
-            -22,
-            -11,
-            0,
-            11,
+            -2,
             null,
-            -28,
-            -17,
-            -6
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            29
           ]
         }
       },
-      "expected": 45,
+      "expected": 41,
       "hidden": true
     },
     {
@@ -10393,24 +10691,26 @@
           "__elite_type": "tree_node",
           "values": [
             -15,
+            null,
             -4,
+            null,
             7,
+            null,
             18,
+            null,
             -32,
+            null,
             -21,
+            null,
             -10,
             null,
-            12,
-            23,
-            -27,
-            -16,
-            -5,
+            1,
             null,
-            17
+            12
           ]
         }
       },
-      "expected": 30,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -10559,15 +10859,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            16,
-            -34,
-            -23,
             -12,
-            -1
+            null,
+            5
           ]
         }
       },
-      "expected": 16,
+      "expected": 5,
       "hidden": true
     },
     {
@@ -10619,13 +10917,32 @@
           "__elite_type": "tree_node",
           "values": [
             9,
+            null,
             20,
+            null,
             -30,
+            null,
             -19,
+            null,
             -8,
+            null,
             3,
+            null,
             14,
-            -36
+            null,
+            -36,
+            null,
+            -25,
+            null,
+            -14,
+            null,
+            -3,
+            null,
+            8,
+            null,
+            19,
+            null,
+            -31
           ]
         }
       },
@@ -10863,12 +11180,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            15,
-            -35
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            -32,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9
           ]
         }
       },
-      "expected": 15,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -10879,12 +11213,24 @@
           "__elite_type": "tree_node",
           "values": [
             -19,
+            null,
             -8,
-            3
+            null,
+            3,
+            null,
+            14,
+            null,
+            25,
+            null,
+            -25,
+            null,
+            -14,
+            null,
+            -3
           ]
         }
       },
-      "expected": 3,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -11110,23 +11456,20 @@
           "__elite_type": "tree_node",
           "values": [
             5,
+            null,
             16,
+            null,
             27,
+            null,
             -23,
             null,
-            -1,
-            10,
-            21,
-            -29,
-            -18,
+            -12,
             null,
-            4,
-            15,
-            26
+            -1
           ]
         }
       },
-      "expected": 97,
+      "expected": 48,
       "hidden": true
     },
     {
@@ -11136,25 +11479,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            23,
-            -27,
-            -16,
+            -23,
             null,
-            6,
-            17,
-            -33,
-            -22,
-            -11,
+            -6,
             null,
             11,
-            22,
-            -28,
-            -17,
-            -6
+            null,
+            -33,
+            null,
+            -16,
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15
           ]
         }
       },
-      "expected": 35,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -11341,17 +11696,36 @@
           "__elite_type": "tree_node",
           "values": [
             -32,
+            null,
             -21,
+            null,
             -10,
+            null,
             1,
+            null,
             12,
             null,
+            23,
+            null,
             -27,
-            -16
+            null,
+            -16,
+            null,
+            -5,
+            null,
+            6,
+            null,
+            17,
+            null,
+            -33,
+            null,
+            -22,
+            null,
+            -11
           ]
         }
       },
-      "expected": 12,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -11405,21 +11779,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28,
-            -17,
-            -6,
-            5,
-            16,
-            -34,
-            -23,
+            -33,
             null,
-            -1,
-            10
+            -16,
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            -36,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29
           ]
         }
       },
-      "expected": 22,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -11607,6 +11993,7 @@
           "__elite_type": "tree_node",
           "values": [
             -8,
+            null,
             3
           ]
         }
@@ -11691,17 +12078,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -31,
-            -20,
-            -9,
-            2,
-            13,
-            24,
-            -26
+            27,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7
           ]
         }
       },
-      "expected": 24,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -11827,22 +12220,36 @@
           "__elite_type": "tree_node",
           "values": [
             16,
+            null,
             -34,
+            null,
             -23,
+            null,
             -12,
+            null,
             -1,
+            null,
             10,
+            null,
             21,
             null,
+            -29,
+            null,
             -18,
+            null,
             -7,
+            null,
             4,
+            null,
             15,
-            -35
+            null,
+            -35,
+            null,
+            -24
           ]
         }
       },
-      "expected": 25,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -11995,13 +12402,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -32,
-            -21,
-            -10
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7
           ]
         }
       },
-      "expected": -10,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -12065,16 +12476,12 @@
           "__elite_type": "tree_node",
           "values": [
             -12,
-            -1,
-            10,
-            21,
-            -29,
-            -18,
-            -7
+            null,
+            -1
           ]
         }
       },
-      "expected": 21,
+      "expected": -1,
       "hidden": true
     },
     {
@@ -12277,26 +12684,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -24,
-            -13,
-            -2,
-            9,
-            20,
+            16,
             null,
-            -19,
-            -8,
-            3,
-            14,
-            25,
+            -28,
             null,
-            -14,
-            -3,
-            8,
-            19
+            -11,
+            null,
+            6,
+            null,
+            23
           ]
         }
       },
-      "expected": 63,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -12545,21 +12945,34 @@
           "__elite_type": "tree_node",
           "values": [
             -25,
+            null,
             -14,
+            null,
             -3,
+            null,
             8,
             null,
+            19,
+            null,
             -31,
+            null,
             -20,
+            null,
             -9,
+            null,
             2,
+            null,
             13,
             null,
-            -26
+            24,
+            null,
+            -26,
+            null,
+            -15
           ]
         }
       },
-      "expected": 13,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -12790,14 +13203,30 @@
           "__elite_type": "tree_node",
           "values": [
             -1,
+            null,
             10,
+            null,
             21,
+            null,
             -29,
-            -18
+            null,
+            -18,
+            null,
+            -7,
+            null,
+            4,
+            null,
+            15,
+            null,
+            -35,
+            null,
+            -24,
+            null,
+            -13
           ]
         }
       },
-      "expected": 30,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -12827,18 +13256,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -17,
-            -6,
             5,
             null,
-            27,
-            -23,
-            -12,
-            -1
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            29,
+            null,
+            -15
           ]
         }
       },
-      "expected": 27,
+      "expected": 41,
       "hidden": true
     },
     {
@@ -13050,26 +13484,14 @@
           "__elite_type": "tree_node",
           "values": [
             -29,
+            null,
             -18,
-            -7,
-            4,
-            15,
-            26,
             null,
-            -13,
-            -2,
-            9,
-            20,
-            -30,
-            null,
-            -8,
-            3,
-            14,
-            25
+            -7
           ]
         }
       },
-      "expected": 44,
+      "expected": -7,
       "hidden": true
     },
     {
@@ -13124,14 +13546,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -18,
-            -7,
-            4,
-            15
+            -5
           ]
         }
       },
-      "expected": 15,
+      "expected": -5,
       "hidden": true
     },
     {
@@ -13265,20 +13684,24 @@
           "__elite_type": "tree_node",
           "values": [
             -5,
+            null,
             6,
+            null,
             17,
+            null,
             28,
+            null,
             -22,
+            null,
             -11,
+            null,
             0,
             null,
-            22,
-            -28,
-            -17
+            11
           ]
         }
       },
-      "expected": 68,
+      "expected": 51,
       "hidden": true
     },
     {
@@ -13423,27 +13846,25 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -19,
-            -8,
-            3,
-            14,
-            -36,
-            -25,
-            -14,
+            -15,
             null,
-            8,
+            2,
+            null,
             19,
-            -31,
-            -20,
-            -9,
             null,
-            13,
-            -37,
-            -26
+            -25,
+            null,
+            -8,
+            null,
+            9,
+            null,
+            -35,
+            null,
+            -18
           ]
         }
       },
-      "expected": 22,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -13515,14 +13936,32 @@
           "__elite_type": "tree_node",
           "values": [
             19,
+            null,
             -31,
+            null,
             -20,
+            null,
             -9,
-            2
+            null,
+            2,
+            null,
+            13,
+            null,
+            24,
+            null,
+            -26,
+            null,
+            -15,
+            null,
+            -4,
+            null,
+            7,
+            null,
+            18
           ]
         }
       },
-      "expected": 19,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -13684,22 +14123,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -11,
-            0,
-            11,
-            22,
-            -28,
-            -17,
+            -16,
             null,
-            5,
-            16,
-            27,
-            -23,
-            -12
+            1,
+            null,
+            18,
+            null,
+            -26
           ]
         }
       },
-      "expected": 43,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -13765,24 +14199,16 @@
           "__elite_type": "tree_node",
           "values": [
             -18,
+            null,
             -7,
+            null,
             4,
             null,
-            -35,
-            -24,
-            -13,
-            -2,
-            9,
-            null,
-            -30,
-            -19,
-            -8,
-            3,
-            14
+            15
           ]
         }
       },
-      "expected": 15,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -13962,19 +14388,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1,
-            10,
-            21,
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            -36,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
             -29,
             null,
-            -7,
-            4,
-            15
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12
           ]
         }
       },
-      "expected": 40,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -13985,19 +14429,34 @@
           "__elite_type": "tree_node",
           "values": [
             6,
+            null,
             17,
+            null,
             -33,
+            null,
             -22,
             null,
+            -11,
+            null,
             0,
+            null,
             11,
+            null,
             22,
+            null,
             -28,
-            -17
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16
           ]
         }
       },
-      "expected": 23,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -14242,13 +14701,30 @@
           "__elite_type": "tree_node",
           "values": [
             -22,
+            null,
             -11,
+            null,
             0,
-            11
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28,
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16,
+            null,
+            27
           ]
         }
       },
-      "expected": 11,
+      "expected": 48,
       "hidden": true
     },
     {
@@ -14258,14 +14734,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -4,
+            -27,
+            null,
+            -10,
+            null,
             7,
-            18,
-            -32
+            null,
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13
           ]
         }
       },
-      "expected": 21,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -14480,24 +14969,18 @@
           "__elite_type": "tree_node",
           "values": [
             2,
+            null,
             13,
+            null,
             24,
+            null,
             -26,
-            -15,
-            -4,
             null,
-            18,
-            -32,
-            -21,
-            -10,
-            1,
-            null,
-            23,
-            -27
+            -15
           ]
         }
       },
-      "expected": 54,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -14706,18 +15189,18 @@
           "__elite_type": "tree_node",
           "values": [
             -35,
-            -24,
-            -13,
-            -2,
-            9,
-            20,
-            -30,
             null,
-            -8
+            -24,
+            null,
+            -13,
+            null,
+            -2,
+            null,
+            9
           ]
         }
       },
-      "expected": 20,
+      "expected": 9,
       "hidden": true
     },
     {
@@ -14825,24 +15308,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            3,
-            14,
-            25,
-            -25,
-            -14,
-            -3,
-            8,
-            19,
+            23,
             null,
-            -20,
-            -9,
-            2,
+            -21,
+            null,
+            -4,
+            null,
             13,
-            24
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3
           ]
         }
       },
-      "expected": 74,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -14969,7 +15451,9 @@
           "__elite_type": "tree_node",
           "values": [
             -11,
+            null,
             0,
+            null,
             11
           ]
         }
@@ -15099,20 +15583,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            2,
             13,
-            24,
-            -26,
-            -15,
-            -4,
-            7,
             null,
-            -32,
-            -21
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            -34,
+            null,
+            -17
           ]
         }
       },
-      "expected": 46,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -15197,23 +15690,18 @@
           "__elite_type": "tree_node",
           "values": [
             22,
+            null,
             -28,
+            null,
             -17,
             null,
-            5,
-            16,
-            27,
-            -23,
-            -12,
+            -6,
             null,
-            10,
-            21,
-            -29,
-            -18
+            5
           ]
         }
       },
-      "expected": 57,
+      "expected": 22,
       "hidden": true
     },
     {
@@ -15389,16 +15877,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            10,
-            21,
-            -29,
+            12,
+            null,
+            29,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9,
+            null,
+            26,
+            null,
             -18,
-            -7,
-            4
+            null,
+            -1
           ]
         }
       },
-      "expected": 31,
+      "expected": 49,
       "hidden": true
     },
     {
@@ -15429,17 +15932,14 @@
           "__elite_type": "tree_node",
           "values": [
             -15,
-            -4,
-            7,
-            18,
             null,
-            -21,
-            -10,
-            1
+            -4,
+            null,
+            7
           ]
         }
       },
-      "expected": 19,
+      "expected": 7,
       "hidden": true
     },
     {
@@ -15698,6 +16198,7 @@
           "__elite_type": "tree_node",
           "values": [
             9,
+            null,
             20
           ]
         }
@@ -15915,21 +16416,28 @@
           "__elite_type": "tree_node",
           "values": [
             -28,
+            null,
             -17,
+            null,
             -6,
+            null,
             5,
+            null,
             16,
+            null,
             -34,
             null,
+            -23,
+            null,
             -12,
+            null,
             -1,
-            10,
-            21,
-            -29
+            null,
+            10
           ]
         }
       },
-      "expected": 47,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -15966,25 +16474,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            8,
-            19,
-            -31,
-            -20,
+            -8,
             null,
-            2,
-            13,
-            -37,
-            -26,
-            -15,
+            9,
             null,
-            7,
-            18,
-            -32,
-            -21
+            -35,
+            null,
+            -18,
+            null,
+            -1,
+            null,
+            16,
+            null,
+            -28,
+            null,
+            -11,
+            null,
+            6,
+            null,
+            -38
           ]
         }
       },
-      "expected": 38,
+      "expected": 16,
       "hidden": true
     },
     {
@@ -16152,16 +16664,18 @@
           "__elite_type": "tree_node",
           "values": [
             -4,
+            null,
             7,
+            null,
             18,
+            null,
             -32,
-            -21,
-            -10,
-            1
+            null,
+            -21
           ]
         }
       },
-      "expected": 22,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -16237,21 +16751,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            16,
-            27,
-            -23,
+            -9,
             null,
-            -1,
-            10,
-            21,
-            -29,
-            -18,
+            8,
             null,
-            4
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15
           ]
         }
       },
-      "expected": 43,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -16524,17 +17038,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            15,
-            -35,
-            -24,
-            -13,
+            -19,
+            null,
             -2,
-            9,
-            20
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22
           ]
         }
       },
-      "expected": 20,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -16633,21 +17153,22 @@
           "__elite_type": "tree_node",
           "values": [
             -8,
+            null,
             3,
+            null,
             14,
             null,
-            -25,
-            -14,
-            -3,
-            8,
-            19,
+            25,
             null,
-            -20,
-            -9
+            -25,
+            null,
+            -14,
+            null,
+            -3
           ]
         }
       },
-      "expected": 19,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -16824,13 +17345,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            23,
-            -27,
-            -16
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21,
+            null,
+            -23,
+            null,
+            -6
           ]
         }
       },
-      "expected": 23,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -16876,15 +17411,36 @@
           "__elite_type": "tree_node",
           "values": [
             16,
+            null,
             -34,
+            null,
             -23,
+            null,
             -12,
             null,
-            10
+            -1,
+            null,
+            10,
+            null,
+            21,
+            null,
+            -29,
+            null,
+            -18,
+            null,
+            -7,
+            null,
+            4,
+            null,
+            15,
+            null,
+            -35,
+            null,
+            -24
           ]
         }
       },
-      "expected": 16,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -17110,26 +17666,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28,
-            -17,
-            -6,
-            5,
-            16,
+            -30,
             null,
-            -23,
-            -12,
-            -1,
-            10,
+            -13,
+            null,
+            4,
+            null,
             21,
             null,
-            -18,
-            -7,
-            4
+            -23,
+            null,
+            -6,
+            null,
+            11,
+            null,
+            -33,
+            null,
+            -16,
+            null,
+            1
           ]
         }
       },
-      "expected": 42,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -17140,26 +17699,26 @@
           "__elite_type": "tree_node",
           "values": [
             -21,
+            null,
             -10,
+            null,
             1,
+            null,
             12,
+            null,
             23,
             null,
-            -16,
-            -5,
-            6,
-            17,
-            -33,
+            -27,
             null,
-            -11,
-            0,
-            11,
-            22,
-            -28
+            -16,
+            null,
+            -5,
+            null,
+            6
           ]
         }
       },
-      "expected": 70,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -17353,20 +17912,24 @@
           "__elite_type": "tree_node",
           "values": [
             12,
+            null,
             23,
+            null,
             -27,
+            null,
             -16,
+            null,
             -5,
+            null,
             6,
             null,
-            28,
-            -22,
-            -11,
-            0
+            17,
+            null,
+            28
           ]
         }
       },
-      "expected": 47,
+      "expected": 51,
       "hidden": true
     },
     {
@@ -17377,20 +17940,18 @@
           "__elite_type": "tree_node",
           "values": [
             -31,
-            -20,
-            -9,
-            2,
-            13,
             null,
-            -26,
-            -15,
-            -4,
-            7,
-            18
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24
           ]
         }
       },
-      "expected": 38,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -17602,14 +18163,24 @@
           "__elite_type": "tree_node",
           "values": [
             -25,
+            null,
             -14,
+            null,
             -3,
+            null,
             8,
-            19
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9
           ]
         }
       },
-      "expected": 19,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -17658,18 +18229,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -32,
-            -21,
-            -10,
-            1,
+            20,
             null,
-            23,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            -34,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
             -27,
-            -16
+            null,
+            -10,
+            null,
+            7,
+            null,
+            24,
+            null,
+            -20
           ]
         }
       },
-      "expected": 23,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -17855,25 +18443,36 @@
           "__elite_type": "tree_node",
           "values": [
             -1,
+            null,
             10,
+            null,
             21,
+            null,
             -29,
+            null,
             -18,
+            null,
             -7,
+            null,
             4,
+            null,
             15,
             null,
-            -24,
-            -13,
-            -2,
-            9,
-            20,
+            26,
             null,
-            -19
+            -24,
+            null,
+            -13,
+            null,
+            -2,
+            null,
+            9,
+            null,
+            20
           ]
         }
       },
-      "expected": 54,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -17958,13 +18557,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -24,
-            -13,
-            -2
+            19
           ]
         }
       },
-      "expected": -2,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -18074,18 +18671,36 @@
           "__elite_type": "tree_node",
           "values": [
             23,
+            null,
             -27,
+            null,
             -16,
             null,
+            -5,
+            null,
             6,
+            null,
             17,
+            null,
             -33,
+            null,
             -22,
-            -11
+            null,
+            -11,
+            null,
+            0,
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28,
+            null,
+            -17
           ]
         }
       },
-      "expected": 24,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -18252,27 +18867,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -25,
-            -14,
-            -3,
-            8,
-            19,
-            -31,
-            -20,
-            -9,
+            9,
             null,
-            13,
-            24,
-            -26,
-            -15,
-            -4,
+            26,
             null,
-            18,
-            -32
+            -18,
+            null,
+            -1,
+            null,
+            16
           ]
         }
       },
-      "expected": 56,
+      "expected": 35,
       "hidden": true
     },
     {
@@ -18328,13 +18935,30 @@
           "__elite_type": "tree_node",
           "values": [
             -14,
+            null,
             -3,
+            null,
             8,
-            19
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9,
+            null,
+            2,
+            null,
+            13,
+            null,
+            -37,
+            null,
+            -26
           ]
         }
       },
-      "expected": 19,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -18516,23 +19140,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -26,
-            -15,
-            -4,
-            7,
-            18,
-            -32,
+            -1,
+            null,
+            16,
+            null,
+            -28,
+            null,
+            -11,
+            null,
+            6,
+            null,
+            -38,
+            null,
             -21,
             null,
-            1,
-            12,
-            -38,
-            -27,
-            -16
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3
           ]
         }
       },
-      "expected": 30,
+      "expected": 16,
       "hidden": true
     },
     {
@@ -18570,24 +19204,22 @@
           "__elite_type": "tree_node",
           "values": [
             19,
+            null,
             -31,
+            null,
             -20,
+            null,
             -9,
+            null,
             2,
             null,
-            24,
-            -26,
-            -15,
-            -4,
-            7,
+            13,
             null,
-            29,
-            -21,
-            -10
+            24
           ]
         }
       },
-      "expected": 53,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -18795,18 +19427,12 @@
           "__elite_type": "tree_node",
           "values": [
             -18,
-            -7,
-            4,
-            15,
-            26,
-            -24,
             null,
-            -2,
-            9
+            -7
           ]
         }
       },
-      "expected": 43,
+      "expected": -7,
       "hidden": true
     },
     {
@@ -19055,12 +19681,36 @@
           "__elite_type": "tree_node",
           "values": [
             6,
+            null,
             17,
-            -33
+            null,
+            -33,
+            null,
+            -22,
+            null,
+            -11,
+            null,
+            0,
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28,
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16,
+            null,
+            -34
           ]
         }
       },
-      "expected": 23,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -19087,15 +19737,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -19,
-            -8,
-            3,
-            14,
-            -36
+            -12,
+            null,
+            5
           ]
         }
       },
-      "expected": 14,
+      "expected": 5,
       "hidden": true
     },
     {
@@ -19285,24 +19933,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -31,
-            -20,
-            -9,
-            2,
-            13,
-            -37,
-            -26,
-            -15,
-            null,
-            7,
-            18,
-            -32,
-            -21,
-            -10
+            -31
           ]
         }
       },
-      "expected": 38,
+      "expected": -31,
       "hidden": true
     },
     {
@@ -19518,17 +20153,16 @@
           "__elite_type": "tree_node",
           "values": [
             2,
+            null,
             13,
+            null,
             24,
             null,
-            -15,
-            -4,
-            7,
-            18
+            -26
           ]
         }
       },
-      "expected": 49,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -19656,24 +20290,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1,
-            10,
+            -23,
             null,
-            -29,
-            -18,
-            -7,
-            4,
-            15,
+            -6,
             null,
-            -24,
-            -13,
-            -2,
-            9
+            11,
+            null,
+            -33,
+            null,
+            -16
           ]
         }
       },
-      "expected": 15,
+      "expected": 11,
       "hidden": true
     },
     {
@@ -19784,11 +20413,22 @@
           "__elite_type": "tree_node",
           "values": [
             26,
-            -24
+            null,
+            -24,
+            null,
+            -13,
+            null,
+            -2,
+            null,
+            9,
+            null,
+            20,
+            null,
+            -30
           ]
         }
       },
-      "expected": 26,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -19931,20 +20571,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -4,
-            7,
-            18,
-            29,
-            -21,
-            -10,
-            1,
-            12,
+            -24,
             null,
-            -27
+            -7,
+            null,
+            10,
+            null,
+            27,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            24
           ]
         }
       },
-      "expected": 63,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -20004,22 +20655,22 @@
           "__elite_type": "tree_node",
           "values": [
             -11,
+            null,
             0,
+            null,
             11,
+            null,
             22,
+            null,
             -28,
             null,
-            -6,
-            5,
-            16,
-            -34,
-            -23,
+            -17,
             null,
-            -1
+            -6
           ]
         }
       },
-      "expected": 43,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -20222,16 +20873,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -5,
-            6,
-            17,
-            -33,
-            -22,
-            -11
+            -34,
+            null,
+            -17
           ]
         }
       },
-      "expected": 18,
+      "expected": -17,
       "hidden": true
     },
     {
@@ -20242,11 +20890,22 @@
           "__elite_type": "tree_node",
           "values": [
             13,
+            null,
             24,
+            null,
             -26,
+            null,
             -15,
+            null,
             -4,
-            7
+            null,
+            7,
+            null,
+            18,
+            null,
+            -32,
+            null,
+            -21
           ]
         }
       },
@@ -20526,12 +21185,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            3,
-            14
+            26,
+            null,
+            -18,
+            null,
+            -1,
+            null,
+            16,
+            null,
+            -28,
+            null,
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4
           ]
         }
       },
-      "expected": 17,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -20722,21 +21398,30 @@
           "__elite_type": "tree_node",
           "values": [
             9,
+            null,
             20,
+            null,
             -30,
+            null,
             -19,
+            null,
             -8,
+            null,
             3,
+            null,
             14,
+            null,
             25,
             null,
+            -25,
+            null,
             -14,
-            -3,
-            8
+            null,
+            -3
           ]
         }
       },
-      "expected": 35,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -20799,25 +21484,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            2,
-            13,
-            24,
-            -26,
-            -15,
+            16,
             null,
-            7,
-            18,
-            -32,
-            -21,
-            -10,
+            -28,
             null,
-            12,
+            -11,
+            null,
+            6,
+            null,
             23,
-            -27
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7
           ]
         }
       },
-      "expected": 73,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -20966,15 +21663,26 @@
           "__elite_type": "tree_node",
           "values": [
             -28,
+            null,
             -17,
+            null,
             -6,
             null,
+            5,
+            null,
             16,
-            27
+            null,
+            27,
+            null,
+            -23,
+            null,
+            -12,
+            null,
+            -1
           ]
         }
       },
-      "expected": 27,
+      "expected": 48,
       "hidden": true
     },
     {
@@ -21069,20 +21777,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            1,
-            12,
-            -38,
-            -27,
-            null,
-            -5,
             6,
-            17,
-            -33,
-            -22
+            null,
+            -38
           ]
         }
       },
-      "expected": 17,
+      "expected": 6,
       "hidden": true
     },
     {
@@ -21227,25 +21928,22 @@
           "__elite_type": "tree_node",
           "values": [
             -4,
+            null,
             7,
+            null,
             18,
+            null,
             -32,
             null,
-            -10,
-            1,
-            12,
-            23,
-            -27,
+            -21,
             null,
-            -5,
-            6,
-            17,
-            -33,
-            -22
+            -10,
+            null,
+            1
           ]
         }
       },
-      "expected": 29,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -21354,17 +22052,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            9,
-            20,
-            -30,
-            null,
-            -8,
-            3,
-            14
+            5
           ]
         }
       },
-      "expected": 29,
+      "expected": 5,
       "hidden": true
     },
     {
@@ -21441,16 +22133,10 @@
           "__elite_type": "tree_node",
           "values": [
             20,
-            -30,
-            -19,
-            -8,
-            3,
             null,
-            -36,
-            -25,
-            -14,
-            -3,
-            8
+            -30,
+            null,
+            -19
           ]
         }
       },
@@ -21658,13 +22344,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            8,
-            19,
-            -31
+            -5,
+            null,
+            12,
+            null,
+            -32,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19
           ]
         }
       },
-      "expected": 27,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -21692,14 +22386,12 @@
           "__elite_type": "tree_node",
           "values": [
             -8,
-            3,
-            14,
-            25,
-            -25
+            null,
+            3
           ]
         }
       },
-      "expected": 34,
+      "expected": 3,
       "hidden": true
     },
     {
@@ -21941,25 +22633,32 @@
           "__elite_type": "tree_node",
           "values": [
             16,
+            null,
             27,
+            null,
             -23,
+            null,
             -12,
+            null,
             -1,
+            null,
             10,
+            null,
             21,
             null,
-            -18,
-            -7,
-            4,
-            15,
-            26,
+            -29,
             null,
-            -13,
-            -2
+            -18,
+            null,
+            -7,
+            null,
+            4,
+            null,
+            15
           ]
         }
       },
-      "expected": 59,
+      "expected": 43,
       "hidden": true
     },
     {
@@ -22162,19 +22861,28 @@
           "__elite_type": "tree_node",
           "values": [
             -21,
+            null,
             -10,
+            null,
             1,
+            null,
             12,
+            null,
             23,
+            null,
             -27,
+            null,
             -16,
+            null,
             -5,
+            null,
+            6,
             null,
             17
           ]
         }
       },
-      "expected": 42,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -22208,22 +22916,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            15,
-            -35,
-            -24,
-            -13,
-            -2,
-            9,
+            -16,
             null,
-            -30,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            -36,
+            null,
             -19,
-            -8,
-            3,
-            14
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22
           ]
         }
       },
-      "expected": 23,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -22419,12 +23142,36 @@
           "__elite_type": "tree_node",
           "values": [
             3,
+            null,
             14,
-            -36
+            null,
+            -36,
+            null,
+            -25,
+            null,
+            -14,
+            null,
+            -3,
+            null,
+            8,
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9,
+            null,
+            2,
+            null,
+            13,
+            null,
+            24
           ]
         }
       },
-      "expected": 17,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -22490,18 +23237,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            23,
-            -27,
-            -16,
-            -5,
-            6,
+            -17,
             null,
-            28,
-            -22
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7
           ]
         }
       },
-      "expected": 35,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -22657,24 +23407,30 @@
           "__elite_type": "tree_node",
           "values": [
             -34,
+            null,
             -23,
+            null,
             -12,
+            null,
             -1,
             null,
+            10,
+            null,
             21,
+            null,
             -29,
+            null,
             -18,
+            null,
             -7,
+            null,
             4,
             null,
-            -35,
-            -24,
-            -13,
-            -2
+            15
           ]
         }
       },
-      "expected": 25,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -22787,14 +23543,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28,
-            -17,
-            -6
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21,
+            null,
+            -23
           ]
         }
       },
-      "expected": 22,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -22883,18 +23658,34 @@
           "__elite_type": "tree_node",
           "values": [
             -1,
+            null,
             10,
+            null,
             21,
+            null,
             -29,
+            null,
             -18,
             null,
+            -7,
+            null,
             4,
+            null,
             15,
-            26
+            null,
+            26,
+            null,
+            -24,
+            null,
+            -13,
+            null,
+            -2,
+            null,
+            9
           ]
         }
       },
-      "expected": 34,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -23086,27 +23877,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            30,
-            -20,
-            -9,
+            -28,
             null,
-            13,
-            24,
-            -26,
-            -15,
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
             -4,
             null,
-            18,
-            29,
-            -21,
-            -10,
-            1,
-            null,
-            23
+            13
           ]
         }
       },
-      "expected": 75,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -23146,8 +23933,20 @@
           "__elite_type": "tree_node",
           "values": [
             23,
+            null,
             -27,
-            -16
+            null,
+            -16,
+            null,
+            -5,
+            null,
+            6,
+            null,
+            17,
+            null,
+            -33,
+            null,
+            -22
           ]
         }
       },
@@ -23347,23 +24146,25 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -32,
-            -21,
-            -10,
-            1,
-            12,
             23,
-            -27,
-            -16,
             null,
-            6,
-            17,
-            -33,
-            -22
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20
           ]
         }
       },
-      "expected": 35,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -23374,22 +24175,20 @@
           "__elite_type": "tree_node",
           "values": [
             -14,
-            -3,
-            8,
-            19,
-            -31,
-            -20,
-            -9,
             null,
-            13,
-            24,
-            -26,
-            -15,
-            -4
+            -3,
+            null,
+            8,
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20
           ]
         }
       },
-      "expected": 32,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -23605,13 +24404,30 @@
           "__elite_type": "tree_node",
           "values": [
             10,
+            null,
             21,
+            null,
             -29,
+            null,
             -18,
+            null,
             -7,
+            null,
             4,
+            null,
             15,
-            -35
+            null,
+            -35,
+            null,
+            -24,
+            null,
+            -13,
+            null,
+            -2,
+            null,
+            9,
+            null,
+            20
           ]
         }
       },
@@ -23625,19 +24441,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -33,
-            -22,
-            -11,
-            0,
-            11,
-            22,
-            -28,
+            13,
             null,
-            -6
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24
           ]
         }
       },
-      "expected": 22,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -23874,11 +24692,20 @@
           "__elite_type": "tree_node",
           "values": [
             -18,
-            -7
+            null,
+            -7,
+            null,
+            4,
+            null,
+            15,
+            null,
+            26,
+            null,
+            -24
           ]
         }
       },
-      "expected": -7,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -23921,15 +24748,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
+            12,
+            null,
+            -32,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19,
+            null,
             -25,
-            -14,
-            -3,
-            8,
-            19
+            null,
+            -8,
+            null,
+            9,
+            null,
+            26,
+            null,
+            -18,
+            null,
+            -1,
+            null,
+            16
           ]
         }
       },
-      "expected": 19,
+      "expected": 35,
       "hidden": true
     },
     {
@@ -24090,23 +24935,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            6,
-            17,
-            28,
-            -22,
-            null,
-            0,
-            11,
-            22,
-            -28,
-            -17,
-            null,
-            5,
-            16
+            6
           ]
         }
       },
-      "expected": 78,
+      "expected": 6,
       "hidden": true
     },
     {
@@ -24329,16 +25162,32 @@
           "__elite_type": "tree_node",
           "values": [
             -31,
+            null,
             -20,
+            null,
             -9,
+            null,
             2,
+            null,
             13,
             null,
-            -26
+            24,
+            null,
+            -26,
+            null,
+            -15,
+            null,
+            -4,
+            null,
+            7,
+            null,
+            18,
+            null,
+            -32
           ]
         }
       },
-      "expected": 13,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -24489,24 +25338,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -18,
-            -7,
-            4,
-            15,
+            1,
             null,
-            -24,
-            -13,
-            -2,
-            9,
-            20,
+            18,
+            null,
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            25,
             null,
             -19,
-            -8,
-            3
+            null,
+            -2,
+            null,
+            15
           ]
         }
       },
-      "expected": 25,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -24763,19 +25615,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -19,
-            -8,
-            3,
+            -9,
+            null,
+            8,
             null,
             -36,
-            -25,
-            -14,
-            -3,
-            8
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22
           ]
         }
       },
-      "expected": 8,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -24810,21 +25674,14 @@
           "__elite_type": "tree_node",
           "values": [
             17,
-            -33,
-            -22,
-            -11,
-            0,
-            11,
-            22,
             null,
-            -17,
-            -6,
-            5,
-            16
+            -33,
+            null,
+            -22
           ]
         }
       },
-      "expected": 27,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -25053,15 +25910,16 @@
           "__elite_type": "tree_node",
           "values": [
             -11,
+            null,
             0,
+            null,
             11,
-            22,
-            -28,
-            -17
+            null,
+            22
           ]
         }
       },
-      "expected": 22,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -25317,26 +26175,32 @@
           "__elite_type": "tree_node",
           "values": [
             13,
+            null,
             24,
+            null,
             -26,
             null,
+            -15,
+            null,
             -4,
+            null,
             7,
+            null,
             18,
+            null,
             -32,
+            null,
             -21,
             null,
-            1,
-            12,
-            23,
-            -27,
-            -16,
+            -10,
             null,
-            6
+            1,
+            null,
+            12
           ]
         }
       },
-      "expected": 53,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -25360,12 +26224,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21,
+            null,
+            -23,
+            null,
+            -6,
+            null,
+            11,
+            null,
+            -33
           ]
         }
       },
-      "expected": -1,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -25530,19 +26413,24 @@
           "__elite_type": "tree_node",
           "values": [
             -24,
+            null,
             -13,
+            null,
             -2,
+            null,
             9,
             null,
+            20,
+            null,
             -30,
+            null,
             -19,
-            -8,
-            3,
-            14
+            null,
+            -8
           ]
         }
       },
-      "expected": 14,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -25629,25 +26517,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -4,
-            7,
-            18,
-            29,
             -21,
-            -10,
             null,
-            12,
-            23,
-            -27,
-            -16,
-            -5,
+            -4,
             null,
-            17,
-            28
+            13,
+            null,
+            30,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7
           ]
         }
       },
-      "expected": 92,
+      "expected": 52,
       "hidden": true
     },
     {
@@ -25778,10 +26668,32 @@
           "__elite_type": "tree_node",
           "values": [
             0,
+            null,
             11,
+            null,
             22,
+            null,
             -28,
-            -17
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16,
+            null,
+            -34,
+            null,
+            -23,
+            null,
+            -12,
+            null,
+            -1,
+            null,
+            10,
+            null,
+            21
           ]
         }
       },
@@ -25900,21 +26812,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -5,
-            6,
-            17,
-            -33,
-            -22,
+            -31,
             null,
-            0,
-            11,
-            22,
-            -28,
-            -17
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            -34,
+            null,
+            -17,
+            null,
+            0
           ]
         }
       },
-      "expected": 22,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -26031,25 +26951,24 @@
           "__elite_type": "tree_node",
           "values": [
             -28,
+            null,
             -17,
+            null,
             -6,
+            null,
             5,
+            null,
             16,
+            null,
             27,
             null,
-            -12,
-            -1,
-            10,
-            21,
-            -29,
+            -23,
             null,
-            -7,
-            4,
-            15
+            -12
           ]
         }
       },
-      "expected": 47,
+      "expected": 48,
       "hidden": true
     },
     {
@@ -26187,17 +27106,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -6,
-            5,
-            16,
+            20,
+            null,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
             -34,
             null,
-            -12,
-            -1
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10
           ]
         }
       },
-      "expected": 16,
+      "expected": 20,
       "hidden": true
     },
     {
@@ -26250,19 +27181,16 @@
           "__elite_type": "tree_node",
           "values": [
             -4,
-            7,
-            18,
-            -32,
-            -21,
-            -10,
-            1,
             null,
-            23,
-            -27
+            7,
+            null,
+            18,
+            null,
+            -32
           ]
         }
       },
-      "expected": 23,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -26488,13 +27416,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            2,
-            13,
-            24
+            19,
+            null,
+            -25
           ]
         }
       },
-      "expected": 39,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -26505,9 +27433,16 @@
           "__elite_type": "tree_node",
           "values": [
             20,
+            null,
             -30,
+            null,
             -19,
-            -8
+            null,
+            -8,
+            null,
+            3,
+            null,
+            14
           ]
         }
       },
@@ -26747,24 +27682,20 @@
           "__elite_type": "tree_node",
           "values": [
             -17,
+            null,
             -6,
+            null,
             5,
             null,
-            -34,
-            -23,
-            -12,
-            -1,
-            10,
+            16,
             null,
-            -29,
-            -18,
-            -7,
-            4,
-            15
+            -34,
+            null,
+            -23
           ]
         }
       },
-      "expected": 18,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -26774,26 +27705,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            1,
-            12,
-            23,
-            -27,
-            -16,
-            -5,
-            6,
-            17,
+            9,
             null,
-            -22,
-            -11,
-            0,
-            11,
-            22,
+            -35,
             null,
-            -17
+            -18,
+            null,
+            -1,
+            null,
+            16
           ]
         }
       },
-      "expected": 64,
+      "expected": 16,
       "hidden": true
     },
     {
@@ -26972,14 +27896,24 @@
           "__elite_type": "tree_node",
           "values": [
             7,
+            null,
             18,
+            null,
             -32,
+            null,
             -21,
             null,
+            -10,
+            null,
             1,
+            null,
             12,
+            null,
             -38,
-            -27
+            null,
+            -27,
+            null,
+            -16
           ]
         }
       },
@@ -27039,22 +27973,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            9,
-            20,
-            -30,
-            -19,
-            -8,
-            3,
-            14,
+            8,
             null,
-            -25,
-            -14,
-            -3,
-            8
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15
           ]
         }
       },
-      "expected": 29,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -27232,12 +28163,24 @@
           "__elite_type": "tree_node",
           "values": [
             -21,
+            null,
             -10,
-            1
+            null,
+            1,
+            null,
+            12,
+            null,
+            23,
+            null,
+            -27,
+            null,
+            -16,
+            null,
+            -5
           ]
         }
       },
-      "expected": 1,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -27321,18 +28264,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            8,
-            19,
-            -31,
-            -20,
-            -9,
-            2,
+            -2,
             null,
-            24
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22
           ]
         }
       },
-      "expected": 31,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -27463,23 +28409,32 @@
           "__elite_type": "tree_node",
           "values": [
             3,
+            null,
             14,
+            null,
             25,
+            null,
             -25,
+            null,
             -14,
+            null,
             -3,
             null,
-            19,
-            -31,
-            -20,
-            -9,
-            2,
+            8,
             null,
-            24
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9,
+            null,
+            2
           ]
         }
       },
-      "expected": 60,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -27621,14 +28576,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            16,
-            27,
-            -23,
-            -12
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21
           ]
         }
       },
-      "expected": 43,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -27695,16 +28657,28 @@
           "__elite_type": "tree_node",
           "values": [
             -34,
+            null,
             -23,
+            null,
             -12,
+            null,
             -1,
+            null,
             10,
+            null,
             21,
-            -29
+            null,
+            -29,
+            null,
+            -18,
+            null,
+            -7,
+            null,
+            4
           ]
         }
       },
-      "expected": 21,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -27916,26 +28890,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            15,
-            -35,
-            -24,
             -13,
             null,
-            9,
-            20,
-            -30,
-            -19,
-            -8,
-            null,
-            14,
-            25,
-            -25,
-            -14,
-            -3
+            4
           ]
         }
       },
-      "expected": 59,
+      "expected": 4,
       "hidden": true
     },
     {
@@ -27960,11 +28921,32 @@
           "__elite_type": "tree_node",
           "values": [
             -10,
-            1
+            null,
+            1,
+            null,
+            12,
+            null,
+            23,
+            null,
+            -27,
+            null,
+            -16,
+            null,
+            -5,
+            null,
+            6,
+            null,
+            17,
+            null,
+            -33,
+            null,
+            -22,
+            null,
+            -11
           ]
         }
       },
-      "expected": 1,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -28180,22 +29162,24 @@
           "__elite_type": "tree_node",
           "values": [
             23,
+            null,
             -27,
+            null,
             -16,
             null,
-            6,
-            17,
-            28,
-            -22,
-            -11,
+            -5,
             null,
-            11,
-            22,
-            -28
+            6,
+            null,
+            17,
+            null,
+            28,
+            null,
+            -22
           ]
         }
       },
-      "expected": 62,
+      "expected": 51,
       "hidden": true
     },
     {
@@ -28417,17 +29401,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -14,
-            -3,
-            8,
-            19,
-            null,
-            -20,
-            -9
+            -14
           ]
         }
       },
-      "expected": 19,
+      "expected": -14,
       "hidden": true
     },
     {
@@ -28458,18 +29436,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28,
-            -17,
-            -6,
-            5,
-            16,
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
             -34,
-            -23
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14
           ]
         }
       },
-      "expected": 22,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -28751,15 +29748,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            21,
-            -29,
-            -18,
-            -7,
-            4
+            -34,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10
           ]
         }
       },
-      "expected": 21,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -28899,21 +29902,26 @@
           "__elite_type": "tree_node",
           "values": [
             -27,
+            null,
             -16,
+            null,
             -5,
+            null,
             6,
+            null,
             17,
+            null,
             -33,
             null,
+            -22,
+            null,
             -11,
-            0,
-            11,
-            22,
-            -28
+            null,
+            0
           ]
         }
       },
-      "expected": 50,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -29143,15 +30151,22 @@
           "__elite_type": "tree_node",
           "values": [
             -3,
+            null,
             8,
+            null,
             19,
+            null,
             -31,
+            null,
             -20,
-            -9
+            null,
+            -9,
+            null,
+            2
           ]
         }
       },
-      "expected": 24,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -29319,24 +30334,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -33,
-            -22,
-            -11,
-            0,
-            11,
-            null,
-            -28,
-            -17,
-            -6,
-            5,
             16,
             null,
-            -23,
-            -12
+            -28,
+            null,
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20,
+            null,
+            -24
           ]
         }
       },
-      "expected": 32,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -29403,26 +30429,34 @@
           "__elite_type": "tree_node",
           "values": [
             -31,
+            null,
             -20,
+            null,
             -9,
+            null,
             2,
+            null,
             13,
+            null,
             24,
+            null,
             -26,
+            null,
             -15,
             null,
-            7,
-            18,
-            29,
-            -21,
-            -10,
+            -4,
             null,
-            12,
-            23
+            7,
+            null,
+            18,
+            null,
+            29,
+            null,
+            -21
           ]
         }
       },
-      "expected": 53,
+      "expected": 54,
       "hidden": true
     },
     {
@@ -29594,20 +30628,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -25,
-            -14,
-            -3,
-            8,
+            15,
             null,
-            -31,
-            -20,
-            -9,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            -32,
+            null,
+            -15,
+            null,
             2,
-            13
+            null,
+            19
           ]
         }
       },
-      "expected": 13,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -29618,20 +30665,18 @@
           "__elite_type": "tree_node",
           "values": [
             -7,
+            null,
             4,
+            null,
             15,
             null,
-            -24,
-            -13,
-            -2,
-            9,
-            20,
+            26,
             null,
-            -19
+            -24
           ]
         }
       },
-      "expected": 20,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -29869,13 +30914,34 @@
           "__elite_type": "tree_node",
           "values": [
             17,
+            null,
             -33,
+            null,
             -22,
-            -11
+            null,
+            -11,
+            null,
+            0,
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28,
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16,
+            null,
+            -34
           ]
         }
       },
-      "expected": 17,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -29885,16 +30951,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -26,
-            -15,
-            -4,
+            5,
             null,
-            18,
-            -32
+            22,
+            null,
+            -22,
+            null,
+            -5
           ]
         }
       },
-      "expected": 18,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -30118,25 +31185,12 @@
           "__elite_type": "tree_node",
           "values": [
             -20,
-            -9,
-            2,
-            13,
-            -37,
             null,
-            -15,
-            -4,
-            7,
-            18,
-            -32,
-            null,
-            -10,
-            1,
-            12,
-            23
+            -9
           ]
         }
       },
-      "expected": 51,
+      "expected": -9,
       "hidden": true
     },
     {
@@ -30189,12 +31243,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -18,
-            -7
+            4,
+            null,
+            21,
+            null,
+            -23,
+            null,
+            -6
           ]
         }
       },
-      "expected": -7,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -30338,19 +31397,14 @@
           "__elite_type": "tree_node",
           "values": [
             13,
-            24,
-            -26,
-            -15,
-            -4,
-            7,
             null,
-            29,
-            -21,
-            -10
+            24,
+            null,
+            -26
           ]
         }
       },
-      "expected": 51,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -30462,25 +31516,25 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -19,
-            -8,
-            3,
-            14,
-            25,
-            -25,
-            -14,
+            -6,
             null,
-            8,
-            19,
-            -31,
-            -20,
-            -9,
+            11,
             null,
-            13
+            -33,
+            null,
+            -16,
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9
           ]
         }
       },
-      "expected": 58,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -30595,13 +31649,20 @@
           "__elite_type": "tree_node",
           "values": [
             -24,
+            null,
             -13,
+            null,
             -2,
-            9
+            null,
+            9,
+            null,
+            20,
+            null,
+            -30
           ]
         }
       },
-      "expected": 9,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -30732,21 +31793,25 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -11,
-            0,
-            11,
-            22,
-            -28,
+            -7,
+            null,
+            10,
+            null,
+            27,
+            null,
             -17,
             null,
-            5,
-            16,
-            27,
-            -23
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10
           ]
         }
       },
-      "expected": 43,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -30834,23 +31899,16 @@
           "__elite_type": "tree_node",
           "values": [
             0,
-            11,
-            22,
-            -28,
-            -17,
-            -6,
-            5,
-            16,
             null,
-            -23,
-            -12,
-            -1,
-            10,
-            21
+            11,
+            null,
+            22,
+            null,
+            -28
           ]
         }
       },
-      "expected": 59,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -31018,17 +32076,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1,
-            10,
-            21,
-            -29,
+            -17,
             null,
-            -7
+            0,
+            null,
+            17,
+            null,
+            -27
           ]
         }
       },
-      "expected": 21,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -31060,18 +32118,30 @@
           "__elite_type": "tree_node",
           "values": [
             24,
+            null,
             -26,
+            null,
             -15,
             null,
+            -4,
+            null,
             7,
+            null,
             18,
+            null,
             -32,
+            null,
             -21,
-            -10
+            null,
+            -10,
+            null,
+            1,
+            null,
+            12
           ]
         }
       },
-      "expected": 27,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -31323,12 +32393,20 @@
           "__elite_type": "tree_node",
           "values": [
             -13,
+            null,
             -2,
-            9
+            null,
+            9,
+            null,
+            20,
+            null,
+            -30,
+            null,
+            -19
           ]
         }
       },
-      "expected": 9,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -31550,23 +32628,16 @@
           "__elite_type": "tree_node",
           "values": [
             20,
+            null,
             -30,
+            null,
             -19,
-            -8,
-            3,
             null,
-            25,
-            -25,
-            -14,
-            -3,
-            8,
-            null,
-            -31,
-            -20
+            -8
           ]
         }
       },
-      "expected": 26,
+      "expected": 20,
       "hidden": true
     },
     {
@@ -31604,25 +32675,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -5,
-            6,
-            17,
+            -28,
             null,
-            -22,
             -11,
-            0,
-            11,
-            22,
             null,
-            -17,
-            -6,
-            5,
-            16,
-            27
+            6,
+            null,
+            23,
+            null,
+            -21
           ]
         }
       },
-      "expected": 54,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -31782,17 +32847,34 @@
           "__elite_type": "tree_node",
           "values": [
             -17,
+            null,
             -6,
+            null,
             5,
+            null,
             16,
+            null,
             27,
+            null,
             -23,
             null,
-            -1
+            -12,
+            null,
+            -1,
+            null,
+            10,
+            null,
+            21,
+            null,
+            -29,
+            null,
+            -18,
+            null,
+            -7
           ]
         }
       },
-      "expected": 37,
+      "expected": 48,
       "hidden": true
     },
     {
@@ -31871,22 +32953,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -6,
-            5,
-            16,
-            -34,
-            -23,
-            -12,
-            -1,
-            10,
-            null,
-            -29,
-            -18,
-            -7
+            23
           ]
         }
       },
-      "expected": 16,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -32051,11 +33122,30 @@
           "__elite_type": "tree_node",
           "values": [
             7,
-            18
+            null,
+            18,
+            null,
+            -32,
+            null,
+            -21,
+            null,
+            -10,
+            null,
+            1,
+            null,
+            12,
+            null,
+            23,
+            null,
+            -27,
+            null,
+            -16,
+            null,
+            -5
           ]
         }
       },
-      "expected": 25,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -32154,17 +33244,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            2,
-            13,
-            24,
-            -26,
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            -32,
+            null,
             -15,
-            -4,
-            7
+            null,
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9,
+            null,
+            26
           ]
         }
       },
-      "expected": 46,
+      "expected": 35,
       "hidden": true
     },
     {
@@ -32268,22 +33374,22 @@
           "__elite_type": "tree_node",
           "values": [
             -30,
-            -19,
-            -8,
-            3,
-            14,
-            -36,
-            -25,
-            -14,
             null,
-            8,
-            19,
-            -31,
-            -20
+            -19,
+            null,
+            -8,
+            null,
+            3,
+            null,
+            14,
+            null,
+            -36,
+            null,
+            -25
           ]
         }
       },
-      "expected": 41,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -32450,14 +33556,33 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            1,
             12,
-            23,
-            -27
+            null,
+            -32,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9,
+            null,
+            -35,
+            null,
+            -18,
+            null,
+            -1,
+            null,
+            16
           ]
         }
       },
-      "expected": 36,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -32505,16 +33630,18 @@
           "__elite_type": "tree_node",
           "values": [
             3,
+            null,
             14,
+            null,
             25,
             null,
-            -14,
-            -3,
-            8
+            -25,
+            null,
+            -14
           ]
         }
       },
-      "expected": 50,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -32749,27 +33876,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            9,
-            20,
-            -30,
-            -19,
-            -8,
+            11,
             null,
-            14,
-            25,
-            -25,
-            -14,
-            -3,
+            28,
             null,
-            19,
-            -31,
-            -20,
-            -9,
-            2
+            -16,
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9
           ]
         }
       },
-      "expected": 38,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -32987,20 +34110,20 @@
           "__elite_type": "tree_node",
           "values": [
             -10,
+            null,
             1,
+            null,
             12,
+            null,
             23,
+            null,
             -27,
             null,
-            -5,
-            6,
-            17,
-            -33,
-            -22
+            -16
           ]
         }
       },
-      "expected": 46,
+      "expected": 36,
       "hidden": true
     },
     {
@@ -33010,23 +34133,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            8,
-            19,
-            -31,
-            -20,
+            1,
             null,
-            2,
-            13,
-            24,
+            18,
+            null,
             -26,
-            -15,
             null,
-            7,
-            18
+            -9,
+            null,
+            8,
+            null,
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29
           ]
         }
       },
-      "expected": 38,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -33230,15 +34359,34 @@
           "__elite_type": "tree_node",
           "values": [
             14,
+            null,
             -36,
+            null,
             -25,
+            null,
             -14,
+            null,
             -3,
-            8
+            null,
+            8,
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20,
+            null,
+            -9,
+            null,
+            2,
+            null,
+            13,
+            null,
+            24
           ]
         }
       },
-      "expected": 14,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -33289,19 +34437,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            16,
-            27,
-            -23,
+            0,
             null,
-            -1,
-            10,
-            21,
-            -29,
-            -18
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7
           ]
         }
       },
-      "expected": 43,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -33494,26 +34642,14 @@
           "__elite_type": "tree_node",
           "values": [
             -23,
+            null,
             -12,
-            -1,
-            10,
-            21,
-            -29,
-            -18,
             null,
-            4,
-            15,
-            -35,
-            -24,
-            -13,
-            null,
-            9,
-            20,
-            -30
+            -1
           ]
         }
       },
-      "expected": 58,
+      "expected": -1,
       "hidden": true
     },
     {
@@ -33584,15 +34720,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            15,
-            26,
-            -24,
-            -13,
-            -2
+            -10,
+            null,
+            7,
+            null,
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30
           ]
         }
       },
-      "expected": 41,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -33706,20 +34850,14 @@
           "__elite_type": "tree_node",
           "values": [
             10,
-            21,
-            -29,
-            -18,
-            -7,
-            4,
-            15,
-            26,
             null,
-            -13,
-            -2
+            21,
+            null,
+            -29
           ]
         }
       },
-      "expected": 39,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -33955,14 +35093,32 @@
           "__elite_type": "tree_node",
           "values": [
             -27,
+            null,
             -16,
+            null,
             -5,
             null,
-            17
+            6,
+            null,
+            17,
+            null,
+            -33,
+            null,
+            -22,
+            null,
+            -11,
+            null,
+            0,
+            null,
+            11,
+            null,
+            22,
+            null,
+            -28
           ]
         }
       },
-      "expected": 17,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -34152,24 +35308,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28,
-            -17,
-            -6,
-            5,
-            16,
+            -21,
             null,
-            -23,
-            -12,
-            -1,
-            10,
-            21,
+            -4,
             null,
-            -18
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
+            20
           ]
         }
       },
-      "expected": 42,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -34208,25 +35363,36 @@
           "__elite_type": "tree_node",
           "values": [
             -3,
+            null,
             8,
+            null,
             19,
+            null,
             -31,
             null,
+            -20,
+            null,
             -9,
+            null,
             2,
+            null,
             13,
+            null,
             24,
+            null,
             -26,
             null,
+            -15,
+            null,
             -4,
+            null,
             7,
-            18,
-            -32,
-            -21
+            null,
+            18
           ]
         }
       },
-      "expected": 33,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -34427,15 +35593,10 @@
           "__elite_type": "tree_node",
           "values": [
             21,
-            -29,
-            -18,
-            -7,
-            4,
             null,
-            -35,
-            -24,
-            -13,
-            -2
+            -29,
+            null,
+            -18
           ]
         }
       },
@@ -34681,13 +35842,24 @@
           "__elite_type": "tree_node",
           "values": [
             -7,
+            null,
             4,
+            null,
             15,
-            26
+            null,
+            26,
+            null,
+            -24,
+            null,
+            -13,
+            null,
+            -2,
+            null,
+            9
           ]
         }
       },
-      "expected": 38,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -34715,16 +35887,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -32,
-            -21,
-            -10,
-            1,
-            null,
-            23
+            -32
           ]
         }
       },
-      "expected": 23,
+      "expected": -32,
       "hidden": true
     },
     {
@@ -34923,24 +36090,26 @@
           "__elite_type": "tree_node",
           "values": [
             17,
+            null,
             28,
+            null,
             -22,
+            null,
             -11,
+            null,
             0,
+            null,
             11,
+            null,
             22,
             null,
-            -17,
-            -6,
-            5,
-            16,
-            27,
+            -28,
             null,
-            -12
+            -17
           ]
         }
       },
-      "expected": 66,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -35023,12 +36192,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -33,
-            -22
+            19
           ]
         }
       },
-      "expected": -22,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -35149,17 +36317,18 @@
           "__elite_type": "tree_node",
           "values": [
             -20,
+            null,
             -9,
+            null,
             2,
+            null,
             13,
-            24,
-            -26,
-            -15,
-            -4
+            null,
+            24
           ]
         }
       },
-      "expected": 28,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -35293,24 +36462,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -25,
-            -14,
-            -3,
-            8,
-            19,
-            -31,
-            -20,
+            18,
+            null,
+            -26,
+            null,
             -9,
             null,
-            13,
-            24,
-            -26,
-            -15,
-            -4
+            8,
+            null,
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22
           ]
         }
       },
-      "expected": 56,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -35409,8 +36589,14 @@
           "__elite_type": "tree_node",
           "values": [
             4,
+            null,
             15,
-            -35
+            null,
+            -35,
+            null,
+            -24,
+            null,
+            -13
           ]
         }
       },
@@ -35564,21 +36750,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -26,
-            -15,
-            -4,
-            7,
-            18,
-            -32,
-            -21,
+            8,
             null,
-            1,
-            12,
-            23
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15
           ]
         }
       },
-      "expected": 53,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -35640,23 +36824,32 @@
           "__elite_type": "tree_node",
           "values": [
             -33,
+            null,
             -22,
+            null,
             -11,
+            null,
             0,
             null,
+            11,
+            null,
             22,
+            null,
             -28,
+            null,
             -17,
+            null,
             -6,
+            null,
             5,
             null,
-            -34,
-            -23,
-            -12
+            16,
+            null,
+            -34
           ]
         }
       },
-      "expected": 27,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -35851,16 +37044,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -18,
-            -7,
-            4,
-            15,
-            26,
-            -24
+            7,
+            null,
+            24,
+            null,
+            -20,
+            null,
+            -3,
+            null,
+            14
           ]
         }
       },
-      "expected": 34,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -35871,17 +37067,20 @@
           "__elite_type": "tree_node",
           "values": [
             0,
+            null,
             11,
+            null,
             22,
+            null,
             -28,
+            null,
             -17,
             null,
-            5,
-            16
+            -6
           ]
         }
       },
-      "expected": 38,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -36136,8 +37335,7 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            24,
-            -26
+            24
           ]
         }
       },
@@ -36151,13 +37349,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -19,
-            -8,
-            3
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21
           ]
         }
       },
-      "expected": 3,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -36357,22 +37563,16 @@
           "__elite_type": "tree_node",
           "values": [
             -13,
-            -2,
-            9,
-            20,
-            -30,
-            -19,
-            -8,
             null,
-            14,
-            25,
-            -25,
-            -14,
-            -3
+            -2,
+            null,
+            9,
+            null,
+            20
           ]
         }
       },
-      "expected": 34,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -36437,26 +37637,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -20,
-            -9,
-            2,
-            13,
+            -13,
             null,
-            -26,
-            -15,
-            -4,
-            7,
+            4,
+            null,
+            21,
+            null,
+            -23,
+            null,
+            -6,
+            null,
+            11,
+            null,
+            -33,
+            null,
+            -16,
+            null,
+            1,
+            null,
             18,
             null,
-            -21,
-            -10,
-            1,
-            12,
-            -38
+            -26
           ]
         }
       },
-      "expected": 28,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -36595,12 +37800,20 @@
           "__elite_type": "tree_node",
           "values": [
             11,
+            null,
             22,
+            null,
             -28,
+            null,
             -17,
+            null,
             -6,
+            null,
             5,
-            16
+            null,
+            16,
+            null,
+            -34
           ]
         }
       },
@@ -36702,22 +37915,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1,
-            10,
+            -14,
             null,
-            -29,
-            -18,
-            -7,
-            4,
-            15,
+            3,
+            null,
+            20,
             null,
             -24,
-            -13
+            null,
+            -7,
+            null,
+            10,
+            null,
+            27,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17
           ]
         }
       },
-      "expected": 15,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -36984,18 +38204,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -13,
-            -2,
-            9,
-            20,
-            -30,
-            -19,
-            -8,
-            3
+            -24,
+            null,
+            -7,
+            null,
+            10,
+            null,
+            -34,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            -37
           ]
         }
       },
-      "expected": 23,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -37075,21 +38308,14 @@
           "__elite_type": "tree_node",
           "values": [
             7,
+            null,
             18,
-            -32,
-            -21,
             null,
-            1,
-            12,
-            23,
-            -27,
-            -16,
-            null,
-            6
+            -32
           ]
         }
       },
-      "expected": 27,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -37284,14 +38510,13 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -5,
-            6,
-            17,
-            28
+            -25,
+            null,
+            -8
           ]
         }
       },
-      "expected": 46,
+      "expected": -8,
       "hidden": true
     },
     {
@@ -37320,14 +38545,12 @@
           "__elite_type": "tree_node",
           "values": [
             -30,
-            -19,
-            -8,
-            3,
-            14
+            null,
+            -19
           ]
         }
       },
-      "expected": 14,
+      "expected": -19,
       "hidden": true
     },
     {
@@ -37580,26 +38803,26 @@
           "__elite_type": "tree_node",
           "values": [
             -6,
+            null,
             5,
+            null,
             16,
+            null,
             -34,
+            null,
             -23,
+            null,
             -12,
             null,
-            10,
-            21,
-            -29,
-            -18,
-            -7,
+            -1,
             null,
-            15,
-            -35,
-            -24,
-            -13
+            10,
+            null,
+            21
           ]
         }
       },
-      "expected": 25,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -37795,16 +39018,22 @@
           "__elite_type": "tree_node",
           "values": [
             18,
+            null,
             -32,
+            null,
             -21,
+            null,
             -10,
+            null,
             1,
+            null,
             12,
+            null,
             -38,
             null,
-            -16,
-            -5,
-            6
+            -27,
+            null,
+            -16
           ]
         }
       },
@@ -37843,23 +39072,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            2,
-            13,
-            24,
-            -26,
+            25,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22,
+            null,
+            -5,
+            null,
+            12,
+            null,
+            29,
+            null,
             -15,
             null,
-            7,
-            18,
-            29,
-            -21,
-            -10,
-            null,
-            12
+            2
           ]
         }
       },
-      "expected": 61,
+      "expected": 41,
       "hidden": true
     },
     {
@@ -38045,14 +39288,32 @@
           "__elite_type": "tree_node",
           "values": [
             -10,
+            null,
             1,
+            null,
             12,
+            null,
             23,
-            -27
+            null,
+            -27,
+            null,
+            -16,
+            null,
+            -5,
+            null,
+            6,
+            null,
+            17,
+            null,
+            28,
+            null,
+            -22,
+            null,
+            -11
           ]
         }
       },
-      "expected": 26,
+      "expected": 51,
       "hidden": true
     },
     {
@@ -38121,19 +39382,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            1,
-            12,
-            23,
-            -27,
+            15,
             null,
-            -5,
-            6,
-            17,
-            -33
+            -29,
+            null,
+            -12,
+            null,
+            5,
+            null,
+            22,
+            null,
+            -22
           ]
         }
       },
-      "expected": 42,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -38295,24 +39558,34 @@
           "__elite_type": "tree_node",
           "values": [
             14,
+            null,
             25,
+            null,
             -25,
             null,
+            -14,
+            null,
             -3,
+            null,
             8,
+            null,
             19,
+            null,
             -31,
+            null,
             -20,
             null,
+            -9,
+            null,
             2,
+            null,
             13,
-            24,
-            -26,
-            -15
+            null,
+            24
           ]
         }
       },
-      "expected": 57,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -38414,15 +39687,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            9,
-            20,
+            14,
+            null,
             -30,
             null,
-            -8
+            -13,
+            null,
+            4,
+            null,
+            21,
+            null,
+            -23
           ]
         }
       },
-      "expected": 29,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -38515,19 +39794,32 @@
           "__elite_type": "tree_node",
           "values": [
             -23,
+            null,
             -12,
+            null,
             -1,
+            null,
             10,
             null,
+            21,
+            null,
             -29,
+            null,
             -18,
+            null,
             -7,
+            null,
             4,
-            15
+            null,
+            15,
+            null,
+            -35,
+            null,
+            -24
           ]
         }
       },
-      "expected": 15,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -38772,9 +40064,26 @@
           "__elite_type": "tree_node",
           "values": [
             1,
+            null,
             12,
+            null,
             23,
-            -27
+            null,
+            -27,
+            null,
+            -16,
+            null,
+            -5,
+            null,
+            6,
+            null,
+            17,
+            null,
+            -33,
+            null,
+            -22,
+            null,
+            -11
           ]
         }
       },
@@ -38983,23 +40292,37 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            7,
-            18,
-            -32,
-            -21,
-            -10,
-            1,
-            12,
+            -6,
             null,
-            -27,
+            11,
+            null,
+            -33,
+            null,
             -16,
-            -5,
-            6,
-            17
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            -36,
+            null,
+            -19,
+            null,
+            -2,
+            null,
+            15,
+            null,
+            -29
           ]
         }
       },
-      "expected": 25,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -39010,24 +40333,26 @@
           "__elite_type": "tree_node",
           "values": [
             -27,
+            null,
             -16,
+            null,
             -5,
+            null,
             6,
+            null,
             17,
+            null,
             28,
             null,
-            -11,
-            0,
-            11,
-            22,
-            -28,
+            -22,
             null,
-            -6,
-            5
+            -11,
+            null,
+            0
           ]
         }
       },
-      "expected": 50,
+      "expected": 51,
       "hidden": true
     },
     {
@@ -39236,18 +40561,18 @@
           "__elite_type": "tree_node",
           "values": [
             -3,
-            8,
-            19,
-            -31,
-            -20,
-            -9,
-            2,
             null,
-            24
+            8,
+            null,
+            19,
+            null,
+            -31,
+            null,
+            -20
           ]
         }
       },
-      "expected": 26,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -39257,20 +40582,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            15,
-            26,
-            -24,
-            -13,
-            -2,
-            9,
+            -7,
             null,
-            -30,
-            -19,
-            -8
+            10,
+            null,
+            27,
+            null,
+            -17,
+            null,
+            0,
+            null,
+            17
           ]
         }
       },
-      "expected": 41,
+      "expected": 37,
       "hidden": true
     },
     {
@@ -39499,12 +40825,24 @@
           "__elite_type": "tree_node",
           "values": [
             21,
+            null,
             -29,
-            -18
+            null,
+            -18,
+            null,
+            -7,
+            null,
+            4,
+            null,
+            15,
+            null,
+            26,
+            null,
+            -24
           ]
         }
       },
-      "expected": 21,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -39549,15 +40887,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
+            -17,
+            null,
+            0,
+            null,
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            -37,
+            null,
+            -20,
+            null,
+            -3,
+            null,
             14,
-            -36,
-            -25,
-            -14,
-            -3
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4
           ]
         }
       },
-      "expected": 14,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -39727,23 +41085,16 @@
           "__elite_type": "tree_node",
           "values": [
             -16,
+            null,
             -5,
+            null,
             6,
             null,
-            -33,
-            -22,
-            -11,
-            0,
-            11,
-            null,
-            -28,
-            -17,
-            -6,
-            5
+            17
           ]
         }
       },
-      "expected": 11,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -39853,12 +41204,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            22,
-            -28
+            -18,
+            null,
+            -1,
+            null,
+            16,
+            null,
+            -28,
+            null,
+            -11,
+            null,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4
           ]
         }
       },
-      "expected": 22,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -39959,13 +41325,10 @@
           "__elite_type": "tree_node",
           "values": [
             8,
-            19,
-            -31,
-            -20,
             null,
-            2,
-            13,
-            -37
+            19,
+            null,
+            -31
           ]
         }
       },
@@ -40126,25 +41489,35 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            21,
-            -29,
-            -18,
+            -28,
             null,
-            4,
-            15,
-            -35,
-            -24,
-            -13,
+            -11,
             null,
-            9,
+            6,
+            null,
+            23,
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
+            null,
+            3,
+            null,
             20,
-            -30,
-            -19,
-            -8
+            null,
+            -24,
+            null,
+            -7
           ]
         }
       },
-      "expected": 27,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -40228,11 +41601,20 @@
           "__elite_type": "tree_node",
           "values": [
             -20,
-            -9
+            null,
+            -9,
+            null,
+            2,
+            null,
+            13,
+            null,
+            24,
+            null,
+            -26
           ]
         }
       },
-      "expected": -9,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -40395,21 +41777,17 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            29,
-            -21,
-            -10,
-            1,
-            12,
-            23,
-            -27,
-            -16,
+            -29,
             null,
-            6,
-            17
+            -12,
+            null,
+            5,
+            null,
+            22
           ]
         }
       },
-      "expected": 50,
+      "expected": 27,
       "hidden": true
     },
     {
@@ -40445,21 +41823,30 @@
           "__elite_type": "tree_node",
           "values": [
             4,
+            null,
             15,
+            null,
             26,
+            null,
             -24,
+            null,
             -13,
+            null,
             -2,
             null,
+            9,
+            null,
             20,
+            null,
             -30,
+            null,
             -19,
-            -8,
-            3
+            null,
+            -8
           ]
         }
       },
-      "expected": 46,
+      "expected": 45,
       "hidden": true
     },
     {
@@ -40682,16 +42069,34 @@
           "__elite_type": "tree_node",
           "values": [
             -33,
+            null,
             -22,
+            null,
             -11,
+            null,
             0,
+            null,
             11,
+            null,
             22,
-            -28
+            null,
+            -28,
+            null,
+            -17,
+            null,
+            -6,
+            null,
+            5,
+            null,
+            16,
+            null,
+            -34,
+            null,
+            -23
           ]
         }
       },
-      "expected": 22,
+      "expected": 33,
       "hidden": true
     },
     {
@@ -40985,13 +42390,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -25,
-            -14,
-            -3
+            21,
+            null,
+            -23,
+            null,
+            -6,
+            null,
+            11,
+            null,
+            28,
+            null,
+            -16,
+            null,
+            1,
+            null,
+            18,
+            null,
+            -26,
+            null,
+            -9
           ]
         }
       },
-      "expected": -3,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -41162,22 +42583,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            24,
-            -26,
-            -15,
-            null,
-            7,
-            18,
-            29,
-            -21,
-            -10,
-            null,
-            12,
-            23
+            24
           ]
         }
       },
-      "expected": 67,
+      "expected": 24,
       "hidden": true
     },
     {
@@ -41267,26 +42677,19 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -26,
-            -15,
-            -4,
-            7,
-            18,
+            11,
             null,
-            -21,
-            -10,
-            1,
-            12,
-            23,
+            -33,
             null,
             -16,
-            -5,
-            6,
-            17
+            null,
+            1,
+            null,
+            18
           ]
         }
       },
-      "expected": 53,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -41406,15 +42809,18 @@
           "__elite_type": "tree_node",
           "values": [
             -13,
+            null,
             -2,
+            null,
             9,
+            null,
             20,
             null,
-            -19
+            -30
           ]
         }
       },
-      "expected": 20,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -41534,22 +42940,25 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -27,
-            -16,
-            -5,
-            6,
+            1,
             null,
-            -33,
-            -22,
-            -11,
-            0,
-            11,
+            18,
             null,
-            -28
+            -26,
+            null,
+            -9,
+            null,
+            8,
+            null,
+            -36,
+            null,
+            -19,
+            null,
+            -2
           ]
         }
       },
-      "expected": 11,
+      "expected": 19,
       "hidden": true
     },
     {
@@ -41669,27 +43078,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            11,
-            22,
-            -28,
-            -17,
-            -6,
-            null,
-            16,
-            -34,
-            -23,
-            -12,
-            -1,
-            null,
-            21,
-            -29,
-            -18,
-            -7,
-            4
+            11
           ]
         }
       },
-      "expected": 42,
+      "expected": 11,
       "hidden": true
     },
     {
@@ -41817,18 +43210,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -19,
-            -8,
-            3,
+            0,
             null,
-            25,
-            -25,
-            -14,
-            -3
+            17,
+            null,
+            -27,
+            null,
+            -10,
+            null,
+            7,
+            null,
+            24
           ]
         }
       },
-      "expected": 25,
+      "expected": 31,
       "hidden": true
     },
     {
@@ -41883,20 +43279,14 @@
           "__elite_type": "tree_node",
           "values": [
             -26,
-            -15,
-            -4,
-            7,
-            18,
-            -32,
             null,
-            -10,
-            1,
-            12,
-            23
+            -15,
+            null,
+            -4
           ]
         }
       },
-      "expected": 53,
+      "expected": -4,
       "hidden": true
     },
     {
@@ -42114,14 +43504,31 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
+            -10,
+            null,
+            7,
+            null,
+            -37,
+            null,
             -20,
-            -9,
-            2,
-            13
+            null,
+            -3,
+            null,
+            14,
+            null,
+            -30,
+            null,
+            -13,
+            null,
+            4,
+            null,
+            21,
+            null,
+            -23
           ]
         }
       },
-      "expected": 13,
+      "expected": 25,
       "hidden": true
     },
     {
@@ -42132,14 +43539,24 @@
           "__elite_type": "tree_node",
           "values": [
             -2,
+            null,
             9,
+            null,
             20,
+            null,
             -30,
-            -19
+            null,
+            -19,
+            null,
+            -8,
+            null,
+            3,
+            null,
+            14
           ]
         }
       },
-      "expected": 27,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -42385,25 +43802,30 @@
           "__elite_type": "tree_node",
           "values": [
             -30,
+            null,
             -19,
+            null,
             -8,
+            null,
             3,
+            null,
             14,
+            null,
             25,
+            null,
             -25,
+            null,
             -14,
             null,
-            8,
-            19,
-            -31,
-            -20,
-            -9,
+            -3,
             null,
-            13
+            8,
+            null,
+            19
           ]
         }
       },
-      "expected": 41,
+      "expected": 42,
       "hidden": true
     },
     {
@@ -42413,27 +43835,21 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -12,
-            -1,
-            10,
-            21,
-            -29,
-            -18,
-            -7,
+            -11,
             null,
-            15,
-            26,
-            -24,
-            -13,
-            -2,
+            6,
             null,
-            20,
-            -30,
-            -19
+            23,
+            null,
+            -21,
+            null,
+            -4,
+            null,
+            13
           ]
         }
       },
-      "expected": 46,
+      "expected": 29,
       "hidden": true
     },
     {
@@ -42604,14 +44020,10 @@
           "__elite_type": "tree_node",
           "values": [
             -6,
-            5,
-            16,
             null,
-            -23,
-            -12,
-            -1,
-            10,
-            21
+            5,
+            null,
+            16
           ]
         }
       },
@@ -42674,22 +44086,27 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -13,
-            -2,
-            9,
-            20,
-            -30,
-            -19,
+            -21,
+            null,
+            -4,
+            null,
+            13,
+            null,
+            -31,
+            null,
+            -14,
             null,
             3,
-            14,
-            -36,
-            -25,
-            -14
+            null,
+            20,
+            null,
+            -24,
+            null,
+            -7
           ]
         }
       },
-      "expected": 37,
+      "expected": 23,
       "hidden": true
     },
     {
@@ -42857,10 +44274,7 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            18,
-            -32,
-            -21,
-            -10
+            18
           ]
         }
       },
@@ -42952,19 +44366,29 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -5,
-            6,
-            17,
-            28,
             -22,
             null,
-            0,
-            11,
-            22
+            -5,
+            null,
+            12,
+            null,
+            29,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9
           ]
         }
       },
-      "expected": 68,
+      "expected": 47,
       "hidden": true
     },
     {
@@ -43100,24 +44524,22 @@
           "__elite_type": "tree_node",
           "values": [
             -19,
+            null,
             -8,
+            null,
             3,
+            null,
             14,
+            null,
             -36,
             null,
-            -14,
-            -3,
-            8,
-            19,
-            -31,
+            -25,
             null,
-            -9,
-            2,
-            13
+            -14
           ]
         }
       },
-      "expected": 32,
+      "expected": 17,
       "hidden": true
     },
     {
@@ -43248,14 +44670,23 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -6,
-            5,
-            16,
-            -34
+            -32,
+            null,
+            -15,
+            null,
+            2,
+            null,
+            19,
+            null,
+            -25,
+            null,
+            -8,
+            null,
+            9
           ]
         }
       },
-      "expected": 16,
+      "expected": 21,
       "hidden": true
     },
     {
@@ -43325,18 +44756,20 @@
           "__elite_type": "tree_node",
           "values": [
             14,
-            25,
-            -25,
-            -14,
-            -3,
-            8,
             null,
-            30,
-            -20
+            25,
+            null,
+            -25,
+            null,
+            -14,
+            null,
+            -3,
+            null,
+            8
           ]
         }
       },
-      "expected": 55,
+      "expected": 39,
       "hidden": true
     },
     {
@@ -43584,13 +45017,11 @@
         "root": {
           "__elite_type": "tree_node",
           "values": [
-            -23,
-            -12,
-            -1
+            -23
           ]
         }
       },
-      "expected": -1,
+      "expected": -23,
       "hidden": true
     },
     {

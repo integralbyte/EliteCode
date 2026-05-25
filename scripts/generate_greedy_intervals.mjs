@@ -53,6 +53,15 @@ function jumpGameSeed(seed) {
   }
   return values;
 }
+function jumpGameTwoSeed(seed) {
+  if (seed % 4 === 0) {
+    return Array.from({ length: 2 + (mix(seed, 23) % 30) }, () => 1);
+  }
+  const length = 3 + (mix(seed, 24) % 38);
+  const values = pos(seed, length, 8);
+  values[0] = Math.max(values[0], 1);
+  return values;
+}
 function jumps(a) { let jumps = 0, end = 0, far = 0; for (let i = 0; i < a.length - 1; i += 1) { far = Math.max(far, i + a[i]); if (i === end) { jumps += 1; end = far; } } return jumps; }
 function gasStation(gas, cost) { let total = 0, tank = 0, start = 0; for (let i = 0; i < gas.length; i += 1) { const diff = gas[i] - cost[i]; total += diff; tank += diff; if (tank < 0) { tank = 0; start = i + 1; } } return total >= 0 ? start : -1; }
 function straights(hand, size) { if (hand.length % size) return false; const counts = new Map(); for (const v of hand) counts.set(v, (counts.get(v) ?? 0) + 1); for (const start of [...counts.keys()].sort((a, b) => a - b)) { const need = counts.get(start); if (!need) continue; for (let v = start; v < start + size; v += 1) { if ((counts.get(v) ?? 0) < need) return false; counts.set(v, counts.get(v) - need); } } return true; }
@@ -119,7 +128,7 @@ const problems = [
     "```python\nclass Solution:\n    def canJump(self, nums):\n        reach = 0\n        for i, jump in enumerate(nums):\n            if i > reach: return False\n            reach = max(reach, i + jump)\n        return True\n```", "class Solution:\n    def canJump(self, nums):\n        pass"),
   makeProblem(124, "jump-game-ii", "Jump Game II", "Medium", ["Array", "Dynamic Programming", "Greedy"], "jump",
     [caseFrom({ nums: [2,3,1,1,4] }, 2), caseFrom({ nums: [2,3,0,1,4] }, 2), caseFrom({ nums: [1,1,1] }, 2)],
-    (seed) => { const a = pos(seed, 3 + (seed % 8), 4); a[0] = Math.max(a[0], 1); return caseFrom({ nums: a }, jumps(a)); }, "Return the minimum jumps needed to reach the last index. Generated cases are reachable.", ["Input: nums = [2,3,1,1,4]\nOutput: 2", "Input: nums = [2,3,0,1,4]\nOutput: 2", "Input: nums = [1,1,1]\nOutput: 2"],
+    (seed) => { const a = jumpGameTwoSeed(seed); return caseFrom({ nums: a }, jumps(a)); }, "Return the minimum jumps needed to reach the last index. Generated cases are reachable.", ["Input: nums = [2,3,1,1,4]\nOutput: 2", "Input: nums = [2,3,0,1,4]\nOutput: 2", "Input: nums = [1,1,1]\nOutput: 2"],
     "```python\nclass Solution:\n    def jump(self, nums):\n        jumps = end = far = 0\n        for i in range(len(nums) - 1):\n            far = max(far, i + nums[i])\n            if i == end:\n                jumps += 1; end = far\n        return jumps\n```", "class Solution:\n    def jump(self, nums):\n        pass"),
   makeProblem(125, "gas-station", "Gas Station", "Medium", ["Array", "Greedy"], "canCompleteCircuit",
     [caseFrom({ gas: [1,2,3,4,5], cost: [3,4,5,1,2] }, 3), caseFrom({ gas: [2,3,4], cost: [3,4,3] }, -1), caseFrom({ gas: [5], cost: [4] }, 0)],

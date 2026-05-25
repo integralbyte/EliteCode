@@ -81,6 +81,8 @@ class Solution:
     assert payload["analysis"]["runtime"]["reference_verdict"] == "Accepted"
     assert payload["analysis"]["user_complexity"]["label"] == "O(n)"
     assert payload["analysis"]["reference_complexity"]["label"] == "O(n)"
+    assert payload["analysis"]["reference_complexity"]["space_label"] == "O(n)"
+    assert payload["analysis"]["reference_complexity"]["confidence"] == "high"
 
 
 def test_problem_asset_route_serves_local_images() -> None:

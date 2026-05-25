@@ -11,7 +11,7 @@
   "companies": [],
   "statement": "# Group Anagrams\n\nGiven a list of strings, group together the words that are anagrams of one another. The groups and the words inside each group may be returned in any order.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: strs = [\"eat\", \"tea\", \"tan\", \"ate\", \"nat\", \"bat\"]\nOutput: [[\"eat\", \"tea\", \"ate\"], [\"tan\", \"nat\"], [\"bat\"]]\n```\n\n**Example 2**\n\n```text\nInput: strs = [\"\"]\nOutput: [[\"\"]]\n```\n\n**Example 3**\n\n```text\nInput: strs = [\"abc\", \"bca\", \"cab\", \"xyz\"]\nOutput: [[\"abc\", \"bca\", \"cab\"], [\"xyz\"]]\n```\n\n## Constraints\n\n- `1 <= len(strs) <= 10000`\n- `0 <= len(strs[i]) <= 100`\n- `strs[i]` contains lowercase English letters.",
   "editorial": "All anagrams share the same sorted character sequence. Use that sorted sequence, or a 26-count tuple, as a dictionary key and append each word to its group.",
-  "solution_notes": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def groupAnagrams(self, strs):\n        groups = defaultdict(list)\n        for word in strs:\n            groups[''.join(sorted(word))].append(word)\n        return list(groups.values())\n```",
+  "solution_notes": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    def groupAnagrams(self, strs):\n        groups = defaultdict(list)\n        for word in strs:\n            counts = [0] * 26\n            for ch in word:\n                counts[ord(ch) - ord('a')] += 1\n            groups[tuple(counts)].append(word)\n        return list(groups.values())\n```",
   "hints": [
     "Words in the same group have the same character counts.",
     "A dictionary can map a signature to the words that share it."

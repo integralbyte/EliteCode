@@ -116,11 +116,14 @@ class CaseResult(BaseModel):
 
 class ComplexityEstimate(BaseModel):
     label: str
+    space_label: str | None = None
     confidence: Literal["low", "medium", "high"]
     reason: str
     features: list[str] = Field(default_factory=list)
     observed_growth: str | None = None
     observed_exponent: float | None = None
+    source_url: str | None = None
+    source_note: str | None = None
 
 
 class RuntimeComparison(BaseModel):

@@ -10,7 +10,7 @@
   "companies": [],
   "statement": "# House Robber II\n\nHouses form a circle, so the first and last houses are adjacent. Return the maximum non-adjacent sum.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: nums = [2,3,2]\nOutput: 3\n```\n\n**Example 2**\n\n```text\nInput: nums = [1,2,3,1]\nOutput: 4\n```\n\n**Example 3**\n\n```text\nInput: nums = [9]\nOutput: 9\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
   "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
-  "solution_notes": "```python\nclass Solution:\n    def rob(self, nums):\n        def line(arr):\n            take = skip = 0\n            for value in arr:\n                take, skip = skip + value, max(take, skip)\n            return max(take, skip)\n        return nums[0] if len(nums) == 1 else max(line(nums[1:]), line(nums[:-1]))\n```",
+  "solution_notes": "```python\nclass Solution:\n    def rob(self, nums):\n        def line(start, end):\n            take = skip = 0\n            for i in range(start, end):\n                take, skip = skip + nums[i], max(take, skip)\n            return max(take, skip)\n        return nums[0] if len(nums) == 1 else max(line(1, len(nums)), line(0, len(nums) - 1))\n```",
   "hints": [
     "Identify what information must be remembered between decisions.",
     "Cache repeated subproblems or fill a table iteratively."

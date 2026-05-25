@@ -1257,6 +1257,16 @@ kbd {
   background: #24262d;
 }
 
+.complexity-source {
+  color: #8bb8ff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.complexity-source:hover {
+  color: #d7e6ff;
+}
+
 .analysis-notes {
   margin: 0;
   padding-left: 18px;

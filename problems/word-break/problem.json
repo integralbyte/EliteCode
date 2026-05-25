@@ -13,7 +13,7 @@
   "companies": [],
   "statement": "# Word Break\n\nReturn whether `s` can be segmented into dictionary words.\n\n## Examples\n\n**Example 1**\n\n```text\nInput: s = leetcode, wordDict = [leet,code]\nOutput: true\n```\n\n**Example 2**\n\n```text\nInput: s = applepenapple, wordDict = [apple,pen]\nOutput: true\n```\n\n**Example 3**\n\n```text\nInput: s = catsandog, wordDict = [cats,dog,sand,and,cat]\nOutput: false\n```\n\n## Constraints\n\n- Inputs are intentionally modest for local offline execution.\n- Return the value described by the method signature.",
   "editorial": "Define the subproblem state, choose the recurrence from the last decision, and fill states in an order where dependencies are already known.",
-  "solution_notes": "```python\nclass Solution:\n    def wordBreak(self, s, wordDict):\n        words = set(wordDict)\n        dp = [False] * (len(s) + 1)\n        dp[0] = True\n        for i in range(1, len(s) + 1):\n            dp[i] = any(dp[j] and s[j:i] in words for j in range(i))\n        return dp[-1]\n```",
+  "solution_notes": "```python\nclass Solution:\n    def wordBreak(self, s, wordDict):\n        words = [word for word in wordDict if word]\n        dp = [False] * (len(s) + 1)\n        dp[0] = True\n        for i in range(1, len(s) + 1):\n            for word in words:\n                start = i - len(word)\n                if start >= 0 and dp[start] and s.startswith(word, start):\n                    dp[i] = True\n                    break\n        return dp[-1]\n```",
   "hints": [
     "Identify what information must be remembered between decisions.",
     "Cache repeated subproblems or fill a table iteratively."

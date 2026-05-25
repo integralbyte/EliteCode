@@ -2,6 +2,7 @@ from pathlib import Path
 
 from backend.performance import analyze_submission, extract_reference_code, estimate_complexity
 from backend.problem_loader import ProblemCatalog
+from backend.reference_complexity import get_reference_complexity, load_reference_complexity_manifest
 from backend.runner import PythonJudge
 
 
@@ -58,3 +59,15 @@ class Solution:
     assert analysis.user_complexity.label == "O(n)"
     assert analysis.reference_complexity is not None
     assert analysis.reference_complexity.label == "O(n)"
+    assert analysis.reference_complexity.space_label == "O(n)"
+    assert analysis.reference_complexity.confidence == "high"
+
+
+def test_reference_complexity_manifest_covers_catalog() -> None:
+    catalog = ProblemCatalog(ROOT / "problems")
+    manifest = load_reference_complexity_manifest()
+
+    assert len(manifest) == 150
+    assert set(manifest) == set(catalog.problems)
+    assert get_reference_complexity("sliding-window-maximum").label == "O(n)"
+    assert get_reference_complexity("longest-increasing-subsequence").label == "O(n log n)"

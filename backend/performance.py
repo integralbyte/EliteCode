@@ -16,6 +16,7 @@ from .models import (
     RuntimeComparison,
     SubmissionAnalysis,
 )
+from .reference_complexity import get_reference_complexity
 
 
 PYTHON_BLOCK_RE = re.compile(r"```python\n(?P<code>.*?)\n```", re.DOTALL)
@@ -44,13 +45,17 @@ def analyze_submission(
         notes.append("Reference solution block is missing, so runtime comparison is unavailable.")
 
     user_complexity = estimate_complexity(submitted_code, cases, submitted_result.case_results)
-    reference_complexity = None
+    reference_complexity = get_reference_complexity(problem.slug)
     if reference_code:
-        reference_complexity = estimate_complexity(
-            reference_code,
-            cases,
-            reference_result.case_results if reference_result else None,
-        )
+        if reference_complexity is None:
+            reference_complexity = estimate_complexity(
+                reference_code,
+                cases,
+                reference_result.case_results if reference_result else None,
+            )
+            notes.append("Expected complexity came from static analysis because no curated target is available.")
+        else:
+            notes.append("Expected complexity uses the reviewed optimal target for this problem.")
 
     runtime = None
     if reference_result and reference_result.passed:

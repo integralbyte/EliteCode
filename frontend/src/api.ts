@@ -83,11 +83,14 @@ export interface JudgeResult {
 
 export interface ComplexityEstimate {
   label: string;
+  space_label?: string | null;
   confidence: "low" | "medium" | "high";
   reason: string;
   features: string[];
   observed_growth?: string | null;
   observed_exponent?: number | null;
+  source_url?: string | null;
+  source_note?: string | null;
 }
 
 export interface RuntimeComparison {

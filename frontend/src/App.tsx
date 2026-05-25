@@ -998,7 +998,8 @@ function ComplexityCard({ title, estimate }: { title: string; estimate: Complexi
     <div className="complexity-card">
       <div>
         <span>{title}</span>
-        <strong>{estimate.label}</strong>
+        <strong>Time: {estimate.label}</strong>
+        {estimate.space_label ? <strong>Space: {estimate.space_label}</strong> : null}
       </div>
       <p>{estimate.reason}</p>
       {estimate.observed_growth ? <p>{estimate.observed_growth}</p> : null}
@@ -1008,6 +1009,11 @@ function ComplexityCard({ title, estimate }: { title: string; estimate: Complexi
           <span key={feature}>{feature}</span>
         ))}
       </div>
+      {estimate.source_url ? (
+        <a className="complexity-source" href={estimate.source_url} target="_blank" rel="noreferrer">
+          Source reference
+        </a>
+      ) : null}
     </div>
   );
 }

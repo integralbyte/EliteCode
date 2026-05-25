@@ -1,0 +1,1507 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-05-25",
+  "description": "Curated target time and space complexity for EliteCode expected Python solutions. These values are used for submit-time comparison and audit validation.",
+  "problems": {
+    "contains-duplicate": {
+      "id": 1,
+      "title": "Contains Duplicate",
+      "category": "Arrays & Hashing",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/contains-duplicate",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "valid-anagram": {
+      "id": 2,
+      "title": "Valid Anagram",
+      "category": "Arrays & Hashing",
+      "time": "O(n + m)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/valid-anagram",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "two-sum": {
+      "id": 3,
+      "title": "Two Sum",
+      "category": "Arrays & Hashing",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/two-sum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "group-anagrams": {
+      "id": 4,
+      "title": "Group Anagrams",
+      "category": "Arrays & Hashing",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/group-anagrams",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "top-k-frequent-elements": {
+      "id": 5,
+      "title": "Top K Frequent Elements",
+      "category": "Arrays & Hashing",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/top-k-frequent-elements",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "product-of-array-except-self": {
+      "id": 6,
+      "title": "Product of Array Except Self",
+      "category": "Arrays & Hashing",
+      "time": "O(n)",
+      "space": "O(1) extra",
+      "source_url": "https://neetcode.io/solutions/product-of-array-except-self",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "valid-sudoku": {
+      "id": 7,
+      "title": "Valid Sudoku",
+      "category": "Arrays & Hashing",
+      "time": "O(n^2)",
+      "space": "O(n^2)",
+      "source_url": "https://neetcode.io/solutions/valid-sudoku",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "encode-and-decode-strings": {
+      "id": 8,
+      "title": "Encode and Decode Strings",
+      "category": "Arrays & Hashing",
+      "time": "O(m)",
+      "space": "O(m + n)",
+      "source_url": "https://neetcode.io/solutions/encode-and-decode-strings",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-consecutive-sequence": {
+      "id": 9,
+      "title": "Longest Consecutive Sequence",
+      "category": "Arrays & Hashing",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/longest-consecutive-sequence",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "valid-palindrome": {
+      "id": 10,
+      "title": "Valid Palindrome",
+      "category": "Two Pointers",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/valid-palindrome",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "two-sum-ii-input-array-is-sorted": {
+      "id": 11,
+      "title": "Two Sum II - Input Array Is Sorted",
+      "category": "Two Pointers",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "3sum": {
+      "id": 12,
+      "title": "3Sum",
+      "category": "Two Pointers",
+      "time": "O(n^2)",
+      "space": "O(1) extra",
+      "source_url": "https://neetcode.io/solutions/3sum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "container-with-most-water": {
+      "id": 13,
+      "title": "Container With Most Water",
+      "category": "Two Pointers",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/container-with-most-water",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "trapping-rain-water": {
+      "id": 14,
+      "title": "Trapping Rain Water",
+      "category": "Two Pointers",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/trapping-rain-water",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "best-time-to-buy-and-sell-stock": {
+      "id": 15,
+      "title": "Best Time to Buy and Sell Stock",
+      "category": "Sliding Window",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-substring-without-repeating-characters": {
+      "id": 16,
+      "title": "Longest Substring Without Repeating Characters",
+      "category": "Sliding Window",
+      "time": "O(n)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/longest-substring-without-repeating-characters",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-repeating-character-replacement": {
+      "id": 17,
+      "title": "Longest Repeating Character Replacement",
+      "category": "Sliding Window",
+      "time": "O(n)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/longest-repeating-character-replacement",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "permutation-in-string": {
+      "id": 18,
+      "title": "Permutation in String",
+      "category": "Sliding Window",
+      "time": "O(n + m)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/permutation-in-string",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "minimum-window-substring": {
+      "id": 19,
+      "title": "Minimum Window Substring",
+      "category": "Sliding Window",
+      "time": "O(n + m)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/minimum-window-substring",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "sliding-window-maximum": {
+      "id": 20,
+      "title": "Sliding Window Maximum",
+      "category": "Sliding Window",
+      "time": "O(n)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/sliding-window-maximum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "valid-parentheses": {
+      "id": 21,
+      "title": "Valid Parentheses",
+      "category": "Stack",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/valid-parentheses",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "min-stack": {
+      "id": 22,
+      "title": "Min Stack",
+      "category": "Stack",
+      "time": "O(1) per operation",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/min-stack",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "evaluate-reverse-polish-notation": {
+      "id": 23,
+      "title": "Evaluate Reverse Polish Notation",
+      "category": "Stack",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/evaluate-reverse-polish-notation",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "generate-parentheses": {
+      "id": 24,
+      "title": "Generate Parentheses",
+      "category": "Stack",
+      "time": "O(4^n / sqrt(n))",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/generate-parentheses",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "daily-temperatures": {
+      "id": 25,
+      "title": "Daily Temperatures",
+      "category": "Stack",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/daily-temperatures",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "car-fleet": {
+      "id": 26,
+      "title": "Car Fleet",
+      "category": "Stack",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/car-fleet",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "largest-rectangle-in-histogram": {
+      "id": 27,
+      "title": "Largest Rectangle in Histogram",
+      "category": "Stack",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/largest-rectangle-in-histogram",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "binary-search": {
+      "id": 28,
+      "title": "Binary Search",
+      "category": "Binary Search",
+      "time": "O(log n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/binary-search",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "search-a-2d-matrix": {
+      "id": 29,
+      "title": "Search a 2D Matrix",
+      "category": "Binary Search",
+      "time": "O(log(m * n))",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/search-a-2d-matrix",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "koko-eating-bananas": {
+      "id": 30,
+      "title": "Koko Eating Bananas",
+      "category": "Binary Search",
+      "time": "O(n log m)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/koko-eating-bananas",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "find-minimum-in-rotated-sorted-array": {
+      "id": 31,
+      "title": "Find Minimum in Rotated Sorted Array",
+      "category": "Binary Search",
+      "time": "O(log n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/find-minimum-in-rotated-sorted-array",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "search-in-rotated-sorted-array": {
+      "id": 32,
+      "title": "Search in Rotated Sorted Array",
+      "category": "Binary Search",
+      "time": "O(log n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/search-in-rotated-sorted-array",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "time-based-key-value-store": {
+      "id": 33,
+      "title": "Time Based Key-Value Store",
+      "category": "Binary Search",
+      "time": "O(1) set, O(log n) get",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/time-based-key-value-store",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "median-of-two-sorted-arrays": {
+      "id": 34,
+      "title": "Median of Two Sorted Arrays",
+      "category": "Binary Search",
+      "time": "O(log(min(n, m)))",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/median-of-two-sorted-arrays",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "reverse-linked-list": {
+      "id": 35,
+      "title": "Reverse Linked List",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/reverse-linked-list",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "merge-two-sorted-lists": {
+      "id": 36,
+      "title": "Merge Two Sorted Lists",
+      "category": "Linked List",
+      "time": "O(n + m)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/merge-two-sorted-lists",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "linked-list-cycle": {
+      "id": 37,
+      "title": "Linked List Cycle",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/linked-list-cycle",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "reorder-list": {
+      "id": 38,
+      "title": "Reorder List",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/reorder-list",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "remove-nth-node-from-end-of-list": {
+      "id": 39,
+      "title": "Remove Nth Node From End of List",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "copy-list-with-random-pointer": {
+      "id": 40,
+      "title": "Copy List with Random Pointer",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/copy-list-with-random-pointer",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "add-two-numbers": {
+      "id": 41,
+      "title": "Add Two Numbers",
+      "category": "Linked List",
+      "time": "O(n + m)",
+      "space": "O(1) extra",
+      "source_url": "https://neetcode.io/solutions/add-two-numbers",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "find-the-duplicate-number": {
+      "id": 42,
+      "title": "Find the Duplicate Number",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/find-the-duplicate-number",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "lru-cache": {
+      "id": 43,
+      "title": "LRU Cache",
+      "category": "Linked List",
+      "time": "O(1) per operation",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/lru-cache",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "merge-k-sorted-lists": {
+      "id": 44,
+      "title": "Merge k Sorted Lists",
+      "category": "Linked List",
+      "time": "O(N log k)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/merge-k-sorted-lists",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "reverse-nodes-in-k-group": {
+      "id": 45,
+      "title": "Reverse Nodes in k-Group",
+      "category": "Linked List",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/reverse-nodes-in-k-group",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "invert-binary-tree": {
+      "id": 46,
+      "title": "Invert Binary Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/invert-binary-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "maximum-depth-of-binary-tree": {
+      "id": 47,
+      "title": "Maximum Depth of Binary Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/maximum-depth-of-binary-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "diameter-of-binary-tree": {
+      "id": 48,
+      "title": "Diameter of Binary Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/diameter-of-binary-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "balanced-binary-tree": {
+      "id": 49,
+      "title": "Balanced Binary Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/balanced-binary-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "same-tree": {
+      "id": 50,
+      "title": "Same Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/same-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "subtree-of-another-tree": {
+      "id": 51,
+      "title": "Subtree of Another Tree",
+      "category": "Trees",
+      "time": "O(m * n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/subtree-of-another-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "lowest-common-ancestor-of-a-binary-search-tree": {
+      "id": 52,
+      "title": "Lowest Common Ancestor of a Binary Search Tree",
+      "category": "Trees",
+      "time": "O(h)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/lowest-common-ancestor-of-a-binary-search-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "binary-tree-level-order-traversal": {
+      "id": 53,
+      "title": "Binary Tree Level Order Traversal",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/binary-tree-level-order-traversal",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "binary-tree-right-side-view": {
+      "id": 54,
+      "title": "Binary Tree Right Side View",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/binary-tree-right-side-view",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "count-good-nodes-in-binary-tree": {
+      "id": 55,
+      "title": "Count Good Nodes in Binary Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/count-good-nodes-in-binary-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "validate-binary-search-tree": {
+      "id": 56,
+      "title": "Validate Binary Search Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/validate-binary-search-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "kth-smallest-element-in-a-bst": {
+      "id": 57,
+      "title": "Kth Smallest Element in a BST",
+      "category": "Trees",
+      "time": "O(h + k)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/kth-smallest-element-in-a-bst",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "construct-binary-tree-from-preorder-and-inorder-traversal": {
+      "id": 58,
+      "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/construct-binary-tree-from-preorder-and-inorder-traversal",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "binary-tree-maximum-path-sum": {
+      "id": 59,
+      "title": "Binary Tree Maximum Path Sum",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(h)",
+      "source_url": "https://neetcode.io/solutions/binary-tree-maximum-path-sum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "serialize-and-deserialize-binary-tree": {
+      "id": 60,
+      "title": "Serialize and Deserialize Binary Tree",
+      "category": "Trees",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/serialize-and-deserialize-binary-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "implement-trie-prefix-tree": {
+      "id": 61,
+      "title": "Implement Trie (Prefix Tree)",
+      "category": "Tries",
+      "time": "O(n) per operation",
+      "space": "O(t)",
+      "source_url": "https://neetcode.io/solutions/implement-trie-prefix-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "add-and-search-word-data-structure-design": {
+      "id": 62,
+      "title": "Design Add and Search Words Data Structure",
+      "category": "Tries",
+      "time": "O(n) per operation",
+      "space": "O(t + n)",
+      "source_url": "https://neetcode.io/solutions/design-add-and-search-words-data-structure",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "word-search-ii": {
+      "id": 63,
+      "title": "Word Search II",
+      "category": "Tries",
+      "time": "O(m * n * 4 * 3^(L - 1) + s)",
+      "space": "O(s)",
+      "source_url": "https://neetcode.io/solutions/word-search-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "kth-largest-element-in-a-stream": {
+      "id": 64,
+      "title": "Kth Largest Element in a Stream",
+      "category": "Heap / Priority Queue",
+      "time": "O(n log k) init, O(log k) add",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/kth-largest-element-in-a-stream",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "last-stone-weight": {
+      "id": 65,
+      "title": "Last Stone Weight",
+      "category": "Heap / Priority Queue",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/last-stone-weight",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "k-closest-points-to-origin": {
+      "id": 66,
+      "title": "K Closest Points to Origin",
+      "category": "Heap / Priority Queue",
+      "time": "O(n log k)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/k-closest-points-to-origin",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "kth-largest-element-in-an-array": {
+      "id": 67,
+      "title": "Kth Largest Element in an Array",
+      "category": "Heap / Priority Queue",
+      "time": "O(n) average",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/kth-largest-element-in-an-array",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "task-scheduler": {
+      "id": 68,
+      "title": "Task Scheduler",
+      "category": "Heap / Priority Queue",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/task-scheduler",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "design-twitter": {
+      "id": 69,
+      "title": "Design Twitter",
+      "category": "Heap / Priority Queue",
+      "time": "O(f log f) getNewsFeed, O(1) others",
+      "space": "O(t + f)",
+      "source_url": "https://neetcode.io/solutions/design-twitter",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "find-median-from-data-stream": {
+      "id": 70,
+      "title": "Find Median from Data Stream",
+      "category": "Heap / Priority Queue",
+      "time": "O(log n) add, O(1) findMedian",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/find-median-from-data-stream",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "subsets": {
+      "id": 71,
+      "title": "Subsets",
+      "category": "Backtracking",
+      "time": "O(n * 2^n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/subsets",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "combination-sum": {
+      "id": 72,
+      "title": "Combination Sum",
+      "category": "Backtracking",
+      "time": "O(2^(t / m))",
+      "space": "O(t / m)",
+      "source_url": "https://neetcode.io/solutions/combination-sum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "combination-sum-ii": {
+      "id": 73,
+      "title": "Combination Sum II",
+      "category": "Backtracking",
+      "time": "O(n * 2^n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/combination-sum-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "permutations": {
+      "id": 74,
+      "title": "Permutations",
+      "category": "Backtracking",
+      "time": "O(n * n!)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/permutations",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "subsets-ii": {
+      "id": 75,
+      "title": "Subsets II",
+      "category": "Backtracking",
+      "time": "O(n * 2^n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/subsets-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "word-search": {
+      "id": 76,
+      "title": "Word Search",
+      "category": "Backtracking",
+      "time": "O(m * n * 4^L)",
+      "space": "O(L)",
+      "source_url": "https://neetcode.io/solutions/word-search",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "palindrome-partitioning": {
+      "id": 77,
+      "title": "Palindrome Partitioning",
+      "category": "Backtracking",
+      "time": "O(n * 2^n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/palindrome-partitioning",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "letter-combinations-of-a-phone-number": {
+      "id": 78,
+      "title": "Letter Combinations of a Phone Number",
+      "category": "Backtracking",
+      "time": "O(n * 4^n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/letter-combinations-of-a-phone-number",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "n-queens": {
+      "id": 79,
+      "title": "N-Queens",
+      "category": "Backtracking",
+      "time": "O(n!)",
+      "space": "O(n^2)",
+      "source_url": "https://neetcode.io/solutions/n-queens",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "number-of-islands": {
+      "id": 80,
+      "title": "Number of Islands",
+      "category": "Graphs",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/number-of-islands",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "max-area-of-island": {
+      "id": 81,
+      "title": "Max Area of Island",
+      "category": "Graphs",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/max-area-of-island",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "clone-graph": {
+      "id": 82,
+      "title": "Clone Graph",
+      "category": "Graphs",
+      "time": "O(V + E)",
+      "space": "O(V)",
+      "source_url": "https://neetcode.io/solutions/clone-graph",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "walls-and-gates": {
+      "id": 83,
+      "title": "Walls and Gates",
+      "category": "Graphs",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/walls-and-gates",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "rotting-oranges": {
+      "id": 84,
+      "title": "Rotting Oranges",
+      "category": "Graphs",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/rotting-oranges",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "pacific-atlantic-water-flow": {
+      "id": 85,
+      "title": "Pacific Atlantic Water Flow",
+      "category": "Graphs",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/pacific-atlantic-water-flow",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "surrounded-regions": {
+      "id": 86,
+      "title": "Surrounded Regions",
+      "category": "Graphs",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/surrounded-regions",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "course-schedule": {
+      "id": 87,
+      "title": "Course Schedule",
+      "category": "Graphs",
+      "time": "O(V + E)",
+      "space": "O(V + E)",
+      "source_url": "https://neetcode.io/solutions/course-schedule",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "course-schedule-ii": {
+      "id": 88,
+      "title": "Course Schedule II",
+      "category": "Graphs",
+      "time": "O(V + E)",
+      "space": "O(V + E)",
+      "source_url": "https://neetcode.io/solutions/course-schedule-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "graph-valid-tree": {
+      "id": 89,
+      "title": "Graph Valid Tree",
+      "category": "Graphs",
+      "time": "O(V + E)",
+      "space": "O(V + E)",
+      "source_url": "https://neetcode.io/solutions/graph-valid-tree",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "number-of-connected-components-in-an-undirected-graph": {
+      "id": 90,
+      "title": "Number of Connected Components in an Undirected Graph",
+      "category": "Graphs",
+      "time": "O(V + E)",
+      "space": "O(V + E)",
+      "source_url": "https://neetcode.io/solutions/number-of-connected-components-in-an-undirected-graph",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "redundant-connection": {
+      "id": 91,
+      "title": "Redundant Connection",
+      "category": "Graphs",
+      "time": "O(E alpha(V))",
+      "space": "O(V)",
+      "source_url": "https://neetcode.io/solutions/redundant-connection",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "word-ladder": {
+      "id": 92,
+      "title": "Word Ladder",
+      "category": "Graphs",
+      "time": "O(N * M^2)",
+      "space": "O(N * M^2)",
+      "source_url": "https://neetcode.io/solutions/word-ladder",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "reconstruct-itinerary": {
+      "id": 93,
+      "title": "Reconstruct Itinerary",
+      "category": "Advanced Graphs",
+      "time": "O(E log E)",
+      "space": "O(E)",
+      "source_url": "https://neetcode.io/solutions/reconstruct-itinerary",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "min-cost-to-connect-all-points": {
+      "id": 94,
+      "title": "Min Cost to Connect All Points",
+      "category": "Advanced Graphs",
+      "time": "O(n^2)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/min-cost-to-connect-all-points",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "network-delay-time": {
+      "id": 95,
+      "title": "Network Delay Time",
+      "category": "Advanced Graphs",
+      "time": "O(E log V)",
+      "space": "O(V + E)",
+      "source_url": "https://neetcode.io/solutions/network-delay-time",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "swim-in-rising-water": {
+      "id": 96,
+      "title": "Swim in Rising Water",
+      "category": "Advanced Graphs",
+      "time": "O(n^2 log n)",
+      "space": "O(n^2)",
+      "source_url": "https://neetcode.io/solutions/swim-in-rising-water",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "alien-dictionary": {
+      "id": 97,
+      "title": "Alien Dictionary",
+      "category": "Advanced Graphs",
+      "time": "O(N + V + E)",
+      "space": "O(V + E)",
+      "source_url": "https://neetcode.io/solutions/alien-dictionary",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "cheapest-flights-within-k-stops": {
+      "id": 98,
+      "title": "Cheapest Flights Within K Stops",
+      "category": "Advanced Graphs",
+      "time": "O(k * E)",
+      "space": "O(V)",
+      "source_url": "https://neetcode.io/solutions/cheapest-flights-within-k-stops",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "climbing-stairs": {
+      "id": 99,
+      "title": "Climbing Stairs",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/climbing-stairs",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "min-cost-climbing-stairs": {
+      "id": 100,
+      "title": "Min Cost Climbing Stairs",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/min-cost-climbing-stairs",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "house-robber": {
+      "id": 101,
+      "title": "House Robber",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/house-robber",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "house-robber-ii": {
+      "id": 102,
+      "title": "House Robber II",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/house-robber-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-palindromic-substring": {
+      "id": 103,
+      "title": "Longest Palindromic Substring",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n^2)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/longest-palindromic-substring",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "palindromic-substrings": {
+      "id": 104,
+      "title": "Palindromic Substrings",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n^2)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/palindromic-substrings",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "decode-ways": {
+      "id": 105,
+      "title": "Decode Ways",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/decode-ways",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "coin-change": {
+      "id": 106,
+      "title": "Coin Change",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n * t)",
+      "space": "O(t)",
+      "source_url": "https://neetcode.io/solutions/coin-change",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "maximum-product-subarray": {
+      "id": 107,
+      "title": "Maximum Product Subarray",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/maximum-product-subarray",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "word-break": {
+      "id": 108,
+      "title": "Word Break",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n * m * t)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/word-break",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-increasing-subsequence": {
+      "id": 109,
+      "title": "Longest Increasing Subsequence",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/longest-increasing-subsequence",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "partition-equal-subset-sum": {
+      "id": 110,
+      "title": "Partition Equal Subset Sum",
+      "category": "1-D Dynamic Programming",
+      "time": "O(n * t)",
+      "space": "O(t)",
+      "source_url": "https://neetcode.io/solutions/partition-equal-subset-sum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "unique-paths": {
+      "id": 111,
+      "title": "Unique Paths",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/unique-paths",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-common-subsequence": {
+      "id": 112,
+      "title": "Longest Common Subsequence",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/longest-common-subsequence",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "best-time-to-buy-and-sell-stock-with-cooldown": {
+      "id": 113,
+      "title": "Best Time to Buy and Sell Stock with Cooldown",
+      "category": "2-D Dynamic Programming",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock-with-cooldown",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "coin-change-ii": {
+      "id": 114,
+      "title": "Coin Change II",
+      "category": "2-D Dynamic Programming",
+      "time": "O(n * a)",
+      "space": "O(a)",
+      "source_url": "https://neetcode.io/solutions/coin-change-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "target-sum": {
+      "id": 115,
+      "title": "Target Sum",
+      "category": "2-D Dynamic Programming",
+      "time": "O(n * s)",
+      "space": "O(s)",
+      "source_url": "https://neetcode.io/solutions/target-sum",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "interleaving-string": {
+      "id": 116,
+      "title": "Interleaving String",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/interleaving-string",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "longest-increasing-path-in-a-matrix": {
+      "id": 117,
+      "title": "Longest Increasing Path in a Matrix",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/longest-increasing-path-in-a-matrix",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "distinct-subsequences": {
+      "id": 118,
+      "title": "Distinct Subsequences",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/distinct-subsequences",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "edit-distance": {
+      "id": 119,
+      "title": "Edit Distance",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/edit-distance",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "burst-balloons": {
+      "id": 120,
+      "title": "Burst Balloons",
+      "category": "2-D Dynamic Programming",
+      "time": "O(n^3)",
+      "space": "O(n^2)",
+      "source_url": "https://neetcode.io/solutions/burst-balloons",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "regular-expression-matching": {
+      "id": 121,
+      "title": "Regular Expression Matching",
+      "category": "2-D Dynamic Programming",
+      "time": "O(m * n)",
+      "space": "O(m * n)",
+      "source_url": "https://neetcode.io/solutions/regular-expression-matching",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "maximum-subarray": {
+      "id": 122,
+      "title": "Maximum Subarray",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/maximum-subarray",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "jump-game": {
+      "id": 123,
+      "title": "Jump Game",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/jump-game",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "jump-game-ii": {
+      "id": 124,
+      "title": "Jump Game II",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/jump-game-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "gas-station": {
+      "id": 125,
+      "title": "Gas Station",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/gas-station",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "hand-of-straights": {
+      "id": 126,
+      "title": "Hand of Straights",
+      "category": "Greedy",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/hand-of-straights",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "merge-triplets-to-form-target-triplet": {
+      "id": 127,
+      "title": "Merge Triplets to Form Target Triplet",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/merge-triplets-to-form-target-triplet",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "partition-labels": {
+      "id": 128,
+      "title": "Partition Labels",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(k)",
+      "source_url": "https://neetcode.io/solutions/partition-labels",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "valid-parenthesis-string": {
+      "id": 129,
+      "title": "Valid Parenthesis String",
+      "category": "Greedy",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/valid-parenthesis-string",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "insert-interval": {
+      "id": 130,
+      "title": "Insert Interval",
+      "category": "Intervals",
+      "time": "O(n)",
+      "space": "O(1) extra",
+      "source_url": "https://neetcode.io/solutions/insert-interval",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "merge-intervals": {
+      "id": 131,
+      "title": "Merge Intervals",
+      "category": "Intervals",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/merge-intervals",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "non-overlapping-intervals": {
+      "id": 132,
+      "title": "Non-overlapping Intervals",
+      "category": "Intervals",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/non-overlapping-intervals",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "meeting-rooms": {
+      "id": 133,
+      "title": "Meeting Rooms",
+      "category": "Intervals",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/meeting-rooms",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "meeting-rooms-ii": {
+      "id": 134,
+      "title": "Meeting Rooms II",
+      "category": "Intervals",
+      "time": "O(n log n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/meeting-rooms-ii",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "minimum-interval-to-include-each-query": {
+      "id": 135,
+      "title": "Minimum Interval to Include Each Query",
+      "category": "Intervals",
+      "time": "O(n log n + q log q)",
+      "space": "O(n + q)",
+      "source_url": "https://neetcode.io/solutions/minimum-interval-to-include-each-query",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "rotate-image": {
+      "id": 136,
+      "title": "Rotate Image",
+      "category": "Math & Geometry",
+      "time": "O(n^2)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/rotate-image",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "spiral-matrix": {
+      "id": 137,
+      "title": "Spiral Matrix",
+      "category": "Math & Geometry",
+      "time": "O(m * n)",
+      "space": "O(1) extra",
+      "source_url": "https://neetcode.io/solutions/spiral-matrix",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "set-matrix-zeroes": {
+      "id": 138,
+      "title": "Set Matrix Zeroes",
+      "category": "Math & Geometry",
+      "time": "O(m * n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/set-matrix-zeroes",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "happy-number": {
+      "id": 139,
+      "title": "Happy Number",
+      "category": "Math & Geometry",
+      "time": "O(log n)",
+      "space": "O(log n)",
+      "source_url": "https://neetcode.io/solutions/happy-number",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "plus-one": {
+      "id": 140,
+      "title": "Plus One",
+      "category": "Math & Geometry",
+      "time": "O(n)",
+      "space": "O(1) extra",
+      "source_url": "https://neetcode.io/solutions/plus-one",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "powx-n": {
+      "id": 141,
+      "title": "Pow(x, n)",
+      "category": "Math & Geometry",
+      "time": "O(log n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/powx-n",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "multiply-strings": {
+      "id": 142,
+      "title": "Multiply Strings",
+      "category": "Math & Geometry",
+      "time": "O(m * n)",
+      "space": "O(m + n)",
+      "source_url": "https://neetcode.io/solutions/multiply-strings",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "detect-squares": {
+      "id": 143,
+      "title": "Detect Squares",
+      "category": "Math & Geometry",
+      "time": "O(1) add, O(n) count",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/detect-squares",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "single-number": {
+      "id": 144,
+      "title": "Single Number",
+      "category": "Bit Manipulation",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/single-number",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "number-of-1-bits": {
+      "id": 145,
+      "title": "Number of 1 Bits",
+      "category": "Bit Manipulation",
+      "time": "O(1)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/number-of-1-bits",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "counting-bits": {
+      "id": 146,
+      "title": "Counting Bits",
+      "category": "Bit Manipulation",
+      "time": "O(n)",
+      "space": "O(n)",
+      "source_url": "https://neetcode.io/solutions/counting-bits",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "reverse-bits": {
+      "id": 147,
+      "title": "Reverse Bits",
+      "category": "Bit Manipulation",
+      "time": "O(1)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/reverse-bits",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "missing-number": {
+      "id": 148,
+      "title": "Missing Number",
+      "category": "Bit Manipulation",
+      "time": "O(n)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/missing-number",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "sum-of-two-integers": {
+      "id": 149,
+      "title": "Sum of Two Integers",
+      "category": "Bit Manipulation",
+      "time": "O(1)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/sum-of-two-integers",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    },
+    "reverse-integer": {
+      "id": 150,
+      "title": "Reverse Integer",
+      "category": "Bit Manipulation",
+      "time": "O(1)",
+      "space": "O(1)",
+      "source_url": "https://neetcode.io/solutions/reverse-integer",
+      "source_note": "Public solution complexity reference plus local expected-solution review.",
+      "status": "reviewed"
+    }
+  }
+}

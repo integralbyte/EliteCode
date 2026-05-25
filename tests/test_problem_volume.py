@@ -20,3 +20,7 @@ def test_every_problem_has_thousands_of_cases() -> None:
 
 def test_problem_packs_pass_edge_coverage_audit() -> None:
     subprocess.run(["node", "scripts/audit_edge_coverage.mjs"], cwd=ROOT, check=True)
+
+
+def test_problem_packs_have_manual_edge_dossiers() -> None:
+    subprocess.run(["node", "scripts/audit_manual_edges.mjs"], cwd=ROOT, check=True)

@@ -17,7 +17,8 @@
     "test:frontend": "vitest run",
     "test:e2e": "playwright test",
     "audit:cases": "node scripts/audit_problem_cases.mjs",
-    "audit:edge": "node scripts/audit_edge_coverage.mjs"
+    "audit:edge": "node scripts/audit_edge_coverage.mjs",
+    "audit:manual": "node scripts/audit_manual_edges.mjs"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

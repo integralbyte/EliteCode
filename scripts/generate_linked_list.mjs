@@ -81,11 +81,11 @@ function mix(seed, salt = 0) {
   return value >>> 0;
 }
 
-function valuesFromSeed(seed, length = 1 + (seed % 11)) {
+function valuesFromSeed(seed, length = 1 + (seed % 25)) {
   return Array.from({ length }, (_, index) => (mix(seed, index + 1) % 101) - 50);
 }
 
-function sortedValues(seed, length = 1 + (seed % 9)) {
+function sortedValues(seed, length = 1 + (seed % 25)) {
   const values = valuesFromSeed(seed, length).sort((a, b) => a - b);
   return values.map((value, index) => value + index);
 }
@@ -200,7 +200,7 @@ function reverseKGroup(values, k) {
 }
 
 function randomNodes(seed) {
-  const length = mix(seed, 240) % 15;
+  const length = mix(seed, 240) % 26;
   return Array.from({ length }, (_, index) => {
     const randomIndex = mix(seed, index + 241) % (length + 1);
     return [(mix(seed, index + 260) % 201) - 100, randomIndex === length ? null : randomIndex];
@@ -226,7 +226,7 @@ const problems = [
       caseFrom({ head: listNode([]) }, [])
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const values = valuesFromSeed(seed, seed % 17);
+      const values = valuesFromSeed(seed, seed % 27);
       return caseFrom({ head: listNode(values) }, [...values].reverse());
     });
     return {
@@ -262,8 +262,8 @@ const problems = [
       caseFrom({ list1: listNode([4]), list2: listNode([]) }, [4])
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const left = sortedValues(seed, seed % 10);
-      const right = sortedValues(seed + 11, (seed * 2) % 10);
+      const left = sortedValues(seed, seed % 16);
+      const right = sortedValues(seed + 11, (seed * 2) % 16);
       return caseFrom({ list1: listNode(left), list2: listNode(right) }, [...left, ...right].sort((a, b) => a - b));
     });
     return {
@@ -335,7 +335,7 @@ const problems = [
       caseFrom({ head: listNode([8], { capture: true }) }, [8])
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const values = valuesFromSeed(seed, 1 + (seed % 18));
+      const values = valuesFromSeed(seed, 1 + (seed % 26));
       return caseFrom({ head: listNode(values, { capture: true }) }, reorder(values));
     });
     return {
@@ -370,7 +370,7 @@ const problems = [
       caseFrom({ head: listNode([1, 2, 3]), n: 3 }, [2, 3])
     ];
     const { visible: visibleCount, cases } = fillCases(visible, (seed) => {
-      const length = 1 + (seed % 18);
+      const length = 1 + (seed % 26);
       const values = valuesFromSeed(seed, length);
       const n = 1 + (seed % length);
       return caseFrom({ head: listNode(values), n }, removeNth(values, n));

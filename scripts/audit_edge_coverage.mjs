@@ -8,6 +8,8 @@ const minFeatureFamilies = Number(process.env.ELITECODE_MIN_EDGE_FEATURES ?? 8);
 const minBooleanClassCases = Number(process.env.ELITECODE_MIN_BOOLEAN_CLASS_CASES ?? 250);
 const minNumericExpectedValues = Number(process.env.ELITECODE_MIN_NUMERIC_EXPECTED_VALUES ?? 10);
 const minArrayExpectedValues = Number(process.env.ELITECODE_MIN_ARRAY_EXPECTED_VALUES ?? 50);
+const minCompositeInputSizes = Number(process.env.ELITECODE_MIN_COMPOSITE_INPUT_SIZES ?? 8);
+const minCompositeMaxInputSize = Number(process.env.ELITECODE_MIN_COMPOSITE_MAX_INPUT_SIZE ?? 20);
 
 const finiteDomains = {
   "generate-parentheses": { field: "n", values: range(1, 8) },
@@ -15,12 +17,59 @@ const finiteDomains = {
   "climbing-stairs": { field: "n", values: range(1, 75) }
 };
 
+const compactInputDomains = new Set([
+  "cheapest-flights-within-k-stops",
+  "climbing-stairs",
+  "counting-bits",
+  "burst-balloons",
+  "generate-parentheses",
+  "happy-number",
+  "k-closest-points-to-origin",
+  "letter-combinations-of-a-phone-number",
+  "longest-increasing-path-in-a-matrix",
+  "lowest-common-ancestor-of-a-binary-search-tree",
+  "multiply-strings",
+  "n-queens",
+  "number-of-1-bits",
+  "palindrome-partitioning",
+  "permutations",
+  "powx-n",
+  "reconstruct-itinerary",
+  "reverse-bits",
+  "reverse-integer",
+  "rotate-image",
+  "single-number",
+  "subsets",
+  "subsets-ii",
+  "sum-of-two-integers",
+  "swim-in-rising-water",
+  "unique-paths",
+  "valid-sudoku"
+]);
+
 function range(start, end) {
   return Array.from({ length: end - start + 1 }, (_, index) => start + index);
 }
 
 function isPlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function inputSize(value) {
+  if (value === null || value === undefined) return 0;
+  if (typeof value === "string") return value.length;
+  if (typeof value === "number" || typeof value === "boolean") return 1;
+  if (Array.isArray(value)) return value.length + value.reduce((sum, item) => sum + inputSize(item), 0);
+  if (isPlainObject(value)) {
+    if (value.__elite_type === "tree_node" && Array.isArray(value.values)) return value.values.filter((item) => item !== null).length;
+    if (value.__elite_type === "list_node" && Array.isArray(value.values)) return value.values.length;
+    if (value.__elite_type === "random_list" && Array.isArray(value.nodes)) return value.nodes.length;
+    if (value.__elite_type === "graph_node" && Array.isArray(value.adjacency)) {
+      return value.adjacency.length + value.adjacency.reduce((sum, row) => sum + (Array.isArray(row) ? row.length : 0), 0);
+    }
+    return Object.values(value).reduce((sum, item) => sum + inputSize(item), 0);
+  }
+  return 1;
 }
 
 function isNumberArray(value) {
@@ -218,6 +267,17 @@ for (const dir of await fs.readdir(problemsRoot)) {
       const expectedValues = new Set(problem.cases.map((item) => JSON.stringify(item.expected)));
       if (expectedValues.size < minArrayExpectedValues) {
         failures.push(`${problem.slug} has ${expectedValues.size} distinct array outputs, expected at least ${minArrayExpectedValues}`);
+      }
+    }
+    if (!compactInputDomains.has(problem.slug)) {
+      const inputSizes = problem.cases.map((item) => inputSize(item.input));
+      const uniqueInputSizes = new Set(inputSizes);
+      const maxInputSize = Math.max(...inputSizes);
+      if (uniqueInputSizes.size < minCompositeInputSizes) {
+        failures.push(`${problem.slug} spans ${uniqueInputSizes.size} input sizes, expected at least ${minCompositeInputSizes}`);
+      }
+      if (maxInputSize < minCompositeMaxInputSize) {
+        failures.push(`${problem.slug} max input size is ${maxInputSize}, expected at least ${minCompositeMaxInputSize}`);
       }
     }
     if (!problem.cases.some((item) => item.hidden)) failures.push(`${problem.slug} has no hidden cases`);

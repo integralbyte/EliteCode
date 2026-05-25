@@ -108,10 +108,10 @@ function palindromeSeed(seed) {
 
 function decodeSeed(seed) {
   if (seed % 11 === 0) return "0" + String(10 + (seed % 89));
-  if (seed % 11 === 1) return "10".repeat(1 + (seed % 8));
-  if (seed % 11 === 2) return "27".repeat(1 + (seed % 7));
-  if (seed % 11 === 3) return "111111".slice(0, 1 + (seed % 6));
-  return Array.from({ length: 1 + (seed % 18) }, (_, i) => String(1 + (mix(seed, i) % 9))).join("");
+  if (seed % 11 === 1) return "10".repeat(1 + (seed % 14));
+  if (seed % 11 === 2) return "27".repeat(1 + (seed % 13));
+  if (seed % 11 === 3) return "1".repeat(1 + (mix(seed, 10) % 36));
+  return Array.from({ length: 1 + (mix(seed, 11) % 40) }, (_, i) => String(1 + (mix(seed, i) % 9))).join("");
 }
 
 function wordBreakSeed(seed) {
@@ -262,7 +262,7 @@ const problems = [
     "```python\nclass Solution:\n    def numDecodings(self, s):\n        if not s or s[0] == '0': return 0\n        prev2 = prev1 = 1\n        for i in range(1, len(s)):\n            cur = 0\n            if s[i] != '0': cur += prev1\n            if 10 <= int(s[i-1:i+1]) <= 26: cur += prev2\n            prev2, prev1 = prev1, cur\n        return prev1\n```", "class Solution:\n    def numDecodings(self, s):\n        pass"),
   makeProblem(106, "coin-change", "Coin Change", "Medium", ["Array", "Dynamic Programming", "Breadth-First Search"], "coinChange",
     [caseFrom({ coins: [1, 2, 5], amount: 11 }, 3), caseFrom({ coins: [2], amount: 3 }, -1), caseFrom({ coins: [7], amount: 0 }, 0)],
-    (seed) => { const coins = [...new Set(posNums(seed, 2 + (seed % 5), 10))]; const amount = seed % 35; return caseFrom({ coins, amount }, coinChange(coins, amount)); },
+    (seed) => { const coins = [...new Set(posNums(seed, 2 + (mix(seed, 250) % 25), 30))]; const amount = mix(seed, 251) % 120; return caseFrom({ coins, amount }, coinChange(coins, amount)); },
     "Return the fewest coins needed to make `amount`, or `-1` when impossible.",
     ["Input: coins = [1,2,5], amount = 11\nOutput: 3", "Input: coins = [2], amount = 3\nOutput: -1", "Input: coins = [7], amount = 0\nOutput: 0"],
     "```python\nclass Solution:\n    def coinChange(self, coins, amount):\n        dp = [0] + [float('inf')] * amount\n        for value in range(1, amount + 1):\n            dp[value] = min((dp[value - coin] + 1 for coin in coins if coin <= value), default=float('inf'))\n        return -1 if dp[amount] == float('inf') else dp[amount]\n```", "class Solution:\n    def coinChange(self, coins, amount):\n        pass"),
@@ -334,13 +334,13 @@ const problems = [
     "```python\nclass Solution:\n    def maxProfit(self, prices):\n        hold, sold, rest = float('-inf'), 0, 0\n        for price in prices:\n            old_sold = sold\n            sold = hold + price\n            hold = max(hold, rest - price)\n            rest = max(rest, old_sold)\n        return max(sold, rest)\n```", "class Solution:\n    def maxProfit(self, prices):\n        pass"),
   makeProblem(114, "coin-change-ii", "Coin Change II", "Medium", ["Array", "Dynamic Programming"], "change",
     [caseFrom({ amount: 5, coins: [1, 2, 5] }, 4), caseFrom({ amount: 3, coins: [2] }, 0), caseFrom({ amount: 10, coins: [10] }, 1)],
-    (seed) => { const coins = [...new Set(posNums(seed, 2 + (seed % 5), 10))]; const amount = seed % 30; return caseFrom({ amount, coins }, coinChange2(amount, coins)); },
+    (seed) => { const coins = [...new Set(posNums(seed, 2 + (mix(seed, 260) % 25), 30))]; const amount = mix(seed, 261) % 45; return caseFrom({ amount, coins }, coinChange2(amount, coins)); },
     "Return how many combinations of coins make exactly `amount`. Coin order does not create a new combination.",
     ["Input: amount = 5, coins = [1,2,5]\nOutput: 4", "Input: amount = 3, coins = [2]\nOutput: 0", "Input: amount = 10, coins = [10]\nOutput: 1"],
     "```python\nclass Solution:\n    def change(self, amount, coins):\n        dp = [0] * (amount + 1)\n        dp[0] = 1\n        for coin in coins:\n            for value in range(coin, amount + 1): dp[value] += dp[value - coin]\n        return dp[amount]\n```", "class Solution:\n    def change(self, amount, coins):\n        pass"),
   makeProblem(115, "target-sum", "Target Sum", "Medium", ["Array", "Dynamic Programming", "Backtracking"], "findTargetSumWays",
     [caseFrom({ nums: [1, 1, 1, 1, 1], target: 3 }, 5), caseFrom({ nums: [1], target: 1 }, 1), caseFrom({ nums: [2, 3, 5], target: 0 }, 2)],
-    (seed) => { const arr = posNums(seed, 1 + (seed % 8), 6); const target = (seed % 9) - 4; return caseFrom({ nums: arr, target }, targetSumWays(arr, target)); },
+    (seed) => { const arr = posNums(seed, 1 + (mix(seed, 270) % 20), 6); const target = (mix(seed, 271) % 17) - 8; return caseFrom({ nums: arr, target }, targetSumWays(arr, target)); },
     "Assign `+` or `-` before each number. Return the number of assignments whose sum is `target`.",
     ["Input: nums = [1,1,1,1,1], target = 3\nOutput: 5", "Input: nums = [1], target = 1\nOutput: 1", "Input: nums = [2,3,5], target = 0\nOutput: 2"],
     "```python\nfrom collections import Counter\n\nclass Solution:\n    def findTargetSumWays(self, nums, target):\n        counts = Counter({0: 1})\n        for value in nums:\n            nxt = Counter()\n            for total, count in counts.items():\n                nxt[total + value] += count\n                nxt[total - value] += count\n            counts = nxt\n        return counts[target]\n```", "class Solution:\n    def findTargetSumWays(self, nums, target):\n        pass"),

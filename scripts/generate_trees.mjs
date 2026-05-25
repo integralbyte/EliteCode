@@ -134,10 +134,10 @@ function clone(rootNode) {
   return node(rootNode.val, clone(rootNode.left), clone(rootNode.right));
 }
 
-function randomTreeValues(seed, maxSize = 17) {
+function randomTreeValues(seed, maxSize = 31) {
   if (seed % 17 === 0) return [];
   if (seed % 11 === 0) {
-    const depth = 1 + (mix(seed, 30) % 14);
+    const depth = 1 + (mix(seed, 30) % 28);
     const values = [];
     for (let i = 0; i < depth; i += 1) {
       values.push(((seed * 19 + i * 11) % 61) - 30);
@@ -146,7 +146,7 @@ function randomTreeValues(seed, maxSize = 17) {
     return normalize(values);
   }
   if (seed % 13 === 0) {
-    const depth = 1 + (mix(seed, 31) % 14);
+    const depth = 1 + (mix(seed, 31) % 28);
     const values = [];
     for (let i = 0; i < depth; i += 1) {
       values.push(((seed * 23 + i * 17) % 61) - 30);
@@ -259,7 +259,7 @@ function insertBST(rootNode, value) {
   return rootNode;
 }
 
-function uniqueValues(seed, length = 7 + (seed % 8)) {
+function uniqueValues(seed, length = 7 + (mix(seed, 80) % 24)) {
   const values = [];
   let candidate = 0;
   while (values.length < length) {
@@ -270,7 +270,7 @@ function uniqueValues(seed, length = 7 + (seed % 8)) {
   return values;
 }
 
-function bstValues(seed, length = 7 + (seed % 8)) {
+function bstValues(seed, length = 7 + (mix(seed, 80) % 24)) {
   let rootNode = null;
   for (const value of uniqueValues(seed, length)) rootNode = insertBST(rootNode, value);
   return toArray(rootNode);

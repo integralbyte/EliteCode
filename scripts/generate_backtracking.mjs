@@ -254,7 +254,7 @@ function uniqueNums(seed, length = 1 + (seed % 5)) {
   return [...set];
 }
 
-function comboCandidates(seed, length = 2 + (seed % 5)) {
+function comboCandidates(seed, length = 2 + (mix(seed, 8) % 20)) {
   const set = new Set();
   let attempt = 0;
   while (set.size < length) {

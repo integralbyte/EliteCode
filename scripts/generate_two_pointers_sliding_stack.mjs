@@ -697,7 +697,7 @@ const problems = [
       ],
       Array.from({ length: 42 }, (_, i) => i + 1),
       (seed) => {
-        const nums = patternedArray(seed, 8 + (seed % 5), 15);
+        const nums = patternedArray(seed, 5 + (mix(seed, 333) % 40), 25);
         nums.push(-nums[0] - nums[1]);
         return caseFrom({ nums }, threeSum(nums));
       }
